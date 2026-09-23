@@ -127,7 +127,31 @@ cd outputs/一亩三分地本地工具
 思路：让操作系统每隔约 10 分钟跑一次 `运行.sh daily --resume`（Windows 用 `运行.cmd`）。这个命令自己判断是否到点、当天是否已完成，`not_due` / `already_complete` 时直接安静退出、不开浏览器，只有真正该签到时才动作。所以重复触发是安全的。
 
 - **交给 AI 助手最省事**：让它按你的系统装好计划（macOS 用 launchd LaunchAgent，Windows 用任务计划程序），指向工具目录的 `运行.sh daily --resume`。
-- **自己配**：macOS 写一个 LaunchAgent（`RunAtLoad` + `StartInterval` 600 秒）调用上面的命令；Windows 在任务计划程序里建一个按相同间隔触发的任务。计划时间在 `account.json` 里配（见[配置账号](#account)）；跑一次 `检查.cmd --sync`（macOS 用 `./检查.sh --sync`），输出的 `schedule` 段直接给出本地和 UTC 两套触发时刻和 rrule。
+- **自己配**：macOS 写一个 LaunchAgent（`RunAtLoad` + `StartInterval` 600 秒）调用上面的命令，样例见下；Windows 在任务计划程序里建一个按相同间隔触发的任务。计划时间在 `account.json` 里配（见[配置账号](#account)）；跑一次 `检查.cmd --sync`（macOS 用 `./检查.sh --sync`），输出的 `schedule` 段直接给出本地和 UTC 两套触发时刻和 rrule。
+
+macOS LaunchAgent 样例，存为 `~/Library/LaunchAgents/local.1point3acres-toolkit.daily.plist`，把 `/REPO` 换成仓库的绝对路径（日志落在不入库的 `work/`）：
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>local.1point3acres-toolkit.daily</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/REPO/outputs/一亩三分地本地工具/运行.sh</string>
+    <string>daily</string>
+    <string>--resume</string>
+  </array>
+  <key>RunAtLoad</key><true/>
+  <key>StartInterval</key><integer>600</integer>
+  <key>StandardOutPath</key><string>/REPO/work/launchd-daily.log</string>
+  <key>StandardErrorPath</key><string>/REPO/work/launchd-daily.log</string>
+</dict>
+</plist>
+```
+
+装载：`launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/local.1point3acres-toolkit.daily.plist`；停用：`launchctl bootout gui/$(id -u)/local.1point3acres-toolkit.daily`。改过 plist 要先停用再装载。要用下面的 `pmset` / `caffeinate` 加固时，把 `ProgramArguments` 换成你的包装脚本。
 - **macOS 可选加固（写在本机包装脚本里，不进仓库）**：合盖后的短暂后台唤醒（DarkWake）里也可能触发计划，脚本开头加 `pmset -g systemstate | grep -q Graphics || exit 0` 可以避开；用 `caffeinate -i` 包住运行命令能防止空闲睡眠（合盖仍会睡，只是减少中途被打断的概率）。另外，工具的 Chrome 在后台运行时，从 Dock / Spotlight 打开 Chrome 会进入工具的专用配置目录（同一个应用只保留一个实例）：想开自己的 Chrome，等任务结束，或用 `open -na "Google Chrome"` 另起一个实例；如果发现自己的登录落进了 `work/account-browser/chrome-profile`，在那个实例里退出登录即可。
 - **macOS 窗口行为**：系统不允许把窗口放到屏幕外，所以专用 Chrome 启动瞬间会短暂出现并切到前台（约 1 秒），随后自动最小化到 Dock、把焦点还给你之前正在用的应用；这个瞬间无法消除。微信扫码登录时窗口会被调到屏幕上，结束后同样最小化。Windows 上窗口始终隐藏。
 
