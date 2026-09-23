@@ -62,6 +62,14 @@ class CIPolicyTests(unittest.TestCase):
         self.assertEqual(module.inventory_errors(['README.md', 'outputs/tool/settings.py'], 'outputs/tool', policy),
                          ['missing_tracked_file: outputs/tool/architecture.json'])
 
+    def test_shell_entry_points_need_the_executable_bit(self):
+        check = self.policy_module().executable_bit_errors
+        policy = {'assets': ['run.cmd', 'run.sh', 'reader.html']}
+        self.assertEqual(check({'outputs/tool/run.sh': '100755', 'outputs/tool/run.cmd': '100644'}, 'outputs/tool', policy), [])
+        for modes in [{'outputs/tool/run.sh': '100644'}, {}]:
+            with self.subTest(modes=modes):
+                self.assertEqual(check(modes, 'outputs/tool', policy), ['missing_executable_bit: outputs/tool/run.sh'])
+
     def test_secret_signatures_and_personal_paths(self):
         scan = self.policy_module().content_errors
         self.assertTrue(scan('example.txt', 'ghp_' + 'A' * 36))

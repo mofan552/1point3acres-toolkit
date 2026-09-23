@@ -48,6 +48,8 @@ work/cf-probe-venv/bin/python -m pip install -r "outputs/一亩三分地本地�
 "outputs/一亩三分地本地工具/检查.sh" --sync
 ```
 
+最后一步报 `permission denied` 说明 clone 丢了可执行位（旧版本或经 Windows 中转），先 `chmod +x "outputs/一亩三分地本地工具/"*.sh` 再执行。
+
 Windows（PowerShell）：
 
 ```powershell

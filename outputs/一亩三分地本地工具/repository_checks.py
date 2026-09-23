@@ -36,6 +36,12 @@ def inventory_errors(files, package, policy):
             + [f'missing_tracked_file: {path}' for path in sorted(allowed - set(files))])
 
 
+def executable_bit_errors(modes, package, policy):
+    """Shell entry points run only if the index carries the bit; a Windows checkout cannot show that it is missing."""
+    scripts = {package + '/' + name for name in policy['assets'] if name.endswith('.sh')}
+    return [f'missing_executable_bit: {path}' for path in sorted(scripts) if modes.get(path) != '100755']
+
+
 def content_errors(path, content):
     patterns = {
         'credential_signature': r'(?:gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{30,}|AKIA[0-9A-Z]{16}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)',
@@ -56,11 +62,14 @@ def workflow_errors(content):
 
 
 def check_repository(workspace, package_root, policy):
-    result = subprocess.run(['git', 'ls-files', '-z'], cwd=workspace, capture_output=True, timeout=15)
+    result = subprocess.run(['git', 'ls-files', '-s', '-z'], cwd=workspace, capture_output=True, timeout=15)
     if result.returncode:
         return ['git_inventory_unavailable']
-    files = result.stdout.decode('utf-8').strip('\0').split('\0')
-    errors = inventory_errors(files, package_root.relative_to(workspace).as_posix(), policy)
+    entries = [line.split('\t', 1) for line in result.stdout.decode('utf-8').strip('\0').split('\0') if '\t' in line]
+    modes = {name: meta.split()[0] for meta, name in entries}
+    files = list(modes)
+    package = package_root.relative_to(workspace).as_posix()
+    errors = inventory_errors(files, package, policy) + executable_bit_errors(modes, package, policy)
     for name in files:
         path = workspace / name
         if path.is_symlink() or not path.is_file():
