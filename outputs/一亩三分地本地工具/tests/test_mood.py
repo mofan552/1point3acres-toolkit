@@ -1,6 +1,7 @@
 import json
 import tempfile
 import unittest
+from datetime import date, timedelta
 from pathlib import Path
 from random import Random
 from unittest.mock import patch
@@ -9,9 +10,17 @@ import daily
 import settings
 from contracts import daily_history_record
 from library import Library
-from rules import choose_mood, choose_phrase, load_mood_phrases
+from rules import choose_mood, choose_phrase, load_mood_phrases, site_day
 from settings import CHECKIN_MOOD_WEIGHTS, CHECKIN_MOOD_DEFAULT, MOOD_PHRASES_FILE, MOOD_PHRASE_MAX_LENGTH
 from tests.test_access_recovery import SubmissionBrowser
+
+# The run's started_at is the real clock and save_daily checks it against the run's site day, so the
+# day under test must be the real site day rather than the date these tests were written on.
+TODAY = site_day()
+
+
+def days_ago(count):
+    return (date.fromisoformat(TODAY) - timedelta(days=count)).isoformat()
 
 
 class PhrasePoolTests(unittest.TestCase):
@@ -113,7 +122,7 @@ class CheckInMoodTests(unittest.TestCase):
         db.close()
         with patch('daily.STATE', root), patch('daily.ACCOUNT_UID', 123456), patch('daily.Browser', return_value=session), \
                 patch('daily.CHECKIN_MOOD_RANDOM', random_mood), \
-                patch('daily.time.monotonic', side_effect=[0, 100, 200, 300]), patch('daily.site_day', return_value='2026-09-22'):
+                patch('daily.time.monotonic', side_effect=[0, 100, 200, 300]), patch('daily.site_day', return_value=TODAY):
             return daily.run_daily()
 
     def test_off_by_default_the_check_in_picks_the_default_mood_and_says_nothing(self):
@@ -135,7 +144,7 @@ class CheckInMoodTests(unittest.TestCase):
             session = MoodBrowser(completed=True, rewarded=True)
             with patch('daily.choose_mood', return_value='奋斗') as drawn:
                 result = self.run_checkin(session, root, random_mood=True,
-                                          seeded=[('2026-09-21', '疲惫', '今天走了两万步，腿都是酸的。')])
+                                          seeded=[(days_ago(1), '疲惫', '今天走了两万步，腿都是酸的。')])
             drawn.assert_called_once_with('疲惫')  # yesterday's mood feeds the streak rule
             self.assertIn(json.dumps('奋斗'), session.clicked[0])
             pool = load_mood_phrases(MOOD_PHRASES_FILE)
@@ -148,14 +157,14 @@ class CheckInMoodTests(unittest.TestCase):
                 recent = db.recent_checkins(123456, 30)
             finally:
                 db.close()
-            self.assertEqual([(r['site_day'], r['mood']) for r in recent], [('2026-09-22', '奋斗'), ('2026-09-21', '疲惫')])
+            self.assertEqual([(r['site_day'], r['mood']) for r in recent], [(TODAY, '奋斗'), (days_ago(1), '疲惫')])
 
     def test_recent_phrases_are_kept_out_of_the_draw(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             pool = load_mood_phrases(MOOD_PHRASES_FILE)
             used = pool['衰'][:-1]  # every line but one was said this month
-            seeded = [(f'2026-09-{day:02d}', '衰', phrase) for day, phrase in zip(range(1, 20), used)]
+            seeded = [(days_ago(count), '衰', phrase) for count, phrase in zip(range(19, 0, -1), used)]
             session = MoodBrowser(completed=True, rewarded=True)
             with patch('daily.choose_mood', return_value='衰'):
                 self.run_checkin(session, root, random_mood=True, seeded=seeded)
