@@ -3,6 +3,7 @@
 !/.gitignore
 !/.gitattributes
 !/README.md
+!/LICENSE
 !/.github/
 /.github/*
 !/.github/workflows/
