@@ -12,9 +12,11 @@ STATE = WORKSPACE / 'work' / 'local-toolkit-state'
 DATABASE_NAME = 'interviews.sqlite'
 PROFILE = WORKSPACE / 'work' / 'account-browser' / 'chrome-profile'
 WINDOWS = sys.platform == 'win32'
+MACOS = sys.platform == 'darwin'
 PYTHON = WORKSPACE / 'work' / 'cf-probe-venv' / ('Scripts/python.exe' if WINDOWS else 'bin/python')
 CHROME = (Path(r'C:\Program Files\Google\Chrome\Application\chrome.exe') if WINDOWS
           else Path('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'))
+CHROME_BUNDLE_ID = 'com.google.Chrome'
 CREDENTIAL_SERVICE = '1point3acres-toolkit'
 ACCOUNT_FILE = STATE / 'account.json'
 LEARNED_ANSWERS_NAME = 'learned-answers.json'

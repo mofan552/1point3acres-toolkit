@@ -129,6 +129,7 @@ cd outputs/一亩三分地本地工具
 - **交给 AI 助手最省事**：让它按你的系统装好计划（macOS 用 launchd LaunchAgent，Windows 用任务计划程序），指向工具目录的 `运行.sh daily --resume`。
 - **自己配**：macOS 写一个 LaunchAgent（`RunAtLoad` + `StartInterval` 600 秒）调用上面的命令；Windows 在任务计划程序里建一个按相同间隔触发的任务。计划时间在 `account.json` 里配（见[配置账号](#account)）；跑一次 `检查.cmd --sync`（macOS 用 `./检查.sh --sync`），输出的 `schedule` 段直接给出本地和 UTC 两套触发时刻和 rrule。
 - **macOS 可选加固（写在本机包装脚本里，不进仓库）**：合盖后的短暂后台唤醒（DarkWake）里也可能触发计划，脚本开头加 `pmset -g systemstate | grep -q Graphics || exit 0` 可以避开；用 `caffeinate -i` 包住运行命令能防止空闲睡眠（合盖仍会睡，只是减少中途被打断的概率）。另外，工具的 Chrome 在后台运行时，从 Dock / Spotlight 打开 Chrome 会进入工具的专用配置目录（同一个应用只保留一个实例）：想开自己的 Chrome，等任务结束，或用 `open -na "Google Chrome"` 另起一个实例；如果发现自己的登录落进了 `work/account-browser/chrome-profile`，在那个实例里退出登录即可。
+- **macOS 窗口行为**：系统不允许把窗口放到屏幕外，所以专用 Chrome 启动瞬间会短暂出现并切到前台（约 1 秒），随后自动最小化到 Dock、把焦点还给你之前正在用的应用；这个瞬间无法消除。微信扫码登录时窗口会被调到屏幕上，结束后同样最小化。Windows 上窗口始终隐藏。
 
 计划由 `daily --resume` 决定是否执行，它不会补过去站点日的签到。电脑休眠错过的触发，会在唤醒后的下一次检查补上；跑到一半睡着的那次会在运行截止（settings 的 `DAILY_RUN_TIMEOUT`，默认 15 分钟）内以 `daily_run_timeout` / `browser_connection_lost` 结束、自己收掉浏览器并重开一次，仍失败就等下一次检查。不要给同一账号配多个调度器。
 

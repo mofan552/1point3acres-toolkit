@@ -20,7 +20,8 @@ from settings import (ROOT, WORKSPACE, STATE, PROFILE, CHROME, SITE, SITE_HOST, 
                       SESSION_COOKIE_DOMAINS, UPLOADER_URL, UPLOAD_TIMEOUT_MS, MEDIA_HOSTS,
                       LOGIN_METHOD, LOGIN_VERIFICATION_TIMEOUT, READ_RETRY_LIMIT, READ_RETRY_DELAY, WINDOWS,
                       CDP_CALL_TIMEOUT, BROWSER_SHUTDOWN_TIMEOUT, LOGIN_METHODS, WECHAT_QR_PATH, WECHAT_QR_FRAME_PREFIX,
-                      WECHAT_QR_FILE, WECHAT_LOGIN_TIMEOUT, WECHAT_LOGIN_MIN_WAIT, WECHAT_LOGIN_MAX_WAIT, WINDOW_ON_SCREEN)
+                      WECHAT_QR_FILE, WECHAT_LOGIN_TIMEOUT, WECHAT_LOGIN_MIN_WAIT, WECHAT_LOGIN_MAX_WAIT, WINDOW_ON_SCREEN,
+                      MACOS, CHROME_BUNDLE_ID)
 
 if WINDOWS:
     import ctypes
@@ -67,6 +68,40 @@ def _process_windows(pid):
     return handles
 
 
+# Captured at import: the Chrome launch is what callers double, and these short OS queries must not be handed that double.
+_SHELL = subprocess.Popen
+
+
+def _query(*command):
+    """Stdout of a short OS command, or '' on any failure. Best effort by design: focus handling never fails a run."""
+    try:
+        process = _SHELL(command, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True)
+    except Exception:
+        return ''
+    try:
+        output, _ = process.communicate(timeout=5)
+    except Exception:
+        process.kill()
+        return ''
+    return output.strip()
+
+
+def _front_app():
+    """macOS: bundle id of the app that has focus, read before Chrome is launched and takes it."""
+    session = _query('lsappinfo', 'front')
+    match = re.search(r'"CFBundleIdentifier"="([^"]+)"', _query('lsappinfo', 'info', '-only', 'bundleid', session)) if session else None
+    return match.group(1) if match else ''
+
+
+def _give_focus_back(bundle_id):
+    """macOS: hand focus back to the app that had it. Only an app still running, and never Chrome itself, so nothing
+    gets launched and the owned Chrome is not the one activated. Needs no accessibility or automation permission."""
+    if not bundle_id or bundle_id == CHROME_BUNDLE_ID or not _query('lsappinfo', 'find', 'bundleid=' + bundle_id):
+        return False
+    _query('open', '-b', bundle_id)
+    return True
+
+
 class Browser:
     def __init__(self, *, recover_login=True, deadline=None):
         self.recover_login = recover_login
@@ -81,6 +116,7 @@ class Browser:
         self.watchdog = None
         self.sb = None
         self.process = None
+        self.front_app = ''
 
     def __enter__(self):
         if not USERNAME or not ACCOUNT_UID:
@@ -109,10 +145,12 @@ class Browser:
             with socket.socket() as listener:
                 listener.bind(('127.0.0.1', 0))
                 port = listener.getsockname()[1]
-            self.process = subprocess.Popen([str(CHROME), '--remote-debugging-address=127.0.0.1',
-                f'--remote-debugging-port={port}', f'--user-data-dir={PROFILE}', '--no-first-run',
-                '--no-default-browser-check', '--window-size=1280,900',
-                '--window-position=-20000,-20000', 'about:blank'], **_hidden_window(),
+            arguments = [str(CHROME), '--remote-debugging-address=127.0.0.1', f'--remote-debugging-port={port}',
+                         f'--user-data-dir={PROFILE}', '--no-first-run', '--no-default-browser-check', '--window-size=1280,900']
+            if WINDOWS:
+                arguments.append('--window-position=-20000,-20000')  # Honoured there; macOS clamps a window back on screen.
+            self.front_app = _front_app() if MACOS else ''
+            self.process = subprocess.Popen(arguments + ['about:blank'], **_hidden_window(),
                 stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             deadline = time.monotonic() + 15
             with requests.Session() as local:
@@ -130,6 +168,8 @@ class Browser:
                 headless=False, user_data_dir=str(PROFILE), browser_executable_path=str(CHROME), lang='zh-CN')
             self.sb.bring_active_window_to_front = lambda: None
             self.sb.add_handler(mycdp.network.ResponseReceived, self._response)
+            if MACOS:
+                self._park_window()
             self.goto(self.entry_url)
             if self.recover_login:
                 self.ensure_account()
@@ -525,21 +565,39 @@ class Browser:
     def _cdp(self, command):
         return self._send(command)
 
+    def _park_window(self):
+        """macOS keeps every window on screen and activates Chrome at launch, so the owned window is minimized and
+        focus is handed back. Best effort: failing here leaves a visible window, it does not fail the run."""
+        try:
+            self._place_window(False)
+        except Exception:
+            pass
+
     def set_window_visible(self, visible):
-        """Bring the owned Chrome on screen for a person, or put it back the way it started (off-screen, and
-        hidden on Windows). Only scan login needs a visible window; every other flow keeps it out of sight."""
+        """Bring the owned Chrome on screen for a person, or put it back the way it started. Only scan login needs a
+        visible window; every other flow keeps it out of sight."""
+        self._place_window(visible)
+
+    def _place_window(self, visible):
+        """On screen and in front, or out of sight: off-screen and hidden on Windows, minimized on macOS with focus
+        handed back to the app that had it."""
         window, _ = self._cdp(mycdp.browser.get_window_for_target())
         if visible:
-            bounds = mycdp.browser.Bounds(left=WINDOW_ON_SCREEN[0], top=WINDOW_ON_SCREEN[1], width=1280, height=900,
-                                          window_state=mycdp.browser.WindowState.NORMAL)
-        else:
+            # Leaving the minimized state and moving are two calls: Chrome ignores coordinates sent with a state change.
+            self._cdp(mycdp.browser.set_window_bounds(window, mycdp.browser.Bounds(window_state=mycdp.browser.WindowState.NORMAL)))
+            bounds = mycdp.browser.Bounds(left=WINDOW_ON_SCREEN[0], top=WINDOW_ON_SCREEN[1], width=1280, height=900)
+        elif WINDOWS:
             bounds = mycdp.browser.Bounds(left=-20000, top=-20000)
+        else:
+            bounds = mycdp.browser.Bounds(window_state=mycdp.browser.WindowState.MINIMIZED)
         self._cdp(mycdp.browser.set_window_bounds(window, bounds))
         if visible:
             self._cdp(mycdp.page.bring_to_front())
         if WINDOWS and self.process is not None:
             for handle in _process_windows(self.process.pid):
                 ctypes.windll.user32.ShowWindow(handle, 5 if visible else 0)  # SW_SHOW / SW_HIDE
+        elif MACOS and not visible:
+            _give_focus_back(self.front_app)
 
     def capture_png(self):
         import base64
