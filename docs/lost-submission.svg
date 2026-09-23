@@ -1,52 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" role="img" aria-label="提交发出去了回执却没回来：怎么避免重复提交也避免漏签">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="410" viewBox="0 0 960 410" role="img" aria-label="提交发出去了回执却没回来">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}
-.box{stroke-width:1.3}.white{fill:#fff;stroke:#d0d7de}.gray{fill:#f6f8fa;stroke:#d0d7de}.green{fill:#dafbe1;stroke:#4ac26b}.blue{fill:#ddf4ff;stroke:#54aeff}.orange{fill:#fff1e5;stroke:#fb8f44}.red{fill:#ffebe9;stroke:#ff8182}
-.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
-<rect x="0.5" y="0.5" width="959" height="469" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">提交发出去了，回执却没回来：既不重复提交，也不漏签</text>
-
-<rect x="24" y="62" width="220" height="60" rx="8" class="box white"/>
-<text x="38" y="86" class="b">点了「提交签到」</text>
-<text x="38" y="108" class="s">或「提交答案」</text>
-<path d="M244,92 L280,92" class="ar"/>
-<rect x="280" y="62" width="206" height="60" rx="8" class="box white"/>
-<text x="294" y="86" class="b">等站点回执，最多 45 秒</text>
-<text x="294" y="108" class="s">盯着浏览器网络请求看</text>
-<path d="M486,92 L546,92" class="ar"/>
-<text x="494" y="84" class="s">没等到</text>
-<rect x="546" y="62" width="390" height="60" rx="8" class="box red"/>
-<text x="560" y="86" class="b">记为 submission_unconfirmed</text>
-<text x="560" y="108" class="s">这次运行结束为 failed，但不知道站点到底收没收到</text>
-
-<path d="M741,122 L741,150 L480,150 L480,166" class="ar"/>
-<rect x="24" y="166" width="912" height="44" rx="8" class="box gray"/>
-<text x="480" y="194" class="b" text-anchor="middle">下一次运行（10 分钟后）：先看站点怎么说，再决定要不要再提交</text>
-
-<path d="M169,210 L169,240" class="ar"/><path d="M480,210 L480,240" class="ar"/><path d="M791,210 L791,240" class="ar"/>
-
-<rect x="24" y="240" width="290" height="130" rx="10" class="box green"/>
-<text x="38" y="266" class="b">站点说已完成，或已到账</text>
-<text x="38" y="292" class="t">上次其实成功了，只是回执丢了</text>
-<text x="38" y="318" class="s">→ 不再提交，只补核对，</text>
-<text x="38" y="338" class="s">　标为 reward_verified</text>
-
-<rect x="335" y="240" width="290" height="130" rx="10" class="box blue"/>
-<text x="349" y="266" class="b">站点说没完成，且从没回应过</text>
-<text x="349" y="292" class="t">请求大概率丢在半路，站点没收到</text>
-<text x="349" y="318" class="s">→ 再提交一次；同一动作一天</text>
-<text x="349" y="338" class="s">　最多补交 3 次，之后只查不交</text>
-
-<rect x="646" y="240" width="290" height="130" rx="10" class="box orange"/>
-<text x="660" y="266" class="b">站点说没完成，但曾回应过一次</text>
-<text x="660" y="292" class="t">站点处理过了，只是结果不如预期</text>
-<text x="660" y="318" class="s">→ 绝不重交，只查回执；</text>
-<text x="660" y="338" class="s">　仍没到账就 needs_attention 等人看</text>
-
-<rect x="24" y="392" width="912" height="62" rx="8" fill="#f6f8fa"/>
-<text x="40" y="416" class="s">为什么这么设计：重复提交可能被站点当成异常操作；不提交又会断签。所以规则是</text>
-<text x="40" y="438" class="s">「有过回应就不重交；没回应最多补 3 次，每次都先查再交」。有回应还是没回应，都记在本机历史里。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="410" class="bg"/>
+<rect x="24.0" y="24.0" width="292.0" height="84.0" rx="12" class="c-gray"/>
+<g transform="translate(274.0,42.0) scale(1.000)" class="ic ic-blue"><path d="M14.5 9.5 21 3"/><path d="M21 3 14 21a.5.5 0 0 1-.9 0l-2.6-6.5L4 11.9a.5.5 0 0 1 0-.9Z"/></g>
+<text x="40" y="55" class="h">点了「提交」</text>
+<text x="40" y="79" class="s">签到或答题</text>
+<path d="M318.0,66.0 L332.0,66.0" class="ar"/>
+<rect x="334.0" y="24.0" width="292.0" height="84.0" rx="12" class="c-gray"/>
+<g transform="translate(584.0,42.0) scale(1.000)" class="ic ic-blue"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.2a2 2 0 0 0-.6-1.4L12 12l-4.4 4.4A2 2 0 0 0 7 17.8V22"/><path d="M7 2v4.2a2 2 0 0 0 .6 1.4L12 12l4.4-4.4A2 2 0 0 0 17 6.2V2"/></g>
+<text x="350" y="55" class="h">等网站回执</text>
+<text x="350" y="79" class="s">最多 45 秒</text>
+<path d="M628.0,66.0 L642.0,66.0" class="ar"/>
+<rect x="644.0" y="24.0" width="292.0" height="84.0" rx="12" class="c-amber"/>
+<g transform="translate(894.0,42.0) scale(1.000)" class="ic ic-amber"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></g>
+<text x="660" y="55" class="h">没等到</text>
+<text x="660" y="79" class="s">记为「回执没回来」，这次先算失败</text>
+<path d="M790.0,110.0 L790.0,136.0" class="ar"/>
+<rect x="24.0" y="138.0" width="912.0" height="34.0" rx="17" class="c-blue"/>
+<text x="480" y="160" class="xs t-blue" text-anchor="middle">下一次运行（10 分钟后）：先看网站怎么说，再决定要不要再提交</text>
+<path d="M170.0,174.0 L170.0,194.0" class="ar"/>
+<rect x="24.0" y="196.0" width="292.0" height="116.0" rx="12" class="c-green"/>
+<g transform="translate(40.0,210.0) scale(0.917)" class="ic ic-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
+<text x="72" y="226" class="h">网站说已完成或已到账</text>
+<text x="72" y="248" class="s">上次其实成功了 → 不再提交，只补核</text>
+<text x="72" y="267" class="s">对</text>
+<path d="M480.0,174.0 L480.0,194.0" class="ar"/>
+<rect x="334.0" y="196.0" width="292.0" height="116.0" rx="12" class="c-blue"/>
+<g transform="translate(350.0,210.0) scale(0.917)" class="ic ic-blue"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></g>
+<text x="382" y="226" class="h">网站说没完成，且从没回应过</text>
+<text x="382" y="248" class="s">大概率没送到 → 再提交一次，一天最</text>
+<text x="382" y="267" class="s">多 3 次</text>
+<path d="M790.0,174.0 L790.0,194.0" class="ar"/>
+<rect x="644.0" y="196.0" width="292.0" height="116.0" rx="12" class="c-red"/>
+<g transform="translate(660.0,210.0) scale(0.917)" class="ic ic-red"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></g>
+<text x="692" y="226" class="h">网站说没完成，但回应过一次</text>
+<text x="692" y="248" class="s">网站处理过了 → 绝不重交，只查回执，</text>
+<text x="692" y="267" class="s">等人看</text>
+<rect x="24.0" y="334.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,342.5) scale(0.833)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></g>
+<text x="68" y="358" class="s">重复提交可能被网站当成异常操作，不提交又会断签。所以规则是：有过回应就不重交；没回应最多补 3 次，每次都先查再交。</text>
 </svg>

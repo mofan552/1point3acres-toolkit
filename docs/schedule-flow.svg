@@ -1,44 +1,214 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="410" viewBox="0 0 960 410" role="img" aria-label="调度：一天的时间线，什么时候跑，为什么重复触发是安全的">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-label="调度：一天的时间线">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}.tick{font-size:12px;fill:#57606a}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<rect x="0.5" y="0.5" width="959" height="409" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">调度：一天的时间线（默认计划时间 16:10，Asia/Shanghai）</text>
-
-<rect x="60" y="120" width="566" height="40" fill="#f6f8fa"/>
-<rect x="626" y="120" width="274" height="40" fill="#dafbe1"/>
-<line x1="60" y1="160" x2="900" y2="160" stroke="#1f2328" stroke-width="2"/>
-<g stroke="#1f2328" stroke-width="1.5">
-  <line x1="60" y1="154" x2="60" y2="166"/><line x1="200" y1="154" x2="200" y2="166"/><line x1="340" y1="154" x2="340" y2="166"/>
-  <line x1="480" y1="154" x2="480" y2="166"/><line x1="620" y1="154" x2="620" y2="166"/><line x1="760" y1="154" x2="760" y2="166"/><line x1="900" y1="154" x2="900" y2="166"/>
-</g>
-<text x="60" y="184" class="tick" text-anchor="middle">00:00</text><text x="200" y="184" class="tick" text-anchor="middle">04:00</text><text x="340" y="184" class="tick" text-anchor="middle">08:00</text>
-<text x="480" y="184" class="tick" text-anchor="middle">12:00</text><text x="620" y="184" class="tick" text-anchor="middle">16:00</text><text x="760" y="184" class="tick" text-anchor="middle">20:00</text><text x="900" y="184" class="tick" text-anchor="middle">24:00</text>
-
-<g stroke="#8b949e" stroke-width="1">
-  <line x1="66" y1="160" x2="66" y2="150"/><line x1="72" y1="160" x2="72" y2="150"/><line x1="78" y1="160" x2="78" y2="150"/><line x1="84" y1="160" x2="84" y2="150"/>
-  <line x1="90" y1="160" x2="90" y2="150"/><line x1="96" y1="160" x2="96" y2="150"/><line x1="102" y1="160" x2="102" y2="150"/><line x1="108" y1="160" x2="108" y2="150"/>
-</g>
-<text x="60" y="108" class="s">↓ 小刻度 = 每 10 分钟触发一次 daily --resume（全天都是这样，绝大多数时候什么都不做就退出）</text>
-
-<line x1="626" y1="88" x2="626" y2="200" stroke="#bc4c00" stroke-width="2.5"/>
-<text x="632" y="102" class="b" fill="#bc4c00">计划时间 16:10</text>
-<text x="632" y="118" class="s">account.json 里可改时间和时区</text>
-
-<text x="343" y="140" class="s" text-anchor="middle">没到点：daily --resume 直接退出（not_due），不开浏览器</text>
-<text x="763" y="140" class="s" text-anchor="middle">到点后执行；完成后 already_complete</text>
-
-<g fill="#8250df">
-  <polygon points="66,208 72,216 66,224 60,216"/><polygon points="206,208 212,216 206,224 200,216"/><polygon points="346,208 352,216 346,224 340,216"/>
-  <polygon points="486,208 492,216 486,224 480,216"/><polygon points="626,208 632,216 626,224 620,216"/><polygon points="766,208 772,216 766,224 760,216"/>
-</g>
-<text x="60" y="246" class="s">◆ 恢复时点 00:10 / 04:10 / 08:10 / 12:10 / 16:10 / 20:10：给「按固定时间点触发」的调度器用的 rrule，每 4 小时一个。</text>
-<text x="60" y="264" class="s">   检查.sh --sync 会把本地时区和 UTC 两套时刻都打印出来，照着填就行。</text>
-
-<rect x="24" y="280" width="912" height="108" rx="8" fill="#f6f8fa"/>
-<text x="40" y="306" class="t">· 站点的「一天」按洛杉矶时间（America/Los_Angeles）计算。工具用它判断今天签没签，不用电脑本地日期，跨时区也不会错。</text>
-<text x="40" y="332" class="t">· 电脑睡着错过的触发，醒来后下一次检查会补上；只补「今天」，不补过去几天的签到。</text>
-<text x="40" y="358" class="t">· 每次触发都会在本机记一次心跳（即使什么都没做），健康观察者靠它判断调度器有没有死。</text>
-<text x="40" y="382" class="t">· 不要给同一个账号配两个调度器。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="300" class="bg"/>
+<text x="24" y="40" class="h">一天的时间线（默认计划时间 16:10，按北京时间；时间和时区都可以改）</text>
+<path d="M64,124 L896,124" class="line"/>
+<path d="M64.0,118 L64.0,130" class="line"/>
+<text x="64" y="150" class="xs" text-anchor="middle">00:00</text>
+<path d="M202.7,118 L202.7,130" class="line"/>
+<text x="203" y="150" class="xs" text-anchor="middle">04:00</text>
+<path d="M341.3,118 L341.3,130" class="line"/>
+<text x="341" y="150" class="xs" text-anchor="middle">08:00</text>
+<path d="M480.0,118 L480.0,130" class="line"/>
+<text x="480" y="150" class="xs" text-anchor="middle">12:00</text>
+<path d="M618.7,118 L618.7,130" class="line"/>
+<text x="619" y="150" class="xs" text-anchor="middle">16:00</text>
+<path d="M757.3,118 L757.3,130" class="line"/>
+<text x="757" y="150" class="xs" text-anchor="middle">20:00</text>
+<path d="M896.0,118 L896.0,130" class="line"/>
+<text x="896" y="150" class="xs" text-anchor="middle">24:00</text>
+<path d="M69.8,124 L69.8,127" class="line soft"/>
+<path d="M75.6,124 L75.6,127" class="line soft"/>
+<path d="M81.3,124 L81.3,127" class="line soft"/>
+<path d="M87.1,124 L87.1,127" class="line soft"/>
+<path d="M92.9,124 L92.9,127" class="line soft"/>
+<path d="M98.7,124 L98.7,127" class="line soft"/>
+<path d="M104.4,124 L104.4,127" class="line soft"/>
+<path d="M110.2,124 L110.2,127" class="line soft"/>
+<path d="M116.0,124 L116.0,127" class="line soft"/>
+<path d="M121.8,124 L121.8,127" class="line soft"/>
+<path d="M127.6,124 L127.6,127" class="line soft"/>
+<path d="M133.3,124 L133.3,127" class="line soft"/>
+<path d="M139.1,124 L139.1,127" class="line soft"/>
+<path d="M144.9,124 L144.9,127" class="line soft"/>
+<path d="M150.7,124 L150.7,127" class="line soft"/>
+<path d="M156.4,124 L156.4,127" class="line soft"/>
+<path d="M162.2,124 L162.2,127" class="line soft"/>
+<path d="M168.0,124 L168.0,127" class="line soft"/>
+<path d="M173.8,124 L173.8,127" class="line soft"/>
+<path d="M179.6,124 L179.6,127" class="line soft"/>
+<path d="M185.3,124 L185.3,127" class="line soft"/>
+<path d="M191.1,124 L191.1,127" class="line soft"/>
+<path d="M196.9,124 L196.9,127" class="line soft"/>
+<path d="M202.7,124 L202.7,127" class="line soft"/>
+<path d="M208.4,124 L208.4,127" class="line soft"/>
+<path d="M214.2,124 L214.2,127" class="line soft"/>
+<path d="M220.0,124 L220.0,127" class="line soft"/>
+<path d="M225.8,124 L225.8,127" class="line soft"/>
+<path d="M231.6,124 L231.6,127" class="line soft"/>
+<path d="M237.3,124 L237.3,127" class="line soft"/>
+<path d="M243.1,124 L243.1,127" class="line soft"/>
+<path d="M248.9,124 L248.9,127" class="line soft"/>
+<path d="M254.7,124 L254.7,127" class="line soft"/>
+<path d="M260.4,124 L260.4,127" class="line soft"/>
+<path d="M266.2,124 L266.2,127" class="line soft"/>
+<path d="M272.0,124 L272.0,127" class="line soft"/>
+<path d="M277.8,124 L277.8,127" class="line soft"/>
+<path d="M283.6,124 L283.6,127" class="line soft"/>
+<path d="M289.3,124 L289.3,127" class="line soft"/>
+<path d="M295.1,124 L295.1,127" class="line soft"/>
+<path d="M300.9,124 L300.9,127" class="line soft"/>
+<path d="M306.7,124 L306.7,127" class="line soft"/>
+<path d="M312.4,124 L312.4,127" class="line soft"/>
+<path d="M318.2,124 L318.2,127" class="line soft"/>
+<path d="M324.0,124 L324.0,127" class="line soft"/>
+<path d="M329.8,124 L329.8,127" class="line soft"/>
+<path d="M335.6,124 L335.6,127" class="line soft"/>
+<path d="M341.3,124 L341.3,127" class="line soft"/>
+<path d="M347.1,124 L347.1,127" class="line soft"/>
+<path d="M352.9,124 L352.9,127" class="line soft"/>
+<path d="M358.7,124 L358.7,127" class="line soft"/>
+<path d="M364.4,124 L364.4,127" class="line soft"/>
+<path d="M370.2,124 L370.2,127" class="line soft"/>
+<path d="M376.0,124 L376.0,127" class="line soft"/>
+<path d="M381.8,124 L381.8,127" class="line soft"/>
+<path d="M387.6,124 L387.6,127" class="line soft"/>
+<path d="M393.3,124 L393.3,127" class="line soft"/>
+<path d="M399.1,124 L399.1,127" class="line soft"/>
+<path d="M404.9,124 L404.9,127" class="line soft"/>
+<path d="M410.7,124 L410.7,127" class="line soft"/>
+<path d="M416.4,124 L416.4,127" class="line soft"/>
+<path d="M422.2,124 L422.2,127" class="line soft"/>
+<path d="M428.0,124 L428.0,127" class="line soft"/>
+<path d="M433.8,124 L433.8,127" class="line soft"/>
+<path d="M439.6,124 L439.6,127" class="line soft"/>
+<path d="M445.3,124 L445.3,127" class="line soft"/>
+<path d="M451.1,124 L451.1,127" class="line soft"/>
+<path d="M456.9,124 L456.9,127" class="line soft"/>
+<path d="M462.7,124 L462.7,127" class="line soft"/>
+<path d="M468.4,124 L468.4,127" class="line soft"/>
+<path d="M474.2,124 L474.2,127" class="line soft"/>
+<path d="M480.0,124 L480.0,127" class="line soft"/>
+<path d="M485.8,124 L485.8,127" class="line soft"/>
+<path d="M491.6,124 L491.6,127" class="line soft"/>
+<path d="M497.3,124 L497.3,127" class="line soft"/>
+<path d="M503.1,124 L503.1,127" class="line soft"/>
+<path d="M508.9,124 L508.9,127" class="line soft"/>
+<path d="M514.7,124 L514.7,127" class="line soft"/>
+<path d="M520.4,124 L520.4,127" class="line soft"/>
+<path d="M526.2,124 L526.2,127" class="line soft"/>
+<path d="M532.0,124 L532.0,127" class="line soft"/>
+<path d="M537.8,124 L537.8,127" class="line soft"/>
+<path d="M543.6,124 L543.6,127" class="line soft"/>
+<path d="M549.3,124 L549.3,127" class="line soft"/>
+<path d="M555.1,124 L555.1,127" class="line soft"/>
+<path d="M560.9,124 L560.9,127" class="line soft"/>
+<path d="M566.7,124 L566.7,127" class="line soft"/>
+<path d="M572.4,124 L572.4,127" class="line soft"/>
+<path d="M578.2,124 L578.2,127" class="line soft"/>
+<path d="M584.0,124 L584.0,127" class="line soft"/>
+<path d="M589.8,124 L589.8,127" class="line soft"/>
+<path d="M595.6,124 L595.6,127" class="line soft"/>
+<path d="M601.3,124 L601.3,127" class="line soft"/>
+<path d="M607.1,124 L607.1,127" class="line soft"/>
+<path d="M612.9,124 L612.9,127" class="line soft"/>
+<path d="M618.7,124 L618.7,127" class="line soft"/>
+<path d="M624.4,124 L624.4,127" class="line soft"/>
+<path d="M630.2,124 L630.2,127" class="line soft"/>
+<path d="M636.0,124 L636.0,127" class="line soft"/>
+<path d="M641.8,124 L641.8,127" class="line soft"/>
+<path d="M647.6,124 L647.6,127" class="line soft"/>
+<path d="M653.3,124 L653.3,127" class="line soft"/>
+<path d="M659.1,124 L659.1,127" class="line soft"/>
+<path d="M664.9,124 L664.9,127" class="line soft"/>
+<path d="M670.7,124 L670.7,127" class="line soft"/>
+<path d="M676.4,124 L676.4,127" class="line soft"/>
+<path d="M682.2,124 L682.2,127" class="line soft"/>
+<path d="M688.0,124 L688.0,127" class="line soft"/>
+<path d="M693.8,124 L693.8,127" class="line soft"/>
+<path d="M699.6,124 L699.6,127" class="line soft"/>
+<path d="M705.3,124 L705.3,127" class="line soft"/>
+<path d="M711.1,124 L711.1,127" class="line soft"/>
+<path d="M716.9,124 L716.9,127" class="line soft"/>
+<path d="M722.7,124 L722.7,127" class="line soft"/>
+<path d="M728.4,124 L728.4,127" class="line soft"/>
+<path d="M734.2,124 L734.2,127" class="line soft"/>
+<path d="M740.0,124 L740.0,127" class="line soft"/>
+<path d="M745.8,124 L745.8,127" class="line soft"/>
+<path d="M751.6,124 L751.6,127" class="line soft"/>
+<path d="M757.3,124 L757.3,127" class="line soft"/>
+<path d="M763.1,124 L763.1,127" class="line soft"/>
+<path d="M768.9,124 L768.9,127" class="line soft"/>
+<path d="M774.7,124 L774.7,127" class="line soft"/>
+<path d="M780.4,124 L780.4,127" class="line soft"/>
+<path d="M786.2,124 L786.2,127" class="line soft"/>
+<path d="M792.0,124 L792.0,127" class="line soft"/>
+<path d="M797.8,124 L797.8,127" class="line soft"/>
+<path d="M803.6,124 L803.6,127" class="line soft"/>
+<path d="M809.3,124 L809.3,127" class="line soft"/>
+<path d="M815.1,124 L815.1,127" class="line soft"/>
+<path d="M820.9,124 L820.9,127" class="line soft"/>
+<path d="M826.7,124 L826.7,127" class="line soft"/>
+<path d="M832.4,124 L832.4,127" class="line soft"/>
+<path d="M838.2,124 L838.2,127" class="line soft"/>
+<path d="M844.0,124 L844.0,127" class="line soft"/>
+<path d="M849.8,124 L849.8,127" class="line soft"/>
+<path d="M855.6,124 L855.6,127" class="line soft"/>
+<path d="M861.3,124 L861.3,127" class="line soft"/>
+<path d="M867.1,124 L867.1,127" class="line soft"/>
+<path d="M872.9,124 L872.9,127" class="line soft"/>
+<path d="M878.7,124 L878.7,127" class="line soft"/>
+<path d="M884.4,124 L884.4,127" class="line soft"/>
+<path d="M890.2,124 L890.2,127" class="line soft"/>
+<path d="M69.8,117 L75.8,124 L69.8,131 L63.8,124 Z" class="f-amber"/>
+<path d="M208.4,117 L214.4,124 L208.4,131 L202.4,124 Z" class="f-amber"/>
+<path d="M347.1,117 L353.1,124 L347.1,131 L341.1,124 Z" class="f-amber"/>
+<path d="M485.8,117 L491.8,124 L485.8,131 L479.8,124 Z" class="f-amber"/>
+<path d="M624.4,117 L630.4,124 L624.4,131 L618.4,124 Z" class="f-amber"/>
+<path d="M763.1,117 L769.1,124 L763.1,131 L757.1,124 Z" class="f-amber"/>
+<path d="M624.4,80 L624.4,132" class="ar blue"/>
+<text x="624" y="72" class="h t-blue" text-anchor="middle">计划时间 16:10</text>
+<text x="344" y="178" class="xs" text-anchor="middle">没到点：直接退出，不开浏览器</text>
+<text x="760" y="178" class="xs" text-anchor="middle">到点后执行；做完就是「今天已完成」</text>
+<rect x="24.0" y="200.0" width="187.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="118" y="216" class="xs t-gray" text-anchor="middle" style="font-size:12px">小刻度 = 每 10 分钟醒来看一眼</text>
+<rect x="221.6" y="200.0" width="350.2" height="24.0" rx="12.0" class="c-amber"/>
+<text x="397" y="216" class="xs t-amber" text-anchor="middle" style="font-size:12px">◆ 恢复时点：每 4 小时一个，给按固定时间触发的定时任务用</text>
+<rect x="24.0" y="238.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,246.5) scale(0.833)" class="ic ic-blue"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></g>
+<text x="68" y="262" class="s">电脑睡着错过的，醒来后下一次补上，只补今天不补过去。每次醒来都记一次心跳。不要给同一个账号配两个定时任务。</text>
 </svg>

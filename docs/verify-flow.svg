@@ -1,45 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="486" viewBox="0 0 960 486" role="img" aria-label="怎么判断真的成功：四个条件和三种整体状态">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="340" viewBox="0 0 960 340" role="img" aria-label="怎么判断真的成功：四个条件和三种整体结论">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}
-.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}.ok{font-size:13.5px;fill:#1a7f37;font-weight:600}
-.pill{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;font-weight:600}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<rect x="0.5" y="0.5" width="959" height="485" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">怎么判断「真的成功了」：不看按钮，看到账</text>
-
-<rect x="24" y="60" width="466" height="304" rx="10" fill="#fff" stroke="#d0d7de"/>
-<text x="40" y="88" class="b">积分流水里的一条记录（credit.getCreditLogs 接口返回）</text>
-<rect x="40" y="104" width="434" height="126" rx="6" fill="#f6f8fa"/>
-<text x="52" y="128" class="m">uid:            123456</text>
-<text x="262" y="128" class="ok">✓ 必须是你自己的 uid</text>
-<text x="52" y="156" class="m">extcredits1:    1</text>
-<text x="262" y="156" class="ok">✓ 大米变动必须 &gt; 0</text>
-<text x="52" y="184" class="m">details.title:  "签到奖励"</text>
-<text x="262" y="184" class="ok">✓ 或者是 "每日答题"</text>
-<text x="52" y="212" class="m">dateline:       1758585600</text>
-<text x="262" y="212" class="ok">✓ 折成洛杉矶日期 = 今天</text>
-<rect x="40" y="248" width="434" height="52" rx="6" fill="#dafbe1" stroke="#4ac26b"/>
-<text x="52" y="270" class="b">四条都满足 → 这一项 reward_verified</text>
-<text x="52" y="290" class="s">缺任何一条 → reward_unconfirmed，不算成功</text>
-<text x="40" y="332" class="s">工具不把「点到了按钮」或「命令退出码 0」当成功。</text>
-<text x="40" y="350" class="s">网站改版、网络或人机验证出问题时，如实报失败。</text>
-
-<rect x="512" y="60" width="424" height="304" rx="10" fill="#fff" stroke="#d0d7de"/>
-<text x="528" y="88" class="b">整天的结论：status</text>
-<rect x="528" y="104" width="392" height="70" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
-<text x="542" y="128" class="pill">complete</text>
-<text x="542" y="150" class="t">两项都显示已完成，且两项奖励都查到到账</text>
-<rect x="528" y="184" width="392" height="82" rx="8" fill="#fff1e5" stroke="#fb8f44"/>
-<text x="542" y="208" class="pill">needs_attention</text>
-<text x="542" y="230" class="t">有一项没确认：题库没这道题、点了但没到账、</text>
-<text x="542" y="250" class="t">本机历史和站点状态对不上……需要人看一眼</text>
-<rect x="528" y="276" width="392" height="70" rx="8" fill="#ffebe9" stroke="#ff8182"/>
-<text x="542" y="300" class="pill">failed</text>
-<text x="542" y="322" class="t">中途出错：网络、验证、浏览器断开、提交没回执……</text>
-
-<rect x="24" y="384" width="912" height="84" rx="8" fill="#f6f8fa"/>
-<text x="40" y="406" class="s">每一项（签到 / 答题）的状态也会单独给出：</text>
-<text x="40" y="426" class="s">already_done（早就完成）· reward_verified（已到账）· reward_unconfirmed（完成了但没查到奖励）</text>
-<text x="40" y="446" class="s">· submission_unconfirmed（提交了但没收到回执）· answer_needed（题库没题）· not_done（只读模式 status 下还没做）</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="340" class="bg"/>
+<rect x="24.0" y="24.0" width="440.0" height="236.0" rx="12" class="c-gray"/>
+<g transform="translate(40.0,40.0) scale(0.917)" class="ic ic-blue"><path d="M11 6h10"/><path d="M11 12h10"/><path d="M11 18h10"/><path d="m3 6 1.5 1.5L7 5"/><path d="m3 12 1.5 1.5L7 11"/><path d="m3 18 1.5 1.5L7 17"/></g>
+<text x="72" y="57" class="h">积分页上的一条记录，要过四关</text>
+<g transform="translate(40.0,84.0) scale(0.833)" class="ic ic-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
+<text x="70" y="99" class="s">是你自己的账号</text>
+<g transform="translate(40.0,114.0) scale(0.833)" class="ic ic-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
+<text x="70" y="129" class="s">大米确实 +1</text>
+<g transform="translate(40.0,144.0) scale(0.833)" class="ic ic-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
+<text x="70" y="159" class="s">标题是「签到奖励」或「每日答题」</text>
+<g transform="translate(40.0,174.0) scale(0.833)" class="ic ic-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
+<text x="70" y="189" class="s">日期是网站的「今天」（按洛杉矶时间）</text>
+<rect x="40.0" y="212.0" width="201.9" height="26.0" rx="13.0" class="f-green"/>
+<g transform="translate(50.0,217.0) scale(0.667)" class="ic ic-white"><path d="M20 6 9 17l-5-5"/></g>
+<text x="150" y="230" class="w" text-anchor="middle" style="font-size:13px">四关都过 → 这一项才算成功</text>
+<text x="496" y="44" class="h">整天的结论</text>
+<rect x="496.0" y="58.0" width="440.0" height="60.0" rx="12" class="c-green"/>
+<g transform="translate(512.0,72.0) scale(0.917)" class="ic ic-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
+<text x="544" y="88" class="h">圆满完成</text>
+<text x="544" y="110" class="s">两项都做了，两条奖励都到账</text>
+<text x="920" y="87" class="mono" text-anchor="end">complete</text>
+<rect x="496.0" y="126.0" width="440.0" height="60.0" rx="12" class="c-amber"/>
+<g transform="translate(512.0,140.0) scale(0.917)" class="ic ic-amber"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></g>
+<text x="544" y="156" class="h">需要看一眼</text>
+<text x="544" y="178" class="s">有一项没确认：题库没题、点了但没到账……</text>
+<text x="920" y="155" class="mono" text-anchor="end">needs_attention</text>
+<rect x="496.0" y="194.0" width="440.0" height="60.0" rx="12" class="c-red"/>
+<g transform="translate(512.0,208.0) scale(0.917)" class="ic ic-red"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></g>
+<text x="544" y="224" class="h">失败</text>
+<text x="544" y="246" class="s">中途出错：网络、验证、浏览器断开……</text>
+<text x="920" y="223" class="mono" text-anchor="end">failed</text>
+<rect x="24.0" y="284.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,292.5) scale(0.833)" class="ic ic-blue"><path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/></g>
+<text x="68" y="308" class="s">工具不把「点到了按钮」当成功。网站改版、网络或人机验证出问题时，如实报失败。</text>
 </svg>

@@ -1,52 +1,75 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="350" viewBox="0 0 960 350" role="img" aria-label="CI 流水线：静态检查、单元测试、集成测试、汇总">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="270" viewBox="0 0 960 270" role="img" aria-label="CI 流水线">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13px}.s{font-size:12px;fill:#57606a}
-.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
-.box{stroke-width:1.3}.blue{fill:#ddf4ff;stroke:#54aeff}.green{fill:#dafbe1;stroke:#4ac26b}.purple{fill:#fbefff;stroke:#c297ff}.gray{fill:#f6f8fa;stroke:#d0d7de}
-.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
-<rect x="0.5" y="0.5" width="959" height="349" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">GitHub Actions：四个阶段，全部跑的是同一个 check.py</text>
-
-<rect x="24" y="66" width="200" height="150" rx="10" class="box blue"/>
-<text x="38" y="92" class="b">① static</text>
-<text x="38" y="112" class="s">ubuntu-24.04</text>
-<text x="38" y="138" class="t">源码依赖白名单</text>
-<text x="38" y="158" class="t">文档链接、文件清单</text>
-<text x="38" y="178" class="t">密钥特征、可执行位</text>
-<text x="38" y="204" class="m">--stage static</text>
-<path d="M224,141 L262,141" class="ar"/>
-
-<rect x="264" y="66" width="220" height="150" rx="10" class="box green"/>
-<text x="278" y="92" class="b">② unit</text>
-<text x="278" y="112" class="s">Windows 2022 / 2025 · macOS 15</text>
-<text x="278" y="138" class="t">32 个单元测试文件</text>
-<text x="278" y="158" class="t">含真实钥匙串往返用例</text>
-<text x="278" y="178" class="t">依赖版本必须与清单一致</text>
-<text x="278" y="204" class="m">--stage unit</text>
-<path d="M484,141 L522,141" class="ar"/>
-
-<rect x="524" y="66" width="220" height="150" rx="10" class="box purple"/>
-<text x="538" y="92" class="b">③ integration</text>
-<text x="538" y="112" class="s">windows-2025 · macos-15</text>
-<text x="538" y="138" class="t">真实 stdio 起 MCP 服务</text>
-<text x="538" y="158" class="t">真实 Chrome 打开离线阅读器</text>
-<text x="538" y="178" class="t">不登录、不签到、不联网站点</text>
-<text x="538" y="204" class="m">--stage integration</text>
-<path d="M744,141 L782,141" class="ar"/>
-
-<rect x="784" y="66" width="152" height="150" rx="10" class="box gray"/>
-<text x="798" y="92" class="b">④ result</text>
-<text x="798" y="112" class="s">ubuntu-24.04</text>
-<text x="798" y="138" class="t">三个阶段全绿</text>
-<text x="798" y="158" class="t">才算通过</text>
-<text x="798" y="204" class="m">--stage aggregate</text>
-
-<rect x="24" y="236" width="912" height="96" rx="8" fill="#f6f8fa"/>
-<text x="40" y="260" class="t">每个阶段都先 --sync 重建派生文件，再 git diff --exit-code：生成物和源码不一致就失败。</text>
-<text x="40" y="282" class="t">Action 一律按 commit 哈希锁定，不用 secrets，不用 self-hosted runner。</text>
-<text x="40" y="304" class="t">本地跑 检查.sh（全部阶段）或 检查.sh --sync --stage static / unit / integration，结果和 CI 完全一样，都是 JSON。</text>
-<text x="40" y="324" class="s">测试框架：Python 标准库 unittest，35 个测试文件、419 个用例；跳过（skip）也算失败。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="270" class="bg"/>
+<rect x="24.0" y="24.0" width="214.5" height="158.0" rx="12" class="c-gray"/>
+<circle cx="53.0" cy="53.0" r="13" class="f-blue"/>
+<text x="53" y="58" class="w" text-anchor="middle" style="font-size:13px">1</text>
+<g transform="translate(196.5,42.0) scale(1.000)" class="ic ic-blue"><path d="M11 6h10"/><path d="M11 12h10"/><path d="M11 18h10"/><path d="m3 6 1.5 1.5L7 5"/><path d="m3 12 1.5 1.5L7 11"/><path d="m3 18 1.5 1.5L7 17"/></g>
+<text x="40" y="94" class="h">静态检查</text>
+<text x="40" y="118" class="s">Ubuntu，几秒钟</text>
+<text x="40" y="137" class="s">依赖白名单、文件清单、文档</text>
+<text x="40" y="156" class="s">链接、密钥扫描</text>
+<path d="M240.5,103.0 L254.5,103.0" class="ar"/>
+<rect x="256.5" y="24.0" width="214.5" height="158.0" rx="12" class="c-gray"/>
+<circle cx="285.5" cy="53.0" r="13" class="f-blue"/>
+<text x="286" y="58" class="w" text-anchor="middle" style="font-size:13px">2</text>
+<g transform="translate(429.0,42.0) scale(1.000)" class="ic ic-blue"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></g>
+<text x="272" y="94" class="h">单元测试</text>
+<text x="272" y="118" class="s">Windows 2022 / 2025、</text>
+<text x="272" y="137" class="s">macOS 15</text>
+<text x="272" y="156" class="s">419 个用例，含真实钥匙串往</text>
+<text x="272" y="175" class="s">返</text>
+<path d="M473.0,103.0 L487.0,103.0" class="ar"/>
+<rect x="489.0" y="24.0" width="214.5" height="158.0" rx="12" class="c-gray"/>
+<circle cx="518.0" cy="53.0" r="13" class="f-blue"/>
+<text x="518" y="58" class="w" text-anchor="middle" style="font-size:13px">3</text>
+<g transform="translate(661.5,42.0) scale(1.000)" class="ic ic-blue"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></g>
+<text x="505" y="94" class="h">集成测试</text>
+<text x="505" y="118" class="s">Windows 2025、macOS 15</text>
+<text x="505" y="137" class="s">真实起 MCP 服务、真实开</text>
+<text x="505" y="156" class="s">Chrome；不登录不签到</text>
+<path d="M705.5,103.0 L719.5,103.0" class="ar"/>
+<rect x="721.5" y="24.0" width="214.5" height="158.0" rx="12" class="c-gray"/>
+<circle cx="750.5" cy="53.0" r="13" class="f-blue"/>
+<text x="750" y="58" class="w" text-anchor="middle" style="font-size:13px">4</text>
+<g transform="translate(894.0,42.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
+<text x="738" y="94" class="h">汇总</text>
+<text x="738" y="118" class="s">三个阶段全绿才算通过</text>
+<rect x="24.0" y="204.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,212.5) scale(0.833)" class="ic ic-blue"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></g>
+<text x="68" y="228" class="s">本地跑检查命令，和 CI 跑的是同一个程序、同样的输出。每个阶段都先重建生成文件再比对，不一致也算失败。</text>
 </svg>

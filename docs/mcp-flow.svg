@@ -1,36 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="340" viewBox="0 0 960 340" role="img" aria-label="接给 AI 助手：MCP 是怎么接的">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="250" viewBox="0 0 960 250" role="img" aria-label="接给 AI 助手：MCP 是怎么接的">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13px}.s{font-size:12.5px;fill:#57606a}
-.box{stroke-width:1.3}.white{fill:#fff;stroke:#d0d7de}.blue{fill:#ddf4ff;stroke:#54aeff}.green{fill:#dafbe1;stroke:#4ac26b}.gray{fill:#f6f8fa;stroke:#d0d7de}
-.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar);marker-start:url(#ar)}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
-<rect x="0.5" y="0.5" width="959" height="339" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">接给 AI 助手：MCP 是怎么接的</text>
-
-<rect x="24" y="66" width="250" height="90" rx="10" class="box white"/>
-<text x="38" y="92" class="b">Claude Code / Codex</text>
-<text x="38" y="114" class="s">或任何支持本地 stdio 的</text>
-<text x="38" y="132" class="s">MCP 客户端</text>
-<path d="M280,111 L354,111" class="ar"/>
-<text x="317" y="100" class="s" text-anchor="middle">stdio</text>
-<text x="317" y="132" class="s" text-anchor="middle">进程间管道</text>
-<rect x="360" y="66" width="250" height="90" rx="10" class="box blue"/>
-<text x="374" y="92" class="b">mcp_server.py</text>
-<text x="374" y="114" class="s">32 个工具，每个都有只读 /</text>
-<text x="374" y="132" class="s">可写的标注，参数强类型</text>
-<path d="M616,111 L690,111" class="ar"/>
-<text x="653" y="100" class="s" text-anchor="middle">直接调用</text>
-<rect x="696" y="66" width="240" height="90" rx="10" class="box green"/>
-<text x="710" y="92" class="b">和命令行相同的函数</text>
-<text x="710" y="114" class="s">同一份账号会话、同一个数据库、</text>
-<text x="710" y="132" class="s">同样的安全边界</text>
-
-<rect x="24" y="180" width="912" height="140" rx="10" class="box gray"/>
-<text x="40" y="206" class="t">· 本地进程间通信，不开任何网络端口、不需要公网地址；客户端启动它、用完关掉。</text>
-<text x="40" y="232" class="t">· 检查.sh --sync 会生成 mcp.config.json（含本机路径，不含密码，不入库），把里面那一项合并进客户端配置即可。</text>
-<text x="40" y="258" class="t">· 多传的参数直接拒绝，不会被悄悄忽略；每个工具的说明里写清了会不会碰站点。</text>
-<text x="40" y="284" class="t">· daily_run、stripe_collect 这类会真的操作站点，让助手确认要做了再调；interviews_search 之类纯离线，可以随便试。</text>
-<text x="40" y="308" class="s">可用工具名以 architecture.json 里的 public_tools 为准，检查.sh 会核对代码和清单一致。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="250" class="bg"/>
+<rect x="24.0" y="24.0" width="260.0" height="120.0" rx="12" class="c-gray"/>
+<g transform="translate(40.0,38.0) scale(0.917)" class="ic ic-blue"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></g>
+<text x="72" y="54" class="h">AI 助手</text>
+<text x="72" y="76" class="s">Claude Code、Codex，或任何支</text>
+<text x="72" y="95" class="s">持本地 MCP 的客户端</text>
+<rect x="350.0" y="24.0" width="260.0" height="120.0" rx="12" class="c-blue"/>
+<g transform="translate(366.0,38.0) scale(0.917)" class="ic ic-blue"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a6 6 0 0 1-12 0V8Z"/></g>
+<text x="398" y="54" class="h">工具的 MCP 服务</text>
+<text x="398" y="76" class="s">32 个工具，每个都标明只读还是</text>
+<text x="398" y="95" class="s">可写；多传的参数直接拒绝</text>
+<rect x="676.0" y="24.0" width="260.0" height="120.0" rx="12" class="c-gray"/>
+<g transform="translate(692.0,38.0) scale(0.917)" class="ic ic-blue"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></g>
+<text x="724" y="54" class="h">同一套函数</text>
+<text x="724" y="76" class="s">和命令行完全相同：同一份登录、</text>
+<text x="724" y="95" class="s">同一个数据库、同样的安全边界</text>
+<path d="M286.0,84.0 L346.0,84.0" class="ar"/>
+<text x="316" y="72" class="xs" text-anchor="middle">本机管道</text>
+<path d="M612.0,84.0 L672.0,84.0" class="ar"/>
+<text x="642" y="72" class="xs" text-anchor="middle">直接调用</text>
+<rect x="24.0" y="166.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,174.5) scale(0.833)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></g>
+<text x="68" y="190" class="s">全程在本机进程之间通信，不开任何网络端口。会真的操作网站的工具（比如跑每日任务），让助手先确认再调；纯离线的可以随便试。</text>
 </svg>

@@ -1,62 +1,102 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" role="img" aria-label="总览：一次自动运行经过的九步">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-label="总览：一次自动运行经过的八步">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:14px}.s{font-size:12.5px;fill:#57606a}
-.box{stroke-width:1.3}.white{fill:#fff;stroke:#d0d7de}.blue{fill:#ddf4ff;stroke:#54aeff}.green{fill:#dafbe1;stroke:#4ac26b}.orange{fill:#fff1e5;stroke:#fb8f44}.purple{fill:#fbefff;stroke:#c297ff}.gray{fill:#f6f8fa;stroke:#d0d7de}
-.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
-<rect x="0.5" y="0.5" width="959" height="599" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">总览：一次自动运行经过的九步</text>
-
-<rect x="24" y="62" width="270" height="66" rx="8" class="box gray"/>
-<text x="38" y="88" class="b">① 系统计划每 10 分钟触发</text>
-<text x="38" y="110" class="s">macOS launchd · Windows 任务计划程序</text>
-<path d="M294,95 L330,95" class="ar"/>
-<rect x="330" y="62" width="250" height="66" rx="8" class="box white"/>
-<text x="344" y="88" class="b">② 运行.sh daily --resume</text>
-<text x="344" y="110" class="s">本质是一条 Python 命令（cli.py）</text>
-<path d="M580,95 L616,95" class="ar"/>
-<rect x="616" y="62" width="320" height="66" rx="8" class="box white"/>
-<text x="630" y="88" class="b">③ 先离线判断，不开浏览器</text>
-<text x="630" y="110" class="s">到点了吗？今天是不是已经完成了？</text>
-
-<path d="M800,128 L800,170" class="ar"/>
-<text x="808" y="154" class="s">否</text>
-<rect x="660" y="170" width="276" height="58" rx="8" class="box gray"/>
-<text x="674" y="194" class="b">否：安静退出，什么都不做</text>
-<text x="674" y="214" class="s">not_due / already_complete，10 分钟后再看</text>
-
-<path d="M630,128 L630,236 L169,236 L169,262" class="ar"/>
-<text x="638" y="160" class="s">是</text>
-
-<rect x="24" y="262" width="290" height="66" rx="8" class="box blue"/>
-<text x="38" y="288" class="b">④ 启动一个专用 Chrome</text>
-<text x="38" y="310" class="s">用你自己的登录会话；窗口最小化 / 隐藏</text>
-<path d="M314,295 L350,295" class="ar"/>
-<rect x="350" y="262" width="270" height="66" rx="8" class="box green"/>
-<text x="364" y="288" class="b">⑤ 自动签到</text>
-<text x="364" y="310" class="s">点「没心情」→ 点「提交签到」</text>
-<path d="M620,295 L656,295" class="ar"/>
-<rect x="656" y="262" width="280" height="66" rx="8" class="box green"/>
-<text x="670" y="288" class="b">⑥ 自动答题</text>
-<text x="670" y="310" class="s">题库匹配 → 点选项 → 点「提交答案」</text>
-
-<path d="M796,328 L796,372 L189,372 L189,398" class="ar"/>
-
-<rect x="24" y="398" width="330" height="66" rx="8" class="box orange"/>
-<text x="38" y="424" class="b">⑦ 核对大米真的到账</text>
-<text x="38" y="446" class="s">读积分流水：当天「签到奖励 +1」「每日答题 +1」</text>
-<path d="M354,431 L390,431" class="ar"/>
-<rect x="390" y="398" width="270" height="66" rx="8" class="box purple"/>
-<text x="404" y="424" class="b">⑧ 记录在本机</text>
-<text x="404" y="446" class="s">SQLite 历史 + latest-daily.json</text>
-<path d="M660,431 L696,431" class="ar"/>
-<rect x="696" y="398" width="240" height="66" rx="8" class="box gray"/>
-<text x="710" y="424" class="b">⑨ 报告结果</text>
-<text x="710" y="446" class="s">complete / needs_attention / failed</text>
-
-<rect x="24" y="500" width="912" height="72" rx="8" fill="#f6f8fa"/>
-<text x="40" y="526" class="t">出错了怎么办？同一次运行里，网络 / 验证 / 浏览器断开这类错误会换一个新 Chrome 再跑 1 次；</text>
-<text x="40" y="550" class="t">之后每 10 分钟的计划还会再来，直到当天两项都确认到账。已经确认的动作不会重复提交。详见「失败重试」。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="480" class="bg"/>
+<rect x="24.0" y="24.0" width="213.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="53.0" cy="53.0" r="13" class="f-blue"/>
+<text x="53" y="58" class="w" text-anchor="middle" style="font-size:13px">1</text>
+<g transform="translate(195.0,42.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></g>
+<text x="40" y="94" class="h">到点了，系统叫醒它</text>
+<text x="40" y="118" class="s">电脑自带的定时任务，每 10</text>
+<text x="40" y="137" class="s">分钟一次</text>
+<path d="M239.0,94.0 L253.0,94.0" class="ar"/>
+<rect x="255.0" y="24.0" width="213.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="284.0" cy="53.0" r="13" class="f-blue"/>
+<text x="284" y="58" class="w" text-anchor="middle" style="font-size:13px">2</text>
+<g transform="translate(426.0,42.0) scale(1.000)" class="ic ic-blue"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></g>
+<text x="271" y="94" class="h">先看看今天做过没</text>
+<text x="271" y="118" class="s">只查本机记录，不开浏览器</text>
+<path d="M470.0,94.0 L484.0,94.0" class="ar"/>
+<rect x="486.0" y="24.0" width="213.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="515.0" cy="53.0" r="13" class="f-blue"/>
+<text x="515" y="58" class="w" text-anchor="middle" style="font-size:13px">3</text>
+<g transform="translate(657.0,42.0) scale(1.000)" class="ic ic-blue"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></g>
+<text x="502" y="94" class="h">打开专用 Chrome</text>
+<text x="502" y="118" class="s">和你平时用的浏览器互不干扰</text>
+<path d="M701.0,94.0 L715.0,94.0" class="ar"/>
+<rect x="717.0" y="24.0" width="213.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="746.0" cy="53.0" r="13" class="f-blue"/>
+<text x="746" y="58" class="w" text-anchor="middle" style="font-size:13px">4</text>
+<g transform="translate(888.0,42.0) scale(1.000)" class="ic ic-blue"><path d="M20 6 9 17l-5-5"/></g>
+<text x="733" y="94" class="h">自动签到</text>
+<text x="733" y="118" class="s">点「没心情」，点「提交签到」</text>
+<path d="M361.5,166.0 L361.5,184.0" class="ar amber dash"/>
+<rect x="243.5" y="186.0" width="236.0" height="30.0" rx="15" class="c-amber"/>
+<text x="362" y="205" class="xs t-amber" text-anchor="middle">做过了或还没到点 → 安静退出</text>
+<path d="M823.5,166.0 L823.5,228.0 L130.5,228.0 L130.5,244.0" class="ar"/>
+<rect x="24.0" y="246.0" width="213.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="53.0" cy="275.0" r="13" class="f-blue"/>
+<text x="53" y="280" class="w" text-anchor="middle" style="font-size:13px">5</text>
+<g transform="translate(195.0,264.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></g>
+<text x="40" y="316" class="h">自动答题</text>
+<text x="40" y="340" class="s">查题库，点对应选项，点「提</text>
+<text x="40" y="359" class="s">交答案」</text>
+<path d="M239.0,316.0 L253.0,316.0" class="ar"/>
+<rect x="255.0" y="246.0" width="213.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="284.0" cy="275.0" r="13" class="f-blue"/>
+<text x="284" y="280" class="w" text-anchor="middle" style="font-size:13px">6</text>
+<g transform="translate(426.0,264.0) scale(1.000)" class="ic ic-blue"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></g>
+<text x="271" y="316" class="h">确认大米真的到账</text>
+<text x="271" y="340" class="s">打开积分页，看到两条「+1」</text>
+<path d="M470.0,316.0 L484.0,316.0" class="ar"/>
+<rect x="486.0" y="246.0" width="213.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="515.0" cy="275.0" r="13" class="f-blue"/>
+<text x="515" y="280" class="w" text-anchor="middle" style="font-size:13px">7</text>
+<g transform="translate(657.0,264.0) scale(1.000)" class="ic ic-blue"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></g>
+<text x="502" y="316" class="h">记在本机</text>
+<text x="502" y="340" class="s">这次做了什么、结果如何</text>
+<path d="M701.0,316.0 L715.0,316.0" class="ar"/>
+<rect x="717.0" y="246.0" width="213.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="746.0" cy="275.0" r="13" class="f-blue"/>
+<text x="746" y="280" class="w" text-anchor="middle" style="font-size:13px">8</text>
+<g transform="translate(888.0,264.0) scale(1.000)" class="ic ic-blue"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></g>
+<text x="733" y="316" class="h">报告结果</text>
+<text x="733" y="340" class="s">圆满完成、需要看一眼、或失</text>
+<text x="733" y="359" class="s">败</text>
+<rect x="24.0" y="408.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,416.5) scale(0.833)" class="ic ic-blue"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></g>
+<text x="68" y="432" class="s">出错了会换一个新的 Chrome 再试一次；之后每 10 分钟还会再来，直到当天两项都确认到账。已经确认到账的，不会重复做。</text>
 </svg>

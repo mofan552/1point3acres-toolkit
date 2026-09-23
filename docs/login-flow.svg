@@ -1,52 +1,85 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-label="登录是怎么自动恢复的">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="390" viewBox="0 0 960 390" role="img" aria-label="登录是怎么自动恢复的">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}.ok{font-size:13px;fill:#1a7f37;font-weight:600}.bad{font-size:13px;fill:#cf222e;font-weight:600}
-.box{stroke-width:1.3}.white{fill:#fff;stroke:#d0d7de}.green{fill:#dafbe1;stroke:#4ac26b}.gray{fill:#f6f8fa;stroke:#d0d7de}
-.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
-<rect x="0.5" y="0.5" width="959" height="479" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">登录是怎么自动恢复的（每次运行开头都走一遍）</text>
-
-<rect x="24" y="62" width="250" height="60" rx="8" class="box white"/>
-<text x="38" y="86" class="b">① 调身份接口 user.me</text>
-<text x="38" y="108" class="s">先问一句：还登录着吗？</text>
-<path d="M274,92 L310,92" class="ar"/>
-<rect x="310" y="62" width="180" height="60" rx="8" class="box gray"/>
-<text x="400" y="98" class="b" text-anchor="middle">还登录着？</text>
-<path d="M490,92 L526,92" class="ar"/>
-<text x="498" y="84" class="s">是</text>
-<rect x="526" y="62" width="410" height="60" rx="8" class="box green"/>
-<text x="540" y="86" class="b">② 核对身份</text>
-<text x="540" y="108" class="s">站点返回的用户名和 uid 必须等于 account.json 里写的</text>
-<text x="526" y="146" class="ok">一致 → 继续签到答题</text>
-<text x="526" y="168" class="bad">不一致 → unexpected_account，立刻停止，绝不用别人的账号操作</text>
-
-<path d="M400,122 L400,180 L169,180 L169,200" class="ar"/>
-<text x="408" y="150" class="s">否</text>
-
-<rect x="24" y="200" width="290" height="60" rx="8" class="box white"/>
-<text x="38" y="224" class="b">③ 打开登录页</text>
-<text x="38" y="246" class="s">站点自己的登录页 auth.1point3acres.com</text>
-<path d="M314,230 L350,230" class="ar"/>
-<rect x="350" y="200" width="290" height="60" rx="8" class="box white"/>
-<text x="364" y="224" class="b">④ 填用户名和密码</text>
-<text x="364" y="246" class="s">从钥匙串 / DPAPI 取出，只在内存里停几秒</text>
-<path d="M640,230 L676,230" class="ar"/>
-<rect x="676" y="200" width="260" height="60" rx="8" class="box white"/>
-<text x="690" y="224" class="b">⑤ 等人机验证通过</text>
-<text x="690" y="246" class="s">Cloudflare Turnstile，最多 40 秒</text>
-
-<path d="M806,260 L806,282 L169,282 L169,300" class="ar"/>
-<rect x="24" y="300" width="290" height="60" rx="8" class="box white"/>
-<text x="38" y="324" class="b">⑥ 点登录，等页面跳回论坛</text>
-<text x="38" y="346" class="s">最多 30 秒</text>
-<path d="M314,330 L350,330" class="ar"/>
-<text x="356" y="335" class="t">→ 回到 ①：再问一次 user.me，并做 ② 的身份核对</text>
-
-<rect x="24" y="382" width="912" height="84" rx="8" fill="#f6f8fa"/>
-<text x="40" y="406" class="s">会遇到的失败：密码不对 → login_rejected · 钥匙串里没密码 → login_required_credentials_not_configured</text>
-<text x="40" y="426" class="s">· 验证没过 → login_challenge_not_resolved · 页面没跳回 → login_submission_unconfirmed</text>
-<text x="40" y="452" class="s">微信扫码是另一条路：窗口会调到屏幕上显示站点官方二维码，适合首次登录或应急；日常自动恢复只用密码。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="390" class="bg"/>
+<rect x="24.0" y="28.0" width="230.0" height="96.0" rx="12" class="c-gray"/>
+<g transform="translate(40.0,42.0) scale(0.917)" class="ic ic-blue"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+<text x="72" y="58" class="h">还登录着吗？</text>
+<text x="72" y="80" class="s">每次运行开头都先问网站一</text>
+<text x="72" y="99" class="s">句</text>
+<path d="M256.0,76.0 L318.0,76.0" class="ar green"/>
+<text x="287" y="68" class="xs t-green" text-anchor="middle">还登录着</text>
+<rect x="320.0" y="28.0" width="250.0" height="96.0" rx="12" class="c-green"/>
+<g transform="translate(336.0,42.0) scale(0.917)" class="ic ic-green"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></g>
+<text x="368" y="58" class="h">核对是不是你的账号</text>
+<text x="368" y="80" class="s">网站返回的账号必须和你配置的</text>
+<text x="368" y="99" class="s">一致</text>
+<path d="M572.0,60.0 L610.0,60.0" class="ar green"/>
+<rect x="614.0" y="46.0" width="175.9" height="26.0" rx="13.0" class="f-green"/>
+<g transform="translate(624.0,51.0) scale(0.667)" class="ic ic-white"><path d="M20 6 9 17l-5-5"/></g>
+<text x="711" y="64" class="w" text-anchor="middle" style="font-size:13px">是你的 → 继续签到答题</text>
+<path d="M572.0,100.0 L610.0,100.0" class="ar red"/>
+<rect x="614.0" y="86.0" width="136.9" height="26.0" rx="13.0" class="f-red"/>
+<g transform="translate(624.0,91.0) scale(0.667)" class="ic ic-white"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></g>
+<text x="691" y="104" class="w" text-anchor="middle" style="font-size:13px">不是 → 立刻停下</text>
+<text x="616" y="132" class="xs">绝不用别人的账号操作</text>
+<path d="M139.0,126.0 L139.0,188.0" class="ar amber"/>
+<text x="147" y="161" class="xs t-amber">过期了</text>
+<rect x="24.0" y="190.0" width="214.5" height="100.0" rx="12" class="c-gray"/>
+<g transform="translate(196.5,208.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></g>
+<text x="40" y="221" class="h">打开网站登录页</text>
+<text x="40" y="245" class="s">就是网站自己的登录页面</text>
+<path d="M240.5,240.0 L254.5,240.0" class="ar"/>
+<rect x="256.5" y="190.0" width="214.5" height="100.0" rx="12" class="c-gray"/>
+<g transform="translate(429.0,208.0) scale(1.000)" class="ic ic-blue"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></g>
+<text x="272" y="221" class="h">填用户名和密码</text>
+<text x="272" y="245" class="s">从系统保管处取出，用完即丢</text>
+<path d="M473.0,240.0 L487.0,240.0" class="ar"/>
+<rect x="489.0" y="190.0" width="214.5" height="100.0" rx="12" class="c-gray"/>
+<g transform="translate(661.5,208.0) scale(1.000)" class="ic ic-blue"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></g>
+<text x="505" y="221" class="h">过网站的人机验证</text>
+<text x="505" y="245" class="s">自动等它通过，最多 40 秒</text>
+<path d="M705.5,240.0 L719.5,240.0" class="ar"/>
+<rect x="721.5" y="190.0" width="214.5" height="100.0" rx="12" class="c-gray"/>
+<g transform="translate(894.0,208.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
+<text x="738" y="221" class="h">登录成功</text>
+<text x="738" y="245" class="s">回到开头，再问一次「还登录</text>
+<text x="738" y="264" class="s">着吗」</text>
+<path d="M936.0,240.0 L948.0,240.0 L948.0,12.0 L139.0,12.0 L139.0,26.0" class="ar blue dash"/>
+<rect x="24.0" y="316.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,324.5) scale(0.833)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></g>
+<text x="68" y="340" class="s">登录成功后同样要核对账号。微信扫码是另一条路，适合第一次登录或应急；日常自动恢复只用密码。</text>
 </svg>

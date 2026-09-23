@@ -1,40 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="380" viewBox="0 0 960 380" role="img" aria-label="站点的一天按洛杉矶时间算">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="342" viewBox="0 0 960 342" role="img" aria-label="网站的一天按洛杉矶时间算">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}.tick{font-size:12px;fill:#57606a}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<rect x="0.5" y="0.5" width="959" height="379" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">站点的「一天」按洛杉矶时间算，工具也按它判断今天签了没</text>
-
-<text x="60" y="78" class="b">北京时间（你电脑的时钟，假设在国内）</text>
-<line x1="60" y1="110" x2="900" y2="110" stroke="#1f2328" stroke-width="2"/>
-<g stroke="#1f2328" stroke-width="1.5">
-  <line x1="60" y1="104" x2="60" y2="116"/><line x1="200" y1="104" x2="200" y2="116"/><line x1="340" y1="104" x2="340" y2="116"/><line x1="480" y1="104" x2="480" y2="116"/>
-  <line x1="620" y1="104" x2="620" y2="116"/><line x1="760" y1="104" x2="760" y2="116"/><line x1="900" y1="104" x2="900" y2="116"/>
-</g>
-<text x="60" y="98" class="tick" text-anchor="middle">00:00</text><text x="200" y="98" class="tick" text-anchor="middle">04:00</text><text x="340" y="98" class="tick" text-anchor="middle">08:00</text>
-<text x="480" y="98" class="tick" text-anchor="middle">12:00</text><text x="620" y="98" class="tick" text-anchor="middle">16:00</text><text x="760" y="98" class="tick" text-anchor="middle">20:00</text><text x="900" y="98" class="tick" text-anchor="middle">24:00</text>
-
-<rect x="60" y="150" width="525" height="34" fill="#f6f8fa"/>
-<rect x="585" y="150" width="315" height="34" fill="#dafbe1"/>
-<text x="322" y="172" class="s" text-anchor="middle">站点日：昨天</text>
-<text x="742" y="172" class="s" text-anchor="middle">站点日：今天</text>
-<line x1="60" y1="184" x2="900" y2="184" stroke="#1f2328" stroke-width="2"/>
-<text x="60" y="206" class="tick" text-anchor="middle">09:00</text><text x="200" y="206" class="tick" text-anchor="middle">13:00</text><text x="340" y="206" class="tick" text-anchor="middle">17:00</text>
-<text x="480" y="206" class="tick" text-anchor="middle">21:00</text><text x="620" y="206" class="tick" text-anchor="middle">01:00</text><text x="760" y="206" class="tick" text-anchor="middle">05:00</text><text x="900" y="206" class="tick" text-anchor="middle">09:00</text>
-<text x="60" y="226" class="b">洛杉矶时间（站点日的依据）</text>
-
-<line x1="585" y1="130" x2="585" y2="240" stroke="#bc4c00" stroke-width="2.5" stroke-dasharray="6,4"/>
-<text x="577" y="140" class="s" fill="#bc4c00" text-anchor="end">洛杉矶 00:00 = 北京 15:00（夏令时）/ 16:00（冬令时）</text>
-<text x="593" y="140" class="s" fill="#bc4c00">站点的新一天从这里开始</text>
-
-<line x1="626" y1="110" x2="626" y2="128" stroke="#8250df" stroke-width="2.5"/>
-<polygon points="626,128 620,120 632,120" fill="#8250df"/>
-<text x="632" y="236" class="s" fill="#8250df">默认计划 16:10，在新的一天开始后 1 小时 10 分：</text>
-<text x="632" y="254" class="s" fill="#8250df">站点日刚翻到「今天」就签，留足一整天补救</text>
-
-<rect x="24" y="266" width="912" height="96" rx="8" fill="#f6f8fa"/>
-<text x="40" y="292" class="t">· 每条奖励记录都带时间戳，工具把它折算成洛杉矶日期，等于「今天」才算今天的奖励；昨天的记录绝不会被当成今天的。</text>
-<text x="40" y="318" class="t">· 你在美国、在国内、出差、夏令时切换，判断都一致，因为从不看电脑本地日期。</text>
-<text x="40" y="344" class="t">· 你可以把计划时间改到任何时刻；「到点」也是按站点日对应的那一刻算的。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="342" class="bg"/>
+<text x="24" y="40" class="h">北京时间（你电脑的时钟，假设在国内）</text>
+<path d="M64,96 L896,96" class="line"/>
+<path d="M64.0,90 L64.0,102" class="line"/>
+<text x="64" y="82" class="xs" text-anchor="middle">00:00</text>
+<path d="M202.7,90 L202.7,102" class="line"/>
+<text x="203" y="82" class="xs" text-anchor="middle">04:00</text>
+<path d="M341.3,90 L341.3,102" class="line"/>
+<text x="341" y="82" class="xs" text-anchor="middle">08:00</text>
+<path d="M480.0,90 L480.0,102" class="line"/>
+<text x="480" y="82" class="xs" text-anchor="middle">12:00</text>
+<path d="M618.7,90 L618.7,102" class="line"/>
+<text x="619" y="82" class="xs" text-anchor="middle">16:00</text>
+<path d="M757.3,90 L757.3,102" class="line"/>
+<text x="757" y="82" class="xs" text-anchor="middle">20:00</text>
+<path d="M896.0,90 L896.0,102" class="line"/>
+<text x="896" y="82" class="xs" text-anchor="middle">24:00</text>
+<rect x="64.0" y="108.0" width="520.0" height="30.0" rx="8" class="c-gray"/>
+<text x="324" y="127" class="xs" text-anchor="middle">网站日：昨天</text>
+<rect x="584.0" y="108.0" width="312.0" height="30.0" rx="8" class="c-blue"/>
+<text x="740" y="127" class="xs t-blue" text-anchor="middle">网站日：今天</text>
+<path d="M584.0,60 L584.0,215" class="ar amber dash"/>
+<text x="576" y="60" class="xs t-amber" text-anchor="end">网站的新一天从这里开始</text>
+<text x="24" y="252" class="h">洛杉矶时间（网站算「一天」的依据）</text>
+<path d="M64,206 L896,206" class="line"/>
+<path d="M64.0,200 L64.0,212" class="line"/>
+<text x="64" y="226" class="xs" text-anchor="middle">09:00</text>
+<path d="M202.7,200 L202.7,212" class="line"/>
+<text x="203" y="226" class="xs" text-anchor="middle">13:00</text>
+<path d="M341.3,200 L341.3,212" class="line"/>
+<text x="341" y="226" class="xs" text-anchor="middle">17:00</text>
+<path d="M480.0,200 L480.0,212" class="line"/>
+<text x="480" y="226" class="xs" text-anchor="middle">21:00</text>
+<path d="M618.7,200 L618.7,212" class="line"/>
+<text x="619" y="226" class="xs" text-anchor="middle">01:00</text>
+<path d="M757.3,200 L757.3,212" class="line"/>
+<text x="757" y="226" class="xs" text-anchor="middle">05:00</text>
+<path d="M896.0,200 L896.0,212" class="line"/>
+<text x="896" y="226" class="xs" text-anchor="middle">09:00</text>
+<path d="M624.4,160 L624.4,138" class="ar blue"/>
+<text x="632" y="172" class="xs t-blue">计划 16:10：刚翻到「今天」就签，留足一整天补救</text>
+<text x="24" y="274" class="xs">洛杉矶 00:00 = 北京 15:00（夏令时）或 16:00（冬令时）</text>
+<rect x="24.0" y="290.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,298.5) scale(0.833)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></g>
+<text x="68" y="314" class="s">奖励记录的时间也折算成洛杉矶日期再比较。你在美国、在国内、出差、夏令时切换，判断都一致，因为从不看电脑的本地日期。</text>
 </svg>
