@@ -436,7 +436,7 @@ def overview(c: Canvas):
         {'title': '到点了，系统叫醒它', 'icon': 'alarm', 'body': ['电脑自带的定时任务，每 10 分钟一次']},
         {'title': '先看看今天做过没', 'icon': 'search', 'body': ['只查本机记录，不开浏览器']},
         {'title': '打开专用 Chrome', 'icon': 'monitor', 'body': ['和你平时用的浏览器互不干扰']},
-        {'title': '自动签到', 'icon': 'check', 'body': ['点「没心情」，点「提交签到」']},
+        {'title': '自动签到', 'icon': 'check', 'body': ['选一个心情，点「提交签到」']},
     ]
     row2 = [
         {'title': '自动答题', 'icon': 'help', 'body': ['查题库，点对应选项，点「提交答案」']},
@@ -478,14 +478,14 @@ def browser_isolation(c: Canvas):
 def checkin_flow(c: Canvas):
     steps = [
         {'title': '打开签到页', 'icon': 'globe', 'body': ['没登录的话，先自动登录']},
-        {'title': '选「没心情」', 'icon': 'meh', 'body': ['不写说说，主页不会多出任何内容']},
+        {'title': '选一个心情', 'icon': 'smile', 'body': ['默认随机抽一个，配一句说说']},
         {'title': '点「提交签到」', 'icon': 'pointer', 'body': ['只点一次，按钮没就绪就等下一轮']},
         {'title': '等网站回应', 'icon': 'hourglass', 'body': ['最多等 45 秒，等到真实回应才算']},
         {'title': '确认大米到账', 'icon': 'coins', 'body': ['积分页里有「签到奖励 +1」才算成功']},
     ]
     step_row(c, 24, steps, h=140)
-    c.note(24, 186, 912, '可选：随机心情（默认关闭）。打开后，工具每天会以你的名义在主页发一句话。这是你的选择，工具不替你决定。',
-           'amber', 'smile')
+    c.note(24, 186, 912, '随机心情默认开启：每天会以你的名义在主页发一句话。不想要，在账号配置里关掉，之后固定选「没心情」、什么都不写。',
+           'amber', 'meh')
 
 
 @diagram('login-flow', 960, 390, '登录是怎么自动恢复的')

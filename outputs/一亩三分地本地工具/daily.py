@@ -160,8 +160,8 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
                 browser.goto(SITE + '/next/' + route)
                 entry = {'action': action, 'status': ActionStatus.SUBMISSION_UNCONFIRMED}
                 if action == 'checkin':
-                    # Off by default: the default mood publishes nothing. Opted in, the mood and a line
-                    # from the shipped pool are chosen like a member would and recorded with the run.
+                    # On by default (issue #15): the mood and a line from the shipped pool are chosen like
+                    # a member would and recorded with the run. Switched off, the default mood publishes nothing.
                     mood, phrase = CHECKIN_MOOD_DEFAULT, None
                     if CHECKIN_MOOD_RANDOM:
                         recent = _recent_checkins()
