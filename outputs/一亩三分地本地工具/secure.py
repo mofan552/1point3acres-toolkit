@@ -39,8 +39,8 @@ def storage_backend():
     raise RuntimeError('unsupported_credential_platform')
 
 
-def _security(*arguments):
-    result = subprocess.run([SECURITY, *arguments], capture_output=True, text=True)
+def _security(*arguments, stdin=None):
+    result = subprocess.run([SECURITY, *arguments], capture_output=True, text=True, input=stdin)
     return result.returncode, result.stdout
 
 
@@ -53,8 +53,13 @@ def save_credentials(username, password):
         encrypted = transform(json.dumps({'username': username, 'password': password}).encode('utf-8'), True)
         (STATE / 'credentials.dpapi').write_bytes(encrypted)
         return backend
+    # /usr/bin/security prints anything but printable ASCII back as hex, which a later read could not tell apart.
+    if not password.isascii() or not password.isprintable():
+        raise ValueError('unsupported_password_characters')
+    # A bare -w makes security read the password (twice) from stdin, so it never appears in the process list.
     # The item is created by /usr/bin/security itself, so later reads by the same tool need no keychain prompt.
-    code, _ = _security('add-generic-password', '-U', '-a', username, '-s', CREDENTIAL_SERVICE, '-w', password)
+    code, _ = _security('add-generic-password', '-U', '-a', username, '-s', CREDENTIAL_SERVICE, '-w',
+                        stdin=password + '\n' + password + '\n')
     if code:
         raise RuntimeError('keychain_credential_save_failed')
     return backend

@@ -82,7 +82,7 @@ work\cf-probe-venv\Scripts\python.exe -m pip install -r outputs\一亩三分地�
 
 值不合法会直接报 `invalid_local_schedule_config`，不会悄悄退回默认。改完跑一次 `检查.cmd --sync`（macOS 用 `./检查.sh --sync`），输出里的 `schedule` 段给出本地和 UTC 两套触发时刻以及 rrule，按你自己的调度器（launchd / 任务计划程序 / 其他）填。`rrule_clock_is_ambiguous` 为 true 表示这份 rrule 在本地时和 UTC 两种解释下不等价（时区偏移不是恢复间隔的整数倍时就会这样，带夏令时的时区还会随季节翻转）。**影响有限，不会漏签**：触发时刻是间隔 4 小时、铺满 24 小时的等差数列，任何常数平移后仍然如此，所以无论调度器按哪个时钟读，到点后至多一个恢复间隔内必有一次触发，而「到点到站点日翻页」有约 23 小时。差别只是签到可能比你设定的时刻晚几小时。
 
-**密码**：交互输入一次，存进钥匙串 / DPAPI。下面这行用 Python 的隐藏输入读取密码、按 `account.json` 的用户名封装后交给 `save-credentials`，密码不进 shell 历史。在仓库根目录执行。
+**密码**：交互输入一次，存进钥匙串 / DPAPI。下面这行用 Python 的隐藏输入读取密码、按 `account.json` 的用户名封装后交给 `save-credentials`，密码不进 shell 历史，macOS 上也不进 `security` 的命令行参数（钥匙串只接受可打印 ASCII 口令，其他字符会报 `unsupported_password_characters`）。在仓库根目录执行。
 
 macOS / Linux：
 

@@ -33,8 +33,8 @@ class SecureTests(unittest.TestCase):
     def test_macos_backend_uses_login_keychain_without_files(self):
         calls = []
 
-        def fake_run(command, **_):
-            calls.append(command)
+        def fake_run(command, **options):
+            calls.append((command, options.get('input')))
             return SimpleNamespace(returncode=0, stdout='synthetic-only\n' if 'find-generic-password' in command else '')
 
         with tempfile.TemporaryDirectory() as directory, \
@@ -43,11 +43,22 @@ class SecureTests(unittest.TestCase):
             self.assertEqual(secure.save_credentials('test_member', 'synthetic-only'), 'macos_keychain')
             self.assertEqual(secure.load_credentials(), {'username': 'test_member', 'password': 'synthetic-only'})
             self.assertEqual(list(Path(directory).iterdir()), [])
-        self.assertEqual(calls[0][:2], [secure.SECURITY, 'add-generic-password'])
-        self.assertIn('-U', calls[0])
-        self.assertEqual(calls[0][-2:], ['-w', 'synthetic-only'])
-        self.assertEqual(calls[1][:2], [secure.SECURITY, 'find-generic-password'])
-        self.assertEqual(calls[1][-1], '-w')
+        (save, typed), (load, _) = calls
+        self.assertEqual(save[:2], [secure.SECURITY, 'add-generic-password'])
+        self.assertIn('-U', save)
+        self.assertEqual(save[-1], '-w')
+        self.assertNotIn('synthetic-only', save)  # The password reaches security on stdin, never the process list.
+        self.assertEqual(typed, 'synthetic-only\nsynthetic-only\n')
+        self.assertEqual(load[:2], [secure.SECURITY, 'find-generic-password'])
+        self.assertEqual(load[-1], '-w')
+
+    def test_macos_rejects_passwords_security_would_hand_back_as_hex(self):
+        with patch.object(secure, 'PLATFORM', 'darwin'), patch.object(secure, 'USERNAME', 'test_member'), \
+                patch.object(secure.subprocess, 'run') as run:
+            for password in ['密码', 'line\nbreak', 'tab\there']:
+                with self.subTest(password=password), self.assertRaisesRegex(ValueError, '^unsupported_password_characters$'):
+                    secure.save_credentials('test_member', password)
+            run.assert_not_called()
 
     def test_macos_missing_or_rejected_item_fails_closed(self):
         with tempfile.TemporaryDirectory() as directory, \
