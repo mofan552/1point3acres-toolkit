@@ -260,6 +260,7 @@
       "docs/commands-map.svg",
       "docs/credit-log.svg",
       "docs/data-files.svg",
+      "docs/diagrams.py",
       "docs/health-watch.svg",
       "docs/install-flow.svg",
       "docs/login-flow.svg",

@@ -1,66 +1,129 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-label="命令一览：按用途分组">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="450" viewBox="0 0 960 450" role="img" aria-label="命令一览：按用途分组">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.s{font-size:12px;fill:#57606a}
-.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<rect x="0.5" y="0.5" width="959" height="479" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">命令一览：按用途分组（都在工具目录里跑，输出都是 JSON）</text>
-
-<rect x="24" y="60" width="290" height="176" rx="10" fill="#dafbe1" stroke="#4ac26b"/>
-<text x="38" y="86" class="b">每日任务</text>
-<text x="38" y="110" class="m">daily　　　　　　跑今天的签到答题</text>
-<text x="38" y="132" class="m">daily --resume　给计划用，自己判断</text>
-<text x="38" y="154" class="m">status　　　　　 只查状态，不签到</text>
-<text x="38" y="176" class="m">daily-history　 离线看历史和健康</text>
-<text x="38" y="198" class="m">save-credentials 存一次密码</text>
-<text x="38" y="224" class="s">签到答题之外不碰站点上的任何东西</text>
-
-<rect x="335" y="60" width="290" height="176" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
-<text x="349" y="86" class="b">会话</text>
-<text x="349" y="110" class="m">session-status　只诊断，不登录</text>
-<text x="349" y="132" class="m">session-login　 用密码恢复登录</text>
-<text x="349" y="154" class="m">　--method wechat 改为微信扫码</text>
-<text x="349" y="176" class="m">session-logout　只删本站 Cookie</text>
-<text x="349" y="224" class="s">都只影响工具自己的专用 Chrome</text>
-
-<rect x="646" y="60" width="290" height="176" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
-<text x="660" y="86" class="b">只读浏览（不入库）</text>
-<text x="660" y="110" class="m">site-search　站内搜索</text>
-<text x="660" y="132" class="m">thread-detail　读一个帖子</text>
-<text x="660" y="154" class="m">browse-board　翻一个版面</text>
-<text x="660" y="176" class="m">user-profile / my-profile</text>
-<text x="660" y="198" class="m">unread / notifications</text>
-<text x="660" y="224" class="s">读通知不会标记已读</text>
-
-<rect x="24" y="252" width="290" height="176" rx="10" fill="#fbefff" stroke="#c297ff"/>
-<text x="38" y="278" class="b">面经资料（存进本机数据库）</text>
-<text x="38" y="302" class="m">collect-stripe / collect 公司</text>
-<text x="38" y="324" class="m">search　离线搜索　export 导出</text>
-<text x="38" y="346" class="m">save-thread　organize</text>
-<text x="38" y="368" class="m">archive-media　recognize-media</text>
-<text x="38" y="390" class="m">task-create/run/status/pause/resume</text>
-<text x="38" y="416" class="s">导出带离线阅读器，断网也能搜</text>
-
-<rect x="335" y="252" width="290" height="176" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
-<text x="349" y="278" class="b">互动（默认只预览）</text>
-<text x="349" y="302" class="m">post　reply</text>
-<text x="349" y="324" class="m">favorite / unfavorite</text>
-<text x="349" y="346" class="m">like / unlike</text>
-<text x="349" y="368" class="m">reply-notification</text>
-<text x="349" y="390" class="m">like-notification / unlike-…</text>
-<text x="349" y="416" class="s">加 --submit 才真写站点，写完读回核对</text>
-
-<rect x="646" y="252" width="290" height="176" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
-<text x="660" y="278" class="b">检查（不碰账号）</text>
-<text x="660" y="302" class="m">检查.sh / 检查.cmd</text>
-<text x="660" y="324" class="m">　--sync　重建生成文件</text>
-<text x="660" y="346" class="m">　--stage static|unit|integration</text>
-<text x="660" y="390" class="s">和 CI 跑的是同一个 check.py，</text>
-<text x="660" y="408" class="s">status=complete 才算通过</text>
-
-<rect x="24" y="444" width="14" height="14" rx="3" fill="#dafbe1" stroke="#4ac26b"/><text x="44" y="456" class="s">只动自己账号的每日任务</text>
-<rect x="220" y="444" width="14" height="14" rx="3" fill="#ddf4ff" stroke="#54aeff"/><text x="240" y="456" class="s">只读站点或只管会话</text>
-<rect x="400" y="444" width="14" height="14" rx="3" fill="#fbefff" stroke="#c297ff"/><text x="420" y="456" class="s">读站点、写本机数据库</text>
-<rect x="580" y="444" width="14" height="14" rx="3" fill="#fff1e5" stroke="#fb8f44"/><text x="600" y="456" class="s">可能写站点，需要 --submit</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="450" class="bg"/>
+<rect x="24.0" y="24.0" width="292.0" height="190.0" rx="12" class="c-gray"/>
+<g transform="translate(40.0,40.0) scale(0.917)" class="ic ic-blue"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></g>
+<text x="72" y="57" class="h">每日任务</text>
+<text x="40" y="82" class="xs">只动自己账号的签到答题</text>
+<rect x="40.0" y="96.0" width="57.2" height="24.0" rx="12.0" class="c-gray"/>
+<text x="69" y="112" class="mono t-gray" text-anchor="middle" style="font-size:12px">daily</text>
+<rect x="105.2" y="96.0" width="124.2" height="24.0" rx="12.0" class="c-gray"/>
+<text x="167" y="112" class="mono t-gray" text-anchor="middle" style="font-size:12px">daily --resume</text>
+<rect x="40.0" y="128.0" width="64.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="72" y="144" class="mono t-gray" text-anchor="middle" style="font-size:12px">status</text>
+<rect x="112.6" y="128.0" width="116.7" height="24.0" rx="12.0" class="c-gray"/>
+<text x="171" y="144" class="mono t-gray" text-anchor="middle" style="font-size:12px">daily-history</text>
+<rect x="40.0" y="160.0" width="139.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="110" y="176" class="mono t-gray" text-anchor="middle" style="font-size:12px">save-credentials</text>
+<rect x="334.0" y="24.0" width="292.0" height="190.0" rx="12" class="c-gray"/>
+<g transform="translate(350.0,40.0) scale(0.917)" class="ic ic-blue"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></g>
+<text x="382" y="57" class="h">会话</text>
+<text x="350" y="82" class="xs">只管工具自己的专用 Chrome</text>
+<rect x="350.0" y="96.0" width="124.2" height="24.0" rx="12.0" class="c-gray"/>
+<text x="412" y="112" class="mono t-gray" text-anchor="middle" style="font-size:12px">session-status</text>
+<rect x="482.2" y="96.0" width="116.7" height="24.0" rx="12.0" class="c-gray"/>
+<text x="541" y="112" class="mono t-gray" text-anchor="middle" style="font-size:12px">session-login</text>
+<rect x="350.0" y="128.0" width="131.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="416" y="144" class="mono t-gray" text-anchor="middle" style="font-size:12px">--method wechat</text>
+<rect x="350.0" y="160.0" width="124.2" height="24.0" rx="12.0" class="c-gray"/>
+<text x="412" y="176" class="mono t-gray" text-anchor="middle" style="font-size:12px">session-logout</text>
+<rect x="644.0" y="24.0" width="292.0" height="190.0" rx="12" class="c-gray"/>
+<g transform="translate(660.0,40.0) scale(0.917)" class="ic ic-blue"><path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/></g>
+<text x="692" y="57" class="h">只读浏览</text>
+<text x="660" y="82" class="xs">不入库、不标记已读</text>
+<rect x="660.0" y="96.0" width="101.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="711" y="112" class="mono t-gray" text-anchor="middle" style="font-size:12px">site-search</text>
+<rect x="769.8" y="96.0" width="116.7" height="24.0" rx="12.0" class="c-gray"/>
+<text x="828" y="112" class="mono t-gray" text-anchor="middle" style="font-size:12px">thread-detail</text>
+<rect x="660.0" y="128.0" width="109.3" height="24.0" rx="12.0" class="c-gray"/>
+<text x="715" y="144" class="mono t-gray" text-anchor="middle" style="font-size:12px">browse-board</text>
+<rect x="777.3" y="128.0" width="109.3" height="24.0" rx="12.0" class="c-gray"/>
+<text x="832" y="144" class="mono t-gray" text-anchor="middle" style="font-size:12px">user-profile</text>
+<rect x="660.0" y="160.0" width="94.4" height="24.0" rx="12.0" class="c-gray"/>
+<text x="707" y="176" class="mono t-gray" text-anchor="middle" style="font-size:12px">my-profile</text>
+<rect x="762.4" y="160.0" width="64.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="795" y="176" class="mono t-gray" text-anchor="middle" style="font-size:12px">unread</text>
+<rect x="660.0" y="192.0" width="116.7" height="24.0" rx="12.0" class="c-gray"/>
+<text x="718" y="208" class="mono t-gray" text-anchor="middle" style="font-size:12px">notifications</text>
+<rect x="24.0" y="230.0" width="292.0" height="190.0" rx="12" class="c-gray"/>
+<g transform="translate(40.0,246.0) scale(0.917)" class="ic ic-blue"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></g>
+<text x="72" y="263" class="h">面经资料</text>
+<text x="40" y="288" class="xs">存进本机数据库，可离线搜索、导出</text>
+<rect x="40.0" y="302.0" width="72.1" height="24.0" rx="12.0" class="c-gray"/>
+<text x="76" y="318" class="mono t-gray" text-anchor="middle" style="font-size:12px">collect</text>
+<rect x="120.1" y="302.0" width="64.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="152" y="318" class="mono t-gray" text-anchor="middle" style="font-size:12px">search</text>
+<rect x="192.7" y="302.0" width="64.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="225" y="318" class="mono t-gray" text-anchor="middle" style="font-size:12px">export</text>
+<rect x="40.0" y="334.0" width="101.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="91" y="350" class="mono t-gray" text-anchor="middle" style="font-size:12px">save-thread</text>
+<rect x="149.8" y="334.0" width="79.5" height="24.0" rx="12.0" class="c-gray"/>
+<text x="190" y="350" class="mono t-gray" text-anchor="middle" style="font-size:12px">organize</text>
+<rect x="40.0" y="366.0" width="116.7" height="24.0" rx="12.0" class="c-gray"/>
+<text x="98" y="382" class="mono t-gray" text-anchor="middle" style="font-size:12px">archive-media</text>
+<rect x="164.7" y="366.0" width="131.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="231" y="382" class="mono t-gray" text-anchor="middle" style="font-size:12px">recognize-media</text>
+<rect x="40.0" y="398.0" width="64.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="72" y="414" class="mono t-gray" text-anchor="middle" style="font-size:12px">task-*</text>
+<rect x="334.0" y="230.0" width="292.0" height="190.0" rx="12" class="c-gray"/>
+<g transform="translate(350.0,246.0) scale(0.917)" class="ic ic-blue"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></g>
+<text x="382" y="263" class="h">互动</text>
+<text x="350" y="288" class="xs">默认只预览，加 --submit 才真写</text>
+<rect x="350.0" y="302.0" width="49.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="375" y="318" class="mono t-gray" text-anchor="middle" style="font-size:12px">post</text>
+<rect x="407.8" y="302.0" width="57.2" height="24.0" rx="12.0" class="c-gray"/>
+<text x="436" y="318" class="mono t-gray" text-anchor="middle" style="font-size:12px">reply</text>
+<rect x="473.0" y="302.0" width="79.5" height="24.0" rx="12.0" class="c-gray"/>
+<text x="513" y="318" class="mono t-gray" text-anchor="middle" style="font-size:12px">favorite</text>
+<rect x="350.0" y="334.0" width="49.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="375" y="350" class="mono t-gray" text-anchor="middle" style="font-size:12px">like</text>
+<rect x="407.8" y="334.0" width="153.9" height="24.0" rx="12.0" class="c-gray"/>
+<text x="485" y="350" class="mono t-gray" text-anchor="middle" style="font-size:12px">reply-notification</text>
+<rect x="350.0" y="366.0" width="146.5" height="24.0" rx="12.0" class="c-gray"/>
+<text x="423" y="382" class="mono t-gray" text-anchor="middle" style="font-size:12px">like-notification</text>
+<rect x="644.0" y="230.0" width="292.0" height="190.0" rx="12" class="c-gray"/>
+<g transform="translate(660.0,246.0) scale(0.917)" class="ic ic-blue"><path d="M11 6h10"/><path d="M11 12h10"/><path d="M11 18h10"/><path d="m3 6 1.5 1.5L7 5"/><path d="m3 12 1.5 1.5L7 11"/><path d="m3 18 1.5 1.5L7 17"/></g>
+<text x="692" y="263" class="h">检查</text>
+<text x="660" y="288" class="xs">不碰账号，和 CI 跑同一个程序</text>
+<rect x="660.0" y="302.0" width="142.4" height="24.0" rx="12.0" class="c-gray"/>
+<text x="731" y="318" class="mono t-gray" text-anchor="middle" style="font-size:12px">检查.sh / 检查.cmd</text>
+<rect x="810.4" y="302.0" width="64.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="843" y="318" class="mono t-gray" text-anchor="middle" style="font-size:12px">--sync</text>
+<rect x="660.0" y="334.0" width="280.4" height="24.0" rx="12.0" class="c-gray"/>
+<text x="800" y="350" class="mono t-gray" text-anchor="middle" style="font-size:12px">--stage static | unit | integration</text>
+<text x="24" y="440" class="xs">所有命令都在工具目录里执行，输出都是 JSON。</text>
 </svg>

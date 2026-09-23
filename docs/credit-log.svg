@@ -1,44 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-label="积分流水：每天固定两条 +1，签到奖励和每日答题">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="400" viewBox="0 0 960 400" role="img" aria-label="积分流水：每天固定两条 +1">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:18px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:14px}.s{font-size:12.5px;fill:#57606a}
-.cell{font-size:17px;fill:#3c4043}.plus{font-size:17px;fill:#1a7f37;font-weight:600}.when{font-size:17px;fill:#5f6368}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<rect x="0.5" y="0.5" width="959" height="519" rx="12" fill="#ffffff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">积分流水：每天固定两条「+1」（按站点「我的积分」页面重绘）</text>
-<rect x="24" y="58" width="600" height="440" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
-<g>
-  <text x="44" y="92" class="cell">大米</text><text x="86" y="92" class="plus">+1</text><text x="330" y="92" class="cell" text-anchor="middle">每日答题</text><text x="600" y="92" class="when" text-anchor="end">2 天前</text>
-  <line x1="24" y1="113" x2="624" y2="113" stroke="#eef0f2"/>
-  <text x="44" y="147" class="cell">大米</text><text x="86" y="147" class="plus">+1</text><text x="330" y="147" class="cell" text-anchor="middle">签到奖励</text><text x="600" y="147" class="when" text-anchor="end">2 天前</text>
-  <line x1="24" y1="168" x2="624" y2="168" stroke="#eef0f2"/>
-  <text x="44" y="202" class="cell">大米</text><text x="86" y="202" class="plus">+1</text><text x="330" y="202" class="cell" text-anchor="middle">每日答题</text><text x="600" y="202" class="when" text-anchor="end">3 天前</text>
-  <line x1="24" y1="223" x2="624" y2="223" stroke="#eef0f2"/>
-  <text x="44" y="257" class="cell">大米</text><text x="86" y="257" class="plus">+1</text><text x="330" y="257" class="cell" text-anchor="middle">签到奖励</text><text x="600" y="257" class="when" text-anchor="end">3 天前</text>
-  <line x1="24" y1="278" x2="624" y2="278" stroke="#eef0f2"/>
-  <text x="44" y="312" class="cell">大米</text><text x="86" y="312" class="plus">+1</text><text x="330" y="312" class="cell" text-anchor="middle">每日答题</text><text x="600" y="312" class="when" text-anchor="end">4 天前</text>
-  <line x1="24" y1="333" x2="624" y2="333" stroke="#eef0f2"/>
-  <text x="44" y="367" class="cell">大米</text><text x="86" y="367" class="plus">+1</text><text x="330" y="367" class="cell" text-anchor="middle">签到奖励</text><text x="600" y="367" class="when" text-anchor="end">4 天前</text>
-  <line x1="24" y1="388" x2="624" y2="388" stroke="#eef0f2"/>
-  <text x="44" y="422" class="cell">大米</text><text x="86" y="422" class="plus">+1</text><text x="330" y="422" class="cell" text-anchor="middle">每日答题</text><text x="600" y="422" class="when" text-anchor="end">5 天前</text>
-  <line x1="24" y1="443" x2="624" y2="443" stroke="#eef0f2"/>
-  <text x="44" y="477" class="cell">大米</text><text x="86" y="477" class="plus">+1</text><text x="330" y="477" class="cell" text-anchor="middle">签到奖励</text><text x="600" y="477" class="when" text-anchor="end">5 天前</text>
-</g>
-<path d="M636,62 h8 v102 h-8" fill="none" stroke="#1a7f37" stroke-width="2"/>
-<rect x="654" y="66" width="282" height="96" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
-<text x="668" y="92" class="b">一天 = 两条记录</text>
-<text x="668" y="116" class="t">签到奖励 → 大米 +1</text>
-<text x="668" y="138" class="t">每日答题 → 大米 +1</text>
-<rect x="654" y="186" width="282" height="176" rx="8" fill="#fff1e5" stroke="#fb8f44"/>
-<text x="668" y="212" class="b">工具怎么用这一页判断成功？</text>
-<text x="668" y="238" class="t">· 记录属于你的 uid</text>
-<text x="668" y="262" class="t">· 大米变动 &gt; 0</text>
-<text x="668" y="286" class="t">· 标题正好是「签到奖励」或「每日答题」</text>
-<text x="668" y="310" class="t">· 日期是站点的「今天」（洛杉矶时间）</text>
-<text x="668" y="342" class="b">四条都满足，才算 reward_verified</text>
-<rect x="654" y="386" width="282" height="112" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
-<text x="668" y="412" class="b">连续签到不断档</text>
-<text x="668" y="438" class="s">每天都有这两条，连续签到就不会断。</text>
-<text x="668" y="460" class="s">缺了哪一天，daily-history 命令会把</text>
-<text x="668" y="482" class="s">那天列在 incomplete_days 里。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="400" class="bg"/>
+<rect x="24.0" y="20.0" width="560.0" height="356.0" rx="14" class="c-gray"/>
+<text x="44" y="54" class="hb">我的积分</text>
+<text x="564" y="54" class="xs" text-anchor="end">按网站页面重绘</text>
+<path d="M44,72 L564,72" class="line soft"/>
+<rect x="44.0" y="92.0" width="61.4" height="24.0" rx="12.0" class="c-green"/>
+<text x="75" y="108" class="xs t-green" text-anchor="middle" style="font-size:12px">大米 +1</text>
+<text x="140" y="109" class="h">每日答题</text>
+<text x="564" y="109" class="xs" text-anchor="end">昨天</text>
+<path d="M44,128 L564,128" class="line soft"/>
+<rect x="44.0" y="138.0" width="61.4" height="24.0" rx="12.0" class="c-green"/>
+<text x="75" y="154" class="xs t-green" text-anchor="middle" style="font-size:12px">大米 +1</text>
+<text x="140" y="155" class="h">签到奖励</text>
+<text x="564" y="155" class="xs" text-anchor="end">昨天</text>
+<path d="M44,174 L564,174" class="line soft"/>
+<rect x="44.0" y="184.0" width="61.4" height="24.0" rx="12.0" class="c-green"/>
+<text x="75" y="200" class="xs t-green" text-anchor="middle" style="font-size:12px">大米 +1</text>
+<text x="140" y="201" class="h">每日答题</text>
+<text x="564" y="201" class="xs" text-anchor="end">2 天前</text>
+<path d="M44,220 L564,220" class="line soft"/>
+<rect x="44.0" y="230.0" width="61.4" height="24.0" rx="12.0" class="c-green"/>
+<text x="75" y="246" class="xs t-green" text-anchor="middle" style="font-size:12px">大米 +1</text>
+<text x="140" y="247" class="h">签到奖励</text>
+<text x="564" y="247" class="xs" text-anchor="end">2 天前</text>
+<path d="M44,266 L564,266" class="line soft"/>
+<rect x="44.0" y="276.0" width="61.4" height="24.0" rx="12.0" class="c-green"/>
+<text x="75" y="292" class="xs t-green" text-anchor="middle" style="font-size:12px">大米 +1</text>
+<text x="140" y="293" class="h">每日答题</text>
+<text x="564" y="293" class="xs" text-anchor="end">3 天前</text>
+<path d="M44,312 L564,312" class="line soft"/>
+<rect x="44.0" y="322.0" width="61.4" height="24.0" rx="12.0" class="c-green"/>
+<text x="75" y="338" class="xs t-green" text-anchor="middle" style="font-size:12px">大米 +1</text>
+<text x="140" y="339" class="h">签到奖励</text>
+<text x="564" y="339" class="xs" text-anchor="end">3 天前</text>
+<rect x="616.0" y="20.0" width="320.0" height="168.0" rx="14" class="c-blue"/>
+<g transform="translate(636.0,40.0) scale(1.000)" class="ic ic-blue"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></g>
+<text x="670" y="58" class="h">一天 = 两条记录</text>
+<text x="636" y="92" class="s">签到奖励　→ 大米 +1</text>
+<text x="636" y="116" class="s">每日答题　→ 大米 +1</text>
+<text x="636" y="160" class="xs">每天都有这两条，连续签到就不会断。</text>
+<rect x="616.0" y="208.0" width="320.0" height="62.0" rx="10" class="c-gray"/>
+<g transform="translate(630.0,226.0) scale(0.833)" class="ic ic-blue"><path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/></g>
+<text x="660" y="232" class="s">工具每天做完，都会打开这一页，亲眼看到</text>
+<text x="660" y="251" class="s">两条「+1」才算成功。</text>
+<rect x="616.0" y="300.0" width="320.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(630.0,308.5) scale(0.833)" class="ic ic-blue"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></g>
+<text x="660" y="324" class="s">缺了哪一天，历史命令会把那天单独列出来。</text>
 </svg>

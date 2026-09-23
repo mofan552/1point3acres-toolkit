@@ -1,55 +1,96 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="460" viewBox="0 0 960 460" role="img" aria-label="一个坏日子的接力：谁在什么时候补救">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="340" viewBox="0 0 960 340" role="img" aria-label="一个坏日子的接力">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:13.5px;font-weight:600}.s{font-size:12.5px;fill:#57606a}.p{font-size:12.5px}
-.ar{stroke:#57606a;stroke-width:1.4;fill:none;marker-end:url(#ar)}
-.white{fill:#fff;stroke:#d0d7de}.green{fill:#dafbe1;stroke:#4ac26b}.red{fill:#ffebe9;stroke:#ff8182}.purple{fill:#fbefff;stroke:#c297ff}.gray{fill:#f6f8fa;stroke:#d0d7de}.orange{fill:#fff1e5;stroke:#fb8f44}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
-<rect x="0.5" y="0.5" width="959" height="459" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">一个坏日子的接力（示例）：谁在什么时候补救</text>
-
-<rect x="24" y="62" width="912" height="96" rx="10" fill="#fbefff" stroke="#c297ff"/>
-<text x="38" y="86" class="b">第 4 层 · 同一次触发内重跑</text>
-<text x="38" y="106" class="s">几分钟内</text>
-<rect x="170" y="112" width="92" height="28" rx="14" class="white"/><text x="216" y="131" class="p" text-anchor="middle">16:10 触发</text>
-<path d="M262,126 L280,126" class="ar"/>
-<rect x="282" y="112" width="70" height="28" rx="14" class="green"/><text x="317" y="131" class="p" text-anchor="middle">签到 ✓</text>
-<path d="M352,126 L370,126" class="ar"/>
-<rect x="372" y="112" width="140" height="28" rx="14" class="red"/><text x="442" y="131" class="p" text-anchor="middle">答题：网络超时 ✗</text>
-<path d="M512,126 L530,126" class="ar"/>
-<rect x="532" y="112" width="140" height="28" rx="14" class="purple"/><text x="602" y="131" class="p" text-anchor="middle">换新 Chrome 重跑</text>
-<path d="M672,126 L690,126" class="ar"/>
-<rect x="692" y="112" width="120" height="28" rx="14" class="green"/><text x="752" y="131" class="p" text-anchor="middle">答题 ✓ 到账 ✓</text>
-<path d="M812,126 L830,126" class="ar"/>
-<rect x="832" y="112" width="92" height="28" rx="14" class="green"/><text x="878" y="131" class="p" text-anchor="middle">complete</text>
-
-<rect x="24" y="176" width="912" height="96" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
-<text x="38" y="200" class="b">第 5 层 · 下一次计划触发</text>
-<text x="38" y="220" class="s">十分钟后</text>
-<rect x="170" y="226" width="160" height="28" rx="14" class="red"/><text x="250" y="245" class="p" text-anchor="middle">重跑也失败 → failed</text>
-<path d="M330,240 L348,240" class="ar"/>
-<rect x="350" y="226" width="140" height="28" rx="14" class="white"/><text x="420" y="245" class="p" text-anchor="middle">16:20 计划再触发</text>
-<path d="M490,240 L508,240" class="ar"/>
-<rect x="510" y="226" width="164" height="28" rx="14" class="gray"/><text x="592" y="245" class="p" text-anchor="middle">读历史：签到已确认</text>
-<path d="M674,240 L692,240" class="ar"/>
-<rect x="694" y="226" width="118" height="28" rx="14" class="green"/><text x="753" y="245" class="p" text-anchor="middle">只补答题 ✓</text>
-<path d="M812,240 L830,240" class="ar"/>
-<rect x="832" y="226" width="92" height="28" rx="14" class="green"/><text x="878" y="245" class="p" text-anchor="middle">complete</text>
-
-<rect x="24" y="290" width="912" height="96" rx="10" fill="#ffebe9" stroke="#ff8182"/>
-<text x="38" y="314" class="b">第 6 层 · 第二天的观察者</text>
-<text x="38" y="334" class="s">跨天</text>
-<rect x="170" y="340" width="110" height="28" rx="14" class="red"/><text x="225" y="359" class="p" text-anchor="middle">整天都失败</text>
-<path d="M280,354 L298,354" class="ar"/>
-<rect x="300" y="340" width="110" height="28" rx="14" class="gray"/><text x="355" y="359" class="p" text-anchor="middle">站点日结束</text>
-<path d="M410,354 L428,354" class="ar"/>
-<rect x="430" y="340" width="224" height="28" rx="14" class="orange"/><text x="542" y="359" class="p" text-anchor="middle">观察者：连续未完成 → alert</text>
-<path d="M654,354 L672,354" class="ar"/>
-<rect x="674" y="340" width="92" height="28" rx="14" class="white"/><text x="720" y="359" class="p" text-anchor="middle">退出码 3</text>
-<path d="M766,354 L784,354" class="ar"/>
-<rect x="786" y="340" width="138" height="28" rx="14" class="red"/><text x="855" y="359" class="p" text-anchor="middle">桌面通知你</text>
-
-<rect x="24" y="404" width="912" height="40" rx="8" fill="#f6f8fa"/>
-<text x="40" y="429" class="s">每一层都不重复已确认的动作：签到到账了，后面的重跑只做答题；站点已经回应过的提交也绝不重交。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="340" class="bg"/>
+<rect x="24.0" y="24.0" width="170.0" height="64.0" rx="12" class="c-gray"/>
+<text x="40" y="52" class="h">同一次触发内</text>
+<text x="40" y="74" class="xs">几分钟内</text>
+<rect x="214.0" y="42.0" width="103.5" height="28.0" rx="14.0" class="c-gray"/>
+<g transform="translate(224.0,48.5) scale(0.625)" class="ic ic-blue"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></g>
+<text x="275" y="60" class="xs t-gray" text-anchor="middle" style="font-size:12.5px">16:10 触发</text>
+<path d="M320.5,56.0 L336.5,56.0" class="ar"/>
+<rect x="339.5" y="42.0" width="63.2" height="28.0" rx="14.0" class="c-green"/>
+<text x="371" y="60" class="xs t-green" text-anchor="middle" style="font-size:12.5px">签到 ✓</text>
+<path d="M405.8,56.0 L421.8,56.0" class="ar"/>
+<rect x="424.8" y="42.0" width="117.0" height="28.0" rx="14.0" class="c-red"/>
+<text x="483" y="60" class="xs t-red" text-anchor="middle" style="font-size:12.5px">答题 ✗ 网络超时</text>
+<path d="M544.8,56.0 L560.8,56.0" class="ar"/>
+<rect x="563.8" y="42.0" width="142.4" height="28.0" rx="14.0" class="c-blue"/>
+<g transform="translate(573.8,48.5) scale(0.625)" class="ic ic-blue"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></g>
+<text x="644" y="60" class="xs t-blue" text-anchor="middle" style="font-size:12.5px">换新 Chrome 重跑</text>
+<path d="M709.1,56.0 L725.1,56.0" class="ar"/>
+<rect x="728.1" y="42.0" width="108.2" height="28.0" rx="14.0" class="c-green"/>
+<text x="782" y="60" class="xs t-green" text-anchor="middle" style="font-size:12.5px">答题 ✓ 到账 ✓</text>
+<path d="M839.4,56.0 L855.4,56.0" class="ar"/>
+<rect x="858.4" y="42.0" width="65.0" height="28.0" rx="14.0" class="c-green"/>
+<g transform="translate(868.4,48.5) scale(0.625)" class="ic ic-green"><path d="M20 6 9 17l-5-5"/></g>
+<text x="900" y="60" class="xs t-green" text-anchor="middle" style="font-size:12.5px">圆满</text>
+<rect x="24.0" y="112.0" width="170.0" height="64.0" rx="12" class="c-gray"/>
+<text x="40" y="140" class="h">下一次计划</text>
+<text x="40" y="162" class="xs">10 分钟后</text>
+<rect x="214.0" y="130.0" width="84.5" height="28.0" rx="14.0" class="c-red"/>
+<text x="256" y="148" class="xs t-red" text-anchor="middle" style="font-size:12.5px">重跑也失败</text>
+<path d="M301.5,144.0 L317.5,144.0" class="ar"/>
+<rect x="320.5" y="130.0" width="116.0" height="28.0" rx="14.0" class="c-gray"/>
+<g transform="translate(330.5,136.5) scale(0.625)" class="ic ic-blue"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></g>
+<text x="388" y="148" class="xs t-gray" text-anchor="middle" style="font-size:12.5px">16:20 再触发</text>
+<path d="M439.5,144.0 L455.5,144.0" class="ar"/>
+<rect x="458.5" y="130.0" width="147.0" height="28.0" rx="14.0" class="c-blue"/>
+<text x="532" y="148" class="xs t-blue" text-anchor="middle" style="font-size:12.5px">签到已确认，只补答题</text>
+<path d="M608.5,144.0 L624.5,144.0" class="ar"/>
+<rect x="627.5" y="130.0" width="63.2" height="28.0" rx="14.0" class="c-green"/>
+<text x="659" y="148" class="xs t-green" text-anchor="middle" style="font-size:12.5px">答题 ✓</text>
+<path d="M693.8,144.0 L709.8,144.0" class="ar"/>
+<rect x="712.8" y="130.0" width="65.0" height="28.0" rx="14.0" class="c-green"/>
+<g transform="translate(722.8,136.5) scale(0.625)" class="ic ic-green"><path d="M20 6 9 17l-5-5"/></g>
+<text x="754" y="148" class="xs t-green" text-anchor="middle" style="font-size:12.5px">圆满</text>
+<rect x="24.0" y="200.0" width="170.0" height="64.0" rx="12" class="c-gray"/>
+<text x="40" y="228" class="h">第二天</text>
+<text x="40" y="250" class="xs">独立的观察者</text>
+<rect x="214.0" y="218.0" width="84.5" height="28.0" rx="14.0" class="c-red"/>
+<text x="256" y="236" class="xs t-red" text-anchor="middle" style="font-size:12.5px">整天都失败</text>
+<path d="M301.5,232.0 L317.5,232.0" class="ar"/>
+<rect x="320.5" y="218.0" width="165.0" height="28.0" rx="14.0" class="c-amber"/>
+<g transform="translate(330.5,224.5) scale(0.625)" class="ic ic-amber"><path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0"/><circle cx="12" cy="12" r="3"/></g>
+<text x="412" y="236" class="xs t-amber" text-anchor="middle" style="font-size:12.5px">观察者发现连续没完成</text>
+<path d="M488.5,232.0 L504.5,232.0" class="ar"/>
+<rect x="507.5" y="218.0" width="77.5" height="28.0" rx="14.0" class="c-amber"/>
+<g transform="translate(517.5,224.5) scale(0.625)" class="ic ic-amber"><path d="M10.3 21a2 2 0 0 0 3.4 0"/><path d="M3.3 15.3A1 1 0 0 0 4 17h16a1 1 0 0 0 .7-1.7C19.4 14 18 12.5 18 8A6 6 0 0 0 6 8c0 4.5-1.4 6-2.7 7.3"/></g>
+<text x="555" y="236" class="xs t-amber" text-anchor="middle" style="font-size:12.5px">提醒你</text>
+<rect x="24.0" y="284.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,292.5) scale(0.833)" class="ic ic-blue"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></g>
+<text x="68" y="308" class="s">每一层都不重复已确认的动作：签到到账了，后面只做答题；网站已经回应过的提交也绝不重交。</text>
 </svg>

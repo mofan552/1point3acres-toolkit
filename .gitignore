@@ -16,6 +16,7 @@
 !/docs/
 /docs/*
 !/docs/*.svg
+!/docs/diagrams.py
 !/outputs/
 /outputs/*
 !/outputs/一亩三分地本地工具/

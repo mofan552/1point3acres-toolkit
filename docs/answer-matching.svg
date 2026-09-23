@@ -1,41 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="题库匹配：按选项文字比，不按 ABCD">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="360" viewBox="0 0 960 360" role="img" aria-label="题库匹配：按选项文字比，不按 ABCD">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}
-.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
-.pill{font-size:13px}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<rect x="0.5" y="0.5" width="959" height="539" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">题库匹配：按选项文字比，不按 A/B/C/D 的位置</text>
-
-<rect x="24" y="60" width="440" height="196" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
-<text x="40" y="86" class="b">站点今天给的题（接口 dailyQuestion.get 返回）</text>
-<text x="40" y="114" class="t">题目：美国哪个州没有夏令时？</text>
-<text x="40" y="140" class="s">选项（顺序每天可能不一样）：</text>
-<rect x="40" y="152" width="190" height="26" rx="13" fill="#fff" stroke="#d0d7de"/><text x="52" y="170" class="pill">a1  夏威夷</text>
-<rect x="242" y="152" width="190" height="26" rx="13" fill="#fff" stroke="#d0d7de"/><text x="254" y="170" class="pill">a2  亚利桑那州</text>
-<rect x="40" y="186" width="190" height="26" rx="13" fill="#fff" stroke="#d0d7de"/><text x="52" y="204" class="pill">a3  佛罗里达</text>
-<rect x="242" y="186" width="190" height="26" rx="13" fill="#fff" stroke="#d0d7de"/><text x="254" y="204" class="pill">a4  内华达</text>
-<text x="40" y="240" class="s">示意题目，来自仓库题库；选项文字是纯文本</text>
-
-<rect x="496" y="60" width="440" height="196" rx="10" fill="#fbefff" stroke="#c297ff"/>
-<text x="512" y="86" class="b">题库（两份合并，本机学到的优先）</text>
-<text x="512" y="112" class="t">answers.json（随仓库，194 题）里有一行：</text>
-<text x="512" y="134" class="m">"美国哪个州没有夏令时？": "亚利桑那州"</text>
-<text x="512" y="164" class="t">learned-answers.json（只在你电脑上）：</text>
-<text x="512" y="186" class="s">verified：本账号答对并到账过的题和答案</text>
-<text x="512" y="206" class="s">rejected：本账号答过但没到账的答案</text>
-<text x="512" y="240" class="s">两边冲突时，以本机 verified 为准</text>
-
-<rect x="24" y="276" width="912" height="118" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
-<text x="40" y="302" class="b">怎么比：先归一化，再按选项文字精确匹配</text>
-<text x="40" y="328" class="t">① 题目和每个选项都做 NFKC 归一化：全角变半角、各种空白压成一个空格、去掉首尾空白</text>
-<text x="40" y="352" class="t">② 用归一化后的题目在题库里找到答案「亚利桑那州」，再看哪个选项的文字和它完全一样</text>
-<text x="40" y="376" class="t">③ 恰好一个选项一样 → 命中，点那个按钮（这里是 a2）。不看 A/B/C/D，站点把顺序打乱也没关系</text>
-
-<rect x="24" y="412" width="912" height="112" rx="10" fill="#ffebe9" stroke="#ff8182"/>
-<text x="40" y="438" class="b">下面三种情况都不算命中，走 answer_needed（停下来等你补答，不瞎猜）</text>
-<text x="40" y="464" class="t">· 题库里没有这道题，或者同一道题在题库里对应了两个不同的答案</text>
-<text x="40" y="488" class="t">· 没有任何选项和答案一样，或者有两个以上一样（无法唯一确定）</text>
-<text x="40" y="512" class="t">· 这个答案在本机 rejected 名单里（曾在你账号上答错过）</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="360" class="bg"/>
+<rect x="24.0" y="24.0" width="300.0" height="240.0" rx="12" class="c-gray"/>
+<g transform="translate(40.0,40.0) scale(0.917)" class="ic ic-blue"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></g>
+<text x="72" y="57" class="h">网站今天给的题</text>
+<text x="40" y="88" class="s">美国哪个州没有夏令时？</text>
+<rect x="40.0" y="104.0" width="268.0" height="26.0" rx="8" class="c-gray"/>
+<text x="54" y="121" class="s">夏威夷</text>
+<rect x="40.0" y="136.0" width="268.0" height="26.0" rx="8" class="c-green"/>
+<text x="54" y="153" class="s t-green">亚利桑那州</text>
+<g transform="translate(282.0,140.0) scale(0.750)" class="ic ic-green"><path d="M20 6 9 17l-5-5"/></g>
+<rect x="40.0" y="168.0" width="268.0" height="26.0" rx="8" class="c-gray"/>
+<text x="54" y="185" class="s">佛罗里达</text>
+<rect x="40.0" y="200.0" width="268.0" height="26.0" rx="8" class="c-gray"/>
+<text x="54" y="217" class="s">内华达</text>
+<text x="40" y="249" class="xs">选项顺序每天可能不一样</text>
+<rect x="352.0" y="24.0" width="256.0" height="240.0" rx="12" class="c-gray"/>
+<g transform="translate(368.0,40.0) scale(0.917)" class="ic ic-blue"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></g>
+<text x="400" y="57" class="h">题库里的答案</text>
+<text x="368" y="88" class="s">「美国哪个州没有夏令时？」</text>
+<rect x="368.0" y="102.0" width="85.0" height="28.0" rx="14.0" class="c-green"/>
+<text x="410" y="121" class="xs t-green" text-anchor="middle" style="font-size:13px">亚利桑那州</text>
+<text x="368" y="156" class="xs">仓库自带的题库（194 题）</text>
+<text x="368" y="176" class="xs">＋ 你电脑上学到的答案</text>
+<text x="368" y="196" class="xs">两边冲突时，以你电脑上的为准</text>
+<path d="M352.0,147.0 L312.0,147.0" class="ar green"/>
+<text x="332" y="135" class="xs t-green" text-anchor="middle">文字完全一样 → 点它</text>
+<rect x="636.0" y="24.0" width="300.0" height="240.0" rx="12" class="c-amber"/>
+<g transform="translate(652.0,38.0) scale(0.917)" class="ic ic-amber"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></g>
+<text x="684" y="54" class="h">这三种情况不算命中</text>
+<text x="684" y="79" class="s">· 题库里没有这道题</text>
+<text x="684" y="101" class="s">· 没有一个选项和答案一样，或有两个</text>
+<text x="684" y="123" class="s">都一样</text>
+<text x="684" y="145" class="s">· 这个答案在你的错误名单里</text>
+<rect x="652.0" y="214.0" width="185.0" height="26.0" rx="13.0" class="f-amber"/>
+<g transform="translate(662.0,219.0) scale(0.667)" class="ic ic-white"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></g>
+<text x="754" y="232" class="w" text-anchor="middle" style="font-size:13px">停下来等你补答，不瞎猜</text>
+<rect x="24.0" y="290.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,298.5) scale(0.833)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></g>
+<text x="68" y="314" class="s">比对前先统一格式（全角半角、多余空格），然后按选项的文字比，不看 A/B/C/D 的位置，网站把顺序打乱也没关系。</text>
 </svg>

@@ -1,35 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-label="仓库长什么样">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="380" viewBox="0 0 960 380" role="img" aria-label="仓库长什么样">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14px;font-weight:600}.t{font-size:13px}.s{font-size:12px;fill:#57606a}
-.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;font-weight:600}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<rect x="0.5" y="0.5" width="959" height="439" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">仓库长什么样</text>
-
-<rect x="24" y="60" width="912" height="36" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
-<text x="40" y="84" class="m">1point3acres-toolkit/</text><text x="230" y="84" class="s">仓库根目录</text>
-
-<line x1="44" y1="96" x2="44" y2="404" stroke="#d0d7de" stroke-width="2"/>
-
-<line x1="44" y1="120" x2="64" y2="120" stroke="#d0d7de" stroke-width="2"/>
-<text x="72" y="125" class="m">README.md</text><text x="230" y="125" class="t">本文：原理讲解</text>
-<line x1="44" y1="150" x2="64" y2="150" stroke="#d0d7de" stroke-width="2"/>
-<text x="72" y="155" class="m">docs/</text><text x="230" y="155" class="t">本文的配图（SVG）</text>
-<line x1="44" y1="180" x2="64" y2="180" stroke="#d0d7de" stroke-width="2"/>
-<text x="72" y="185" class="m">.github/</text><text x="230" y="185" class="t">CI 流水线定义</text>
-
-<line x1="44" y1="222" x2="64" y2="222" stroke="#d0d7de" stroke-width="2"/>
-<rect x="72" y="200" width="864" height="130" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
-<text x="86" y="224" class="m">outputs/一亩三分地本地工具/</text><text x="330" y="224" class="t">全部代码都在这一个目录里</text>
-<text x="86" y="250" class="s">· 15 个 Python 模块（cli、daily、browser、library、rules、settings、contracts……）</text>
-<text x="86" y="272" class="s">· answers.json 题库 · mood-phrases.json 心情短句 · architecture.json 依赖白名单 · requirements.txt 锁定版本</text>
-<text x="86" y="294" class="s">· tests/ 35 个测试文件 · reader.html/css/js + tokens.css 离线阅读器</text>
-<text x="86" y="316" class="s">· 运行.sh / 运行.cmd 业务入口 · 检查.sh / 检查.cmd 检查入口 · README.md 使用说明（操作手册）</text>
-
-<line x1="44" y1="368" x2="64" y2="368" stroke="#d0d7de" stroke-width="2"/>
-<rect x="72" y="346" width="864" height="76" rx="8" fill="#ffebe9" stroke="#ff8182"/>
-<text x="86" y="370" class="m">work/</text><text x="330" y="370" class="t">不入库，每台电脑自己的</text>
-<text x="86" y="396" class="s">· cf-probe-venv/ 虚拟环境 · local-toolkit-state/（account.json、数据库、learned-answers.json、latest-daily.json、Windows 密文）</text>
-<text x="86" y="414" class="s">· account-browser/chrome-profile/ 专用 Chrome 配置 · 你自己放的计划日志和包装脚本</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="380" class="bg"/>
+<rect x="24.0" y="24.0" width="912.0" height="340.0" rx="12" class="c-gray"/>
+<g transform="translate(48.0,48.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
+<text x="78" y="63" class="mono" style="font-size:13px">1point3acres-toolkit/</text>
+<text x="263" y="63" class="xs">仓库根目录</text>
+<path d="M62,68 L62,100 L74,100" class="line soft"/>
+<g transform="translate(78.0,88.0) scale(0.833)" class="ic ic-gray"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></g>
+<text x="108" y="103" class="mono" style="font-size:13px">README.md</text>
+<text x="197" y="103" class="xs">本文：原理讲解</text>
+<path d="M62,108 L62,140 L74,140" class="line soft"/>
+<g transform="translate(78.0,128.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
+<text x="108" y="143" class="mono" style="font-size:13px">docs/</text>
+<text x="164" y="143" class="xs">本文的配图，以及重画它们的脚本</text>
+<path d="M62,148 L62,180 L74,180" class="line soft"/>
+<g transform="translate(78.0,168.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
+<text x="108" y="183" class="mono" style="font-size:13px">.github/</text>
+<text x="188" y="183" class="xs">CI 流水线</text>
+<path d="M62,188 L62,220 L74,220" class="line soft"/>
+<g transform="translate(78.0,208.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
+<text x="108" y="223" class="mono" style="font-size:13px">outputs/一亩三分地本地工具/</text>
+<text x="314" y="223" class="xs">全部代码都在这一个目录里</text>
+<path d="M92,228 L92,260 L104,260" class="line soft"/>
+<g transform="translate(108.0,248.0) scale(0.833)" class="ic ic-gray"><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/></g>
+<text x="138" y="263" class="s" style="font-size:13px">15 个 Python 模块 · 题库 · 心情短句 · 依赖清单</text>
+<path d="M92,268 L92,300 L104,300" class="line soft"/>
+<g transform="translate(108.0,288.0) scale(0.833)" class="ic ic-gray"><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/></g>
+<text x="138" y="303" class="s" style="font-size:13px">tests/ 35 个测试文件 · 离线阅读器 · 入口脚本 · 使用说明</text>
+<path d="M62,308 L62,340 L74,340" class="line soft"/>
+<g transform="translate(78.0,328.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
+<text x="108" y="343" class="mono" style="font-size:13px">work/</text>
+<text x="164" y="343" class="xs">不入库：每台电脑自己的 Python 环境、账号、数据库、专用 Chrome</text>
 </svg>

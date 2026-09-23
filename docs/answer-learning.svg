@@ -1,44 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="380" viewBox="0 0 960 380" role="img" aria-label="答完之后学什么：只有到账才算证据">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-label="答完之后学什么：只有到账才算证据">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:13.5px;font-weight:600}.s{font-size:12.5px;fill:#57606a}
-.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
-<rect x="0.5" y="0.5" width="959" height="379" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">答完之后学什么：只有「到账」才算证据</text>
-
-<rect x="24" y="60" width="290" height="222" rx="10" fill="#dafbe1" stroke="#4ac26b"/>
-<text x="38" y="88" class="b">到账了</text>
-<text x="38" y="114" class="s">站点响应到了，而且积分流水里</text>
-<text x="38" y="132" class="s">有当天的「每日答题 +1」</text>
-<path d="M169,142 L169,160" class="ar"/>
-<text x="38" y="184" class="t">写入 verified：题 → 这个答案</text>
-<path d="M169,194 L169,212" class="ar"/>
-<text x="38" y="236" class="s">以后同题直接命中，</text>
-<text x="38" y="254" class="s">并且优先于仓库题库</text>
-
-<rect x="335" y="60" width="290" height="222" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
-<text x="349" y="88" class="b">站点说已答，却没到账</text>
-<text x="349" y="114" class="s">答错了：站点把今天标成「已答」，</text>
-<text x="349" y="132" class="s">但没有给米</text>
-<path d="M480,142 L480,160" class="ar"/>
-<text x="349" y="184" class="t">写入 rejected：题 → [这个答案]</text>
-<path d="M480,194 L480,212" class="ar"/>
-<text x="349" y="236" class="s">以后拒绝再交同一个答案，不重复扣米；</text>
-<text x="349" y="254" class="s">你补答别的选项前，也先查这份名单</text>
-
-<rect x="646" y="60" width="290" height="222" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
-<text x="660" y="88" class="b">没等到站点响应</text>
-<text x="660" y="114" class="s">网络断了、超时、浏览器掉线，</text>
-<text x="660" y="132" class="s">不知道站点收没收到</text>
-<path d="M791,142 L791,160" class="ar"/>
-<text x="660" y="184" class="t">什么都不写</text>
-<path d="M791,194 L791,212" class="ar"/>
-<text x="660" y="236" class="s">不确定的事不当证据；</text>
-<text x="660" y="254" class="s">下次运行先查回执，再决定补不补交</text>
-
-<rect x="24" y="300" width="912" height="62" rx="8" fill="#f6f8fa"/>
-<text x="40" y="324" class="s">文件：work/local-toolkit-state/learned-answers.json。写入时先写临时文件再原子替换，中途断电也不会写坏；</text>
-<text x="40" y="346" class="s">万一文件坏了，也只是退回到只用仓库题库，签到答题照常。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="300" class="bg"/>
+<rect x="24.0" y="88.0" width="250.0" height="88.0" rx="12" class="c-gray"/>
+<g transform="translate(40.0,102.0) scale(0.917)" class="ic ic-blue"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.2a2 2 0 0 0-.6-1.4L12 12l-4.4 4.4A2 2 0 0 0 7 17.8V22"/><path d="M7 2v4.2a2 2 0 0 0 .6 1.4L12 12l4.4-4.4A2 2 0 0 0 17 6.2V2"/></g>
+<text x="72" y="118" class="h">答完了，等网站回应</text>
+<text x="72" y="140" class="s">最多 45 秒</text>
+<rect x="360.0" y="24.0" width="576.0" height="62.0" rx="12" class="c-green"/>
+<g transform="translate(376.0,38.0) scale(0.917)" class="ic ic-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
+<text x="408" y="54" class="h">到账了</text>
+<text x="408" y="76" class="s">记住这个答案，下次同题直接用</text>
+<path d="M276.0,132.0 L318.0,132.0 L318.0,55.0 L356.0,55.0" class="ar"/>
+<rect x="360.0" y="96.0" width="576.0" height="62.0" rx="12" class="c-red"/>
+<g transform="translate(376.0,110.0) scale(0.917)" class="ic ic-red"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></g>
+<text x="408" y="126" class="h">网站说答过，却没到账</text>
+<text x="408" y="148" class="s">记为错误答案，以后不再交同一个，不重复扣米</text>
+<path d="M276.0,132.0 L318.0,132.0 L318.0,127.0 L356.0,127.0" class="ar"/>
+<rect x="360.0" y="168.0" width="576.0" height="62.0" rx="12" class="c-gray"/>
+<g transform="translate(376.0,182.0) scale(0.917)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></g>
+<text x="408" y="198" class="h">没等到网站回应</text>
+<text x="408" y="220" class="s">什么都不记，不确定的事不当证据</text>
+<path d="M276.0,132.0 L318.0,132.0 L318.0,199.0 L356.0,199.0" class="ar"/>
+<rect x="24.0" y="246.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,254.5) scale(0.833)" class="ic ic-blue"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></g>
+<text x="68" y="270" class="s">学到的答案只存在你自己的电脑上，不进仓库、不上传。万一这个文件坏了，也只是退回仓库题库，签到答题照常。</text>
 </svg>

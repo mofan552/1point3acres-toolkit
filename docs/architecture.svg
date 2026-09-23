@@ -1,64 +1,81 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-label="代码架构：五层模块和外部依赖">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" role="img" aria-label="代码架构：五层模块">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13px}.s{font-size:12px;fill:#57606a}.lay{font-size:12.5px;font-weight:700;fill:#57606a}
-.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;font-weight:600}
-.box{stroke-width:1.3}.white{fill:#fff;stroke:#d0d7de}.blue{fill:#ddf4ff;stroke:#54aeff}.green{fill:#dafbe1;stroke:#4ac26b}.orange{fill:#fff1e5;stroke:#fb8f44}.purple{fill:#fbefff;stroke:#c297ff}.gray{fill:#f6f8fa;stroke:#d0d7de}
-.ar{stroke:#8b949e;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/></marker></defs>
-<rect x="0.5" y="0.5" width="959" height="639" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">代码架构：五层，依赖只能往下指（architecture.json 是白名单，检查.sh 会验）</text>
-
-<text x="24" y="76" class="lay">入口层</text>
-<rect x="24" y="84" width="230" height="64" rx="8" class="box gray"/>
-<text x="38" y="108" class="m">cli.py</text><text x="38" y="130" class="s">命令行；运行.sh / 运行.cmd 调它</text>
-<rect x="270" y="84" width="250" height="64" rx="8" class="box gray"/>
-<text x="284" y="108" class="m">mcp_server.py</text><text x="284" y="130" class="s">MCP 服务，给 Claude Code / Codex 用</text>
-<rect x="536" y="84" width="400" height="64" rx="8" class="box gray"/>
-<text x="550" y="108" class="m">check.py + governance.py + repository_checks.py</text><text x="550" y="130" class="s">离线门禁；检查.sh / 检查.cmd 调它，CI 也只跑它</text>
-
-<path d="M139,148 L139,178" class="ar"/><path d="M395,148 L395,178" class="ar"/>
-
-<text x="24" y="172" class="lay">业务层</text>
-<rect x="24" y="180" width="270" height="64" rx="8" class="box green"/>
-<text x="38" y="204" class="m">daily.py</text><text x="38" y="226" class="s">每日签到 + 答题 + 核对奖励 + 重试</text>
-<rect x="310" y="180" width="290" height="64" rx="8" class="box green"/>
-<text x="324" y="204" class="m">interact.py</text><text x="324" y="226" class="s">发帖 / 回复 / 收藏 / 点赞：先读后写再回读</text>
-<rect x="616" y="180" width="320" height="64" rx="8" class="box green"/>
-<text x="630" y="204" class="m">library.py</text><text x="630" y="226" class="s">SQLite：运行历史、面经资料、任务、媒体、OCR</text>
-
-<path d="M159,244 L159,274" class="ar"/><path d="M455,244 L455,274" class="ar"/><path d="M776,244 L776,274" class="ar"/>
-
-<text x="24" y="268" class="lay">站点层</text>
-<rect x="24" y="276" width="912" height="64" rx="8" class="box blue"/>
-<text x="38" y="300" class="m">browser.py</text>
-<text x="38" y="322" class="s">唯一联网的模块：启动专用 Chrome，用 CDP 协议操作页面、读接口；登录、Cloudflare 验证、窗口隐藏、看门狗都在这里</text>
-
-<path d="M480,340 L480,370" class="ar"/>
-
-<text x="24" y="364" class="lay">支撑层</text>
-<rect x="24" y="372" width="222" height="64" rx="8" class="box purple"/>
-<text x="38" y="396" class="m">rules.py</text><text x="38" y="418" class="s">题库匹配、奖励核对、心情、健康判定</text>
-<rect x="258" y="372" width="200" height="64" rx="8" class="box purple"/>
-<text x="272" y="396" class="m">secure.py</text><text x="272" y="418" class="s">macOS 钥匙串 / Windows DPAPI</text>
-<rect x="470" y="372" width="222" height="64" rx="8" class="box purple"/>
-<text x="484" y="396" class="m">extract.py</text><text x="484" y="418" class="s">用 BeautifulSoup 解析论坛 HTML</text>
-<rect x="704" y="372" width="232" height="64" rx="8" class="box purple"/>
-<text x="718" y="396" class="m">presentation.py</text><text x="718" y="418" class="s">离线阅读器文案与展示状态</text>
-
-<path d="M480,436 L480,466" class="ar"/>
-
-<text x="24" y="460" class="lay">基础层</text>
-<rect x="24" y="468" width="290" height="64" rx="8" class="box orange"/>
-<text x="38" y="492" class="m">settings.py</text><text x="38" y="514" class="s">所有配置、默认值、路径、限额；不含密码</text>
-<rect x="330" y="468" width="290" height="64" rx="8" class="box orange"/>
-<text x="344" y="492" class="m">contracts.py</text><text x="344" y="514" class="s">状态枚举、动作定义、结果契约；不许写字面量</text>
-<rect x="636" y="468" width="300" height="64" rx="8" class="box orange"/>
-<text x="650" y="492" class="m">architecture.json</text><text x="650" y="514" class="s">模块依赖白名单、依赖清单、公开工具名</text>
-
-<rect x="24" y="552" width="912" height="76" rx="8" fill="#f6f8fa"/>
-<text x="40" y="574" class="b">外部依赖</text>
-<text x="40" y="598" class="t">Chrome（本机安装）· SeleniumBase + mycdp（CDP 驱动）· requests（只用来探测本机调试端口）· beautifulsoup4（解析 HTML）</text>
-<text x="40" y="620" class="t">· sqlite3（标准库）· mcp + pydantic（MCP 服务）· rapidocr-onnxruntime（本机 OCR）· tzdata（时区数据）</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="470" class="bg"/>
+<text x="24" y="40" class="h">五层，依赖只能往下指</text>
+<text x="936" y="40" class="xs" text-anchor="end">↓ 上层可以用下层，下层不知道上层</text>
+<rect x="24.0" y="54.0" width="912.0" height="86.0" rx="12" class="c-gray"/>
+<text x="40" y="102" class="h">入口层</text>
+<rect x="174.0" y="69.0" width="108.1" height="24.0" rx="12.0" class="c-gray"/>
+<text x="228" y="85" class="mono t-gray" text-anchor="middle" style="font-size:12px">cli.py 命令行</text>
+<rect x="290.1" y="69.0" width="177.9" height="24.0" rx="12.0" class="c-gray"/>
+<text x="379" y="85" class="mono t-gray" text-anchor="middle" style="font-size:12px">mcp_server.py MCP 服务</text>
+<rect x="174.0" y="101.0" width="434.2" height="24.0" rx="12.0" class="c-gray"/>
+<text x="391" y="117" class="mono t-gray" text-anchor="middle" style="font-size:12px">check.py · governance.py · repository_checks.py 离线门禁</text>
+<rect x="24.0" y="150.0" width="912.0" height="54.0" rx="12" class="c-gray"/>
+<text x="40" y="182" class="h">业务层</text>
+<rect x="174.0" y="165.0" width="159.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="253" y="181" class="mono t-gray" text-anchor="middle" style="font-size:12px">daily.py 每日签到答题</text>
+<rect x="341.0" y="165.0" width="157.3" height="24.0" rx="12.0" class="c-gray"/>
+<text x="420" y="181" class="mono t-gray" text-anchor="middle" style="font-size:12px">interact.py 发帖回复</text>
+<rect x="506.2" y="165.0" width="161.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="587" y="181" class="mono t-gray" text-anchor="middle" style="font-size:12px">library.py 本机数据库</text>
+<rect x="24.0" y="214.0" width="912.0" height="54.0" rx="12" class="c-blue"/>
+<text x="40" y="246" class="h">站点层</text>
+<rect x="174.0" y="229.0" width="417.9" height="24.0" rx="12.0" class="c-blue"/>
+<text x="383" y="245" class="mono t-blue" text-anchor="middle" style="font-size:12px">browser.py 唯一联网的模块：专用 Chrome、登录、人机验证、看门狗</text>
+<rect x="24.0" y="278.0" width="912.0" height="54.0" rx="12" class="c-gray"/>
+<text x="40" y="310" class="h">支撑层</text>
+<rect x="174.0" y="293.0" width="123.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="235" y="309" class="mono t-gray" text-anchor="middle" style="font-size:12px">rules.py 纯规则</text>
+<rect x="305.0" y="293.0" width="189.9" height="24.0" rx="12.0" class="c-gray"/>
+<text x="400" y="309" class="mono t-gray" text-anchor="middle" style="font-size:12px">secure.py 钥匙串 / DPAPI</text>
+<rect x="502.9" y="293.0" width="149.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="578" y="309" class="mono t-gray" text-anchor="middle" style="font-size:12px">extract.py 解析页面</text>
+<rect x="660.7" y="293.0" width="187.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="754" y="309" class="mono t-gray" text-anchor="middle" style="font-size:12px">presentation.py 展示文案</text>
+<rect x="24.0" y="342.0" width="912.0" height="54.0" rx="12" class="c-gray"/>
+<text x="40" y="374" class="h">基础层</text>
+<rect x="174.0" y="357.0" width="133.3" height="24.0" rx="12.0" class="c-gray"/>
+<text x="241" y="373" class="mono t-gray" text-anchor="middle" style="font-size:12px">settings.py 配置</text>
+<rect x="315.3" y="357.0" width="176.7" height="24.0" rx="12.0" class="c-gray"/>
+<text x="404" y="373" class="mono t-gray" text-anchor="middle" style="font-size:12px">contracts.py 状态与契约</text>
+<rect x="500.0" y="357.0" width="189.9" height="24.0" rx="12.0" class="c-gray"/>
+<text x="595" y="373" class="mono t-gray" text-anchor="middle" style="font-size:12px">architecture.json 白名单</text>
+<rect x="24.0" y="412.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,420.5) scale(0.833)" class="ic ic-blue"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></g>
+<text x="68" y="436" class="s">哪个模块能引用哪个，都写在 architecture.json 里；检查命令扫一遍源码验证，越界就失败。</text>
 </svg>

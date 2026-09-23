@@ -1,52 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-label="自动签到的五个步骤，以及可选的随机心情">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="262" viewBox="0 0 960 262" role="img" aria-label="自动签到：五个步骤">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}.n{font-size:14px;font-weight:700;fill:#fff}
-.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
-<rect x="0.5" y="0.5" width="959" height="559" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">自动签到：五个步骤</text>
-<line x1="48" y1="96" x2="48" y2="416" stroke="#d0d7de" stroke-width="2"/>
-
-<circle cx="48" cy="96" r="16" fill="#0969da"/><text x="48" y="101" class="n" text-anchor="middle">1</text>
-<text x="76" y="92" class="b">打开签到页</text>
-<text x="76" y="114" class="s">地址 /next/daily-checkin；没登录就用钥匙串里的密码自动登录（含 Cloudflare 验证）</text>
-
-<circle cx="48" cy="176" r="16" fill="#0969da"/><text x="48" y="181" class="n" text-anchor="middle">2</text>
-<text x="76" y="172" class="b">选心情：默认点「没心情」</text>
-<text x="76" y="194" class="s">不写「今日说说」，你的主页不会多出任何内容</text>
-
-<circle cx="48" cy="256" r="16" fill="#0969da"/><text x="48" y="261" class="n" text-anchor="middle">3</text>
-<text x="76" y="252" class="b">点「提交签到」</text>
-<text x="76" y="274" class="s">只点一次；按钮没就绪就报 button_not_ready，留给下一次计划</text>
-
-<circle cx="48" cy="336" r="16" fill="#0969da"/><text x="48" y="341" class="n" text-anchor="middle">4</text>
-<text x="76" y="332" class="b">等站点真实回应</text>
-<text x="76" y="354" class="s">等 reward.checkin 接口返回，最多 45 秒；快超时时自动尝试过一次人机验证</text>
-
-<circle cx="48" cy="416" r="16" fill="#1a7f37"/><text x="48" y="421" class="n" text-anchor="middle">5</text>
-<text x="76" y="412" class="b">核对到账</text>
-<text x="76" y="434" class="s">打开积分流水，找到当天「签到奖励 +1」才算 reward_verified</text>
-
-<path d="M400,176 L578,176" class="ar" stroke-dasharray="5,4"/>
-<rect x="580" y="66" width="356" height="404" rx="10" fill="#fbefff" stroke="#c297ff"/>
-<text x="596" y="94" class="b">可选：随机心情（默认关闭）</text>
-<text x="596" y="118" class="s">在 account.json 加 "checkin_mood_random": true 才开启</text>
-<text x="596" y="152" class="t">· 10 种心情按权重抽：开心 17、疲惫 15、</text>
-<text x="596" y="174" class="t">  无聊 14 … 难过 5、衰 3、生气 1</text>
-<text x="596" y="200" class="t">· 日常心情多、强烈情绪少，像真人的分布</text>
-<text x="596" y="226" class="t">· 昨天的心情有 25% 概率延续到今天</text>
-<text x="596" y="252" class="t">· 从 mood-phrases.json（321 句中性短句）里</text>
-<text x="596" y="274" class="t">  该心情的分组抽一句，30 天内不重复</text>
-<text x="596" y="300" class="t">· 填进「今日说说」，再走上面的第 3 步</text>
-<rect x="596" y="326" width="324" height="120" rx="8" fill="#ffebe9" stroke="#ff8182"/>
-<text x="610" y="352" class="b">注意</text>
-<text x="610" y="376" class="t">开启后，每天会以你的名义在主页发一句话。</text>
-<text x="610" y="398" class="t">这是你的选择，工具不替你决定。</text>
-<text x="610" y="420" class="t">奖励核验的规则不变。</text>
-
-<rect x="24" y="486" width="912" height="56" rx="8" fill="#f6f8fa"/>
-<text x="40" y="508" class="s">结果里签到项的状态：reward_verified（到账）· already_done（早就签过了）</text>
-<text x="40" y="528" class="s">· reward_unconfirmed（点了但没查到奖励）· submission_unconfirmed（提交了但没收到回执）</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="262" class="bg"/>
+<rect x="24.0" y="24.0" width="168.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="53.0" cy="53.0" r="13" class="f-blue"/>
+<text x="53" y="58" class="w" text-anchor="middle" style="font-size:13px">1</text>
+<g transform="translate(150.0,42.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></g>
+<text x="40" y="94" class="h">打开签到页</text>
+<text x="40" y="118" class="s">没登录的话，先自动登</text>
+<text x="40" y="137" class="s">录</text>
+<path d="M194.0,94.0 L208.0,94.0" class="ar"/>
+<rect x="210.0" y="24.0" width="168.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="239.0" cy="53.0" r="13" class="f-blue"/>
+<text x="239" y="58" class="w" text-anchor="middle" style="font-size:13px">2</text>
+<g transform="translate(336.0,42.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M8 15h8"/><path d="M9 9h.01"/><path d="M15 9h.01"/></g>
+<text x="226" y="94" class="h">选「没心情」</text>
+<text x="226" y="118" class="s">不写说说，主页不会多</text>
+<text x="226" y="137" class="s">出任何内容</text>
+<path d="M380.0,94.0 L394.0,94.0" class="ar"/>
+<rect x="396.0" y="24.0" width="168.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="425.0" cy="53.0" r="13" class="f-blue"/>
+<text x="425" y="58" class="w" text-anchor="middle" style="font-size:13px">3</text>
+<g transform="translate(522.0,42.0) scale(1.000)" class="ic ic-blue"><path d="M4.04 4.69a.5.5 0 0 1 .65-.65l16 6.5a.5.5 0 0 1-.06.95l-6.13 1.58a2 2 0 0 0-1.43 1.43l-1.58 6.13a.5.5 0 0 1-.95.06z"/></g>
+<text x="412" y="94" class="h">点「提交签到」</text>
+<text x="412" y="118" class="s">只点一次，按钮没就绪</text>
+<text x="412" y="137" class="s">就等下一轮</text>
+<path d="M566.0,94.0 L580.0,94.0" class="ar"/>
+<rect x="582.0" y="24.0" width="168.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="611.0" cy="53.0" r="13" class="f-blue"/>
+<text x="611" y="58" class="w" text-anchor="middle" style="font-size:13px">4</text>
+<g transform="translate(708.0,42.0) scale(1.000)" class="ic ic-blue"><path d="M5 22h14"/><path d="M5 2h14"/><path d="M17 22v-4.2a2 2 0 0 0-.6-1.4L12 12l-4.4 4.4A2 2 0 0 0 7 17.8V22"/><path d="M7 2v4.2a2 2 0 0 0 .6 1.4L12 12l4.4-4.4A2 2 0 0 0 17 6.2V2"/></g>
+<text x="598" y="94" class="h">等网站回应</text>
+<text x="598" y="118" class="s">最多等 45 秒，等到真</text>
+<text x="598" y="137" class="s">实回应才算</text>
+<path d="M752.0,94.0 L766.0,94.0" class="ar"/>
+<rect x="768.0" y="24.0" width="168.0" height="140.0" rx="12" class="c-gray"/>
+<circle cx="797.0" cy="53.0" r="13" class="f-blue"/>
+<text x="797" y="58" class="w" text-anchor="middle" style="font-size:13px">5</text>
+<g transform="translate(894.0,42.0) scale(1.000)" class="ic ic-blue"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></g>
+<text x="784" y="94" class="h">确认大米到账</text>
+<text x="784" y="118" class="s">积分页里有「签到奖励</text>
+<text x="784" y="137" class="s">+1」才算成功</text>
+<rect x="24.0" y="186.0" width="912.0" height="43.0" rx="10" class="c-amber"/>
+<g transform="translate(38.0,194.5) scale(0.833)" class="ic ic-amber"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/></g>
+<text x="68" y="210" class="s">可选：随机心情（默认关闭）。打开后，工具每天会以你的名义在主页发一句话。这是你的选择，工具不替你决定。</text>
 </svg>

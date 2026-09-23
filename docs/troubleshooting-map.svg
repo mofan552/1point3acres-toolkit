@@ -1,68 +1,94 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" role="img" aria-label="看到一个错误码，先分清是哪一类">
 <style>
-text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
-.h{font-size:19px;font-weight:700}.b{font-size:14px;font-weight:600}.s{font-size:12px;fill:#57606a}
-.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px}
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
+.h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
+.s{font-size:13px;fill:#57606a}.xs{font-size:12px;fill:#6f7781}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,'PingFang SC','Microsoft YaHei',monospace;font-size:12px;fill:#57606a}
+.w{fill:#ffffff;font-weight:600}
+.bg{fill:#ffffff}
+.line{stroke:#8c959f;stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.line.soft{stroke:#c9d1d9}
+.ar{stroke:#8c959f;stroke-width:1.6;fill:none;marker-end:url(#ah);stroke-linecap:round;stroke-linejoin:round}
+.ar.blue{stroke:#2f5fdb;marker-end:url(#ah-blue)}.ar.green{stroke:#1a7f37;marker-end:url(#ah-green)}
+.ar.red{stroke:#cf222e;marker-end:url(#ah-red)}.ar.amber{stroke:#9a6700;marker-end:url(#ah-amber)}
+.ar.dash{stroke-dasharray:5 4}
+.ic{fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.c-gray{fill:#f6f8fa;stroke:#d8dee4;stroke-width:1}.f-gray{fill:#57606a}.k-gray{stroke:#57606a}.t-gray{fill:#57606a}.ic-gray{stroke:#57606a}.sf-gray{fill:#f6f8fa}.ss-gray{stroke:#d8dee4}
+.c-blue{fill:#eef4ff;stroke:#c7d7fe;stroke-width:1}.f-blue{fill:#2f5fdb}.k-blue{stroke:#2f5fdb}.t-blue{fill:#2f5fdb}.ic-blue{stroke:#2f5fdb}.sf-blue{fill:#eef4ff}.ss-blue{stroke:#c7d7fe}
+.c-green{fill:#ecfdf3;stroke:#b7e4c7;stroke-width:1}.f-green{fill:#1a7f37}.k-green{stroke:#1a7f37}.t-green{fill:#1a7f37}.ic-green{stroke:#1a7f37}.sf-green{fill:#ecfdf3}.ss-green{stroke:#b7e4c7}
+.c-amber{fill:#fff8e6;stroke:#f5d78a;stroke-width:1}.f-amber{fill:#9a6700}.k-amber{stroke:#9a6700}.t-amber{fill:#9a6700}.ic-amber{stroke:#9a6700}.sf-amber{fill:#fff8e6}.ss-amber{stroke:#f5d78a}
+.c-red{fill:#fff1f0;stroke:#f7b9b4;stroke-width:1}.f-red{fill:#cf222e}.k-red{stroke:#cf222e}.t-red{fill:#cf222e}.ic-red{stroke:#cf222e}.sf-red{fill:#fff1f0}.ss-red{stroke:#f7b9b4}
+.c-purple{fill:#f6f1ff;stroke:#d6c7f5;stroke-width:1}.f-purple{fill:#6e40c9}.k-purple{stroke:#6e40c9}.t-purple{fill:#6e40c9}.ic-purple{stroke:#6e40c9}.sf-purple{fill:#f6f1ff}.ss-purple{stroke:#d6c7f5}
+@media (prefers-color-scheme: dark){
+text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#ffffff}
+.bg{fill:#0d1117}
+.line{stroke:#6e7681}.line.soft{stroke:#30363d}
+.ar{stroke:#6e7681}
+.ar.blue{stroke:#79a6ff}.ar.green{stroke:#4ad07a}.ar.red{stroke:#ff7b72}.ar.amber{stroke:#e3b341}
+.c-gray{fill:#161b22;stroke:#30363d}.f-gray{fill:#8b949e}.k-gray{stroke:#8b949e}.t-gray{fill:#8b949e}.ic-gray{stroke:#8b949e}.sf-gray{fill:#161b22}.ss-gray{stroke:#30363d}
+.c-blue{fill:#12203a;stroke:#2b4a86}.f-blue{fill:#79a6ff}.k-blue{stroke:#79a6ff}.t-blue{fill:#79a6ff}.ic-blue{stroke:#79a6ff}.sf-blue{fill:#12203a}.ss-blue{stroke:#2b4a86}
+.c-green{fill:#0f2a1a;stroke:#1f5a33}.f-green{fill:#4ad07a}.k-green{stroke:#4ad07a}.t-green{fill:#4ad07a}.ic-green{stroke:#4ad07a}.sf-green{fill:#0f2a1a}.ss-green{stroke:#1f5a33}
+.c-amber{fill:#2e2410;stroke:#6b4f12}.f-amber{fill:#e3b341}.k-amber{stroke:#e3b341}.t-amber{fill:#e3b341}.ic-amber{stroke:#e3b341}.sf-amber{fill:#2e2410}.ss-amber{stroke:#6b4f12}
+.c-red{fill:#301416;stroke:#7a2a2e}.f-red{fill:#ff7b72}.k-red{stroke:#ff7b72}.t-red{fill:#ff7b72}.ic-red{stroke:#ff7b72}.sf-red{fill:#301416}.ss-red{stroke:#7a2a2e}
+.c-purple{fill:#231a36;stroke:#4a3480}.f-purple{fill:#b083f0}.k-purple{stroke:#b083f0}.t-purple{fill:#b083f0}.ic-purple{stroke:#b083f0}.sf-purple{fill:#231a36}.ss-purple{stroke:#4a3480}
+}
 </style>
-<rect x="0.5" y="0.5" width="959" height="469" rx="12" fill="#fff" stroke="#d0d7de"/>
-<text x="24" y="36" class="h">看到一个错误码，先分清它是哪一类</text>
-
-<rect x="24" y="60" width="216" height="316" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
-<text x="38" y="86" class="b">不是故障</text>
-<text x="38" y="106" class="s">什么都不用做</text>
-<text x="38" y="136" class="m">not_due</text>
-<text x="38" y="154" class="s">还没到你设的计划时间</text>
-<text x="38" y="182" class="m">already_complete</text>
-<text x="38" y="200" class="s">今天早就确认完成了</text>
-<text x="38" y="228" class="m">already_done</text>
-<text x="38" y="246" class="s">这一项早就做过了</text>
-
-<rect x="256" y="60" width="216" height="316" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
-<text x="270" y="86" class="b">要你动手一次</text>
-<text x="270" y="106" class="s">改好就恢复</text>
-<text x="270" y="136" class="m">answer_needed</text>
-<text x="270" y="154" class="s">题库没题，补一次答案</text>
-<text x="270" y="182" class="m">account_not_configured</text>
-<text x="270" y="200" class="s">写 account.json</text>
-<text x="270" y="228" class="m">login_required_credentials_</text>
-<text x="270" y="243" class="m">not_configured</text>
-<text x="270" y="261" class="s">还没存密码</text>
-<text x="270" y="289" class="m">login_rejected</text>
-<text x="270" y="307" class="s">核对账号密码，别连续重试</text>
-<text x="270" y="335" class="m">unexpected_account</text>
-<text x="270" y="353" class="s">浏览器里登的是别的账号</text>
-
-<rect x="488" y="60" width="216" height="316" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
-<text x="502" y="86" class="b">等下一次计划</text>
-<text x="502" y="106" class="s">通常自动恢复</text>
-<text x="502" y="136" class="m">button_not_ready</text>
-<text x="502" y="154" class="s">页面没就绪，没点按钮</text>
-<text x="502" y="182" class="m">page_challenge_not_resolved</text>
-<text x="502" y="200" class="s">人机验证没过</text>
-<text x="502" y="228" class="m">network_timeout</text>
-<text x="502" y="246" class="s">网络抖了，已自动重读</text>
-<text x="502" y="274" class="m">browser_connection_lost</text>
-<text x="502" y="292" class="s">多为电脑睡眠，已重开一次</text>
-<text x="502" y="320" class="m">daily_run_timeout</text>
-<text x="502" y="338" class="s">超 15 分钟被看门狗结束</text>
-<text x="502" y="364" class="s">连续几天都这样才需要看</text>
-
-<rect x="720" y="60" width="216" height="316" rx="10" fill="#ffebe9" stroke="#ff8182"/>
-<text x="734" y="86" class="b">环境问题</text>
-<text x="734" y="106" class="s">检查电脑上的东西</text>
-<text x="734" y="136" class="m">another_task_is_using_</text>
-<text x="734" y="151" class="m">the_browser</text>
-<text x="734" y="169" class="s">别开两个；等上一个结束</text>
-<text x="734" y="197" class="m">chrome_profile_busy_</text>
-<text x="734" y="212" class="m">or_start_failed</text>
-<text x="734" y="230" class="s">Chrome 装了吗？路径对吗？</text>
-<text x="734" y="258" class="m">consistency_check_failed</text>
-<text x="734" y="276" class="s">跑 检查.sh，按提示修；</text>
-<text x="734" y="294" class="s">生成文件过期就加 --sync</text>
-<text x="734" y="322" class="m">daily_history_unavailable</text>
-<text x="734" y="340" class="s">本机数据库打不开</text>
-
-<rect x="24" y="394" width="912" height="60" rx="8" fill="#f6f8fa"/>
-<text x="40" y="418" class="s">提 Issue 时给：系统 / Python / Chrome 版本、commit 短哈希、用到的命令、脱敏后的 status / error。</text>
-<text x="40" y="440" class="s">不要贴账号配置、latest-daily.json 全文或任何完整 JSON。</text>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="960" height="470" class="bg"/>
+<rect x="24.0" y="24.0" width="213.0" height="350.0" rx="12" class="c-green"/>
+<g transform="translate(40.0,40.0) scale(0.917)" class="ic ic-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
+<text x="72" y="57" class="h">不是故障</text>
+<text x="40" y="80" class="xs">什么都不用做</text>
+<text x="40" y="108" class="mono" style="font-size:11.5px">not_due</text>
+<text x="40" y="126" class="xs">还没到你设的时间</text>
+<text x="40" y="153" class="mono" style="font-size:11.5px">already_complete</text>
+<text x="40" y="171" class="xs">今天已经确认完成</text>
+<text x="40" y="198" class="mono" style="font-size:11.5px">already_done</text>
+<text x="40" y="216" class="xs">这一项早就做过了</text>
+<rect x="255.0" y="24.0" width="213.0" height="350.0" rx="12" class="c-amber"/>
+<g transform="translate(271.0,40.0) scale(0.917)" class="ic ic-amber"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></g>
+<text x="303" y="57" class="h">要你动手一次</text>
+<text x="271" y="80" class="xs">改好就恢复</text>
+<text x="271" y="108" class="mono" style="font-size:11.5px">answer_needed</text>
+<text x="271" y="126" class="xs">题库没题，补一次答案</text>
+<text x="271" y="153" class="mono" style="font-size:11.5px">account_not_configured</text>
+<text x="271" y="171" class="xs">还没写账号文件</text>
+<text x="271" y="198" class="mono" style="font-size:11.5px">login_required_</text>
+<text x="271" y="213" class="mono" style="font-size:11.5px">credentials_not_configured</text>
+<text x="271" y="231" class="xs">还没存密码</text>
+<text x="271" y="258" class="mono" style="font-size:11.5px">login_rejected</text>
+<text x="271" y="276" class="xs">密码不对，别连续重试</text>
+<text x="271" y="303" class="mono" style="font-size:11.5px">unexpected_account</text>
+<text x="271" y="321" class="xs">登的不是你的账号</text>
+<rect x="486.0" y="24.0" width="213.0" height="350.0" rx="12" class="c-blue"/>
+<g transform="translate(502.0,40.0) scale(0.917)" class="ic ic-blue"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></g>
+<text x="534" y="57" class="h">等下一轮</text>
+<text x="502" y="80" class="xs">通常自动恢复</text>
+<text x="502" y="108" class="mono" style="font-size:11.5px">button_not_ready</text>
+<text x="502" y="126" class="xs">页面没就绪</text>
+<text x="502" y="153" class="mono" style="font-size:11.5px">page_challenge_not_resolved</text>
+<text x="502" y="171" class="xs">人机验证没过</text>
+<text x="502" y="198" class="mono" style="font-size:11.5px">network_timeout</text>
+<text x="502" y="216" class="xs">网络抖了一下</text>
+<text x="502" y="243" class="mono" style="font-size:11.5px">browser_connection_lost</text>
+<text x="502" y="261" class="xs">多半是电脑睡着了</text>
+<text x="502" y="288" class="mono" style="font-size:11.5px">daily_run_timeout</text>
+<text x="502" y="306" class="xs">超过 15 分钟被结束</text>
+<rect x="717.0" y="24.0" width="213.0" height="350.0" rx="12" class="c-gray"/>
+<g transform="translate(733.0,40.0) scale(0.917)" class="ic ic-blue"><path d="M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16"/></g>
+<text x="765" y="57" class="h">环境问题</text>
+<text x="733" y="80" class="xs">检查电脑上的东西</text>
+<text x="733" y="108" class="mono" style="font-size:11.5px">another_task_is_</text>
+<text x="733" y="123" class="mono" style="font-size:11.5px">using_the_browser</text>
+<text x="733" y="141" class="xs">别开两个，等上一个结束</text>
+<text x="733" y="168" class="mono" style="font-size:11.5px">chrome_profile_busy_</text>
+<text x="733" y="183" class="mono" style="font-size:11.5px">or_start_failed</text>
+<text x="733" y="201" class="xs">Chrome 装了吗，路径对吗</text>
+<text x="733" y="228" class="mono" style="font-size:11.5px">consistency_check_failed</text>
+<text x="733" y="246" class="xs">跑检查命令，按提示修</text>
+<text x="733" y="273" class="mono" style="font-size:11.5px">daily_history_unavailable</text>
+<text x="733" y="291" class="xs">本机数据库打不开</text>
+<rect x="24.0" y="396.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
+<g transform="translate(38.0,404.5) scale(0.833)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></g>
+<text x="68" y="420" class="s">提问题时给出系统、Python、Chrome 版本和用到的命令；不要贴账号配置或完整的结果文件。</text>
 </svg>
