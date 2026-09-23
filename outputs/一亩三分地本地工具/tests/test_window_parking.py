@@ -134,7 +134,9 @@ class LaunchTests(unittest.TestCase):
         return self.launch.call_args.args[0]
 
     def test_macos_launch_skips_off_screen_coordinates_and_parks(self):
-        with patch('browser.MACOS', True), patch('browser.WINDOWS', False), patch('browser._hidden_window', return_value={}):
+        # The platform flag is faked, so the lock must be too: the real one imports fcntl or msvcrt by platform.
+        with patch('browser.MACOS', True), patch('browser.WINDOWS', False), patch('browser._hidden_window', return_value={}), \
+                patch('browser._lock'):
             with browser.Browser(recover_login=False) as session:
                 self.assertEqual(session.front_app, 'com.example.editor')
         self.assertNotIn('--window-position=-20000,-20000', self.arguments())
