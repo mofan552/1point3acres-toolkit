@@ -70,6 +70,24 @@ class SecureTests(unittest.TestCase):
                 with self.subTest(username=username), self.assertRaises(ValueError):
                     secure.save_credentials(username, password)
 
+    if sys.platform == 'darwin':
+        def test_real_keychain_round_trip(self):
+            import subprocess
+            import uuid
+            service = 'local-test-' + uuid.uuid4().hex
+            value = 'local-test-value-not-a-user-password'
+            with patch.object(secure, 'PLATFORM', 'darwin'), patch.object(secure, 'USERNAME', 'test_member'), \
+                    patch.object(secure, 'CREDENTIAL_SERVICE', service):
+                try:
+                    self.assertEqual(secure.save_credentials('test_member', value), 'macos_keychain')
+                    self.assertEqual(secure.load_credentials(), {'username': 'test_member', 'password': value})
+                finally:
+                    removed = subprocess.run([secure.SECURITY, 'delete-generic-password', '-a', 'test_member', '-s', service],
+                                             capture_output=True)
+                self.assertEqual(removed.returncode, 0)
+                with self.assertRaisesRegex(RuntimeError, '^login_required_credentials_not_configured$'):
+                    secure.load_credentials()
+
     if sys.platform == 'win32':
         def test_real_dpapi_round_trip(self):
             raw = b'local-test-value-not-a-user-password'

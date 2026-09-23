@@ -13,5 +13,6 @@ runs:
       run: |
         python -m venv work/cf-probe-venv
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-        & ./work/cf-probe-venv/Scripts/python.exe -m pip install -r './outputs/一亩三分地本地工具/requirements.txt'
+        $python = if ($IsWindows) { './work/cf-probe-venv/Scripts/python.exe' } else { './work/cf-probe-venv/bin/python' }
+        & $python -m pip install -r './outputs/一亩三分地本地工具/requirements.txt'
         if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
