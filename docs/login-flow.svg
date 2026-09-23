@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-label="登录是怎么自动恢复的">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}.ok{font-size:13px;fill:#1a7f37;font-weight:600}.bad{font-size:13px;fill:#cf222e;font-weight:600}
+.box{stroke-width:1.3}.white{fill:#fff;stroke:#d0d7de}.green{fill:#dafbe1;stroke:#4ac26b}.gray{fill:#f6f8fa;stroke:#d0d7de}
+.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="479" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">登录是怎么自动恢复的（每次运行开头都走一遍）</text>
+
+<rect x="24" y="62" width="250" height="60" rx="8" class="box white"/>
+<text x="38" y="86" class="b">① 调身份接口 user.me</text>
+<text x="38" y="108" class="s">先问一句：还登录着吗？</text>
+<path d="M274,92 L310,92" class="ar"/>
+<rect x="310" y="62" width="180" height="60" rx="8" class="box gray"/>
+<text x="400" y="98" class="b" text-anchor="middle">还登录着？</text>
+<path d="M490,92 L526,92" class="ar"/>
+<text x="498" y="84" class="s">是</text>
+<rect x="526" y="62" width="410" height="60" rx="8" class="box green"/>
+<text x="540" y="86" class="b">② 核对身份</text>
+<text x="540" y="108" class="s">站点返回的用户名和 uid 必须等于 account.json 里写的</text>
+<text x="526" y="146" class="ok">一致 → 继续签到答题</text>
+<text x="526" y="168" class="bad">不一致 → unexpected_account，立刻停止，绝不用别人的账号操作</text>
+
+<path d="M400,122 L400,180 L169,180 L169,200" class="ar"/>
+<text x="408" y="150" class="s">否</text>
+
+<rect x="24" y="200" width="290" height="60" rx="8" class="box white"/>
+<text x="38" y="224" class="b">③ 打开登录页</text>
+<text x="38" y="246" class="s">站点自己的登录页 auth.1point3acres.com</text>
+<path d="M314,230 L350,230" class="ar"/>
+<rect x="350" y="200" width="290" height="60" rx="8" class="box white"/>
+<text x="364" y="224" class="b">④ 填用户名和密码</text>
+<text x="364" y="246" class="s">从钥匙串 / DPAPI 取出，只在内存里停几秒</text>
+<path d="M640,230 L676,230" class="ar"/>
+<rect x="676" y="200" width="260" height="60" rx="8" class="box white"/>
+<text x="690" y="224" class="b">⑤ 等人机验证通过</text>
+<text x="690" y="246" class="s">Cloudflare Turnstile，最多 40 秒</text>
+
+<path d="M806,260 L806,282 L169,282 L169,300" class="ar"/>
+<rect x="24" y="300" width="290" height="60" rx="8" class="box white"/>
+<text x="38" y="324" class="b">⑥ 点登录，等页面跳回论坛</text>
+<text x="38" y="346" class="s">最多 30 秒</text>
+<path d="M314,330 L350,330" class="ar"/>
+<text x="356" y="335" class="t">→ 回到 ①：再问一次 user.me，并做 ② 的身份核对</text>
+
+<rect x="24" y="382" width="912" height="84" rx="8" fill="#f6f8fa"/>
+<text x="40" y="406" class="s">会遇到的失败：密码不对 → login_rejected · 钥匙串里没密码 → login_required_credentials_not_configured</text>
+<text x="40" y="426" class="s">· 验证没过 → login_challenge_not_resolved · 页面没跳回 → login_submission_unconfirmed</text>
+<text x="40" y="452" class="s">微信扫码是另一条路：窗口会调到屏幕上显示站点官方二维码，适合首次登录或应急；日常自动恢复只用密码。</text>
+</svg>

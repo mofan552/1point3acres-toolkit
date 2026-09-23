@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="700" viewBox="0 0 960 700" role="img" aria-label="自动答题：读题、查题库、作答、核对到账、学习">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}.n{font-size:14px;font-weight:700;fill:#fff}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="699" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">自动答题：读题 → 查题库 → 作答 → 核对到账 → 学习</text>
+<line x1="48" y1="92" x2="48" y2="532" stroke="#d0d7de" stroke-width="2"/>
+
+<circle cx="48" cy="92" r="16" fill="#0969da"/><text x="48" y="97" class="n" text-anchor="middle">1</text>
+<text x="76" y="88" class="b">读题</text>
+<text x="76" y="110" class="s">调站点接口 dailyQuestion.get，拿到题目原文和全部选项（都是纯文本）</text>
+
+<circle cx="48" cy="168" r="16" fill="#0969da"/><text x="48" y="173" class="n" text-anchor="middle">2</text>
+<text x="76" y="164" class="b">查题库（两份合并）</text>
+<text x="76" y="186" class="s">answers.json（仓库自带 194 题）+ learned-answers.json（本机学到的，优先级更高）</text>
+<text x="76" y="206" class="s">先做 NFKC 归一化、压缩空白，再按「选项文字」精确匹配，不看 A/B/C/D 的位置</text>
+
+<polygon points="300,228 560,262 300,296 40,262" fill="#fff8c5" stroke="#d4a72c" stroke-width="1.3"/>
+<text x="300" y="258" class="t" text-anchor="middle">题库有这道题，且恰好命中一个选项，</text>
+<text x="300" y="278" class="t" text-anchor="middle">且这个答案没被本机标记为错误？</text>
+
+<path d="M560,262 L598,262" class="ar"/>
+<text x="566" y="254" class="s">否</text>
+<rect x="600" y="212" width="336" height="104" rx="8" fill="#ffebe9" stroke="#ff8182"/>
+<text x="614" y="238" class="b">answer_needed：停下，不瞎猜</text>
+<text x="614" y="260" class="s">你补答一次（按选项全文，不按 A/B/C）：</text>
+<text x="614" y="284" class="m">./运行.sh daily --question '完整原题' \</text>
+<text x="614" y="304" class="m">    --answer '正确选项的完整文字'</text>
+
+<path d="M300,296 L300,318 L48,318 L48,336" class="ar"/>
+<text x="306" y="312" class="s">是</text>
+
+<circle cx="48" cy="352" r="16" fill="#0969da"/><text x="48" y="357" class="n" text-anchor="middle">3</text>
+<text x="76" y="348" class="b">点选项按钮</text>
+<text x="76" y="370" class="s">页面上按钮的文字必须和选项文字完全一致，才点</text>
+
+<circle cx="48" cy="412" r="16" fill="#0969da"/><text x="48" y="417" class="n" text-anchor="middle">4</text>
+<text x="76" y="408" class="b">点「提交答案」</text>
+<text x="76" y="430" class="s">只点一次</text>
+
+<circle cx="48" cy="472" r="16" fill="#0969da"/><text x="48" y="477" class="n" text-anchor="middle">5</text>
+<text x="76" y="468" class="b">等站点真实回应</text>
+<text x="76" y="490" class="s">等 dailyQuestion.answer 接口返回，最多 45 秒</text>
+
+<circle cx="48" cy="532" r="16" fill="#1a7f37"/><text x="48" y="537" class="n" text-anchor="middle">6</text>
+<text x="76" y="528" class="b">核对到账</text>
+<text x="76" y="550" class="s">积分流水里当天有「每日答题 +1」→ reward_verified</text>
+
+<rect x="24" y="580" width="912" height="100" rx="10" fill="#fbefff" stroke="#c297ff"/>
+<text x="40" y="606" class="b">⑦ 学习：把结果记进本机 learned-answers.json（不入库、不上传）</text>
+<text x="40" y="630" class="t">· 到账了 → verified[题] = 这个答案。下次同题直接命中，而且优先于仓库题库</text>
+<text x="40" y="652" class="t">· 站点显示已答、但没到账 → rejected[题] 加上这个答案。下次拒绝再交同一个答案，不重复扣米</text>
+<text x="40" y="674" class="t">· 没等到站点响应 → 什么都不记。不确定的事不当证据</text>
+</svg>

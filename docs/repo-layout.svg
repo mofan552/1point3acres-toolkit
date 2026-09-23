@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-label="仓库长什么样">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14px;font-weight:600}.t{font-size:13px}.s{font-size:12px;fill:#57606a}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;font-weight:600}
+</style>
+<rect x="0.5" y="0.5" width="959" height="439" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">仓库长什么样</text>
+
+<rect x="24" y="60" width="912" height="36" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="40" y="84" class="m">1point3acres-toolkit/</text><text x="230" y="84" class="s">仓库根目录</text>
+
+<line x1="44" y1="96" x2="44" y2="404" stroke="#d0d7de" stroke-width="2"/>
+
+<line x1="44" y1="120" x2="64" y2="120" stroke="#d0d7de" stroke-width="2"/>
+<text x="72" y="125" class="m">README.md</text><text x="230" y="125" class="t">本文：原理讲解</text>
+<line x1="44" y1="150" x2="64" y2="150" stroke="#d0d7de" stroke-width="2"/>
+<text x="72" y="155" class="m">docs/</text><text x="230" y="155" class="t">本文的配图（SVG）</text>
+<line x1="44" y1="180" x2="64" y2="180" stroke="#d0d7de" stroke-width="2"/>
+<text x="72" y="185" class="m">.github/</text><text x="230" y="185" class="t">CI 流水线定义</text>
+
+<line x1="44" y1="222" x2="64" y2="222" stroke="#d0d7de" stroke-width="2"/>
+<rect x="72" y="200" width="864" height="130" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+<text x="86" y="224" class="m">outputs/一亩三分地本地工具/</text><text x="330" y="224" class="t">全部代码都在这一个目录里</text>
+<text x="86" y="250" class="s">· 15 个 Python 模块（cli、daily、browser、library、rules、settings、contracts……）</text>
+<text x="86" y="272" class="s">· answers.json 题库 · mood-phrases.json 心情短句 · architecture.json 依赖白名单 · requirements.txt 锁定版本</text>
+<text x="86" y="294" class="s">· tests/ 35 个测试文件 · reader.html/css/js + tokens.css 离线阅读器</text>
+<text x="86" y="316" class="s">· 运行.sh / 运行.cmd 业务入口 · 检查.sh / 检查.cmd 检查入口 · README.md 使用说明（操作手册）</text>
+
+<line x1="44" y1="368" x2="64" y2="368" stroke="#d0d7de" stroke-width="2"/>
+<rect x="72" y="346" width="864" height="76" rx="8" fill="#ffebe9" stroke="#ff8182"/>
+<text x="86" y="370" class="m">work/</text><text x="330" y="370" class="t">不入库，每台电脑自己的</text>
+<text x="86" y="396" class="s">· cf-probe-venv/ 虚拟环境 · local-toolkit-state/（account.json、数据库、learned-answers.json、latest-daily.json、Windows 密文）</text>
+<text x="86" y="414" class="s">· account-browser/chrome-profile/ 专用 Chrome 配置 · 你自己放的计划日志和包装脚本</text>
+</svg>

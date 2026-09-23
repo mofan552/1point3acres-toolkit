@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="460" viewBox="0 0 960 460" role="img" aria-label="一个坏日子的接力：谁在什么时候补救">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:13.5px;font-weight:600}.s{font-size:12.5px;fill:#57606a}.p{font-size:12.5px}
+.ar{stroke:#57606a;stroke-width:1.4;fill:none;marker-end:url(#ar)}
+.white{fill:#fff;stroke:#d0d7de}.green{fill:#dafbe1;stroke:#4ac26b}.red{fill:#ffebe9;stroke:#ff8182}.purple{fill:#fbefff;stroke:#c297ff}.gray{fill:#f6f8fa;stroke:#d0d7de}.orange{fill:#fff1e5;stroke:#fb8f44}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="459" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">一个坏日子的接力（示例）：谁在什么时候补救</text>
+
+<rect x="24" y="62" width="912" height="96" rx="10" fill="#fbefff" stroke="#c297ff"/>
+<text x="38" y="86" class="b">第 4 层 · 同一次触发内重跑</text>
+<text x="38" y="106" class="s">几分钟内</text>
+<rect x="170" y="112" width="92" height="28" rx="14" class="white"/><text x="216" y="131" class="p" text-anchor="middle">16:10 触发</text>
+<path d="M262,126 L280,126" class="ar"/>
+<rect x="282" y="112" width="70" height="28" rx="14" class="green"/><text x="317" y="131" class="p" text-anchor="middle">签到 ✓</text>
+<path d="M352,126 L370,126" class="ar"/>
+<rect x="372" y="112" width="140" height="28" rx="14" class="red"/><text x="442" y="131" class="p" text-anchor="middle">答题：网络超时 ✗</text>
+<path d="M512,126 L530,126" class="ar"/>
+<rect x="532" y="112" width="140" height="28" rx="14" class="purple"/><text x="602" y="131" class="p" text-anchor="middle">换新 Chrome 重跑</text>
+<path d="M672,126 L690,126" class="ar"/>
+<rect x="692" y="112" width="120" height="28" rx="14" class="green"/><text x="752" y="131" class="p" text-anchor="middle">答题 ✓ 到账 ✓</text>
+<path d="M812,126 L830,126" class="ar"/>
+<rect x="832" y="112" width="92" height="28" rx="14" class="green"/><text x="878" y="131" class="p" text-anchor="middle">complete</text>
+
+<rect x="24" y="176" width="912" height="96" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
+<text x="38" y="200" class="b">第 5 层 · 下一次计划触发</text>
+<text x="38" y="220" class="s">十分钟后</text>
+<rect x="170" y="226" width="160" height="28" rx="14" class="red"/><text x="250" y="245" class="p" text-anchor="middle">重跑也失败 → failed</text>
+<path d="M330,240 L348,240" class="ar"/>
+<rect x="350" y="226" width="140" height="28" rx="14" class="white"/><text x="420" y="245" class="p" text-anchor="middle">16:20 计划再触发</text>
+<path d="M490,240 L508,240" class="ar"/>
+<rect x="510" y="226" width="164" height="28" rx="14" class="gray"/><text x="592" y="245" class="p" text-anchor="middle">读历史：签到已确认</text>
+<path d="M674,240 L692,240" class="ar"/>
+<rect x="694" y="226" width="118" height="28" rx="14" class="green"/><text x="753" y="245" class="p" text-anchor="middle">只补答题 ✓</text>
+<path d="M812,240 L830,240" class="ar"/>
+<rect x="832" y="226" width="92" height="28" rx="14" class="green"/><text x="878" y="245" class="p" text-anchor="middle">complete</text>
+
+<rect x="24" y="290" width="912" height="96" rx="10" fill="#ffebe9" stroke="#ff8182"/>
+<text x="38" y="314" class="b">第 6 层 · 第二天的观察者</text>
+<text x="38" y="334" class="s">跨天</text>
+<rect x="170" y="340" width="110" height="28" rx="14" class="red"/><text x="225" y="359" class="p" text-anchor="middle">整天都失败</text>
+<path d="M280,354 L298,354" class="ar"/>
+<rect x="300" y="340" width="110" height="28" rx="14" class="gray"/><text x="355" y="359" class="p" text-anchor="middle">站点日结束</text>
+<path d="M410,354 L428,354" class="ar"/>
+<rect x="430" y="340" width="224" height="28" rx="14" class="orange"/><text x="542" y="359" class="p" text-anchor="middle">观察者：连续未完成 → alert</text>
+<path d="M654,354 L672,354" class="ar"/>
+<rect x="674" y="340" width="92" height="28" rx="14" class="white"/><text x="720" y="359" class="p" text-anchor="middle">退出码 3</text>
+<path d="M766,354 L784,354" class="ar"/>
+<rect x="786" y="340" width="138" height="28" rx="14" class="red"/><text x="855" y="359" class="p" text-anchor="middle">桌面通知你</text>
+
+<rect x="24" y="404" width="912" height="40" rx="8" fill="#f6f8fa"/>
+<text x="40" y="429" class="s">每一层都不重复已确认的动作：签到到账了，后面的重跑只做答题；站点已经回应过的提交也绝不重交。</text>
+</svg>

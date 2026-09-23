@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="520" viewBox="0 0 960 520" role="img" aria-label="积分流水：每天固定两条 +1，签到奖励和每日答题">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:18px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:14px}.s{font-size:12.5px;fill:#57606a}
+.cell{font-size:17px;fill:#3c4043}.plus{font-size:17px;fill:#1a7f37;font-weight:600}.when{font-size:17px;fill:#5f6368}
+</style>
+<rect x="0.5" y="0.5" width="959" height="519" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">积分流水：每天固定两条「+1」（按站点「我的积分」页面重绘）</text>
+<rect x="24" y="58" width="600" height="440" rx="8" fill="#ffffff" stroke="#e5e7eb"/>
+<g>
+  <text x="44" y="92" class="cell">大米</text><text x="86" y="92" class="plus">+1</text><text x="330" y="92" class="cell" text-anchor="middle">每日答题</text><text x="600" y="92" class="when" text-anchor="end">2 天前</text>
+  <line x1="24" y1="113" x2="624" y2="113" stroke="#eef0f2"/>
+  <text x="44" y="147" class="cell">大米</text><text x="86" y="147" class="plus">+1</text><text x="330" y="147" class="cell" text-anchor="middle">签到奖励</text><text x="600" y="147" class="when" text-anchor="end">2 天前</text>
+  <line x1="24" y1="168" x2="624" y2="168" stroke="#eef0f2"/>
+  <text x="44" y="202" class="cell">大米</text><text x="86" y="202" class="plus">+1</text><text x="330" y="202" class="cell" text-anchor="middle">每日答题</text><text x="600" y="202" class="when" text-anchor="end">3 天前</text>
+  <line x1="24" y1="223" x2="624" y2="223" stroke="#eef0f2"/>
+  <text x="44" y="257" class="cell">大米</text><text x="86" y="257" class="plus">+1</text><text x="330" y="257" class="cell" text-anchor="middle">签到奖励</text><text x="600" y="257" class="when" text-anchor="end">3 天前</text>
+  <line x1="24" y1="278" x2="624" y2="278" stroke="#eef0f2"/>
+  <text x="44" y="312" class="cell">大米</text><text x="86" y="312" class="plus">+1</text><text x="330" y="312" class="cell" text-anchor="middle">每日答题</text><text x="600" y="312" class="when" text-anchor="end">4 天前</text>
+  <line x1="24" y1="333" x2="624" y2="333" stroke="#eef0f2"/>
+  <text x="44" y="367" class="cell">大米</text><text x="86" y="367" class="plus">+1</text><text x="330" y="367" class="cell" text-anchor="middle">签到奖励</text><text x="600" y="367" class="when" text-anchor="end">4 天前</text>
+  <line x1="24" y1="388" x2="624" y2="388" stroke="#eef0f2"/>
+  <text x="44" y="422" class="cell">大米</text><text x="86" y="422" class="plus">+1</text><text x="330" y="422" class="cell" text-anchor="middle">每日答题</text><text x="600" y="422" class="when" text-anchor="end">5 天前</text>
+  <line x1="24" y1="443" x2="624" y2="443" stroke="#eef0f2"/>
+  <text x="44" y="477" class="cell">大米</text><text x="86" y="477" class="plus">+1</text><text x="330" y="477" class="cell" text-anchor="middle">签到奖励</text><text x="600" y="477" class="when" text-anchor="end">5 天前</text>
+</g>
+<path d="M636,62 h8 v102 h-8" fill="none" stroke="#1a7f37" stroke-width="2"/>
+<rect x="654" y="66" width="282" height="96" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+<text x="668" y="92" class="b">一天 = 两条记录</text>
+<text x="668" y="116" class="t">签到奖励 → 大米 +1</text>
+<text x="668" y="138" class="t">每日答题 → 大米 +1</text>
+<rect x="654" y="186" width="282" height="176" rx="8" fill="#fff1e5" stroke="#fb8f44"/>
+<text x="668" y="212" class="b">工具怎么用这一页判断成功？</text>
+<text x="668" y="238" class="t">· 记录属于你的 uid</text>
+<text x="668" y="262" class="t">· 大米变动 &gt; 0</text>
+<text x="668" y="286" class="t">· 标题正好是「签到奖励」或「每日答题」</text>
+<text x="668" y="310" class="t">· 日期是站点的「今天」（洛杉矶时间）</text>
+<text x="668" y="342" class="b">四条都满足，才算 reward_verified</text>
+<rect x="654" y="386" width="282" height="112" rx="8" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="668" y="412" class="b">连续签到不断档</text>
+<text x="668" y="438" class="s">每天都有这两条，连续签到就不会断。</text>
+<text x="668" y="460" class="s">缺了哪一天，daily-history 命令会把</text>
+<text x="668" y="482" class="s">那天列在 incomplete_days 里。</text>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600" role="img" aria-label="总览：一次自动运行经过的九步">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:14px}.s{font-size:12.5px;fill:#57606a}
+.box{stroke-width:1.3}.white{fill:#fff;stroke:#d0d7de}.blue{fill:#ddf4ff;stroke:#54aeff}.green{fill:#dafbe1;stroke:#4ac26b}.orange{fill:#fff1e5;stroke:#fb8f44}.purple{fill:#fbefff;stroke:#c297ff}.gray{fill:#f6f8fa;stroke:#d0d7de}
+.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="599" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">总览：一次自动运行经过的九步</text>
+
+<rect x="24" y="62" width="270" height="66" rx="8" class="box gray"/>
+<text x="38" y="88" class="b">① 系统计划每 10 分钟触发</text>
+<text x="38" y="110" class="s">macOS launchd · Windows 任务计划程序</text>
+<path d="M294,95 L330,95" class="ar"/>
+<rect x="330" y="62" width="250" height="66" rx="8" class="box white"/>
+<text x="344" y="88" class="b">② 运行.sh daily --resume</text>
+<text x="344" y="110" class="s">本质是一条 Python 命令（cli.py）</text>
+<path d="M580,95 L616,95" class="ar"/>
+<rect x="616" y="62" width="320" height="66" rx="8" class="box white"/>
+<text x="630" y="88" class="b">③ 先离线判断，不开浏览器</text>
+<text x="630" y="110" class="s">到点了吗？今天是不是已经完成了？</text>
+
+<path d="M800,128 L800,170" class="ar"/>
+<text x="808" y="154" class="s">否</text>
+<rect x="660" y="170" width="276" height="58" rx="8" class="box gray"/>
+<text x="674" y="194" class="b">否：安静退出，什么都不做</text>
+<text x="674" y="214" class="s">not_due / already_complete，10 分钟后再看</text>
+
+<path d="M630,128 L630,236 L169,236 L169,262" class="ar"/>
+<text x="638" y="160" class="s">是</text>
+
+<rect x="24" y="262" width="290" height="66" rx="8" class="box blue"/>
+<text x="38" y="288" class="b">④ 启动一个专用 Chrome</text>
+<text x="38" y="310" class="s">用你自己的登录会话；窗口最小化 / 隐藏</text>
+<path d="M314,295 L350,295" class="ar"/>
+<rect x="350" y="262" width="270" height="66" rx="8" class="box green"/>
+<text x="364" y="288" class="b">⑤ 自动签到</text>
+<text x="364" y="310" class="s">点「没心情」→ 点「提交签到」</text>
+<path d="M620,295 L656,295" class="ar"/>
+<rect x="656" y="262" width="280" height="66" rx="8" class="box green"/>
+<text x="670" y="288" class="b">⑥ 自动答题</text>
+<text x="670" y="310" class="s">题库匹配 → 点选项 → 点「提交答案」</text>
+
+<path d="M796,328 L796,372 L189,372 L189,398" class="ar"/>
+
+<rect x="24" y="398" width="330" height="66" rx="8" class="box orange"/>
+<text x="38" y="424" class="b">⑦ 核对大米真的到账</text>
+<text x="38" y="446" class="s">读积分流水：当天「签到奖励 +1」「每日答题 +1」</text>
+<path d="M354,431 L390,431" class="ar"/>
+<rect x="390" y="398" width="270" height="66" rx="8" class="box purple"/>
+<text x="404" y="424" class="b">⑧ 记录在本机</text>
+<text x="404" y="446" class="s">SQLite 历史 + latest-daily.json</text>
+<path d="M660,431 L696,431" class="ar"/>
+<rect x="696" y="398" width="240" height="66" rx="8" class="box gray"/>
+<text x="710" y="424" class="b">⑨ 报告结果</text>
+<text x="710" y="446" class="s">complete / needs_attention / failed</text>
+
+<rect x="24" y="500" width="912" height="72" rx="8" fill="#f6f8fa"/>
+<text x="40" y="526" class="t">出错了怎么办？同一次运行里，网络 / 验证 / 浏览器断开这类错误会换一个新 Chrome 再跑 1 次；</text>
+<text x="40" y="550" class="t">之后每 10 分钟的计划还会再来，直到当天两项都确认到账。已经确认的动作不会重复提交。详见「失败重试」。</text>
+</svg>

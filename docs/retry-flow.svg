@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="680" viewBox="0 0 960 680" role="img" aria-label="失败重试：六层保护，从秒级到天级">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}.n{font-size:14px;font-weight:700;fill:#fff}
+.tag{font-size:12px;font-weight:700}
+</style>
+<rect x="0.5" y="0.5" width="959" height="679" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">失败重试：六层保护，从秒级到天级</text>
+
+<rect x="24" y="60" width="912" height="80" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
+<rect x="38" y="76" width="52" height="22" rx="11" fill="#0969da"/><text x="64" y="92" class="tag" text-anchor="middle" fill="#fff">秒</text>
+<text x="104" y="88" class="b">第 1 层 · 页面读取重试</text>
+<text x="104" y="110" class="t">读接口或页面遇到网络超时，等 1 秒再读 1 次。（READ_RETRY_LIMIT = 1）</text>
+<text x="104" y="130" class="s">只重读，不重提交：读取没有副作用。</text>
+
+<rect x="24" y="150" width="912" height="80" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
+<rect x="38" y="166" width="52" height="22" rx="11" fill="#0969da"/><text x="64" y="182" class="tag" text-anchor="middle" fill="#fff">秒</text>
+<text x="104" y="178" class="b">第 2 层 · 等站点回执</text>
+<text x="104" y="200" class="t">提交后最多等 45 秒，等到站点接口的真实响应才往下走；快超时时自动尝试一次 Cloudflare 验证。</text>
+<text x="104" y="220" class="s">没等到回执的提交记为 submission_unconfirmed，下一次先查到账再决定要不要补交。（SUBMISSION_TIMEOUT = 45）</text>
+
+<rect x="24" y="240" width="912" height="80" rx="10" fill="#fbefff" stroke="#c297ff"/>
+<rect x="38" y="256" width="52" height="22" rx="11" fill="#8250df"/><text x="64" y="272" class="tag" text-anchor="middle" fill="#fff">分钟</text>
+<text x="104" y="268" class="b">第 3 层 · 运行看门狗</text>
+<text x="104" y="290" class="t">一次运行最多 15 分钟。超时就从外部强制关掉 Chrome，记为 daily_run_timeout，历史照样保存。</text>
+<text x="104" y="310" class="s">防的是电脑中途睡着、Chrome 卡死，让一次运行永远挂着。（DAILY_RUN_TIMEOUT = 900）</text>
+
+<rect x="24" y="330" width="912" height="80" rx="10" fill="#fbefff" stroke="#c297ff"/>
+<rect x="38" y="346" width="52" height="22" rx="11" fill="#8250df"/><text x="64" y="362" class="tag" text-anchor="middle" fill="#fff">分钟</text>
+<text x="104" y="358" class="b">第 4 层 · 同一次触发内重开重跑</text>
+<text x="104" y="380" class="t">网络、验证、浏览器断开、看门狗超时这类错误：立刻换一个新 Chrome 再跑 1 次。（DAILY_RETRY_LIMIT = 1）</text>
+<text x="104" y="400" class="s">重跑前先读本机历史和站点状态，已确认完成的动作不会再做一遍。</text>
+
+<rect x="24" y="420" width="912" height="80" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
+<rect x="38" y="436" width="52" height="22" rx="11" fill="#bc4c00"/><text x="64" y="452" class="tag" text-anchor="middle" fill="#fff">小时</text>
+<text x="104" y="448" class="b">第 5 层 · 计划反复触发</text>
+<text x="104" y="470" class="t">每 10 分钟一次 daily --resume，一天还铺了 6 个恢复时点（每 4 小时）。没到点、已完成就安静退出，重复触发是安全的。</text>
+<text x="104" y="490" class="s">提交丢在半路的动作，一天最多补交 3 次；站点已经回应过的绝不重交。（SUBMISSION_ATTEMPT_LIMIT = 3）</text>
+
+<rect x="24" y="510" width="912" height="80" rx="10" fill="#ffebe9" stroke="#ff8182"/>
+<rect x="38" y="526" width="52" height="22" rx="11" fill="#cf222e"/><text x="64" y="542" class="tag" text-anchor="middle" fill="#fff">天</text>
+<text x="104" y="538" class="b">第 6 层 · 独立的健康观察者</text>
+<text x="104" y="560" class="t">另配一个计划跑 daily-history --fail-on-alert：只读本机数据库，不开浏览器，不碰账号。</text>
+<text x="104" y="580" class="s">连续 2 天没完成，或调度器 8 小时没心跳 → 退出码 3 → 弹桌面通知。一个进程发现不了自己没被触发，所以要有第二双眼睛。</text>
+
+<rect x="24" y="604" width="912" height="62" rx="8" fill="#f6f8fa"/>
+<text x="40" y="626" class="s">会自动重试的错误：network_timeout · network_unavailable · automatic_page_or_verification_timeout · page_challenge_not_resolved</text>
+<text x="40" y="644" class="s">· api_challenge_not_resolved · login_challenge_not_resolved · browser_connection_lost · daily_run_timeout</text>
+<text x="40" y="660" class="s">不盲目重试的：密码错误、题库没题（answer_needed）、按钮没点到（button_not_ready）——这些留给下一次计划或由你处理。</text>
+</svg>

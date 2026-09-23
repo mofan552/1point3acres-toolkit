@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="640" viewBox="0 0 960 640" role="img" aria-label="代码架构：五层模块和外部依赖">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13px}.s{font-size:12px;fill:#57606a}.lay{font-size:12.5px;font-weight:700;fill:#57606a}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13.5px;font-weight:600}
+.box{stroke-width:1.3}.white{fill:#fff;stroke:#d0d7de}.blue{fill:#ddf4ff;stroke:#54aeff}.green{fill:#dafbe1;stroke:#4ac26b}.orange{fill:#fff1e5;stroke:#fb8f44}.purple{fill:#fbefff;stroke:#c297ff}.gray{fill:#f6f8fa;stroke:#d0d7de}
+.ar{stroke:#8b949e;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8b949e"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="639" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">代码架构：五层，依赖只能往下指（architecture.json 是白名单，检查.sh 会验）</text>
+
+<text x="24" y="76" class="lay">入口层</text>
+<rect x="24" y="84" width="230" height="64" rx="8" class="box gray"/>
+<text x="38" y="108" class="m">cli.py</text><text x="38" y="130" class="s">命令行；运行.sh / 运行.cmd 调它</text>
+<rect x="270" y="84" width="250" height="64" rx="8" class="box gray"/>
+<text x="284" y="108" class="m">mcp_server.py</text><text x="284" y="130" class="s">MCP 服务，给 Claude Code / Codex 用</text>
+<rect x="536" y="84" width="400" height="64" rx="8" class="box gray"/>
+<text x="550" y="108" class="m">check.py + governance.py + repository_checks.py</text><text x="550" y="130" class="s">离线门禁；检查.sh / 检查.cmd 调它，CI 也只跑它</text>
+
+<path d="M139,148 L139,178" class="ar"/><path d="M395,148 L395,178" class="ar"/>
+
+<text x="24" y="172" class="lay">业务层</text>
+<rect x="24" y="180" width="270" height="64" rx="8" class="box green"/>
+<text x="38" y="204" class="m">daily.py</text><text x="38" y="226" class="s">每日签到 + 答题 + 核对奖励 + 重试</text>
+<rect x="310" y="180" width="290" height="64" rx="8" class="box green"/>
+<text x="324" y="204" class="m">interact.py</text><text x="324" y="226" class="s">发帖 / 回复 / 收藏 / 点赞：先读后写再回读</text>
+<rect x="616" y="180" width="320" height="64" rx="8" class="box green"/>
+<text x="630" y="204" class="m">library.py</text><text x="630" y="226" class="s">SQLite：运行历史、面经资料、任务、媒体、OCR</text>
+
+<path d="M159,244 L159,274" class="ar"/><path d="M455,244 L455,274" class="ar"/><path d="M776,244 L776,274" class="ar"/>
+
+<text x="24" y="268" class="lay">站点层</text>
+<rect x="24" y="276" width="912" height="64" rx="8" class="box blue"/>
+<text x="38" y="300" class="m">browser.py</text>
+<text x="38" y="322" class="s">唯一联网的模块：启动专用 Chrome，用 CDP 协议操作页面、读接口；登录、Cloudflare 验证、窗口隐藏、看门狗都在这里</text>
+
+<path d="M480,340 L480,370" class="ar"/>
+
+<text x="24" y="364" class="lay">支撑层</text>
+<rect x="24" y="372" width="222" height="64" rx="8" class="box purple"/>
+<text x="38" y="396" class="m">rules.py</text><text x="38" y="418" class="s">题库匹配、奖励核对、心情、健康判定</text>
+<rect x="258" y="372" width="200" height="64" rx="8" class="box purple"/>
+<text x="272" y="396" class="m">secure.py</text><text x="272" y="418" class="s">macOS 钥匙串 / Windows DPAPI</text>
+<rect x="470" y="372" width="222" height="64" rx="8" class="box purple"/>
+<text x="484" y="396" class="m">extract.py</text><text x="484" y="418" class="s">用 BeautifulSoup 解析论坛 HTML</text>
+<rect x="704" y="372" width="232" height="64" rx="8" class="box purple"/>
+<text x="718" y="396" class="m">presentation.py</text><text x="718" y="418" class="s">离线阅读器文案与展示状态</text>
+
+<path d="M480,436 L480,466" class="ar"/>
+
+<text x="24" y="460" class="lay">基础层</text>
+<rect x="24" y="468" width="290" height="64" rx="8" class="box orange"/>
+<text x="38" y="492" class="m">settings.py</text><text x="38" y="514" class="s">所有配置、默认值、路径、限额；不含密码</text>
+<rect x="330" y="468" width="290" height="64" rx="8" class="box orange"/>
+<text x="344" y="492" class="m">contracts.py</text><text x="344" y="514" class="s">状态枚举、动作定义、结果契约；不许写字面量</text>
+<rect x="636" y="468" width="300" height="64" rx="8" class="box orange"/>
+<text x="650" y="492" class="m">architecture.json</text><text x="650" y="514" class="s">模块依赖白名单、依赖清单、公开工具名</text>
+
+<rect x="24" y="552" width="912" height="76" rx="8" fill="#f6f8fa"/>
+<text x="40" y="574" class="b">外部依赖</text>
+<text x="40" y="598" class="t">Chrome（本机安装）· SeleniumBase + mycdp（CDP 驱动）· requests（只用来探测本机调试端口）· beautifulsoup4（解析 HTML）</text>
+<text x="40" y="620" class="t">· sqlite3（标准库）· mcp + pydantic（MCP 服务）· rapidocr-onnxruntime（本机 OCR）· tzdata（时区数据）</text>
+</svg>

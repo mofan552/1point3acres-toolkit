@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="460" viewBox="0 0 960 460" role="img" aria-label="结果存在哪：全部在本机">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13px}.s{font-size:12.5px;fill:#57606a}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;font-weight:600}
+</style>
+<rect x="0.5" y="0.5" width="959" height="459" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">结果存在哪：全部在本机的 work/local-toolkit-state/ 里</text>
+
+<rect x="24" y="60" width="560" height="300" rx="10" fill="#fff" stroke="#d0d7de"/>
+<text x="40" y="88" class="b">interviews.sqlite（SQLite 数据库，就一个文件）</text>
+<rect x="40" y="104" width="528" height="70" rx="6" fill="#f6f8fa"/>
+<text x="52" y="126" class="m">daily_runs</text>
+<text x="52" y="146" class="s">每次运行一条：站点日、起止时间、签到 / 答题各自的状态、</text>
+<text x="52" y="164" class="s">有没有核对到奖励、错误名、当天的心情和说说</text>
+<rect x="40" y="184" width="528" height="50" rx="6" fill="#f6f8fa"/>
+<text x="52" y="206" class="m">scheduler_heartbeat</text>
+<text x="52" y="226" class="s">最近一次计划触发的时间，哪怕那次什么都没做就退出了</text>
+<rect x="40" y="244" width="528" height="70" rx="6" fill="#f6f8fa"/>
+<text x="52" y="266" class="m">threads · versions · tasks · media · media_text</text>
+<text x="52" y="286" class="s">面经资料、采集任务、归档的图片和识别出的文字；</text>
+<text x="52" y="304" class="s">不用面经功能的话这些表就是空的</text>
+<text x="40" y="344" class="s">同一天跑了多次，就有多条 daily_runs；汇总时「完成过」「到账过」只要有一次就算。</text>
+
+<rect x="608" y="60" width="328" height="96" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
+<text x="622" y="86" class="m">latest-daily.json</text>
+<text x="622" y="108" class="s">最近一次运行的完整原始结果，含站点返回的</text>
+<text x="622" y="126" class="s">账号状态和奖励流水片段。可能含私人信息，</text>
+<text x="622" y="144" class="s">别整段贴到 Issue 里</text>
+
+<rect x="608" y="170" width="328" height="76" rx="10" fill="#fbefff" stroke="#c297ff"/>
+<text x="622" y="196" class="m">learned-answers.json</text>
+<text x="622" y="218" class="s">本机题库：verified（答对到账过）</text>
+<text x="622" y="236" class="s">和 rejected（答错过）</text>
+
+<rect x="608" y="260" width="328" height="56" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
+<text x="622" y="286" class="m">browser.lock</text>
+<text x="622" y="306" class="s">浏览器文件锁，保证同时只有一个任务在用</text>
+
+<rect x="24" y="380" width="912" height="62" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+<text x="40" y="404" class="b">怎么看：daily-history 命令，离线，不开浏览器</text>
+<text x="40" y="426" class="s">按站点日把多次运行汇总成一条，奖励不重复计数；不指定日期时还附一份健康判定 health（ok / warn / alert）。</text>
+</svg>

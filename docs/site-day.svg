@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="380" viewBox="0 0 960 380" role="img" aria-label="站点的一天按洛杉矶时间算">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}.tick{font-size:12px;fill:#57606a}
+</style>
+<rect x="0.5" y="0.5" width="959" height="379" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">站点的「一天」按洛杉矶时间算，工具也按它判断今天签了没</text>
+
+<text x="60" y="78" class="b">北京时间（你电脑的时钟，假设在国内）</text>
+<line x1="60" y1="110" x2="900" y2="110" stroke="#1f2328" stroke-width="2"/>
+<g stroke="#1f2328" stroke-width="1.5">
+  <line x1="60" y1="104" x2="60" y2="116"/><line x1="200" y1="104" x2="200" y2="116"/><line x1="340" y1="104" x2="340" y2="116"/><line x1="480" y1="104" x2="480" y2="116"/>
+  <line x1="620" y1="104" x2="620" y2="116"/><line x1="760" y1="104" x2="760" y2="116"/><line x1="900" y1="104" x2="900" y2="116"/>
+</g>
+<text x="60" y="98" class="tick" text-anchor="middle">00:00</text><text x="200" y="98" class="tick" text-anchor="middle">04:00</text><text x="340" y="98" class="tick" text-anchor="middle">08:00</text>
+<text x="480" y="98" class="tick" text-anchor="middle">12:00</text><text x="620" y="98" class="tick" text-anchor="middle">16:00</text><text x="760" y="98" class="tick" text-anchor="middle">20:00</text><text x="900" y="98" class="tick" text-anchor="middle">24:00</text>
+
+<rect x="60" y="150" width="525" height="34" fill="#f6f8fa"/>
+<rect x="585" y="150" width="315" height="34" fill="#dafbe1"/>
+<text x="322" y="172" class="s" text-anchor="middle">站点日：昨天</text>
+<text x="742" y="172" class="s" text-anchor="middle">站点日：今天</text>
+<line x1="60" y1="184" x2="900" y2="184" stroke="#1f2328" stroke-width="2"/>
+<text x="60" y="206" class="tick" text-anchor="middle">09:00</text><text x="200" y="206" class="tick" text-anchor="middle">13:00</text><text x="340" y="206" class="tick" text-anchor="middle">17:00</text>
+<text x="480" y="206" class="tick" text-anchor="middle">21:00</text><text x="620" y="206" class="tick" text-anchor="middle">01:00</text><text x="760" y="206" class="tick" text-anchor="middle">05:00</text><text x="900" y="206" class="tick" text-anchor="middle">09:00</text>
+<text x="60" y="226" class="b">洛杉矶时间（站点日的依据）</text>
+
+<line x1="585" y1="130" x2="585" y2="240" stroke="#bc4c00" stroke-width="2.5" stroke-dasharray="6,4"/>
+<text x="577" y="140" class="s" fill="#bc4c00" text-anchor="end">洛杉矶 00:00 = 北京 15:00（夏令时）/ 16:00（冬令时）</text>
+<text x="593" y="140" class="s" fill="#bc4c00">站点的新一天从这里开始</text>
+
+<line x1="626" y1="110" x2="626" y2="128" stroke="#8250df" stroke-width="2.5"/>
+<polygon points="626,128 620,120 632,120" fill="#8250df"/>
+<text x="632" y="236" class="s" fill="#8250df">默认计划 16:10，在新的一天开始后 1 小时 10 分：</text>
+<text x="632" y="254" class="s" fill="#8250df">站点日刚翻到「今天」就签，留足一整天补救</text>
+
+<rect x="24" y="266" width="912" height="96" rx="8" fill="#f6f8fa"/>
+<text x="40" y="292" class="t">· 每条奖励记录都带时间戳，工具把它折算成洛杉矶日期，等于「今天」才算今天的奖励；昨天的记录绝不会被当成今天的。</text>
+<text x="40" y="318" class="t">· 你在美国、在国内、出差、夏令时切换，判断都一致，因为从不看电脑本地日期。</text>
+<text x="40" y="344" class="t">· 你可以把计划时间改到任何时刻；「到点」也是按站点日对应的那一刻算的。</text>
+</svg>

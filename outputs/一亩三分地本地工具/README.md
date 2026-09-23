@@ -4,7 +4,7 @@
 
 支持 **macOS 与 Windows**，都需要 **Chrome + Python 3.12**。账号身份、密码、浏览器会话和数据库只留在本机：密码在 macOS 存进登录钥匙串、在 Windows 用 DPAPI 加密，都不写进仓库。
 
-依赖清单见 [requirements.txt](./requirements.txt)。
+依赖清单见 [requirements.txt](./requirements.txt)。想先看带图的原理讲解（签到、答题、奖励核对、失败重试、调度各是怎么做的），读仓库根目录的 [README](../../README.md)；本文是操作手册。
 
 目录：[工作原理](#principle) · [交给 AI](#ai) · [手动安装](#install) · [配置账号](#account) · [首次运行](#first-run) · [每日自动](#automation) · [面经](#interviews) · [命令参考](#commands) · [MCP](#mcp) · [排查](#troubleshooting) · [维护](#maintenance)
 

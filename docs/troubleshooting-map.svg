@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" role="img" aria-label="看到一个错误码，先分清是哪一类">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14px;font-weight:600}.s{font-size:12px;fill:#57606a}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px}
+</style>
+<rect x="0.5" y="0.5" width="959" height="469" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">看到一个错误码，先分清它是哪一类</text>
+
+<rect x="24" y="60" width="216" height="316" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="38" y="86" class="b">不是故障</text>
+<text x="38" y="106" class="s">什么都不用做</text>
+<text x="38" y="136" class="m">not_due</text>
+<text x="38" y="154" class="s">还没到你设的计划时间</text>
+<text x="38" y="182" class="m">already_complete</text>
+<text x="38" y="200" class="s">今天早就确认完成了</text>
+<text x="38" y="228" class="m">already_done</text>
+<text x="38" y="246" class="s">这一项早就做过了</text>
+
+<rect x="256" y="60" width="216" height="316" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
+<text x="270" y="86" class="b">要你动手一次</text>
+<text x="270" y="106" class="s">改好就恢复</text>
+<text x="270" y="136" class="m">answer_needed</text>
+<text x="270" y="154" class="s">题库没题，补一次答案</text>
+<text x="270" y="182" class="m">account_not_configured</text>
+<text x="270" y="200" class="s">写 account.json</text>
+<text x="270" y="228" class="m">login_required_credentials_</text>
+<text x="270" y="243" class="m">not_configured</text>
+<text x="270" y="261" class="s">还没存密码</text>
+<text x="270" y="289" class="m">login_rejected</text>
+<text x="270" y="307" class="s">核对账号密码，别连续重试</text>
+<text x="270" y="335" class="m">unexpected_account</text>
+<text x="270" y="353" class="s">浏览器里登的是别的账号</text>
+
+<rect x="488" y="60" width="216" height="316" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
+<text x="502" y="86" class="b">等下一次计划</text>
+<text x="502" y="106" class="s">通常自动恢复</text>
+<text x="502" y="136" class="m">button_not_ready</text>
+<text x="502" y="154" class="s">页面没就绪，没点按钮</text>
+<text x="502" y="182" class="m">page_challenge_not_resolved</text>
+<text x="502" y="200" class="s">人机验证没过</text>
+<text x="502" y="228" class="m">network_timeout</text>
+<text x="502" y="246" class="s">网络抖了，已自动重读</text>
+<text x="502" y="274" class="m">browser_connection_lost</text>
+<text x="502" y="292" class="s">多为电脑睡眠，已重开一次</text>
+<text x="502" y="320" class="m">daily_run_timeout</text>
+<text x="502" y="338" class="s">超 15 分钟被看门狗结束</text>
+<text x="502" y="364" class="s">连续几天都这样才需要看</text>
+
+<rect x="720" y="60" width="216" height="316" rx="10" fill="#ffebe9" stroke="#ff8182"/>
+<text x="734" y="86" class="b">环境问题</text>
+<text x="734" y="106" class="s">检查电脑上的东西</text>
+<text x="734" y="136" class="m">another_task_is_using_</text>
+<text x="734" y="151" class="m">the_browser</text>
+<text x="734" y="169" class="s">别开两个；等上一个结束</text>
+<text x="734" y="197" class="m">chrome_profile_busy_</text>
+<text x="734" y="212" class="m">or_start_failed</text>
+<text x="734" y="230" class="s">Chrome 装了吗？路径对吗？</text>
+<text x="734" y="258" class="m">consistency_check_failed</text>
+<text x="734" y="276" class="s">跑 检查.sh，按提示修；</text>
+<text x="734" y="294" class="s">生成文件过期就加 --sync</text>
+<text x="734" y="322" class="m">daily_history_unavailable</text>
+<text x="734" y="340" class="s">本机数据库打不开</text>
+
+<rect x="24" y="394" width="912" height="60" rx="8" fill="#f6f8fa"/>
+<text x="40" y="418" class="s">提 Issue 时给：系统 / Python / Chrome 版本、commit 短哈希、用到的命令、脱敏后的 status / error。</text>
+<text x="40" y="440" class="s">不要贴账号配置、latest-daily.json 全文或任何完整 JSON。</text>
+</svg>
