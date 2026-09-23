@@ -20,7 +20,6 @@
 支持 macOS 和 Windows，只需要装好 Chrome 和 Python 3.12。签到答题之外，它还能采集面经、离线搜索、发帖回复，并能接给 Claude Code、Codex 这类 AI 助手用。这些是附加功能，不装不影响签到答题。
 
 > [!NOTE]
-> 仓库地址：<https://github.com/mofan552/1point3acres-toolkit>，这是唯一维护中的仓库，旧仓库已停止更新。
 > 本文讲「它是怎么做的」；具体命令、参数和排错步骤都在 [使用说明](outputs/一亩三分地本地工具/README.md)。
 
 ## 目录

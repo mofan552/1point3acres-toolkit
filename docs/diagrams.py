@@ -386,19 +386,23 @@ def chip_wrap(c: Canvas, x, y, maxw, items, tone='gray', mono=False, gap=8, lh=3
 
 
 # ================================================================ 1. 效果
-@diagram('today-tasks', 520, 250, '今日任务：签到领奖已完成，每日答题已完成')
+@diagram('today-tasks', 960, 220, '今日任务：签到领奖已完成，每日答题已完成')
 def today_tasks(c: Canvas):
-    c.rect(20, 20, 480, 210, 'c-gray', 14)
-    c.text(40, 54, '今日任务', 'hb')
-    c.chip(430, 36, '旧版界面', 'gray')
-    c.hline(40, 480, 72)
+    c.rect(24, 24, 440, 172, 'c-gray', 14)
+    c.text(44, 56, '今日任务', 'hb')
+    c.hline(44, 444, 72)
     for i, (icon, name) in enumerate([('check-circle', '签到领奖'), ('help', '每日答题')]):
-        y = 96 + i * 62
-        c.icon(icon, 40, y, 24, 'blue')
-        c.text(76, y + 17, name, 'h')
-        c.pill(384, y - 2, '已完成', 'green', icon='check')
+        y = 92 + i * 54
+        c.icon(icon, 44, y, 24, 'blue')
+        c.text(80, y + 17, name, 'h')
+        c.pill(350, y - 2, '已完成', 'green', icon='check')
         if i == 0:
-            c.hline(40, 480, y + 44)
+            c.hline(44, 444, y + 40)
+    c.rect(496, 24, 440, 104, 'c-blue', 14)
+    c.icon('check-circle', 516, 42, 24, 'blue')
+    c.text(550, 60, '两项都是「已完成」，今天的目标就达成了', 'h')
+    c.lines(516, 90, ['签到领奖 ← 工具替你点了一次签到', '每日答题 ← 工具替你答对了一道题'], 's', 22)
+    c.note(496, 144, 440, '这个面板在网站旧版界面的右上角。', 'gray', 'eye')
 
 
 @diagram('credit-log', 960, 400, '积分流水：每天固定两条 +1')
