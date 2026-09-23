@@ -14,9 +14,9 @@
 
 它在本机开一个专用 Chrome，用你自己的登录会话按网页正常流程操作，不用服务器代跑、不用打码平台。
 
-- **签到**：打开签到页 → 选「没心情」→ 提交签到。不写任何今日心情 / 说说，主页不会多出内容。提交后读取积分流水，确认当天「签到奖励」大米到账才算成功。
+- **签到**：打开签到页 → 选一个心情（默认随机，见下条）→ 提交签到。提交后读取积分流水，确认当天「签到奖励」大米到账才算成功。
 - **答题**：从站点接口 `dailyQuestion.get` 读出题目和选项，和内置题库 [`answers.json`](./answers.json)（194 道纯文本问答对）逐字比对（做 NFKC 归一化，按选项文字匹配、不按位置）。命中就点选项、提交答案，再确认「每日答题」奖励到账。题库没有的题标记 `answer_needed` 停下，不瞎猜。补答一次并**确认奖励到账**后写进本机题库 `work/local-toolkit-state/learned-answers.json`，下次同题直接命中；本机实测过的答案优先于仓库自带的快照。答过但没到账的选项记为已知错误，下次即使被当作答案传进来也拒绝提交，不重复扣米。没等到站点响应时什么都不学。
-- **心情 / 日记**：签到页的「今日心情 / 说说」会成为主页上的一条记录。默认选「没心情」，不替你发布任何内容。在 `account.json` 里加 `"checkin_mood_random": true` 可显式开启随机心情：按偏日常的分布抽心情（昨天的心情有一定概率延续），再从 `mood-phrases.json` 里该心情的分组抽一句中性短句填进「说说」，30 天内不重复；心情和句子都记进运行历史。**开启后每天会以你的名义在主页发布一句话**，没开就和以前一样。奖励核验不变。
+- **心情 / 日记**：签到页的「今日心情 / 说说」会成为主页上的一条记录。**默认开启随机心情**：按偏日常的分布抽心情（昨天的心情有一定概率延续），再从 `mood-phrases.json` 里该心情的分组抽一句中性短句填进「说说」，30 天内不重复；抽到「没心情」时不写说说；心情和句子都记进运行历史。**这意味着每天会以你的名义在主页发布一句话。** 不想要就在 `account.json` 里加 `"checkin_mood_random": false`（见[配置账号](#account)），之后每天固定选「没心情」、不写任何内容。奖励核验不变。
 - **成功判定**：不以「点到按钮」或退出码为准。只有查到当天、本账号名下、正数的大米奖励流水，签到和答题两项才报 `complete`；网站或验证异常时如实报失败。原始结果留在本机 `work/local-toolkit-state/latest-daily.json`，可离线复查。
 
 <a id="ai"></a>
@@ -78,6 +78,12 @@ work\cf-probe-venv\Scripts\python.exe -m pip install -r outputs\一亩三分地�
 
 ```json
 { "username": "你的用户名", "uid": 123456, "schedule_time": "07:05", "schedule_timezone": "America/New_York" }
+```
+
+**随机心情（可选，默认开启）**：签到时随机选心情并配一句「说说」，每天会以你的名义在主页发布一句话（原理见[工作原理](#principle)）。不想要就在同一个文件里加 `"checkin_mood_random": false`，必须是布尔值，之后每天固定选「没心情」、不写任何内容：
+
+```json
+{ "username": "你的用户名", "uid": 123456, "checkin_mood_random": false }
 ```
 
 值不合法会直接报 `invalid_local_schedule_config`，不会悄悄退回默认。改完跑一次 `检查.cmd --sync`（macOS 用 `./检查.sh --sync`），输出里的 `schedule` 段给出本地和 UTC 两套触发时刻以及 rrule，按你自己的调度器（launchd / 任务计划程序 / 其他）填。`rrule_clock_is_ambiguous` 为 true 表示这份 rrule 在本地时和 UTC 两种解释下不等价（时区偏移不是恢复间隔的整数倍时就会这样，带夏令时的时区还会随季节翻转）。**影响有限，不会漏签**：触发时刻是间隔 4 小时、铺满 24 小时的等差数列，任何常数平移后仍然如此，所以无论调度器按哪个时钟读，到点后至多一个恢复间隔内必有一次触发，而「到点到站点日翻页」有约 23 小时。差别只是签到可能比你设定的时刻晚几小时。
@@ -282,7 +288,7 @@ codex mcp add 1point3acres-local --env PYTHONUTF8=1 -- <venv 的 python.exe> <�
 
 | 现象 / 错误 | 处理 |
 |---|---|
-| `account_not_configured` / `invalid_local_account_config` | 检查 `work/local-toolkit-state/account.json`：UTF-8、仅 `username`+`uid`、uid 为正整数 |
+| `account_not_configured` / `invalid_local_account_config` | 检查 `work/local-toolkit-state/account.json`：UTF-8、`username`+`uid`（可选 `schedule_time`、`schedule_timezone`、`checkin_mood_random`）、uid 为正整数、`checkin_mood_random` 必须是布尔值 |
 | `login_required_credentials_not_configured` | 还没存密码，重跑配置密码那一段 |
 | `login_rejected` / `automatic_login_failed` | 核对账号密码与网站账号状态，不要连续重试同一密码 |
 | `button_not_ready` | 浏览器没点成按钮，保留失败等下次计划；持续出现附脱敏错误提 Issue |

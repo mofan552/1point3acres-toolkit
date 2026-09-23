@@ -125,9 +125,9 @@ class CheckInMoodTests(unittest.TestCase):
                 patch('daily.time.monotonic', side_effect=[0, 100, 200, 300]), patch('daily.site_day', return_value=TODAY):
             return daily.run_daily()
 
-    def test_off_by_default_the_check_in_picks_the_default_mood_and_says_nothing(self):
-        # The default is asserted on a config without the key (ConfigTests); the live account.json on a
-        # developer machine may legitimately have it on, so the run itself is patched off here.
+    def test_switched_off_the_check_in_picks_the_default_mood_and_says_nothing(self):
+        # The default (on) is asserted in ConfigTests; the live account.json on a developer machine may
+        # legitimately have it off, so the run itself is patched explicitly here.
         with tempfile.TemporaryDirectory() as directory:
             session = MoodBrowser(completed=True, rewarded=True)
             result = self.run_checkin(session, Path(directory), random_mood=False)
@@ -138,7 +138,7 @@ class CheckInMoodTests(unittest.TestCase):
         entry = next(a for a in result['actions'] if a['action'] == 'checkin')
         self.assertEqual((entry['mood'], entry['phrase']), (CHECKIN_MOOD_DEFAULT, None))
 
-    def test_opted_in_the_check_in_clicks_the_drawn_mood_fills_its_line_and_records_both(self):
+    def test_on_by_default_the_check_in_clicks_the_drawn_mood_fills_its_line_and_records_both(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             session = MoodBrowser(completed=True, rewarded=True)
@@ -196,13 +196,18 @@ class HistoryShapeTests(unittest.TestCase):
 
 
 class ConfigTests(unittest.TestCase):
-    def test_the_switch_must_be_a_real_boolean_and_defaults_off(self):
+    def test_the_switch_must_be_a_real_boolean_and_defaults_on(self):
+        # Issue #15: random moods are on unless account.json says "checkin_mood_random": false.
+        self.assertTrue(settings.mood_random_enabled({}))
+        self.assertTrue(settings.mood_random_enabled({'checkin_mood_random': True}))
+        self.assertFalse(settings.mood_random_enabled({'checkin_mood_random': False}))
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'account.json'
-            path.write_text(json.dumps({'username': 'm', 'uid': 1, 'checkin_mood_random': True}), encoding='utf-8')
-            self.assertEqual(settings.load_identity(path)[2], {'checkin_mood_random': True})
+            path.write_text(json.dumps({'username': 'm', 'uid': 1, 'checkin_mood_random': False}), encoding='utf-8')
+            self.assertEqual(settings.load_identity(path)[2], {'checkin_mood_random': False})
             path.write_text(json.dumps({'username': 'm', 'uid': 1}), encoding='utf-8')
             self.assertEqual(settings.load_identity(path)[2], {})
+            self.assertTrue(settings.mood_random_enabled(settings.load_identity(path)[2]))
             for bad in ['true', 1, None]:
                 path.write_text(json.dumps({'username': 'm', 'uid': 1, 'checkin_mood_random': bad}), encoding='utf-8')
                 with self.assertRaises(RuntimeError):

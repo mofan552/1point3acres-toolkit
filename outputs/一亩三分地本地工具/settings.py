@@ -117,8 +117,15 @@ CHECKIN_MOOD_WEIGHTS = {'开心': 17, '疲惫': 15, '无聊': 14, '慵懒': 13, 
                         '没心情': 11, '郁闷': 9, '难过': 5, '衰': 3, '生气': 1}
 CHECKIN_MOOD_PERSISTENCE = 0.25
 CHECKIN_MOOD_DEFAULT = '没心情'
-# Off unless account.json says otherwise: a mood with a phrase is a public diary entry in the member's name.
-CHECKIN_MOOD_RANDOM = bool(_SCHEDULE.get(MOOD_RANDOM_KEY, False))
+
+
+def mood_random_enabled(overrides):
+    """On unless account.json says "checkin_mood_random": false (issue #15). A mood with a phrase is a
+    public diary entry in the member's name, so the switch stays explicit and must be a real boolean."""
+    return bool(overrides.get(MOOD_RANDOM_KEY, True))
+
+
+CHECKIN_MOOD_RANDOM = mood_random_enabled(_SCHEDULE)
 MOOD_PHRASES_FILE = ROOT / 'mood-phrases.json'
 MOOD_PHRASE_MAX_LENGTH = 60
 MOOD_PHRASE_RECENT_DAYS = 30

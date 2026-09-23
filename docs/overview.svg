@@ -62,7 +62,7 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="746" y="58" class="w" text-anchor="middle" style="font-size:13px">4</text>
 <g transform="translate(888.0,42.0) scale(1.000)" class="ic ic-blue"><path d="M20 6 9 17l-5-5"/></g>
 <text x="733" y="94" class="h">自动签到</text>
-<text x="733" y="118" class="s">点「没心情」，点「提交签到」</text>
+<text x="733" y="118" class="s">选一个心情，点「提交签到」</text>
 <path d="M361.5,166.0 L361.5,184.0" class="ar amber dash"/>
 <rect x="243.5" y="186.0" width="236.0" height="30.0" rx="15" class="c-amber"/>
 <text x="362" y="205" class="xs t-amber" text-anchor="middle">做过了或还没到点 → 安静退出</text>

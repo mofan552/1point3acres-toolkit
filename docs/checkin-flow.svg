@@ -46,10 +46,10 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <rect x="210.0" y="24.0" width="168.0" height="140.0" rx="12" class="c-gray"/>
 <circle cx="239.0" cy="53.0" r="13" class="f-blue"/>
 <text x="239" y="58" class="w" text-anchor="middle" style="font-size:13px">2</text>
-<g transform="translate(336.0,42.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M8 15h8"/><path d="M9 9h.01"/><path d="M15 9h.01"/></g>
-<text x="226" y="94" class="h">选「没心情」</text>
-<text x="226" y="118" class="s">不写说说，主页不会多</text>
-<text x="226" y="137" class="s">出任何内容</text>
+<g transform="translate(336.0,42.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/></g>
+<text x="226" y="94" class="h">选一个心情</text>
+<text x="226" y="118" class="s">默认随机抽一个，配一</text>
+<text x="226" y="137" class="s">句说说</text>
 <path d="M380.0,94.0 L394.0,94.0" class="ar"/>
 <rect x="396.0" y="24.0" width="168.0" height="140.0" rx="12" class="c-gray"/>
 <circle cx="425.0" cy="53.0" r="13" class="f-blue"/>
@@ -75,6 +75,6 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="784" y="118" class="s">积分页里有「签到奖励</text>
 <text x="784" y="137" class="s">+1」才算成功</text>
 <rect x="24.0" y="186.0" width="912.0" height="43.0" rx="10" class="c-amber"/>
-<g transform="translate(38.0,194.5) scale(0.833)" class="ic ic-amber"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01"/><path d="M15 9h.01"/></g>
-<text x="68" y="210" class="s">可选：随机心情（默认关闭）。打开后，工具每天会以你的名义在主页发一句话。这是你的选择，工具不替你决定。</text>
+<g transform="translate(38.0,194.5) scale(0.833)" class="ic ic-amber"><circle cx="12" cy="12" r="10"/><path d="M8 15h8"/><path d="M9 9h.01"/><path d="M15 9h.01"/></g>
+<text x="68" y="210" class="s">随机心情默认开启：每天会以你的名义在主页发一句话。不想要，在账号配置里关掉，之后固定选「没心情」、什么都不写。</text>
 </svg>
