@@ -10,6 +10,7 @@
 ![macOS · Windows](https://img.shields.io/badge/platform-macOS%20%7C%20Windows-4c8bf5)
 ![Python 3.12](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white)
 ![Chrome](https://img.shields.io/badge/browser-Chrome-4285F4?logo=googlechrome&logoColor=white)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 [它每天做什么](#效果) · [怎么工作](#总览) · [安全与隐私](#安全) · [快速开始](#快速开始) · [常见问题](#常见问题) · [给开发者](#开发者)
 

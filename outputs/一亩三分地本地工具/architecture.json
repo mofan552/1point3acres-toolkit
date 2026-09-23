@@ -251,6 +251,7 @@
       ".github/workflows/consistency.yml",
       ".gitignore",
       "README.md",
+      "LICENSE",
       "docs/answer-learning.svg",
       "docs/answer-matching.svg",
       "docs/architecture.svg",
