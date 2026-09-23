@@ -1,0 +1,124 @@
+name: Project consistency
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  PYTHONUTF8: '1'
+
+jobs:
+  static:
+    name: Static checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Source, docs, repository boundaries and test registration
+        run: |
+          python './outputs/一亩三分地本地工具/check.py' --sync --stage static --report work/ci-reports/static.json
+          git diff --exit-code
+      - name: Save static report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: static-report-${{ github.run_attempt }}
+          path: work/ci-reports/static.json
+          retention-days: 7
+          if-no-files-found: error
+
+  unit:
+    name: Unit checks (${{ matrix.os }})
+    needs: static
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2022, windows-2025]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-toolkit
+      - name: Unit and contract tests
+        shell: pwsh
+        run: |
+          & './outputs/一亩三分地本地工具/检查.cmd' --sync --stage unit --report work/ci-reports/unit.json
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git diff --exit-code
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Save unit report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: unit-${{ matrix.os }}-report-${{ github.run_attempt }}
+          path: work/ci-reports/unit.json
+          retention-days: 7
+          if-no-files-found: error
+
+  integration:
+    name: MCP and browser integration
+    needs: static
+    runs-on: windows-2025
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-toolkit
+      - name: Real stdio and offline Chrome with synthetic fixtures
+        shell: pwsh
+        run: |
+          & './outputs/一亩三分地本地工具/检查.cmd' --sync --stage integration --report work/ci-reports/integration.json
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git diff --exit-code
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Save integration report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: integration-report-${{ github.run_attempt }}
+          path: work/ci-reports/integration.json
+          retention-days: 7
+          if-no-files-found: error
+
+  result:
+    name: CI result
+    if: ${{ always() }}
+    needs: [static, unit, integration]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Require every stage to succeed
+        env:
+          CI_JOB_RESULTS: ${{ toJSON(needs) }}
+        run: python './outputs/一亩三分地本地工具/check.py' --stage aggregate --report work/ci-reports/result.json
+      - name: Save aggregate report
+        if: ${{ always() }}
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: result-report-${{ github.run_attempt }}
+          path: work/ci-reports/result.json
+          retention-days: 7
+          if-no-files-found: error

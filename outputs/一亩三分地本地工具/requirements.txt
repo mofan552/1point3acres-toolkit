@@ -1,0 +1,8 @@
+beautifulsoup4==4.15.0
+mcp==2.2.0
+mycdp==1.4.0
+pydantic==2.13.5
+rapidocr-onnxruntime==1.4.4
+requests==2.34.2
+seleniumbase==4.53.8
+tzdata==2026.3

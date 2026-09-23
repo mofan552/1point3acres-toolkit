@@ -1,0 +1,263 @@
+{
+  "version": 1,
+  "modules": {
+    "settings": [],
+    "contracts": [],
+    "rules": [
+      "settings",
+      "contracts"
+    ],
+    "secure": [
+      "settings"
+    ],
+    "browser": [
+      "settings",
+      "contracts",
+      "secure"
+    ],
+    "extract": [
+      "settings",
+      "contracts"
+    ],
+    "presentation": [
+      "settings",
+      "contracts"
+    ],
+    "library": [
+      "settings",
+      "contracts",
+      "rules",
+      "browser",
+      "extract",
+      "presentation"
+    ],
+    "daily": [
+      "settings",
+      "contracts",
+      "library",
+      "browser",
+      "rules"
+    ],
+    "interact": [
+      "settings",
+      "contracts",
+      "browser",
+      "extract"
+    ],
+    "governance": [
+      "settings",
+      "contracts",
+      "presentation"
+    ],
+    "cli": [
+      "settings",
+      "contracts",
+      "browser",
+      "daily",
+      "interact",
+      "library",
+      "secure",
+      "governance"
+    ],
+    "mcp_server": [
+      "settings",
+      "contracts",
+      "browser",
+      "daily",
+      "interact",
+      "library",
+      "governance"
+    ],
+    "check": [
+      "settings",
+      "contracts",
+      "governance",
+      "repository_checks"
+    ],
+    "repository_checks": []
+  },
+  "assets": [
+    "reader.html",
+    "reader.css",
+    "reader.js",
+    "tokens.css",
+    "运行.cmd",
+    "检查.cmd",
+    "运行.sh",
+    "检查.sh"
+  ],
+  "external_owners": {
+    "requests": [
+      "browser"
+    ],
+    "urllib.request": [
+      "browser"
+    ],
+    "http.client": [
+      "browser"
+    ],
+    "seleniumbase": [
+      "browser"
+    ],
+    "mycdp": [
+      "browser"
+    ],
+    "sqlite3": [
+      "library"
+    ],
+    "rapidocr_onnxruntime": [
+      "library"
+    ],
+    "ctypes": [
+      "browser",
+      "secure"
+    ],
+    "mcp": [
+      "mcp_server"
+    ],
+    "pydantic": [
+      "mcp_server"
+    ],
+    "subprocess": [
+      "browser",
+      "check",
+      "repository_checks",
+      "secure"
+    ]
+  },
+  "public_tools": [
+    "session_status",
+    "session_login",
+    "session_logout",
+    "daily_status",
+    "daily_history",
+    "get_unread_count",
+    "list_notifications",
+    "reply_to_notification",
+    "react_to_notification",
+    "daily_run",
+    "stripe_collect",
+    "collect_company",
+    "create_collection_task",
+    "run_task",
+    "task_status",
+    "control_task",
+    "list_tasks",
+    "archive_media",
+    "recognize_media",
+    "get_thread_detail",
+    "save_thread",
+    "organize_thread",
+    "search_threads",
+    "browse_board",
+    "user_profile",
+    "get_my_profile",
+    "set_favorite",
+    "set_reaction",
+    "create_thread",
+    "reply_thread",
+    "interviews_search",
+    "interviews_export"
+  ],
+  "external_modules": {
+    "bs4": "beautifulsoup4",
+    "mcp": "mcp",
+    "mycdp": "mycdp",
+    "pydantic": "pydantic",
+    "rapidocr_onnxruntime": "rapidocr-onnxruntime",
+    "requests": "requests",
+    "seleniumbase": "seleniumbase"
+  },
+  "dependencies": {
+    "beautifulsoup4": "4.15.0",
+    "mcp": "2.2.0",
+    "mycdp": "1.4.0",
+    "pydantic": "2.13.5",
+    "rapidocr-onnxruntime": "1.4.4",
+    "requests": "2.34.2",
+    "seleniumbase": "4.53.8",
+    "tzdata": "2026.3"
+  },
+  "token_budgets": {
+    "font-family": 1,
+    "font-size": 5,
+    "color": 18,
+    "space": 8,
+    "radius": 4,
+    "weight": 2,
+    "line": 2
+  },
+  "owners": {
+    "settings.py": "部署、账号身份、站点地址、默认值、限额及导出文件名",
+    "contracts.py": "任务/动作/内容状态、会话诊断契约与每日奖励动作定义",
+    "browser.py": "在线会话与站点请求；其他模块不得另建网络实现",
+    "library.py": "资料数据库写入；调用方不直接操作 SQLite",
+    "interact.py": "用户逐项指定的论坛互动（收藏等）：目标状态操作，先读后写再回读；每日任务与资料库不带站点副作用",
+    "presentation.py": "阅读器文案和业务状态到展示状态的映射",
+    "tokens.css": "唯一视觉取值集合",
+    "reader.css": "复用 token 的界面组件样式",
+    "reader.js": "界面交互，消费展示数据，不重建业务判定",
+    "architecture.json": "模块、依赖、接口和视觉数量预算；扩大范围须同步主方案说明理由",
+    "repository_checks.py": "版本化文件边界、敏感信息特征与测试分组登记检查；不读取账号状态",
+    "check.py": "唯一离线检查入口：阶段选择、依赖校验、测试执行、脱敏报告和 CI 汇总"
+  },
+  "ci": {
+    "tests": {
+      "unit": [
+        "tests/test_collection.py",
+        "tests/test_contracts.py",
+        "tests/test_extract.py",
+        "tests/test_governance.py",
+        "tests/test_library.py",
+        "tests/test_presentation.py",
+        "tests/test_rules.py",
+        "tests/test_secure.py",
+        "tests/test_settings.py",
+        "tests/test_ci.py",
+        "tests/test_thread_detail.py",
+        "tests/test_site_search.py",
+        "tests/test_session_status.py",
+        "tests/test_access_recovery.py",
+        "tests/test_daily_history.py",
+        "tests/test_browser_startup.py",
+        "tests/test_daily_resume.py",
+        "tests/test_interact.py",
+        "tests/test_reaction.py",
+        "tests/test_compose.py",
+        "tests/test_session_logout.py",
+        "tests/test_wechat_login.py",
+        "tests/test_notifications.py",
+        "tests/test_notification_actions.py",
+        "tests/test_images.py",
+        "tests/test_mood.py",
+        "tests/test_tasks.py",
+        "tests/test_media.py",
+        "tests/test_ocr.py",
+        "tests/test_video.py",
+        "tests/test_browser_timeouts.py"
+      ],
+      "integration": [
+        "tests/test_mcp_integration.py",
+        "tests/test_reader_integration.py",
+        "tests/test_access_recovery_integration.py"
+      ]
+    }
+  },
+  "publication": {
+    "root_files": [
+      ".gitattributes",
+      ".gitignore",
+      ".github/workflows/consistency.yml",
+      "README.md",
+      ".github/actions/setup-toolkit/action.yml"
+    ],
+    "package_files": [
+      "README.md",
+      "account.example.json",
+      "answers.json",
+      "mood-phrases.json",
+      "architecture.json",
+      "requirements.txt"
+    ]
+  }
+}
