@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="540" viewBox="0 0 960 540" role="img" aria-label="题库匹配：按选项文字比，不按 ABCD">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px}
+.pill{font-size:13px}
+</style>
+<rect x="0.5" y="0.5" width="959" height="539" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">题库匹配：按选项文字比，不按 A/B/C/D 的位置</text>
+
+<rect x="24" y="60" width="440" height="196" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="40" y="86" class="b">站点今天给的题（接口 dailyQuestion.get 返回）</text>
+<text x="40" y="114" class="t">题目：美国哪个州没有夏令时？</text>
+<text x="40" y="140" class="s">选项（顺序每天可能不一样）：</text>
+<rect x="40" y="152" width="190" height="26" rx="13" fill="#fff" stroke="#d0d7de"/><text x="52" y="170" class="pill">a1  夏威夷</text>
+<rect x="242" y="152" width="190" height="26" rx="13" fill="#fff" stroke="#d0d7de"/><text x="254" y="170" class="pill">a2  亚利桑那州</text>
+<rect x="40" y="186" width="190" height="26" rx="13" fill="#fff" stroke="#d0d7de"/><text x="52" y="204" class="pill">a3  佛罗里达</text>
+<rect x="242" y="186" width="190" height="26" rx="13" fill="#fff" stroke="#d0d7de"/><text x="254" y="204" class="pill">a4  内华达</text>
+<text x="40" y="240" class="s">示意题目，来自仓库题库；选项文字是纯文本</text>
+
+<rect x="496" y="60" width="440" height="196" rx="10" fill="#fbefff" stroke="#c297ff"/>
+<text x="512" y="86" class="b">题库（两份合并，本机学到的优先）</text>
+<text x="512" y="112" class="t">answers.json（随仓库，194 题）里有一行：</text>
+<text x="512" y="134" class="m">"美国哪个州没有夏令时？": "亚利桑那州"</text>
+<text x="512" y="164" class="t">learned-answers.json（只在你电脑上）：</text>
+<text x="512" y="186" class="s">verified：本账号答对并到账过的题和答案</text>
+<text x="512" y="206" class="s">rejected：本账号答过但没到账的答案</text>
+<text x="512" y="240" class="s">两边冲突时，以本机 verified 为准</text>
+
+<rect x="24" y="276" width="912" height="118" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
+<text x="40" y="302" class="b">怎么比：先归一化，再按选项文字精确匹配</text>
+<text x="40" y="328" class="t">① 题目和每个选项都做 NFKC 归一化：全角变半角、各种空白压成一个空格、去掉首尾空白</text>
+<text x="40" y="352" class="t">② 用归一化后的题目在题库里找到答案「亚利桑那州」，再看哪个选项的文字和它完全一样</text>
+<text x="40" y="376" class="t">③ 恰好一个选项一样 → 命中，点那个按钮（这里是 a2）。不看 A/B/C/D，站点把顺序打乱也没关系</text>
+
+<rect x="24" y="412" width="912" height="112" rx="10" fill="#ffebe9" stroke="#ff8182"/>
+<text x="40" y="438" class="b">下面三种情况都不算命中，走 answer_needed（停下来等你补答，不瞎猜）</text>
+<text x="40" y="464" class="t">· 题库里没有这道题，或者同一道题在题库里对应了两个不同的答案</text>
+<text x="40" y="488" class="t">· 没有任何选项和答案一样，或者有两个以上一样（无法唯一确定）</text>
+<text x="40" y="512" class="t">· 这个答案在本机 rejected 名单里（曾在你账号上答错过）</text>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" role="img" aria-label="技术栈一张图">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13px}.s{font-size:12px;fill:#57606a}.lay{font-size:12.5px;font-weight:700;fill:#57606a}
+</style>
+<rect x="0.5" y="0.5" width="959" height="469" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">技术栈：一张图</text>
+
+<rect x="24" y="60" width="912" height="66" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="40" y="84" class="b">入口　你在终端敲命令，或让 AI 助手调用</text>
+<text x="40" y="108" class="t">命令行：运行.sh / 运行.cmd（转发给 cli.py）　·　MCP 服务：mcp_server.py，stdio 传输，给 Claude Code / Codex 等客户端用</text>
+
+<rect x="24" y="136" width="912" height="80" rx="10" fill="#dafbe1" stroke="#4ac26b"/>
+<text x="40" y="160" class="b">应用　Python 3.12，15 个模块，约 5900 行</text>
+<text x="40" y="184" class="t">第三方库只有 8 个：SeleniumBase + mycdp（驱动 Chrome）· requests（探测本机调试端口）· beautifulsoup4（解析页面）</text>
+<text x="40" y="206" class="t">· mcp + pydantic（MCP 服务）· rapidocr-onnxruntime（本机 OCR，可选功能）· tzdata（时区数据）。其余全是标准库。</text>
+
+<rect x="24" y="226" width="912" height="66" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
+<text x="40" y="250" class="b">浏览器　本机安装的 Chrome，专用配置目录</text>
+<text x="40" y="274" class="t">用 CDP（Chrome DevTools Protocol）在页面里执行脚本、监听网络；站点新版接口是 tRPC，老版页面是 Discuz（GBK 编码）</text>
+
+<rect x="24" y="302" width="912" height="66" rx="10" fill="#fbefff" stroke="#c297ff"/>
+<text x="40" y="326" class="b">存储与凭据　全部在本机</text>
+<text x="40" y="350" class="t">SQLite 数据库 + 几个 JSON 文件（都在 work/）；密码在 macOS 登录钥匙串 / Windows DPAPI，代码里不出现明文</text>
+
+<rect x="24" y="378" width="912" height="76" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
+<text x="40" y="402" class="b">系统与质量　用系统自带的调度器，不装守护进程</text>
+<text x="40" y="426" class="t">调度：macOS launchd / Windows 任务计划程序　·　测试：标准库 unittest，35 个文件、419 个用例</text>
+<text x="40" y="446" class="t">CI：GitHub Actions 在 Ubuntu、Windows 2022 / 2025、macOS 15 上跑同一个 check.py；architecture.json 白名单由 AST 扫描强制执行</text>
+</svg>

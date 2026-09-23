@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="260" viewBox="0 0 960 260" role="img" aria-label="更新到新版本：五步">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:13.5px;font-weight:600}.s{font-size:11.5px;fill:#57606a}.n{font-size:13px;font-weight:700;fill:#fff}
+.box{stroke-width:1.3;fill:#fff;stroke:#d0d7de}
+.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="259" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">更新到新版本：五步</text>
+
+<rect x="24" y="66" width="164" height="96" rx="8" class="box"/>
+<circle cx="44" cy="86" r="11" fill="#0969da"/><text x="44" y="90" class="n" text-anchor="middle">1</text>
+<text x="62" y="90" class="b">暂停每日计划</text>
+<text x="38" y="114" class="s">别让它在你更新到一半</text>
+<text x="38" y="130" class="s">的时候跑起来</text>
+<path d="M188,114 L208,114" class="ar"/>
+
+<rect x="210" y="66" width="164" height="96" rx="8" class="box"/>
+<circle cx="230" cy="86" r="11" fill="#0969da"/><text x="230" y="90" class="n" text-anchor="middle">2</text>
+<text x="248" y="90" class="b">确认没有本地改动</text>
+<text x="224" y="114" class="s">有自己的改动先处理掉，</text>
+<text x="224" y="130" class="s">别用硬重置覆盖</text>
+<path d="M374,114 L394,114" class="ar"/>
+
+<rect x="396" y="66" width="164" height="96" rx="8" class="box"/>
+<circle cx="416" cy="86" r="11" fill="#0969da"/><text x="416" y="90" class="n" text-anchor="middle">3</text>
+<text x="434" y="90" class="b">拉取新代码</text>
+<text x="410" y="114" class="s">只允许快进合并，</text>
+<text x="410" y="130" class="s">有分叉就停下来看</text>
+<path d="M560,114 L580,114" class="ar"/>
+
+<rect x="582" y="66" width="164" height="96" rx="8" class="box"/>
+<circle cx="602" cy="86" r="11" fill="#0969da"/><text x="602" y="90" class="n" text-anchor="middle">4</text>
+<text x="620" y="90" class="b">重装依赖、跑检查</text>
+<text x="596" y="114" class="s">依赖版本可能变了；</text>
+<text x="596" y="130" class="s">检查.sh --sync 通过才继续</text>
+<path d="M746,114 L766,114" class="ar"/>
+
+<rect x="768" y="66" width="168" height="96" rx="8" class="box" style="fill:#dafbe1;stroke:#4ac26b"/>
+<circle cx="788" cy="86" r="11" fill="#1a7f37"/><text x="788" y="90" class="n" text-anchor="middle">5</text>
+<text x="806" y="90" class="b">恢复计划</text>
+<text x="782" y="114" class="s">之后第一次触发照常</text>
+<text x="782" y="130" class="s">判断该不该跑</text>
+
+<rect x="24" y="182" width="912" height="60" rx="8" fill="#f6f8fa"/>
+<text x="40" y="206" class="s">work/ 里的账号、凭据、数据库、Chrome 配置都不受更新影响。计划时间之类的个人配置写在 account.json，</text>
+<text x="40" y="228" class="s">不要改仓库里的 settings.py，更新时才不会冲突。具体命令见使用说明的「更新与维护」。</text>
+</svg>

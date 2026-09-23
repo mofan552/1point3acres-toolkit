@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="486" viewBox="0 0 960 486" role="img" aria-label="怎么判断真的成功：四个条件和三种整体状态">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px}.ok{font-size:13.5px;fill:#1a7f37;font-weight:600}
+.pill{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;font-weight:600}
+</style>
+<rect x="0.5" y="0.5" width="959" height="485" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">怎么判断「真的成功了」：不看按钮，看到账</text>
+
+<rect x="24" y="60" width="466" height="304" rx="10" fill="#fff" stroke="#d0d7de"/>
+<text x="40" y="88" class="b">积分流水里的一条记录（credit.getCreditLogs 接口返回）</text>
+<rect x="40" y="104" width="434" height="126" rx="6" fill="#f6f8fa"/>
+<text x="52" y="128" class="m">uid:            123456</text>
+<text x="262" y="128" class="ok">✓ 必须是你自己的 uid</text>
+<text x="52" y="156" class="m">extcredits1:    1</text>
+<text x="262" y="156" class="ok">✓ 大米变动必须 &gt; 0</text>
+<text x="52" y="184" class="m">details.title:  "签到奖励"</text>
+<text x="262" y="184" class="ok">✓ 或者是 "每日答题"</text>
+<text x="52" y="212" class="m">dateline:       1758585600</text>
+<text x="262" y="212" class="ok">✓ 折成洛杉矶日期 = 今天</text>
+<rect x="40" y="248" width="434" height="52" rx="6" fill="#dafbe1" stroke="#4ac26b"/>
+<text x="52" y="270" class="b">四条都满足 → 这一项 reward_verified</text>
+<text x="52" y="290" class="s">缺任何一条 → reward_unconfirmed，不算成功</text>
+<text x="40" y="332" class="s">工具不把「点到了按钮」或「命令退出码 0」当成功。</text>
+<text x="40" y="350" class="s">网站改版、网络或人机验证出问题时，如实报失败。</text>
+
+<rect x="512" y="60" width="424" height="304" rx="10" fill="#fff" stroke="#d0d7de"/>
+<text x="528" y="88" class="b">整天的结论：status</text>
+<rect x="528" y="104" width="392" height="70" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+<text x="542" y="128" class="pill">complete</text>
+<text x="542" y="150" class="t">两项都显示已完成，且两项奖励都查到到账</text>
+<rect x="528" y="184" width="392" height="82" rx="8" fill="#fff1e5" stroke="#fb8f44"/>
+<text x="542" y="208" class="pill">needs_attention</text>
+<text x="542" y="230" class="t">有一项没确认：题库没这道题、点了但没到账、</text>
+<text x="542" y="250" class="t">本机历史和站点状态对不上……需要人看一眼</text>
+<rect x="528" y="276" width="392" height="70" rx="8" fill="#ffebe9" stroke="#ff8182"/>
+<text x="542" y="300" class="pill">failed</text>
+<text x="542" y="322" class="t">中途出错：网络、验证、浏览器断开、提交没回执……</text>
+
+<rect x="24" y="384" width="912" height="84" rx="8" fill="#f6f8fa"/>
+<text x="40" y="406" class="s">每一项（签到 / 答题）的状态也会单独给出：</text>
+<text x="40" y="426" class="s">already_done（早就完成）· reward_verified（已到账）· reward_unconfirmed（完成了但没查到奖励）</text>
+<text x="40" y="446" class="s">· submission_unconfirmed（提交了但没收到回执）· answer_needed（题库没题）· not_done（只读模式 status 下还没做）</text>
+</svg>

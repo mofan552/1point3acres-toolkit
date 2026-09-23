@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="350" viewBox="0 0 960 350" role="img" aria-label="CI 流水线：静态检查、单元测试、集成测试、汇总">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13px}.s{font-size:12px;fill:#57606a}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+.box{stroke-width:1.3}.blue{fill:#ddf4ff;stroke:#54aeff}.green{fill:#dafbe1;stroke:#4ac26b}.purple{fill:#fbefff;stroke:#c297ff}.gray{fill:#f6f8fa;stroke:#d0d7de}
+.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="349" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">GitHub Actions：四个阶段，全部跑的是同一个 check.py</text>
+
+<rect x="24" y="66" width="200" height="150" rx="10" class="box blue"/>
+<text x="38" y="92" class="b">① static</text>
+<text x="38" y="112" class="s">ubuntu-24.04</text>
+<text x="38" y="138" class="t">源码依赖白名单</text>
+<text x="38" y="158" class="t">文档链接、文件清单</text>
+<text x="38" y="178" class="t">密钥特征、可执行位</text>
+<text x="38" y="204" class="m">--stage static</text>
+<path d="M224,141 L262,141" class="ar"/>
+
+<rect x="264" y="66" width="220" height="150" rx="10" class="box green"/>
+<text x="278" y="92" class="b">② unit</text>
+<text x="278" y="112" class="s">Windows 2022 / 2025 · macOS 15</text>
+<text x="278" y="138" class="t">32 个单元测试文件</text>
+<text x="278" y="158" class="t">含真实钥匙串往返用例</text>
+<text x="278" y="178" class="t">依赖版本必须与清单一致</text>
+<text x="278" y="204" class="m">--stage unit</text>
+<path d="M484,141 L522,141" class="ar"/>
+
+<rect x="524" y="66" width="220" height="150" rx="10" class="box purple"/>
+<text x="538" y="92" class="b">③ integration</text>
+<text x="538" y="112" class="s">windows-2025 · macos-15</text>
+<text x="538" y="138" class="t">真实 stdio 起 MCP 服务</text>
+<text x="538" y="158" class="t">真实 Chrome 打开离线阅读器</text>
+<text x="538" y="178" class="t">不登录、不签到、不联网站点</text>
+<text x="538" y="204" class="m">--stage integration</text>
+<path d="M744,141 L782,141" class="ar"/>
+
+<rect x="784" y="66" width="152" height="150" rx="10" class="box gray"/>
+<text x="798" y="92" class="b">④ result</text>
+<text x="798" y="112" class="s">ubuntu-24.04</text>
+<text x="798" y="138" class="t">三个阶段全绿</text>
+<text x="798" y="158" class="t">才算通过</text>
+<text x="798" y="204" class="m">--stage aggregate</text>
+
+<rect x="24" y="236" width="912" height="96" rx="8" fill="#f6f8fa"/>
+<text x="40" y="260" class="t">每个阶段都先 --sync 重建派生文件，再 git diff --exit-code：生成物和源码不一致就失败。</text>
+<text x="40" y="282" class="t">Action 一律按 commit 哈希锁定，不用 secrets，不用 self-hosted runner。</text>
+<text x="40" y="304" class="t">本地跑 检查.sh（全部阶段）或 检查.sh --sync --stage static / unit / integration，结果和 CI 完全一样，都是 JSON。</text>
+<text x="40" y="324" class="s">测试框架：Python 标准库 unittest，35 个测试文件、419 个用例；跳过（skip）也算失败。</text>
+</svg>

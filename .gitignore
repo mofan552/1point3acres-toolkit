@@ -13,6 +13,9 @@
 !/.github/actions/setup-toolkit/
 /.github/actions/setup-toolkit/*
 !/.github/actions/setup-toolkit/action.yml
+!/docs/
+/docs/*
+!/docs/*.svg
 !/outputs/
 /outputs/*
 !/outputs/一亩三分地本地工具/

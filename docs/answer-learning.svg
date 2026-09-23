@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="380" viewBox="0 0 960 380" role="img" aria-label="答完之后学什么：只有到账才算证据">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:13.5px;font-weight:600}.s{font-size:12.5px;fill:#57606a}
+.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="379" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">答完之后学什么：只有「到账」才算证据</text>
+
+<rect x="24" y="60" width="290" height="222" rx="10" fill="#dafbe1" stroke="#4ac26b"/>
+<text x="38" y="88" class="b">到账了</text>
+<text x="38" y="114" class="s">站点响应到了，而且积分流水里</text>
+<text x="38" y="132" class="s">有当天的「每日答题 +1」</text>
+<path d="M169,142 L169,160" class="ar"/>
+<text x="38" y="184" class="t">写入 verified：题 → 这个答案</text>
+<path d="M169,194 L169,212" class="ar"/>
+<text x="38" y="236" class="s">以后同题直接命中，</text>
+<text x="38" y="254" class="s">并且优先于仓库题库</text>
+
+<rect x="335" y="60" width="290" height="222" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
+<text x="349" y="88" class="b">站点说已答，却没到账</text>
+<text x="349" y="114" class="s">答错了：站点把今天标成「已答」，</text>
+<text x="349" y="132" class="s">但没有给米</text>
+<path d="M480,142 L480,160" class="ar"/>
+<text x="349" y="184" class="t">写入 rejected：题 → [这个答案]</text>
+<path d="M480,194 L480,212" class="ar"/>
+<text x="349" y="236" class="s">以后拒绝再交同一个答案，不重复扣米；</text>
+<text x="349" y="254" class="s">你补答别的选项前，也先查这份名单</text>
+
+<rect x="646" y="60" width="290" height="222" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="660" y="88" class="b">没等到站点响应</text>
+<text x="660" y="114" class="s">网络断了、超时、浏览器掉线，</text>
+<text x="660" y="132" class="s">不知道站点收没收到</text>
+<path d="M791,142 L791,160" class="ar"/>
+<text x="660" y="184" class="t">什么都不写</text>
+<path d="M791,194 L791,212" class="ar"/>
+<text x="660" y="236" class="s">不确定的事不当证据；</text>
+<text x="660" y="254" class="s">下次运行先查回执，再决定补不补交</text>
+
+<rect x="24" y="300" width="912" height="62" rx="8" fill="#f6f8fa"/>
+<text x="40" y="324" class="s">文件：work/local-toolkit-state/learned-answers.json。写入时先写临时文件再原子替换，中途断电也不会写坏；</text>
+<text x="40" y="346" class="s">万一文件坏了，也只是退回到只用仓库题库，签到答题照常。</text>
+</svg>

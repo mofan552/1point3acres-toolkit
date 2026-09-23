@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="480" viewBox="0 0 960 480" role="img" aria-label="命令一览：按用途分组">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.s{font-size:12px;fill:#57606a}
+.m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+</style>
+<rect x="0.5" y="0.5" width="959" height="479" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">命令一览：按用途分组（都在工具目录里跑，输出都是 JSON）</text>
+
+<rect x="24" y="60" width="290" height="176" rx="10" fill="#dafbe1" stroke="#4ac26b"/>
+<text x="38" y="86" class="b">每日任务</text>
+<text x="38" y="110" class="m">daily　　　　　　跑今天的签到答题</text>
+<text x="38" y="132" class="m">daily --resume　给计划用，自己判断</text>
+<text x="38" y="154" class="m">status　　　　　 只查状态，不签到</text>
+<text x="38" y="176" class="m">daily-history　 离线看历史和健康</text>
+<text x="38" y="198" class="m">save-credentials 存一次密码</text>
+<text x="38" y="224" class="s">签到答题之外不碰站点上的任何东西</text>
+
+<rect x="335" y="60" width="290" height="176" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
+<text x="349" y="86" class="b">会话</text>
+<text x="349" y="110" class="m">session-status　只诊断，不登录</text>
+<text x="349" y="132" class="m">session-login　 用密码恢复登录</text>
+<text x="349" y="154" class="m">　--method wechat 改为微信扫码</text>
+<text x="349" y="176" class="m">session-logout　只删本站 Cookie</text>
+<text x="349" y="224" class="s">都只影响工具自己的专用 Chrome</text>
+
+<rect x="646" y="60" width="290" height="176" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
+<text x="660" y="86" class="b">只读浏览（不入库）</text>
+<text x="660" y="110" class="m">site-search　站内搜索</text>
+<text x="660" y="132" class="m">thread-detail　读一个帖子</text>
+<text x="660" y="154" class="m">browse-board　翻一个版面</text>
+<text x="660" y="176" class="m">user-profile / my-profile</text>
+<text x="660" y="198" class="m">unread / notifications</text>
+<text x="660" y="224" class="s">读通知不会标记已读</text>
+
+<rect x="24" y="252" width="290" height="176" rx="10" fill="#fbefff" stroke="#c297ff"/>
+<text x="38" y="278" class="b">面经资料（存进本机数据库）</text>
+<text x="38" y="302" class="m">collect-stripe / collect 公司</text>
+<text x="38" y="324" class="m">search　离线搜索　export 导出</text>
+<text x="38" y="346" class="m">save-thread　organize</text>
+<text x="38" y="368" class="m">archive-media　recognize-media</text>
+<text x="38" y="390" class="m">task-create/run/status/pause/resume</text>
+<text x="38" y="416" class="s">导出带离线阅读器，断网也能搜</text>
+
+<rect x="335" y="252" width="290" height="176" rx="10" fill="#fff1e5" stroke="#fb8f44"/>
+<text x="349" y="278" class="b">互动（默认只预览）</text>
+<text x="349" y="302" class="m">post　reply</text>
+<text x="349" y="324" class="m">favorite / unfavorite</text>
+<text x="349" y="346" class="m">like / unlike</text>
+<text x="349" y="368" class="m">reply-notification</text>
+<text x="349" y="390" class="m">like-notification / unlike-…</text>
+<text x="349" y="416" class="s">加 --submit 才真写站点，写完读回核对</text>
+
+<rect x="646" y="252" width="290" height="176" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+<text x="660" y="278" class="b">检查（不碰账号）</text>
+<text x="660" y="302" class="m">检查.sh / 检查.cmd</text>
+<text x="660" y="324" class="m">　--sync　重建生成文件</text>
+<text x="660" y="346" class="m">　--stage static|unit|integration</text>
+<text x="660" y="390" class="s">和 CI 跑的是同一个 check.py，</text>
+<text x="660" y="408" class="s">status=complete 才算通过</text>
+
+<rect x="24" y="444" width="14" height="14" rx="3" fill="#dafbe1" stroke="#4ac26b"/><text x="44" y="456" class="s">只动自己账号的每日任务</text>
+<rect x="220" y="444" width="14" height="14" rx="3" fill="#ddf4ff" stroke="#54aeff"/><text x="240" y="456" class="s">只读站点或只管会话</text>
+<rect x="400" y="444" width="14" height="14" rx="3" fill="#fbefff" stroke="#c297ff"/><text x="420" y="456" class="s">读站点、写本机数据库</text>
+<rect x="580" y="444" width="14" height="14" rx="3" fill="#fff1e5" stroke="#fb8f44"/><text x="600" y="456" class="s">可能写站点，需要 --submit</text>
+</svg>

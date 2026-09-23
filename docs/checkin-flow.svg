@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-label="自动签到的五个步骤，以及可选的随机心情">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:15px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}.n{font-size:14px;font-weight:700;fill:#fff}
+.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="559" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">自动签到：五个步骤</text>
+<line x1="48" y1="96" x2="48" y2="416" stroke="#d0d7de" stroke-width="2"/>
+
+<circle cx="48" cy="96" r="16" fill="#0969da"/><text x="48" y="101" class="n" text-anchor="middle">1</text>
+<text x="76" y="92" class="b">打开签到页</text>
+<text x="76" y="114" class="s">地址 /next/daily-checkin；没登录就用钥匙串里的密码自动登录（含 Cloudflare 验证）</text>
+
+<circle cx="48" cy="176" r="16" fill="#0969da"/><text x="48" y="181" class="n" text-anchor="middle">2</text>
+<text x="76" y="172" class="b">选心情：默认点「没心情」</text>
+<text x="76" y="194" class="s">不写「今日说说」，你的主页不会多出任何内容</text>
+
+<circle cx="48" cy="256" r="16" fill="#0969da"/><text x="48" y="261" class="n" text-anchor="middle">3</text>
+<text x="76" y="252" class="b">点「提交签到」</text>
+<text x="76" y="274" class="s">只点一次；按钮没就绪就报 button_not_ready，留给下一次计划</text>
+
+<circle cx="48" cy="336" r="16" fill="#0969da"/><text x="48" y="341" class="n" text-anchor="middle">4</text>
+<text x="76" y="332" class="b">等站点真实回应</text>
+<text x="76" y="354" class="s">等 reward.checkin 接口返回，最多 45 秒；快超时时自动尝试过一次人机验证</text>
+
+<circle cx="48" cy="416" r="16" fill="#1a7f37"/><text x="48" y="421" class="n" text-anchor="middle">5</text>
+<text x="76" y="412" class="b">核对到账</text>
+<text x="76" y="434" class="s">打开积分流水，找到当天「签到奖励 +1」才算 reward_verified</text>
+
+<path d="M400,176 L578,176" class="ar" stroke-dasharray="5,4"/>
+<rect x="580" y="66" width="356" height="404" rx="10" fill="#fbefff" stroke="#c297ff"/>
+<text x="596" y="94" class="b">可选：随机心情（默认关闭）</text>
+<text x="596" y="118" class="s">在 account.json 加 "checkin_mood_random": true 才开启</text>
+<text x="596" y="152" class="t">· 10 种心情按权重抽：开心 17、疲惫 15、</text>
+<text x="596" y="174" class="t">  无聊 14 … 难过 5、衰 3、生气 1</text>
+<text x="596" y="200" class="t">· 日常心情多、强烈情绪少，像真人的分布</text>
+<text x="596" y="226" class="t">· 昨天的心情有 25% 概率延续到今天</text>
+<text x="596" y="252" class="t">· 从 mood-phrases.json（321 句中性短句）里</text>
+<text x="596" y="274" class="t">  该心情的分组抽一句，30 天内不重复</text>
+<text x="596" y="300" class="t">· 填进「今日说说」，再走上面的第 3 步</text>
+<rect x="596" y="326" width="324" height="120" rx="8" fill="#ffebe9" stroke="#ff8182"/>
+<text x="610" y="352" class="b">注意</text>
+<text x="610" y="376" class="t">开启后，每天会以你的名义在主页发一句话。</text>
+<text x="610" y="398" class="t">这是你的选择，工具不替你决定。</text>
+<text x="610" y="420" class="t">奖励核验的规则不变。</text>
+
+<rect x="24" y="486" width="912" height="56" rx="8" fill="#f6f8fa"/>
+<text x="40" y="508" class="s">结果里签到项的状态：reward_verified（到账）· already_done（早就签过了）</text>
+<text x="40" y="528" class="s">· reward_unconfirmed（点了但没查到奖励）· submission_unconfirmed（提交了但没收到回执）</text>
+</svg>

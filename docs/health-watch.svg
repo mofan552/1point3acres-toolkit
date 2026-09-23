@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="440" viewBox="0 0 960 440" role="img" aria-label="健康观察者：第二双眼睛">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}
+.pill{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;font-weight:600}
+.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="439" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">健康观察者：第二双眼睛，专门发现「主计划根本没在跑」</text>
+
+<rect x="24" y="60" width="912" height="96" rx="10" fill="#ddf4ff" stroke="#54aeff"/>
+<text x="40" y="86" class="b">主计划：每 10 分钟一次</text>
+<text x="40" y="112" class="t">每次触发都先在数据库里记一次心跳；该跑就跑，不该跑就退出。</text>
+<text x="40" y="136" class="s">它有个天生的盲点：如果调度器坏了、电脑一直没开，它压根不会被触发，也就不会报任何错。</text>
+
+<path d="M480,156 L480,180" class="ar" stroke-dasharray="5,4"/>
+<text x="490" y="174" class="s">观察者只读它留下的数据库</text>
+
+<rect x="24" y="180" width="912" height="96" rx="10" fill="#fbefff" stroke="#c297ff"/>
+<text x="40" y="206" class="b">健康观察者：另配一个独立计划，每天一次</text>
+<text x="40" y="232" class="t">只读数据库，不开浏览器、不碰账号、不提交任何东西。看两件事：① 到期的站点日都完成了吗　② 最近一次心跳是多久以前</text>
+<text x="40" y="256" class="s">因为它不碰浏览器，所以和「不要给同一个账号配两个调度器」并不冲突。</text>
+
+<path d="M480,276 L480,300" class="ar"/>
+
+<rect x="24" y="300" width="290" height="70" rx="8" fill="#dafbe1" stroke="#4ac26b"/>
+<text x="38" y="324" class="pill">ok</text>
+<text x="38" y="346" class="s">到期的站点日都完成，</text>
+<text x="38" y="362" class="s">且最近 8 小时内有心跳</text>
+<rect x="335" y="300" width="290" height="70" rx="8" fill="#fff1e5" stroke="#fb8f44"/>
+<text x="349" y="324" class="pill">warn</text>
+<text x="349" y="346" class="s">有一天没完成，</text>
+<text x="349" y="362" class="s">但还不到 2 天</text>
+<rect x="646" y="300" width="290" height="70" rx="8" fill="#ffebe9" stroke="#ff8182"/>
+<text x="660" y="324" class="pill">alert</text>
+<text x="660" y="346" class="s">连续 2 天没完成，或超过 8 小时没心跳，</text>
+<text x="660" y="362" class="s">或根本没有任何历史</text>
+
+<path d="M791,370 L791,390" class="ar"/>
+<rect x="24" y="390" width="912" height="36" rx="8" fill="#f6f8fa"/>
+<text x="40" y="413" class="t">alert 时命令返回退出码 3。你的包装脚本看退出码就行，不用解析 JSON：弹桌面通知、发消息，随你。</text>
+</svg>

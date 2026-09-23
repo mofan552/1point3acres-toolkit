@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="470" viewBox="0 0 960 470" role="img" aria-label="提交发出去了回执却没回来：怎么避免重复提交也避免漏签">
+<style>
+text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328}
+.h{font-size:19px;font-weight:700}.b{font-size:14.5px;font-weight:600}.t{font-size:13.5px}.s{font-size:12.5px;fill:#57606a}
+.box{stroke-width:1.3}.white{fill:#fff;stroke:#d0d7de}.gray{fill:#f6f8fa;stroke:#d0d7de}.green{fill:#dafbe1;stroke:#4ac26b}.blue{fill:#ddf4ff;stroke:#54aeff}.orange{fill:#fff1e5;stroke:#fb8f44}.red{fill:#ffebe9;stroke:#ff8182}
+.ar{stroke:#57606a;stroke-width:1.6;fill:none;marker-end:url(#ar)}
+</style>
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#57606a"/></marker></defs>
+<rect x="0.5" y="0.5" width="959" height="469" rx="12" fill="#fff" stroke="#d0d7de"/>
+<text x="24" y="36" class="h">提交发出去了，回执却没回来：既不重复提交，也不漏签</text>
+
+<rect x="24" y="62" width="220" height="60" rx="8" class="box white"/>
+<text x="38" y="86" class="b">点了「提交签到」</text>
+<text x="38" y="108" class="s">或「提交答案」</text>
+<path d="M244,92 L280,92" class="ar"/>
+<rect x="280" y="62" width="206" height="60" rx="8" class="box white"/>
+<text x="294" y="86" class="b">等站点回执，最多 45 秒</text>
+<text x="294" y="108" class="s">盯着浏览器网络请求看</text>
+<path d="M486,92 L546,92" class="ar"/>
+<text x="494" y="84" class="s">没等到</text>
+<rect x="546" y="62" width="390" height="60" rx="8" class="box red"/>
+<text x="560" y="86" class="b">记为 submission_unconfirmed</text>
+<text x="560" y="108" class="s">这次运行结束为 failed，但不知道站点到底收没收到</text>
+
+<path d="M741,122 L741,150 L480,150 L480,166" class="ar"/>
+<rect x="24" y="166" width="912" height="44" rx="8" class="box gray"/>
+<text x="480" y="194" class="b" text-anchor="middle">下一次运行（10 分钟后）：先看站点怎么说，再决定要不要再提交</text>
+
+<path d="M169,210 L169,240" class="ar"/><path d="M480,210 L480,240" class="ar"/><path d="M791,210 L791,240" class="ar"/>
+
+<rect x="24" y="240" width="290" height="130" rx="10" class="box green"/>
+<text x="38" y="266" class="b">站点说已完成，或已到账</text>
+<text x="38" y="292" class="t">上次其实成功了，只是回执丢了</text>
+<text x="38" y="318" class="s">→ 不再提交，只补核对，</text>
+<text x="38" y="338" class="s">　标为 reward_verified</text>
+
+<rect x="335" y="240" width="290" height="130" rx="10" class="box blue"/>
+<text x="349" y="266" class="b">站点说没完成，且从没回应过</text>
+<text x="349" y="292" class="t">请求大概率丢在半路，站点没收到</text>
+<text x="349" y="318" class="s">→ 再提交一次；同一动作一天</text>
+<text x="349" y="338" class="s">　最多补交 3 次，之后只查不交</text>
+
+<rect x="646" y="240" width="290" height="130" rx="10" class="box orange"/>
+<text x="660" y="266" class="b">站点说没完成，但曾回应过一次</text>
+<text x="660" y="292" class="t">站点处理过了，只是结果不如预期</text>
+<text x="660" y="318" class="s">→ 绝不重交，只查回执；</text>
+<text x="660" y="338" class="s">　仍没到账就 needs_attention 等人看</text>
+
+<rect x="24" y="392" width="912" height="62" rx="8" fill="#f6f8fa"/>
+<text x="40" y="416" class="s">为什么这么设计：重复提交可能被站点当成异常操作；不提交又会断签。所以规则是</text>
+<text x="40" y="438" class="s">「有过回应就不重交；没回应最多补 3 次，每次都先查再交」。有回应还是没回应，都记在本机历史里。</text>
+</svg>
