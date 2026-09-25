@@ -35,63 +35,65 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 </style>
 <defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <rect width="960" height="440" class="bg"/>
-<rect x="24.0" y="24.0" width="912.0" height="54.0" rx="12" class="c-gray"/>
-<text x="40" y="56" class="h">入口</text>
+<rect x="24.0" y="24.0" width="912.0" height="86.0" rx="12" class="c-gray"/>
+<text x="40" y="72" class="h">入口</text>
 <rect x="174.0" y="39.0" width="172.4" height="24.0" rx="12.0" class="c-gray"/>
 <text x="260" y="55" class="xs t-gray" text-anchor="middle" style="font-size:12px">命令行：运行.sh / 运行.cmd</text>
 <rect x="354.4" y="39.0" width="335.1" height="24.0" rx="12.0" class="c-gray"/>
 <text x="522" y="55" class="xs t-gray" text-anchor="middle" style="font-size:12px">MCP 服务：mcp_server.py（给 Claude Code、Codex 用）</text>
-<rect x="24.0" y="88.0" width="912.0" height="86.0" rx="12" class="c-gray"/>
-<text x="40" y="136" class="h">应用</text>
-<rect x="174.0" y="103.0" width="86.0" height="24.0" rx="12.0" class="c-gray"/>
-<text x="217" y="119" class="xs t-gray" text-anchor="middle" style="font-size:12px">Python 3.12</text>
-<rect x="268.0" y="103.0" width="74.5" height="24.0" rx="12.0" class="c-gray"/>
-<text x="305" y="119" class="xs t-gray" text-anchor="middle" style="font-size:12px">15 个模块</text>
-<rect x="350.5" y="103.0" width="118.6" height="24.0" rx="12.0" class="c-gray"/>
-<text x="410" y="119" class="xs t-gray" text-anchor="middle" style="font-size:12px">第三方库只有 8 个</text>
-<rect x="477.1" y="103.0" width="146.0" height="24.0" rx="12.0" class="c-gray"/>
-<text x="550" y="119" class="xs t-gray" text-anchor="middle" style="font-size:12px">SeleniumBase + mycdp</text>
-<rect x="631.1" y="103.0" width="68.1" height="24.0" rx="12.0" class="c-gray"/>
-<text x="665" y="119" class="xs t-gray" text-anchor="middle" style="font-size:12px">requests</text>
-<rect x="707.2" y="103.0" width="101.8" height="24.0" rx="12.0" class="c-gray"/>
-<text x="758" y="119" class="xs t-gray" text-anchor="middle" style="font-size:12px">beautifulsoup4</text>
-<rect x="174.0" y="135.0" width="101.8" height="24.0" rx="12.0" class="c-gray"/>
-<text x="225" y="151" class="xs t-gray" text-anchor="middle" style="font-size:12px">mcp + pydantic</text>
-<rect x="283.8" y="135.0" width="142.8" height="24.0" rx="12.0" class="c-gray"/>
-<text x="355" y="151" class="xs t-gray" text-anchor="middle" style="font-size:12px">rapidocr-onnxruntime</text>
-<rect x="434.6" y="135.0" width="52.6" height="24.0" rx="12.0" class="c-gray"/>
-<text x="461" y="151" class="xs t-gray" text-anchor="middle" style="font-size:12px">tzdata</text>
-<rect x="24.0" y="184.0" width="912.0" height="54.0" rx="12" class="c-gray"/>
-<text x="40" y="216" class="h">浏览器</text>
-<rect x="174.0" y="199.0" width="126.7" height="24.0" rx="12.0" class="c-gray"/>
-<text x="237" y="215" class="xs t-gray" text-anchor="middle" style="font-size:12px">本机安装的 Chrome</text>
-<rect x="308.7" y="199.0" width="92.0" height="24.0" rx="12.0" class="c-gray"/>
-<text x="355" y="215" class="xs t-gray" text-anchor="middle" style="font-size:12px">专用配置目录</text>
-<rect x="408.7" y="199.0" width="93.9" height="24.0" rx="12.0" class="c-gray"/>
-<text x="456" y="215" class="xs t-gray" text-anchor="middle" style="font-size:12px">CDP 协议驱动</text>
-<rect x="510.6" y="199.0" width="204.8" height="24.0" rx="12.0" class="c-gray"/>
-<text x="613" y="215" class="xs t-gray" text-anchor="middle" style="font-size:12px">新版接口 tRPC · 老版页面 Discuz</text>
-<rect x="24.0" y="248.0" width="912.0" height="54.0" rx="12" class="c-gray"/>
-<text x="40" y="280" class="h">存储与凭据</text>
-<rect x="174.0" y="263.0" width="95.5" height="24.0" rx="12.0" class="c-gray"/>
-<text x="222" y="279" class="xs t-gray" text-anchor="middle" style="font-size:12px">SQLite 数据库</text>
-<rect x="277.5" y="263.0" width="105.0" height="24.0" rx="12.0" class="c-gray"/>
-<text x="330" y="279" class="xs t-gray" text-anchor="middle" style="font-size:12px">几个 JSON 文件</text>
-<rect x="390.4" y="263.0" width="97.4" height="24.0" rx="12.0" class="c-gray"/>
-<text x="439" y="279" class="xs t-gray" text-anchor="middle" style="font-size:12px">macOS 钥匙串</text>
-<rect x="495.8" y="263.0" width="110.2" height="24.0" rx="12.0" class="c-gray"/>
-<text x="551" y="279" class="xs t-gray" text-anchor="middle" style="font-size:12px">Windows DPAPI</text>
-<rect x="614.1" y="263.0" width="110.8" height="24.0" rx="12.0" class="c-gray"/>
-<text x="670" y="279" class="xs t-gray" text-anchor="middle" style="font-size:12px">全部在 work/ 里</text>
-<rect x="24.0" y="312.0" width="912.0" height="86.0" rx="12" class="c-gray"/>
-<text x="40" y="360" class="h">系统与质量</text>
-<rect x="174.0" y="327.0" width="241.8" height="24.0" rx="12.0" class="c-gray"/>
-<text x="295" y="343" class="xs t-gray" text-anchor="middle" style="font-size:12px">macOS launchd / Windows 任务计划程序</text>
-<rect x="423.8" y="327.0" width="200.2" height="24.0" rx="12.0" class="c-gray"/>
-<text x="524" y="343" class="xs t-gray" text-anchor="middle" style="font-size:12px">unittest：35 个文件、419 个用例</text>
-<rect x="174.0" y="359.0" width="272.6" height="24.0" rx="12.0" class="c-gray"/>
-<text x="310" y="375" class="xs t-gray" text-anchor="middle" style="font-size:12px">GitHub Actions：Ubuntu · Windows · macOS</text>
-<rect x="454.6" y="359.0" width="217.4" height="24.0" rx="12.0" class="c-gray"/>
-<text x="563" y="375" class="xs t-gray" text-anchor="middle" style="font-size:12px">architecture.json 白名单 + AST 扫描</text>
-<text x="24" y="422" class="xs">依赖版本全部锁死在 requirements.txt，检查命令会核对已安装版本和清单一致。</text>
+<rect x="174.0" y="71.0" width="261.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="304" y="87" class="xs t-gray" text-anchor="middle" style="font-size:12px">软件包：pip / uvx 装的 1point3acres-toolkit</text>
+<rect x="24.0" y="120.0" width="912.0" height="86.0" rx="12" class="c-gray"/>
+<text x="40" y="168" class="h">应用</text>
+<rect x="174.0" y="135.0" width="86.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="217" y="151" class="xs t-gray" text-anchor="middle" style="font-size:12px">Python 3.12</text>
+<rect x="268.0" y="135.0" width="74.5" height="24.0" rx="12.0" class="c-gray"/>
+<text x="305" y="151" class="xs t-gray" text-anchor="middle" style="font-size:12px">16 个模块</text>
+<rect x="350.5" y="135.0" width="118.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="410" y="151" class="xs t-gray" text-anchor="middle" style="font-size:12px">第三方库只有 8 个</text>
+<rect x="477.1" y="135.0" width="146.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="550" y="151" class="xs t-gray" text-anchor="middle" style="font-size:12px">SeleniumBase + mycdp</text>
+<rect x="631.1" y="135.0" width="68.1" height="24.0" rx="12.0" class="c-gray"/>
+<text x="665" y="151" class="xs t-gray" text-anchor="middle" style="font-size:12px">requests</text>
+<rect x="707.2" y="135.0" width="101.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="758" y="151" class="xs t-gray" text-anchor="middle" style="font-size:12px">beautifulsoup4</text>
+<rect x="174.0" y="167.0" width="101.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="225" y="183" class="xs t-gray" text-anchor="middle" style="font-size:12px">mcp + pydantic</text>
+<rect x="283.8" y="167.0" width="142.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="355" y="183" class="xs t-gray" text-anchor="middle" style="font-size:12px">rapidocr-onnxruntime</text>
+<rect x="434.6" y="167.0" width="52.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="461" y="183" class="xs t-gray" text-anchor="middle" style="font-size:12px">tzdata</text>
+<rect x="24.0" y="216.0" width="912.0" height="54.0" rx="12" class="c-gray"/>
+<text x="40" y="248" class="h">浏览器</text>
+<rect x="174.0" y="231.0" width="126.7" height="24.0" rx="12.0" class="c-gray"/>
+<text x="237" y="247" class="xs t-gray" text-anchor="middle" style="font-size:12px">本机安装的 Chrome</text>
+<rect x="308.7" y="231.0" width="92.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="355" y="247" class="xs t-gray" text-anchor="middle" style="font-size:12px">专用配置目录</text>
+<rect x="408.7" y="231.0" width="93.9" height="24.0" rx="12.0" class="c-gray"/>
+<text x="456" y="247" class="xs t-gray" text-anchor="middle" style="font-size:12px">CDP 协议驱动</text>
+<rect x="510.6" y="231.0" width="204.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="613" y="247" class="xs t-gray" text-anchor="middle" style="font-size:12px">新版接口 tRPC · 老版页面 Discuz</text>
+<rect x="24.0" y="280.0" width="912.0" height="54.0" rx="12" class="c-gray"/>
+<text x="40" y="312" class="h">存储与凭据</text>
+<rect x="174.0" y="295.0" width="95.5" height="24.0" rx="12.0" class="c-gray"/>
+<text x="222" y="311" class="xs t-gray" text-anchor="middle" style="font-size:12px">SQLite 数据库</text>
+<rect x="277.5" y="295.0" width="105.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="330" y="311" class="xs t-gray" text-anchor="middle" style="font-size:12px">几个 JSON 文件</text>
+<rect x="390.4" y="295.0" width="97.4" height="24.0" rx="12.0" class="c-gray"/>
+<text x="439" y="311" class="xs t-gray" text-anchor="middle" style="font-size:12px">macOS 钥匙串</text>
+<rect x="495.8" y="295.0" width="110.2" height="24.0" rx="12.0" class="c-gray"/>
+<text x="551" y="311" class="xs t-gray" text-anchor="middle" style="font-size:12px">Windows DPAPI</text>
+<rect x="614.1" y="295.0" width="110.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="670" y="311" class="xs t-gray" text-anchor="middle" style="font-size:12px">全部在 work/ 里</text>
+<rect x="24.0" y="344.0" width="912.0" height="86.0" rx="12" class="c-gray"/>
+<text x="40" y="392" class="h">系统与质量</text>
+<rect x="174.0" y="359.0" width="241.8" height="24.0" rx="12.0" class="c-gray"/>
+<text x="295" y="375" class="xs t-gray" text-anchor="middle" style="font-size:12px">macOS launchd / Windows 任务计划程序</text>
+<rect x="423.8" y="359.0" width="200.2" height="24.0" rx="12.0" class="c-gray"/>
+<text x="524" y="375" class="xs t-gray" text-anchor="middle" style="font-size:12px">unittest：36 个文件、425 个用例</text>
+<rect x="174.0" y="391.0" width="272.6" height="24.0" rx="12.0" class="c-gray"/>
+<text x="310" y="407" class="xs t-gray" text-anchor="middle" style="font-size:12px">GitHub Actions：Ubuntu · Windows · macOS</text>
+<rect x="454.6" y="391.0" width="217.4" height="24.0" rx="12.0" class="c-gray"/>
+<text x="563" y="407" class="xs t-gray" text-anchor="middle" style="font-size:12px">architecture.json 白名单 + AST 扫描</text>
+<text x="24" y="454" class="xs">依赖版本全部锁死在 requirements.txt，检查命令会核对已安装版本和清单一致。</text>
 </svg>

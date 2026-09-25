@@ -3,6 +3,7 @@ import ast
 import json
 import re
 import sys
+import tomllib
 from collections import Counter
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -200,7 +201,10 @@ def compare_generated(path, expected):
 
 
 def generated_files(root, policy, include_reader=True):
-    files = {root / 'mcp.config.json': json.dumps(settings.mcp_config(), ensure_ascii=False, indent=2) + '\n'}
+    # The client config follows the data directory when one is named (installed package, moved checkout);
+    # a plain checkout keeps it beside the source, which is also where the delivery gate compares it.
+    config = settings.CONFIG_FILE if settings.DATA_HOME else root / 'mcp.config.json'
+    files = {config: json.dumps(settings.mcp_config(), ensure_ascii=False, indent=2) + '\n'}
     data_file = settings.EXPORT_DIRECTORY / settings.EXPORT_FILES['json']
     if include_reader and data_file.exists():
         payload = json.loads(data_file.read_text(encoding='utf-8'))
@@ -208,10 +212,47 @@ def generated_files(root, policy, include_reader=True):
     return files
 
 
+def packaging_errors(workspace, policy):
+    """pyproject.toml, server.json and the PyPI readme restate facts the registry and settings own; they must agree."""
+    try:
+        project = tomllib.loads((workspace / 'pyproject.toml').read_text(encoding='utf-8'))
+        server = json.loads((workspace / 'server.json').read_text(encoding='utf-8'))
+        readme = (workspace / project['project']['readme']).read_text(encoding='utf-8')
+    except (OSError, ValueError, KeyError, TypeError) as error:
+        return [f'packaging_unreadable: {type(error).__name__}']
+    errors, meta = [], project.get('project', {})
+    version = meta.get('version')
+    if meta.get('name') != settings.PACKAGE_NAME:
+        errors.append('packaging_name: pyproject.toml must name settings.PACKAGE_NAME')
+    if sorted(meta.get('dependencies', [])) != sorted(f'{name}=={pin}' for name, pin in policy['dependencies'].items()):
+        errors.append('packaging_dependency_drift: pyproject.toml must pin exactly the registered dependencies')
+    scripts = {name: f'{settings.IMPORT_NAME}.{target}' for name, target in settings.CONSOLE_SCRIPTS.items()}
+    if meta.get('scripts') != scripts:
+        errors.append('packaging_entry_points: console scripts must be the ones settings registers')
+    wheel = project.get('tool', {}).get('hatch', {}).get('build', {}).get('targets', {}).get('wheel', {})
+    if wheel.get('sources') != {settings.ROOT.relative_to(settings.WORKSPACE).as_posix(): settings.IMPORT_NAME}:
+        errors.append('packaging_layout: the wheel must ship this directory as settings.IMPORT_NAME')
+    packages = server.get('packages') or [{}]
+    name = server.get('name', '')
+    if not (name.startswith('io.github.') and name.endswith('/' + settings.PACKAGE_NAME)):
+        errors.append('registry_name: server.json must be named io.github.<owner>/PACKAGE_NAME')
+    if not (version and server.get('version') == version and len(packages) == 1 and packages[0].get('version') == version):
+        errors.append('registry_version_drift: server.json must carry the pyproject.toml version')
+    if (packages[0].get('registryType') != 'pypi' or packages[0].get('identifier') != settings.PACKAGE_NAME
+            or packages[0].get('transport') != {'type': 'stdio'}):
+        errors.append('registry_package: server.json must point at the PyPI package over stdio')
+    if not re.search(r'(?m)^mcp-name: ' + re.escape(name) + r'\s*$', readme):
+        errors.append('registry_ownership_marker: the PyPI readme must carry the mcp-name line')
+    return errors
+
+
 def check_consistency(root=None, include_reader=True):
     root = Path(root) if root else settings.ROOT
     policy = json.loads((root / 'architecture.json').read_text(encoding='utf-8'))
     errors = scan_sources(root, policy)
+    if include_reader:
+        # Delivery only: an installed copy has no pyproject.toml beside it and nothing to publish.
+        errors += packaging_errors(settings.WORKSPACE, policy)
     for path in root.rglob('*'):
         if path.is_file() and path.suffix in ('.css', '.html', '.js', '.cmd', '.ps1', '.sh') and path.relative_to(root).parts[0] != 'tests':
             if path.relative_to(root).as_posix() not in policy['assets']:
@@ -260,5 +301,6 @@ def sync_generated():
     policy = json.loads((settings.ROOT / 'architecture.json').read_text(encoding='utf-8'))
     files = generated_files(settings.ROOT, policy)
     for path, content in files.items():
+        path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding='utf-8', newline='\n')
     return [str(path) for path in files]

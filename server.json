@@ -1,0 +1,39 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.vivian-labs/1point3acres-toolkit",
+  "title": "1point3acres Toolkit",
+  "description": "Daily check-in and quiz on the 1point3acres forum, an interview-experience library, and forum tools",
+  "repository": {
+    "url": "https://github.com/vivian-labs/1point3acres-toolkit",
+    "source": "github"
+  },
+  "websiteUrl": "https://github.com/vivian-labs/1point3acres-toolkit#readme",
+  "version": "1.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "1point3acres-toolkit",
+      "version": "1.1.0",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "ONEPOINT3ACRES_HOME",
+          "description": "Directory for the account config, Chrome profile, database and exports; defaults to the per-user application-data folder",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "PYTHONUTF8",
+          "description": "Keep Python's console and file I/O in UTF-8; the forum content is Chinese",
+          "isRequired": false,
+          "isSecret": false,
+          "default": "1"
+        }
+      ]
+    }
+  ]
+}

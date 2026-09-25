@@ -1,5 +1,6 @@
 """Single owner of deployment, site identity, limits and artifact names; no secrets."""
 import json
+import os
 import re
 import sys
 from datetime import datetime, timedelta, timezone
@@ -8,12 +9,37 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent
 WORKSPACE = ROOT.parent.parent
-STATE = WORKSPACE / 'work' / 'local-toolkit-state'
-DATABASE_NAME = 'interviews.sqlite'
-PROFILE = WORKSPACE / 'work' / 'account-browser' / 'chrome-profile'
 WINDOWS = sys.platform == 'win32'
 MACOS = sys.platform == 'darwin'
+# Two ways to run. From a checkout, state lives beside the source under work/ and the venv's Python runs the
+# scripts. Installed from PyPI (`pip install 1point3acres-toolkit`, `uvx 1point3acres-toolkit`) the wheel ships
+# this directory as IMPORT_NAME, there is no workspace, and everything the tool writes goes to one per-user data
+# directory: DATA_HOME_ENV names it, else the platform's application-data folder. The same variable also moves a
+# checkout's state, which is how tests exercise the installed layout without installing anything.
+PACKAGE_NAME = '1point3acres-toolkit'
+IMPORT_NAME = 'onepoint3acres_toolkit'
+CONSOLE_SCRIPTS = {PACKAGE_NAME: 'entry:main', PACKAGE_NAME + '-cli': 'entry:cli'}
+DATA_HOME_ENV = 'ONEPOINT3ACRES_HOME'
+INSTALLED = ROOT.name == IMPORT_NAME
+
+
+def default_data_home():
+    if WINDOWS:
+        base = Path(os.environ.get('LOCALAPPDATA') or Path.home() / 'AppData' / 'Local')
+    elif MACOS:
+        base = Path.home() / 'Library' / 'Application Support'
+    else:
+        base = Path(os.environ.get('XDG_DATA_HOME') or Path.home() / '.local' / 'share')
+    return base / PACKAGE_NAME
+
+
+DATA_HOME = (Path(os.environ[DATA_HOME_ENV]).expanduser() if os.environ.get(DATA_HOME_ENV)
+             else default_data_home() if INSTALLED else None)
+STATE = DATA_HOME / 'state' if DATA_HOME else WORKSPACE / 'work' / 'local-toolkit-state'
+DATABASE_NAME = 'interviews.sqlite'
+PROFILE = DATA_HOME / 'chrome-profile' if DATA_HOME else WORKSPACE / 'work' / 'account-browser' / 'chrome-profile'
 PYTHON = WORKSPACE / 'work' / 'cf-probe-venv' / ('Scripts/python.exe' if WINDOWS else 'bin/python')
+CONFIG_FILE = (DATA_HOME or ROOT) / 'mcp.config.json'
 CHROME = (Path(r'C:\Program Files\Google\Chrome\Application\chrome.exe') if WINDOWS
           else Path('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'))
 CHROME_BUNDLE_ID = 'com.google.Chrome'
@@ -166,7 +192,7 @@ SUBMISSION_ATTEMPT_LIMIT = 3
 CDP_CALL_TIMEOUT = 150
 # Each step of closing the owned Chrome: the graceful close, then the waits after terminate and after kill.
 BROWSER_SHUTDOWN_TIMEOUT = 5
-EXPORT_DIRECTORY = ROOT.parent / 'Stripe面经资料'
+EXPORT_DIRECTORY = DATA_HOME / 'Stripe面经资料' if DATA_HOME else ROOT.parent / 'Stripe面经资料'
 EXPORT_FILES = {'json': '面经.json', 'csv': '面经.csv', 'markdown': '面经.md', 'reader': '打开阅读器.html'}
 # Media archived from saved threads: only the site's own hosts, bounded per file and per thread, kept under one directory.
 MEDIA_DIRECTORY = STATE / 'media'
@@ -184,8 +210,14 @@ MCP_NAME = '1point3acres-local'
 
 
 def mcp_config():
-    return {'mcpServers': {MCP_NAME: {'command': str(PYTHON),
-            'args': [str(ROOT / 'mcp_server.py')], 'env': {'PYTHONUTF8': '1'}}}}
+    """What an MCP client needs to start this server: a checkout runs mcp_server.py with the venv's Python; the
+    installed package runs the console script pip put on PATH. A named data directory is passed on either way."""
+    env = {'PYTHONUTF8': '1', **({DATA_HOME_ENV: str(DATA_HOME)} if DATA_HOME else {})}
+    if INSTALLED:
+        server = {'command': PACKAGE_NAME, 'args': [], 'env': env}
+    else:
+        server = {'command': str(PYTHON), 'args': [str(ROOT / 'mcp_server.py')], 'env': env}
+    return {'mcpServers': {MCP_NAME: server}}
 
 
 def daily_schedule_rrule():

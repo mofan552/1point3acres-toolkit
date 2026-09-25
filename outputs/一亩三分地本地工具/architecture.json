@@ -74,7 +74,11 @@
       "governance",
       "repository_checks"
     ],
-    "repository_checks": []
+    "repository_checks": [],
+    "entry": [
+      "mcp_server",
+      "cli"
+    ]
   },
   "assets": [
     "reader.html",
@@ -199,7 +203,10 @@
     "reader.js": "界面交互，消费展示数据，不重建业务判定",
     "architecture.json": "模块、依赖、接口和视觉数量预算；扩大范围须同步主方案说明理由",
     "repository_checks.py": "版本化文件边界、敏感信息特征与测试分组登记检查；不读取账号状态",
-    "check.py": "唯一离线检查入口：阶段选择、依赖校验、测试执行、脱敏报告和 CI 汇总"
+    "check.py": "唯一离线检查入口：阶段选择、依赖校验、测试执行、脱敏报告和 CI 汇总",
+    "entry.py": "安装版入口：pip / uvx 装好后的两个命令；启动前恢复平铺布局，不含任何业务逻辑",
+    "pyproject.toml": "PyPI 打包元数据：包名、版本、依赖锁定、入口命令、目录映射；依赖与入口以本文件和 settings 为准",
+    "server.json": "MCP 官方目录的登记条目：名字、版本、PyPI 包；版本必须与 pyproject.toml 一致"
   },
   "ci": {
     "tests": {
@@ -235,7 +242,8 @@
         "tests/test_ocr.py",
         "tests/test_video.py",
         "tests/test_browser_timeouts.py",
-        "tests/test_window_parking.py"
+        "tests/test_window_parking.py",
+        "tests/test_packaging.py"
       ],
       "integration": [
         "tests/test_mcp_integration.py",
@@ -252,6 +260,9 @@
       ".gitignore",
       "README.md",
       "LICENSE",
+      "server.json",
+      "pyproject.toml",
+      "PYPI_README.md",
       "docs/answer-learning.svg",
       "docs/answer-matching.svg",
       "docs/architecture.svg",

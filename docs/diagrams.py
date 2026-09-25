@@ -850,12 +850,12 @@ def _bands(c: Canvas, y, bands, label_w=150, mono=False, gap=10):
 @diagram('tech-stack', 960, 440, '技术栈一张图')
 def tech_stack(c: Canvas):
     y = _bands(c, 24, [
-        ('入口', ['命令行：运行.sh / 运行.cmd', 'MCP 服务：mcp_server.py（给 Claude Code、Codex 用）'], 'gray'),
-        ('应用', ['Python 3.12', '15 个模块', '第三方库只有 8 个', 'SeleniumBase + mycdp', 'requests', 'beautifulsoup4', 'mcp + pydantic',
+        ('入口', ['命令行：运行.sh / 运行.cmd', 'MCP 服务：mcp_server.py（给 Claude Code、Codex 用）', '软件包：pip / uvx 装的 1point3acres-toolkit'], 'gray'),
+        ('应用', ['Python 3.12', '16 个模块', '第三方库只有 8 个', 'SeleniumBase + mycdp', 'requests', 'beautifulsoup4', 'mcp + pydantic',
                 'rapidocr-onnxruntime', 'tzdata'], 'gray'),
         ('浏览器', ['本机安装的 Chrome', '专用配置目录', 'CDP 协议驱动', '新版接口 tRPC · 老版页面 Discuz'], 'gray'),
         ('存储与凭据', ['SQLite 数据库', '几个 JSON 文件', 'macOS 钥匙串', 'Windows DPAPI', '全部在 work/ 里'], 'gray'),
-        ('系统与质量', ['macOS launchd / Windows 任务计划程序', 'unittest：35 个文件、419 个用例', 'GitHub Actions：Ubuntu · Windows · macOS',
+        ('系统与质量', ['macOS launchd / Windows 任务计划程序', 'unittest：36 个文件、425 个用例', 'GitHub Actions：Ubuntu · Windows · macOS',
                    'architecture.json 白名单 + AST 扫描'], 'gray'),
     ])
     c.text(24, y + 14, '依赖版本全部锁死在 requirements.txt，检查命令会核对已安装版本和清单一致。', 'xs')
@@ -866,7 +866,7 @@ def architecture(c: Canvas):
     c.text(24, 40, '五层，依赖只能往下指', 'h')
     c.text(936, 40, '↓ 上层可以用下层，下层不知道上层', 'xs', 'end')
     y = _bands(c, 54, [
-        ('入口层', ['cli.py 命令行', 'mcp_server.py MCP 服务', 'check.py · governance.py · repository_checks.py 离线门禁'], 'gray'),
+        ('入口层', ['cli.py 命令行', 'mcp_server.py MCP 服务', 'entry.py 安装版入口', 'check.py · governance.py · repository_checks.py 离线门禁'], 'gray'),
         ('业务层', ['daily.py 每日签到答题', 'interact.py 发帖回复', 'library.py 本机数据库'], 'gray'),
         ('站点层', ['browser.py 唯一联网的模块：专用 Chrome、登录、人机验证、看门狗'], 'blue'),
         ('支撑层', ['rules.py 纯规则', 'secure.py 钥匙串 / DPAPI', 'extract.py 解析页面', 'presentation.py 展示文案'], 'gray'),
@@ -875,17 +875,18 @@ def architecture(c: Canvas):
     c.note(24, y + 6, 912, '哪个模块能引用哪个，都写在 architecture.json 里；检查命令扫一遍源码验证，越界就失败。', 'gray', 'shield-check')
 
 
-@diagram('repo-layout', 960, 380, '仓库长什么样')
+@diagram('repo-layout', 960, 420, '仓库长什么样')
 def repo_layout(c: Canvas):
     rows = [(0, 'folder', '1point3acres-toolkit/', '仓库根目录'),
             (1, 'file', 'README.md', '本文：原理讲解'),
+            (1, 'file', 'pyproject.toml · server.json · PYPI_README.md', '发布到 PyPI 和 MCP 官方目录用的三个文件'),
             (1, 'folder', 'docs/', '本文的配图，以及重画它们的脚本'),
             (1, 'folder', '.github/', 'CI 流水线'),
             (1, 'folder', 'outputs/一亩三分地本地工具/', '全部代码都在这一个目录里'),
-            (2, 'list', '15 个 Python 模块 · 题库 · 心情短句 · 依赖清单', ''),
-            (2, 'list', 'tests/ 35 个测试文件 · 离线阅读器 · 入口脚本 · 使用说明', ''),
+            (2, 'list', '16 个 Python 模块 · 题库 · 心情短句 · 依赖清单', ''),
+            (2, 'list', 'tests/ 36 个测试文件 · 离线阅读器 · 入口脚本 · 使用说明', ''),
             (1, 'folder', 'work/', '不入库：每台电脑自己的 Python 环境、账号、数据库、专用 Chrome')]
-    c.rect(24, 24, 912, 340, 'c-gray')
+    c.rect(24, 24, 912, 380, 'c-gray')
     for i, (depth, ic, name, desc) in enumerate(rows):
         y = 48 + i * 40
         x = 48 + depth * 30
@@ -899,8 +900,8 @@ def repo_layout(c: Canvas):
 
 @diagram('ci-flow', 960, 270, 'CI 流水线')
 def ci_flow(c: Canvas):
-    steps = [{'title': '静态检查', 'icon': 'list-check', 'body': ['Ubuntu，几秒钟', '依赖白名单、文件清单、文档链接、密钥扫描']},
-             {'title': '单元测试', 'icon': 'cpu', 'body': ['Windows 2022 / 2025、macOS 15', '419 个用例，含真实钥匙串往返']},
+    steps = [{'title': '静态检查', 'icon': 'list-check', 'body': ['Ubuntu，几秒钟', '依赖白名单、文件清单、文档链接、密钥扫描；构建一次软件包']},
+             {'title': '单元测试', 'icon': 'cpu', 'body': ['Windows 2022 / 2025、macOS 15', '425 个用例，含真实钥匙串往返']},
              {'title': '集成测试', 'icon': 'monitor', 'body': ['Windows 2025、macOS 15', '真实起 MCP 服务、真实开 Chrome；不登录不签到']},
              {'title': '汇总', 'icon': 'check-circle', 'body': ['三个阶段全绿才算通过']}]
     step_row(c, 24, steps, h=158)
