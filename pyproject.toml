@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling==1.32.4"]
+build-backend = "hatchling.build"
+
+[project]
+name = "1point3acres-toolkit"
+version = "1.1.0"
+description = "1point3acres forum toolkit: daily check-in and quiz with reward verification, an offline interview-experience library and forum tools, as a CLI and an MCP server driving your own Chrome"
+readme = "PYPI_README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+authors = [{ name = "vivian-labs" }]
+keywords = ["1point3acres", "mcp", "mcp-server", "browser-automation", "check-in", "interview"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "Natural Language :: Chinese (Simplified)",
+  "Operating System :: MacOS",
+  "Operating System :: Microsoft :: Windows",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Internet :: WWW/HTTP :: Browsers",
+]
+# Exactly the pins in outputs/一亩三分地本地工具/requirements.txt; governance.packaging_errors keeps the two in step.
+dependencies = [
+  "beautifulsoup4==4.15.0",
+  "mcp==2.2.0",
+  "mycdp==1.4.0",
+  "pydantic==2.13.5",
+  "rapidocr-onnxruntime==1.4.4",
+  "requests==2.34.2",
+  "seleniumbase==4.53.8",
+  "tzdata==2026.3"
+]
+
+[project.urls]
+Homepage = "https://github.com/vivian-labs/1point3acres-toolkit"
+Repository = "https://github.com/vivian-labs/1point3acres-toolkit"
+Documentation = "https://github.com/vivian-labs/1point3acres-toolkit#readme"
+Issues = "https://github.com/vivian-labs/1point3acres-toolkit/issues"
+
+[project.scripts]
+1point3acres-toolkit = "onepoint3acres_toolkit.entry:main"
+1point3acres-toolkit-cli = "onepoint3acres_toolkit.entry:cli"
+
+# The source stays a flat directory of scripts (see architecture.json); the wheel ships that directory under an
+# importable name and entry.py restores the script layout at start. Only the directory's own files ship: no
+# subdirectory (tests, caches, anything a run left behind), no shell entries, no machine-local client config.
+[tool.hatch.build.targets.wheel]
+only-include = ["outputs/一亩三分地本地工具"]
+exclude = ["outputs/一亩三分地本地工具/*/", "*.sh", "*.cmd", "mcp.config.json"]
+
+[tool.hatch.build.targets.wheel.sources]
+"outputs/一亩三分地本地工具" = "onepoint3acres_toolkit"
+
+[tool.hatch.build.targets.sdist]
+only-include = ["outputs/一亩三分地本地工具", "PYPI_README.md", "LICENSE", "pyproject.toml", "server.json"]
+exclude = ["outputs/一亩三分地本地工具/*/", "mcp.config.json"]

@@ -42,7 +42,8 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="40" y="94" class="h">静态检查</text>
 <text x="40" y="118" class="s">Ubuntu，几秒钟</text>
 <text x="40" y="137" class="s">依赖白名单、文件清单、文档</text>
-<text x="40" y="156" class="s">链接、密钥扫描</text>
+<text x="40" y="156" class="s">链接、密钥扫描；构建一次软</text>
+<text x="40" y="175" class="s">件包</text>
 <path d="M240.5,103.0 L254.5,103.0" class="ar"/>
 <rect x="256.5" y="24.0" width="214.5" height="158.0" rx="12" class="c-gray"/>
 <circle cx="285.5" cy="53.0" r="13" class="f-blue"/>
@@ -51,7 +52,7 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="272" y="94" class="h">单元测试</text>
 <text x="272" y="118" class="s">Windows 2022 / 2025、</text>
 <text x="272" y="137" class="s">macOS 15</text>
-<text x="272" y="156" class="s">419 个用例，含真实钥匙串往</text>
+<text x="272" y="156" class="s">425 个用例，含真实钥匙串往</text>
 <text x="272" y="175" class="s">返</text>
 <path d="M473.0,103.0 L487.0,103.0" class="ar"/>
 <rect x="489.0" y="24.0" width="214.5" height="158.0" rx="12" class="c-gray"/>

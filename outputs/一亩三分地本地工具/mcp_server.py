@@ -14,7 +14,7 @@ from library import (create_collection_task as persist_collection_task, run_task
                      control_task as steer_task, list_tasks as read_tasks, archive_media as archive_thread_media,
                      recognize_media as recognize_thread_media)
 from library import organize_thread as outline_thread, collect_company as gather_company, save_thread as keep_thread, get_my_profile as read_my_profile, get_user_profile as read_user_profile, browse_board as browse_board_impl, Library, collect_stripe, export_library, get_thread_detail as read_thread_detail, search_threads as search_site, get_daily_history
-from settings import (MCP_NAME, COLLECT_LIMIT, LIST_PAGES, COLLECT_COMPANY, SEARCH_LIMIT, THREAD_PAGES,
+from settings import (MCP_NAME, INSTALLED, COLLECT_LIMIT, LIST_PAGES, COLLECT_COMPANY, SEARCH_LIMIT, THREAD_PAGES,
                       SITE_SEARCH_LIMIT, LOGIN_METHOD, WECHAT_LOGIN_TIMEOUT, NOTIFICATION_LIMIT, HISTORY_LIMIT, BOARD_LIMIT, LIKE_REACTION_ID, TASK_LIST_LIMIT,
                       MEDIA_MAX_PER_THREAD, OCR_MAX_IMAGES)
 from contracts import RunStatus, is_failure
@@ -264,7 +264,14 @@ def interviews_export() -> dict:
     return export_library()
 
 
-if __name__ == '__main__':
-    from governance import ensure_consistent
+def main():
+    from governance import ensure_consistent, sync_generated
+    if INSTALLED:
+        # No delivery gate ran on an installed copy: write its client config into the data directory, then check.
+        sync_generated()
     ensure_consistent()
     server.run(transport='stdio')
+
+
+if __name__ == '__main__':
+    main()

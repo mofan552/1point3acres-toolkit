@@ -43,6 +43,8 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="228" y="85" class="mono t-gray" text-anchor="middle" style="font-size:12px">cli.py 命令行</text>
 <rect x="290.1" y="69.0" width="177.9" height="24.0" rx="12.0" class="c-gray"/>
 <text x="379" y="85" class="mono t-gray" text-anchor="middle" style="font-size:12px">mcp_server.py MCP 服务</text>
+<rect x="476.0" y="69.0" width="147.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="549" y="85" class="mono t-gray" text-anchor="middle" style="font-size:12px">entry.py 安装版入口</text>
 <rect x="174.0" y="101.0" width="434.2" height="24.0" rx="12.0" class="c-gray"/>
 <text x="391" y="117" class="mono t-gray" text-anchor="middle" style="font-size:12px">check.py · governance.py · repository_checks.py 离线门禁</text>
 <rect x="24.0" y="150.0" width="912.0" height="54.0" rx="12" class="c-gray"/>

@@ -10,7 +10,7 @@ from library import (Library, collect_stripe, export_library, get_thread_detail,
                      get_daily_history, browse_board, get_user_profile, get_my_profile, save_thread,
                      collect_company, organize_thread, create_collection_task, run_task, task_status,
                      control_task, list_tasks, archive_media, recognize_media)
-from settings import (COLLECT_COMPANY, COLLECT_LIMIT, LIST_PAGES, SEARCH_LIMIT, THREAD_PAGES, SITE_SEARCH_LIMIT,
+from settings import (INSTALLED, COLLECT_COMPANY, COLLECT_LIMIT, LIST_PAGES, SEARCH_LIMIT, THREAD_PAGES, SITE_SEARCH_LIMIT,
                       LOGIN_METHOD, WECHAT_LOGIN_TIMEOUT, HISTORY_LIMIT, BOARD_LIMIT, LIKE_REACTION_ID, TASK_LIST_LIMIT, MEDIA_MAX_PER_THREAD,
                       OCR_MAX_IMAGES, NOTIFICATION_KINDS, NOTIFICATION_LIMIT)
 from contracts import RunStatus, is_failure, health_alerting, format_error
@@ -241,9 +241,11 @@ def main():
     return 0
 
 
-if __name__ == '__main__':
+def run():
     try:
-        from governance import ensure_consistent
+        from governance import ensure_consistent, sync_generated
+        if INSTALLED:
+            sync_generated()
         ensure_consistent()
         raise SystemExit(main())
     except (KeyboardInterrupt, SystemExit):
@@ -251,3 +253,7 @@ if __name__ == '__main__':
     except Exception as error:
         print(json.dumps({'status': RunStatus.FAILED, 'error_type': type(error).__name__, 'error': format_error(error)}))
         raise SystemExit(2)
+
+
+if __name__ == '__main__':
+    run()

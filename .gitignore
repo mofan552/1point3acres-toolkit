@@ -4,6 +4,9 @@
 !/.gitattributes
 !/README.md
 !/LICENSE
+!/PYPI_README.md
+!/pyproject.toml
+!/server.json
 !/.github/
 /.github/*
 !/.github/workflows/

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="960" height="380" viewBox="0 0 960 380" role="img" aria-label="仓库长什么样">
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="420" viewBox="0 0 960 420" role="img" aria-label="仓库长什么样">
 <style>
 text{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei','Noto Sans CJK SC',Helvetica,Arial,sans-serif;fill:#1f2328;font-size:13px}
 .h{font-size:15px;font-weight:600}.hb{font-size:17px;font-weight:700}
@@ -34,8 +34,8 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 }
 </style>
 <defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
-<rect width="960" height="380" class="bg"/>
-<rect x="24.0" y="24.0" width="912.0" height="340.0" rx="12" class="c-gray"/>
+<rect width="960" height="420" class="bg"/>
+<rect x="24.0" y="24.0" width="912.0" height="380.0" rx="12" class="c-gray"/>
 <g transform="translate(48.0,48.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
 <text x="78" y="63" class="mono" style="font-size:13px">1point3acres-toolkit/</text>
 <text x="263" y="63" class="xs">仓库根目录</text>
@@ -44,25 +44,29 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="108" y="103" class="mono" style="font-size:13px">README.md</text>
 <text x="197" y="103" class="xs">本文：原理讲解</text>
 <path d="M62,108 L62,140 L74,140" class="line soft"/>
-<g transform="translate(78.0,128.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
-<text x="108" y="143" class="mono" style="font-size:13px">docs/</text>
-<text x="164" y="143" class="xs">本文的配图，以及重画它们的脚本</text>
+<g transform="translate(78.0,128.0) scale(0.833)" class="ic ic-gray"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></g>
+<text x="108" y="143" class="mono" style="font-size:13px">pyproject.toml · server.json · PYPI_README.md</text>
+<text x="497" y="143" class="xs">发布到 PyPI 和 MCP 官方目录用的三个文件</text>
 <path d="M62,148 L62,180 L74,180" class="line soft"/>
 <g transform="translate(78.0,168.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
-<text x="108" y="183" class="mono" style="font-size:13px">.github/</text>
-<text x="188" y="183" class="xs">CI 流水线</text>
+<text x="108" y="183" class="mono" style="font-size:13px">docs/</text>
+<text x="164" y="183" class="xs">本文的配图，以及重画它们的脚本</text>
 <path d="M62,188 L62,220 L74,220" class="line soft"/>
 <g transform="translate(78.0,208.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
-<text x="108" y="223" class="mono" style="font-size:13px">outputs/一亩三分地本地工具/</text>
-<text x="314" y="223" class="xs">全部代码都在这一个目录里</text>
-<path d="M92,228 L92,260 L104,260" class="line soft"/>
-<g transform="translate(108.0,248.0) scale(0.833)" class="ic ic-gray"><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/></g>
-<text x="138" y="263" class="s" style="font-size:13px">15 个 Python 模块 · 题库 · 心情短句 · 依赖清单</text>
+<text x="108" y="223" class="mono" style="font-size:13px">.github/</text>
+<text x="188" y="223" class="xs">CI 流水线</text>
+<path d="M62,228 L62,260 L74,260" class="line soft"/>
+<g transform="translate(78.0,248.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
+<text x="108" y="263" class="mono" style="font-size:13px">outputs/一亩三分地本地工具/</text>
+<text x="314" y="263" class="xs">全部代码都在这一个目录里</text>
 <path d="M92,268 L92,300 L104,300" class="line soft"/>
 <g transform="translate(108.0,288.0) scale(0.833)" class="ic ic-gray"><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/></g>
-<text x="138" y="303" class="s" style="font-size:13px">tests/ 35 个测试文件 · 离线阅读器 · 入口脚本 · 使用说明</text>
-<path d="M62,308 L62,340 L74,340" class="line soft"/>
-<g transform="translate(78.0,328.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
-<text x="108" y="343" class="mono" style="font-size:13px">work/</text>
-<text x="164" y="343" class="xs">不入库：每台电脑自己的 Python 环境、账号、数据库、专用 Chrome</text>
+<text x="138" y="303" class="s" style="font-size:13px">16 个 Python 模块 · 题库 · 心情短句 · 依赖清单</text>
+<path d="M92,308 L92,340 L104,340" class="line soft"/>
+<g transform="translate(108.0,328.0) scale(0.833)" class="ic ic-gray"><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/></g>
+<text x="138" y="343" class="s" style="font-size:13px">tests/ 36 个测试文件 · 离线阅读器 · 入口脚本 · 使用说明</text>
+<path d="M62,348 L62,380 L74,380" class="line soft"/>
+<g transform="translate(78.0,368.0) scale(0.833)" class="ic ic-blue"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></g>
+<text x="108" y="383" class="mono" style="font-size:13px">work/</text>
+<text x="164" y="383" class="xs">不入库：每台电脑自己的 Python 环境、账号、数据库、专用 Chrome</text>
 </svg>

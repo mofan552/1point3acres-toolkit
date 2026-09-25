@@ -6,7 +6,7 @@
 
 依赖清单见 [requirements.txt](./requirements.txt)。想先看带图的原理讲解（签到、答题、奖励核对、失败重试、调度各是怎么做的），读仓库根目录的 [README](../../README.md)；本文是操作手册。
 
-目录：[工作原理](#principle) · [交给 AI](#ai) · [手动安装](#install) · [配置账号](#account) · [首次运行](#first-run) · [每日自动](#automation) · [面经](#interviews) · [命令参考](#commands) · [MCP](#mcp) · [排查](#troubleshooting) · [维护](#maintenance)
+目录：[工作原理](#principle) · [交给 AI](#ai) · [手动安装](#install) · [软件包安装](#pip) · [配置账号](#account) · [首次运行](#first-run) · [每日自动](#automation) · [面经](#interviews) · [命令参考](#commands) · [MCP](#mcp) · [排查](#troubleshooting) · [维护](#maintenance)
 
 <a id="principle"></a>
 
@@ -41,7 +41,7 @@
 **克隆并建环境**，在放项目的目录里执行。macOS / Linux：
 
 ```sh
-git clone https://github.com/mofan552/1point3acres-toolkit.git
+git clone https://github.com/vivian-labs/1point3acres-toolkit.git
 cd 1point3acres-toolkit
 python3.12 -m venv work/cf-probe-venv
 work/cf-probe-venv/bin/python -m pip install -r "outputs/一亩三分地本地工具/requirements.txt"
@@ -53,7 +53,7 @@ work/cf-probe-venv/bin/python -m pip install -r "outputs/一亩三分地本地�
 Windows（PowerShell）：
 
 ```powershell
-git clone https://github.com/mofan552/1point3acres-toolkit.git
+git clone https://github.com/vivian-labs/1point3acres-toolkit.git
 Set-Location 1point3acres-toolkit
 py -3.12 -m venv work\cf-probe-venv
 work\cf-probe-venv\Scripts\python.exe -m pip install -r outputs\一亩三分地本地工具\requirements.txt
@@ -63,6 +63,34 @@ work\cf-probe-venv\Scripts\python.exe -m pip install -r outputs\一亩三分地�
 `--sync` 会核对依赖、生成本机 MCP 配置、跑离线检查，并启动一次临时 Chrome 验证阅读器（不登录、不签到）。成功时输出 `status=complete`。
 
 之后除标注“仓库根目录”外，命令都在**工具目录** `outputs/一亩三分地本地工具` 执行。入口：macOS/Linux 用 `./运行.sh`、`./检查.sh`，Windows 用 `运行.cmd`、`检查.cmd`。
+
+<a id="pip"></a>
+
+## 安装为软件包（pip / uvx）
+
+不想克隆仓库、只想把工具接给 MCP 客户端或者用命令行，可以直接装 PyPI 上的包 `1point3acres-toolkit`（同样需要 Chrome 和 Python 3.12）：
+
+```sh
+uvx 1point3acres-toolkit          # 不安装，直接以 stdio 方式启动 MCP 服务
+pip install 1point3acres-toolkit  # 或者装进自己的环境
+```
+
+装好后有两个命令：`1point3acres-toolkit` 启动 MCP 服务；`1point3acres-toolkit-cli` 和 `运行.sh` 是同一个命令行，子命令、参数、输出完全相同（例如 `1point3acres-toolkit-cli status`）。
+
+软件包版本没有仓库，也没有 `work/`，所有可写内容都放在一个个人数据目录里：macOS 是 `~/Library/Application Support/1point3acres-toolkit`，Windows 是 `%LOCALAPPDATA%\1point3acres-toolkit`；设环境变量 `ONEPOINT3ACRES_HOME` 可以换地方。目录里：
+
+- `state/account.json`：账号配置，内容和[配置账号](#account)一节完全一样；
+- `state/interviews.sqlite`、`state/latest-daily.json`：资料库和每日结果；
+- `chrome-profile/`：专用 Chrome 的配置目录；
+- `Stripe面经资料/`：导出文件；
+- `mcp.config.json`：首次启动时写好的客户端配置，可以直接合并进 MCP 客户端。
+
+后面各节的命令把 `./运行.sh` 换成 `1point3acres-toolkit-cli` 即可：存密码是 `1point3acres-toolkit-cli save-credentials`（输入格式不变），每日计划指向 `1point3acres-toolkit-cli daily --resume`。两种安装方式互不影响，克隆仓库的版本继续用仓库旁的 `work/`。注册到 MCP 客户端：
+
+```sh
+claude mcp add --scope user 1point3acres-local -e PYTHONUTF8=1 -- uvx 1point3acres-toolkit
+codex mcp add 1point3acres-local --env PYTHONUTF8=1 -- uvx 1point3acres-toolkit
+```
 
 <a id="account"></a>
 
@@ -278,7 +306,7 @@ claude mcp add --scope user 1point3acres-local -e PYTHONUTF8=1 -- <venv 的 pyth
 codex mcp add 1point3acres-local --env PYTHONUTF8=1 -- <venv 的 python.exe> <工具目录>/mcp_server.py
 ```
 
-`claude mcp list` 会做一次握手并显示 `✔ Connected`；`codex mcp list` 显示 `enabled`。注册信息写在各客户端自己的用户配置里（`~/.claude.json`、`~/.codex/config.toml`），含本机绝对路径，不进仓库。
+软件包版本不用生成配置，把上面两条里的两个路径换成 `uvx 1point3acres-toolkit` 即可（见[软件包安装](#pip)）。`claude mcp list` 会做一次握手并显示 `✔ Connected`；`codex mcp list` 显示 `enabled`。注册信息写在各客户端自己的用户配置里（`~/.claude.json`、`~/.codex/config.toml`），含本机绝对路径，不进仓库。
 
 连接后可让客户端调用 `interviews_search`（query 传空字符串）验证：应返回 `records` 和 `stats`，新库为空是正常的，这一步不访问网站。`daily_run`、`stripe_collect` 会执行真实业务，确认要做时再调。可用工具名以 `architecture.json` 的 `public_tools` 为准。
 
@@ -312,3 +340,5 @@ codex mcp add 1point3acres-local --env PYTHONUTF8=1 -- <venv 的 python.exe> <�
 **更新源码**：先暂停每日计划，在仓库根目录确认 `git status --short` 干净（有自己的改动先处理，别用硬重置覆盖），再 `git pull --ff-only`，然后重装依赖并跑 `检查.sh --sync`，通过后恢复计划。
 
 改代码后统一跑 `检查.sh`（完整离线检查与回归）和 `检查.sh --sync`（重建生成文件后再检查）。题库映射源自 eagleoflqj/p1a3_script（原作者 Liumeo）。
+
+**发布新版本（维护者）**：把仓库根目录 `pyproject.toml` 和 `server.json` 里的版本号一起改，检查命令会核对两者一致，以及依赖、入口命令、目录映射和登记一致。然后在仓库根目录 `python -m build` 生成 wheel 和 sdist，`twine upload dist/*` 传到 PyPI，再打同名 tag 发 GitHub Release。MCP 官方目录读的是 `server.json`：装好 `mcp-publisher`，`mcp-publisher login github` 用有 vivian-labs 组织权限的账号登录，然后 `mcp-publisher publish`。PyPI 页面上的说明来自 `PYPI_README.md`，末尾那行 `mcp-name:` 是目录核对包归属用的，不能删。

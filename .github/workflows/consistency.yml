@@ -32,6 +32,21 @@ jobs:
         run: |
           python './outputs/一亩三分地本地工具/check.py' --sync --stage static --report work/ci-reports/static.json
           git diff --exit-code
+      - name: Build the PyPI package and check what it ships
+        run: |
+          python -m pip install build==1.6.1 hatchling==1.32.4
+          python -m build --wheel --outdir work/dist
+          python -m pip install --no-deps work/dist/*.whl
+          python - <<'EOF'
+          import glob, importlib, zipfile
+          names = zipfile.ZipFile(glob.glob('work/dist/*.whl')[0]).namelist()
+          package = 'onepoint3acres_toolkit/'
+          assert all('/tests/' not in n and not n.endswith(('.sh', '.cmd', 'mcp.config.json')) for n in names), names
+          for required in ('entry.py', 'mcp_server.py', 'cli.py', 'architecture.json', 'requirements.txt', 'answers.json',
+                           'mood-phrases.json', 'account.example.json', 'tokens.css', 'reader.css', 'reader.js', 'reader.html'):
+              assert package + required in names, required
+          importlib.import_module('onepoint3acres_toolkit.entry')
+          EOF
       - name: Save static report
         if: ${{ always() }}
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
