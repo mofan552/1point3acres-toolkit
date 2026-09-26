@@ -20,6 +20,11 @@ NOW = datetime(2026, 9, 10, 17, tzinfo=timezone.utc)
 
 
 class RandomScheduleTests(unittest.TestCase):
+    def setUp(self):
+        change = patch.object(rules, 'SCHEDULE_MODE', 'random')
+        change.start()
+        self.addCleanup(change.stop)
+
     def test_bounded_curve_uses_los_angeles_on_both_dst_transitions(self):
         from unittest.mock import Mock
         for day, expected in [('2026-03-08', 18), ('2026-11-01', 19)]:
