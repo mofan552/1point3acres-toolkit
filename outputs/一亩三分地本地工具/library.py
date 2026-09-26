@@ -74,6 +74,8 @@ class Library:
                 started_at TEXT, data TEXT, PRIMARY KEY(account_uid,run_id));
             CREATE INDEX IF NOT EXISTS daily_runs_by_day ON daily_runs(account_uid,site_day,started_at);
             CREATE TABLE IF NOT EXISTS scheduler_heartbeat(account_uid INTEGER PRIMARY KEY, fired_at TEXT);
+            CREATE TABLE IF NOT EXISTS daily_plans(account_uid INTEGER, site_day TEXT, kind TEXT, data TEXT,
+                PRIMARY KEY(account_uid,site_day,kind));
             CREATE TABLE IF NOT EXISTS outlines(tid INTEGER, content_hash TEXT, data TEXT, built_at TEXT,
                 PRIMARY KEY(tid, content_hash));
             CREATE TABLE IF NOT EXISTS tasks(task_id TEXT PRIMARY KEY, account_uid INTEGER, kind TEXT, params TEXT,
@@ -87,6 +89,23 @@ class Library:
 
     def close(self):
         self.db.close()
+
+    def daily_plan(self, account_uid, day, kind, create=None):
+        """Read or atomically create a daily choice. The factory must be local and quick, never network I/O."""
+        def read():
+            row = self.db.execute('SELECT data FROM daily_plans WHERE account_uid=? AND site_day=? AND kind=?',
+                                  (account_uid, day, kind)).fetchone()
+            return json.loads(row[0]) if row else None
+        if create is None:
+            return read()
+        with self.db:
+            self.db.execute('BEGIN IMMEDIATE')
+            value = read()
+            if value is None:
+                value = create()
+                self.db.execute('INSERT INTO daily_plans VALUES(?,?,?,?)',
+                                (account_uid, day, kind, json.dumps(value, ensure_ascii=False)))
+        return value
 
     def save_daily(self, result, account_uid, *, checkpoint=False):
         started = datetime.fromisoformat(result['started_at'])
@@ -291,10 +310,13 @@ class Library:
             all_rows = self.db.execute('SELECT data FROM daily_runs WHERE account_uid=? AND site_day IN ('
                 + ','.join('?' for _ in dates) + ') ORDER BY started_at,run_id', [account_uid, *dates])
             days = summarize_daily_history(json.loads(row[0]) for row in all_rows)
+        now = datetime.now(timezone.utc)
+        plan = self.daily_plan(account_uid, site_day(now), 'schedule') if date is None else None
         return {'status': RunStatus.COMPLETE, 'runs': records, 'days': days,
                 # A single-date query is a lookup, not a trend: only the open window earns a verdict.
                 'health': None if date is not None else daily_health(
-                    days, records, self.last_heartbeat(account_uid)),
+                    days, records, self.last_heartbeat(account_uid), now,
+                    due_at=datetime.fromisoformat(plan['due_at']) if plan else None),
                 'truncated': len(rows) > limit, 'error': None}
 
     def _write_record(self, record):

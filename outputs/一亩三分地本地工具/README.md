@@ -74,7 +74,9 @@ work\cf-probe-venv\Scripts\python.exe -m pip install -r outputs\一亩三分地�
 { "username": "你的用户名", "uid": 123456 }
 ```
 
-**计划时间（可选）**：同一个文件里可以加 `schedule_time`（24 小时制 `HH:MM`）和 `schedule_timezone`（IANA 时区名），覆盖默认的 `16:10` `Asia/Shanghai`。改时间不要去动仓库里的 `settings.py` —— 那会让你的克隆和 main 分叉，下次 `git pull` 要么冲突、要么把你的设置冲掉。
+**计划时间（可选）**：默认 `schedule_mode` 为 `random`，统一使用 `America/Los_Angeles` 的 10:00–12:00，按 Beta(3,3) 曲线抽取到分钟，11 点附近概率较高。操作系统随机源提供随机数，每账号、站点日只生成并保存一次；重试、重启和并发触发复用已有计划。无需自己采集环境噪声或使用固定种子。
+
+已有 `schedule_time` 配置自动按 `fixed` 模式兼容，配合 `schedule_timezone` 使用。显式加 `"schedule_mode": "random"` 可切回随机模式；随机模式的时区始终是洛杉矶。当天计划已生成后，配置变更从下一站点日生效。固定模式示例：
 
 ```json
 { "username": "你的用户名", "uid": 123456, "schedule_time": "07:05", "schedule_timezone": "America/New_York" }
@@ -86,7 +88,7 @@ work\cf-probe-venv\Scripts\python.exe -m pip install -r outputs\一亩三分地�
 { "username": "你的用户名", "uid": 123456, "checkin_mood_random": false }
 ```
 
-值不合法会直接报 `invalid_local_schedule_config`，不会悄悄退回默认。改完跑一次 `检查.cmd --sync`（macOS 用 `./检查.sh --sync`），输出里的 `schedule` 段给出本地和 UTC 两套触发时刻以及 rrule，按你自己的调度器（launchd / 任务计划程序 / 其他）填。`rrule_clock_is_ambiguous` 为 true 表示这份 rrule 在本地时和 UTC 两种解释下不等价（时区偏移不是恢复间隔的整数倍时就会这样，带夏令时的时区还会随季节翻转）。**影响有限，不会漏签**：触发时刻是间隔 4 小时、铺满 24 小时的等差数列，任何常数平移后仍然如此，所以无论调度器按哪个时钟读，到点后至多一个恢复间隔内必有一次触发，而「到点到站点日翻页」有约 23 小时。差别只是签到可能比你设定的时刻晚几小时。
+值不合法会报 `invalid_local_schedule_config`，不会悄悄退回默认。检查命令输出的 `schedule` 段说明模式、时区、曲线与建议触发频率。随机模式建议操作系统每分钟直接调用 `daily --resume`，不要每分钟启动 AI 会话；未到点和已完成时仅查询本机数据。实际执行可能因调度延迟、休眠或网络超过目标时间，醒来后仅恢复当前站点日。
 
 **密码**：交互输入一次，存进钥匙串 / DPAPI。下面这行用 Python 的隐藏输入读取密码、按 `account.json` 的用户名封装后交给 `save-credentials`，密码不进 shell 历史，macOS 上也不进 `security` 的命令行参数（钥匙串只接受可打印 ASCII 口令，其他字符会报 `unsupported_password_characters`）。在仓库根目录执行。
 
@@ -130,10 +132,10 @@ cd outputs/一亩三分地本地工具
 
 ## 每日自动运行
 
-思路：让操作系统每隔约 10 分钟跑一次 `运行.sh daily --resume`（Windows 用 `运行.cmd`）。这个命令自己判断是否到点、当天是否已完成，`not_due` / `already_complete` 时直接安静退出、不开浏览器，只有真正该签到时才动作。所以重复触发是安全的。
+思路：让操作系统每分钟跑一次 `运行.sh daily --resume`（Windows 用 `运行.cmd`）。这个命令自己判断是否到点、当天是否已完成，`not_due` / `already_complete` 时直接安静退出、不开浏览器，只有真正该签到时才动作。所以重复触发是安全的。
 
 - **交给 AI 助手最省事**：让它按你的系统装好计划（macOS 用 launchd LaunchAgent，Windows 用任务计划程序），指向工具目录的 `运行.sh daily --resume`。
-- **自己配**：macOS 写一个 LaunchAgent（`RunAtLoad` + `StartInterval` 600 秒）调用上面的命令，样例见下；Windows 在任务计划程序里建一个按相同间隔触发的任务。计划时间在 `account.json` 里配（见[配置账号](#account)）；跑一次 `检查.cmd --sync`（macOS 用 `./检查.sh --sync`），输出的 `schedule` 段直接给出本地和 UTC 两套触发时刻和 rrule。
+- **自己配**：macOS 写一个 LaunchAgent（`RunAtLoad` + `StartInterval` 60 秒）调用上面的命令，样例见下；Windows 在任务计划程序里建一个按相同间隔触发的任务。计划时间在 `account.json` 里配（见[配置账号](#account)）；跑一次 `检查.cmd --sync`（macOS 用 `./检查.sh --sync`），输出的 `schedule` 段直接给出本地和 UTC 两套触发时刻和 rrule。
 
 macOS LaunchAgent 样例，存为 `~/Library/LaunchAgents/local.1point3acres-toolkit.daily.plist`，把 `/REPO` 换成仓库的绝对路径（日志落在不入库的 `work/`）：
 
@@ -150,7 +152,7 @@ macOS LaunchAgent 样例，存为 `~/Library/LaunchAgents/local.1point3acres-too
     <string>--resume</string>
   </array>
   <key>RunAtLoad</key><true/>
-  <key>StartInterval</key><integer>600</integer>
+  <key>StartInterval</key><integer>60</integer>
   <key>StandardOutPath</key><string>/REPO/work/launchd-daily.log</string>
   <key>StandardErrorPath</key><string>/REPO/work/launchd-daily.log</string>
 </dict>
@@ -288,7 +290,7 @@ codex mcp add 1point3acres-local --env PYTHONUTF8=1 -- <venv 的 python.exe> <�
 
 | 现象 / 错误 | 处理 |
 |---|---|
-| `account_not_configured` / `invalid_local_account_config` | 检查 `work/local-toolkit-state/account.json`：UTF-8、`username`+`uid`（可选 `schedule_time`、`schedule_timezone`、`checkin_mood_random`）、uid 为正整数、`checkin_mood_random` 必须是布尔值 |
+| `account_not_configured` / `invalid_local_account_config` | 检查 `work/local-toolkit-state/account.json`：UTF-8、`username`+`uid`（可选 `schedule_mode`、`schedule_time`、`schedule_timezone`、`checkin_mood_random`）、uid 为正整数、`checkin_mood_random` 必须是布尔值 |
 | `login_required_credentials_not_configured` | 还没存密码，重跑配置密码那一段 |
 | `login_rejected` / `automatic_login_failed` | 核对账号密码与网站账号状态，不要连续重试同一密码 |
 | `button_not_ready` | 浏览器没点成按钮，保留失败等下次计划；持续出现附脱敏错误提 Issue |

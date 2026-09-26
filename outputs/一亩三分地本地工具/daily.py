@@ -11,7 +11,19 @@ from settings import (ROOT, SITE, STATE, SUBMISSION_TIMEOUT, ACCOUNT_UID,
                       CHECKIN_MOOD_DEFAULT, MOOD_PHRASES_FILE, MOOD_PHRASE_RECENT_DAYS)
 from contracts import (ACTIONS, REWARD_TITLES, ActionStatus, RunStatus, format_error, recovery_summary,
                        ResumeDecision, DAILY_RETRY_ERRORS, day_complete)
-from rules import choose_answer, choose_mood, choose_phrase, load_mood_phrases, site_day, verify_reward, daily_due_at
+from rules import choose_answer, choose_mood, choose_phrase, load_mood_phrases, site_day, verify_reward, draw_daily_due_at
+
+
+def _daily_plan(day, kind, create):
+    db = None
+    try:
+        db = Library(STATE / DATABASE_NAME)
+        return db.daily_plan(ACCOUNT_UID, day, kind, create)
+    except Exception:
+        raise RuntimeError('daily_history_unavailable') from None
+    finally:
+        if db is not None:
+            db.close()
 
 
 def _recent_checkins():
@@ -55,13 +67,16 @@ def _record_heartbeat(now):
 
 def resume_daily(supplied_answer=None, expected_question=None):
     now = datetime.now(timezone.utc)
-    day, due = site_day(now), daily_due_at(now)
-    result = {'status': RunStatus.COMPLETE, 'site_day': day, 'due_at': due.isoformat(),
+    day = site_day(now)
+    result = {'status': RunStatus.COMPLETE, 'site_day': day, 'due_at': None,
               'decision': None, 'history': None, 'attempts': [], 'error': None}
     try:
         if not ACCOUNT_UID:
             raise RuntimeError('account_not_configured')
         _record_heartbeat(now)
+        plan = _daily_plan(day, 'schedule', lambda: {'due_at': draw_daily_due_at(now).isoformat()})
+        due = datetime.fromisoformat(plan['due_at'])
+        result['due_at'] = plan['due_at']
         if now < due:
             result['decision'] = ResumeDecision.NOT_DUE
             return result

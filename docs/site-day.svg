@@ -73,8 +73,7 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="757" y="226" class="xs" text-anchor="middle">05:00</text>
 <path d="M896.0,200 L896.0,212" class="line"/>
 <text x="896" y="226" class="xs" text-anchor="middle">09:00</text>
-<path d="M624.4,160 L624.4,138" class="ar blue"/>
-<text x="632" y="172" class="xs t-blue">计划 16:10：刚翻到「今天」就签，留足一整天补救</text>
+<text x="24" y="172" class="xs t-blue">随机计划：洛杉矶 10:00–12:00，与站点日期使用同一时区</text>
 <text x="24" y="274" class="xs">洛杉矶 00:00 = 北京 15:00（夏令时）或 16:00（冬令时）</text>
 <rect x="24.0" y="290.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
 <g transform="translate(38.0,298.5) scale(0.833)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></g>
