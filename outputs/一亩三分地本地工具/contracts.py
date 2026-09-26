@@ -108,6 +108,7 @@ class ActionStatus(StrEnum):
 
 
 class ResumeDecision(StrEnum):
+    RECOVERY_WAIT = 'recovery_wait'
     NOT_DUE = 'not_due'
     ALREADY_COMPLETE = 'already_complete'
     EXECUTED = 'executed'
