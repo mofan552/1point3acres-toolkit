@@ -151,10 +151,12 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
 
     def submit(entry, label):
         check_day()
+        browser.check_active()
         result['actions'].append(entry)
         try:
             checkpoint()  # Durable before the browser may send anything, including if this process is killed.
             check_day()  # A database lock may have kept us waiting across midnight.
+            browser.check_active()
         except Exception:
             result['actions'].remove(entry)  # The browser has not been called yet.
             checkpoint()

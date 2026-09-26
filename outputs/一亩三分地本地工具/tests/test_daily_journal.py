@@ -101,6 +101,21 @@ class JournalTests(unittest.TestCase):
             self.assertEqual(result['error'], 'site_day_changed')
             self.assertEqual(session.submissions, 0)
 
+    def test_expiration_during_gap_does_not_leave_pending_intent(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            session = SubmissionBrowser(True, True)
+            def expire(seconds):
+                session.expired = True
+            session.sb.sleep.side_effect = expire
+            first = self.invoke(root, session)
+            self.assertEqual(first['error'], 'daily_run_timeout')
+            self.assertEqual(session.submissions, 0)
+            session.expired = False
+            session.sb.sleep.side_effect = None
+            self.assertEqual(self.invoke(root, session)['status'], 'complete')
+            self.assertEqual(session.submissions, 1)
+
     def test_proven_no_click_removes_intent_and_allows_later_attempt(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

@@ -65,6 +65,8 @@ class AccessRecoveryTests(unittest.TestCase):
 
 
 class SubmissionBrowser:
+    check_active = browser.Browser.check_active
+    expired = False
     def __init__(self, completed, rewarded):
         self.completed = completed
         self.rewarded = rewarded
