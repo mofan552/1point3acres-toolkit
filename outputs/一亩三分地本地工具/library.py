@@ -7,7 +7,7 @@ import re
 import shutil
 import sqlite3
 import time
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import parse_qs, urlencode, urlsplit
 from uuid import uuid4
@@ -279,18 +279,15 @@ class Library:
                             (tid, entry['url'], entry.get('pid'), entry.get('kind'), entry.get('name'), entry.get('sha256'),
                              entry.get('path'), entry.get('bytes'), entry.get('mime'), entry.get('fetched_at'), entry['outcome'], entry.get('error')))
 
-    def recent_checkins(self, account_uid, days):
-        """What the account's check-ins said over the last `days` site days, newest first: the mood
-        and phrase each submitted run recorded, so a new day can continue a streak and skip repeats."""
-        rows = self.db.execute('SELECT data FROM daily_runs WHERE account_uid=? ORDER BY site_day DESC, started_at DESC',
-                               (account_uid,)).fetchall()
-        recent, seen_days = [], []
+    def recent_checkins(self, account_uid, days, *, on=None):
+        """Previous calendar days plus today for recovery; missing days never stretch the window."""
+        anchor = on or site_day()
+        cutoff = (date.fromisoformat(anchor) - timedelta(days=days)).isoformat()
+        rows = self.db.execute('SELECT data FROM daily_runs WHERE account_uid=? AND site_day>=? AND site_day<=? '
+                               'ORDER BY site_day DESC, started_at DESC', (account_uid, cutoff, anchor)).fetchall()
+        recent = []
         for row in rows:
             record = json.loads(row[0])
-            if record['site_day'] not in seen_days:
-                seen_days.append(record['site_day'])
-            if len(seen_days) > days:
-                break
             for action in record.get('actions', []):
                 if action.get('action') == 'checkin' and action.get('mood'):
                     recent.append({'site_day': record['site_day'], 'mood': action['mood'], 'phrase': action.get('phrase')})

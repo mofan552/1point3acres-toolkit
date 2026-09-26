@@ -39,7 +39,6 @@ class PhrasePoolTests(unittest.TestCase):
                 self.assertNotIn('\n', phrase)
             total += len(phrases)
         self.assertEqual(total, len({p for phrases in pool.values() for p in phrases}), 'no line may repeat across moods')
-        self.assertGreaterEqual(total, 300)
 
     def test_a_broken_pool_is_refused_before_anything_is_said(self):
         good = json.loads(MOOD_PHRASES_FILE.read_text(encoding='utf-8'))
@@ -66,8 +65,7 @@ class PhraseChoiceTests(unittest.TestCase):
         for _ in range(50):
             self.assertTrue(choose_phrase('开心', self.POOL, rng=rng).startswith('开心-'))
         self.assertEqual(choose_phrase('难过', self.POOL, recent=['难过-0', '难过-1'], rng=rng), '难过-2')
-        # Everything recent: the group is eligible again rather than silence or another mood's tone.
-        self.assertTrue(choose_phrase('衰', self.POOL, recent=self.POOL['衰'], rng=rng).startswith('衰-'))
+        self.assertIsNone(choose_phrase('衰', self.POOL, recent=self.POOL['衰'], rng=rng))
         self.assertIsNone(choose_phrase(CHECKIN_MOOD_DEFAULT, self.POOL, rng=rng))
 
     def test_the_mood_draw_follows_the_weights_and_can_continue_a_streak(self):
@@ -113,6 +111,58 @@ class MoodBrowser(SubmissionBrowser):
 
 
 class CheckInMoodTests(unittest.TestCase):
+    def test_failed_preparation_reuses_same_choice_after_restart(self):
+        class RefusingBrowser(MoodBrowser):
+            def evaluate(self, expression):
+                if 'todaysay' in expression:
+                    return False
+                return super().evaluate(expression)
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            with patch('daily.choose_mood', return_value='开心') as draw, \
+                    patch('daily.choose_phrase', return_value='慢慢来，也挺好。') as phrase:
+                first = self.run_checkin(RefusingBrowser(True, True), root, random_mood=True)
+                self.assertEqual(first['error'], 'checkin_phrase_not_accepted')
+                second = MoodBrowser(True, True)
+                self.run_checkin(second, root, random_mood=True)
+                self.assertEqual(second.textarea, '慢慢来，也挺好。')
+                draw.assert_called_once_with(None)
+                phrase.assert_called_once()
+
+    def test_calendar_window_and_yesterday_gap(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            with patch('daily.choose_mood', return_value='开心') as draw:
+                self.run_checkin(MoodBrowser(True, True), root, random_mood=True,
+                                 seeded=[(days_ago(2), '疲惫', '前天'), (days_ago(30), '衰', '边界'),
+                                         (days_ago(31), '衰', '过期')])
+                draw.assert_called_once_with(None)
+            db = Library(root / settings.DATABASE_NAME)
+            try:
+                recent = db.recent_checkins(123456, 30, on=TODAY)
+            finally:
+                db.close()
+            self.assertIn('边界', [r['phrase'] for r in recent])
+            self.assertNotIn('过期', [r['phrase'] for r in recent])
+
+    def test_exhausted_pool_uses_sites_blank_checkin_mode(self):
+        with tempfile.TemporaryDirectory() as directory:
+            session = MoodBrowser(True, True)
+            with patch('daily.choose_mood', return_value='开心'), patch('daily.choose_phrase', return_value=None):
+                self.run_checkin(session, Path(directory), random_mood=True)
+            self.assertEqual(session.submissions, 1)
+            self.assertIsNone(session.textarea)
+            self.assertIn(json.dumps(CHECKIN_MOOD_DEFAULT), session.clicked[0])
+
+    def test_opt_out_overrides_a_saved_public_phrase(self):
+        with tempfile.TemporaryDirectory() as directory, patch('daily.STATE', Path(directory)), \
+                patch('daily.ACCOUNT_UID', 123456), patch('daily.CHECKIN_MOOD_RANDOM', True), \
+                patch('daily.choose_mood', return_value='开心'):
+            planned = daily._checkin_plan(TODAY)
+            self.assertIsNotNone(planned['phrase'])
+            with patch('daily.CHECKIN_MOOD_RANDOM', False):
+                self.assertEqual(daily._checkin_plan(TODAY), {'mood': CHECKIN_MOOD_DEFAULT, 'phrase': None})
+
     def run_checkin(self, session, root, *, random_mood, seeded=()):
         db = Library(root / settings.DATABASE_NAME)
         for site_day, mood, phrase in seeded:

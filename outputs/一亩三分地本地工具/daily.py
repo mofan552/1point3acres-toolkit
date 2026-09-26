@@ -1,6 +1,6 @@
 import json
 import time
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from uuid import uuid4
 
@@ -35,12 +35,26 @@ def _daily_plan(day, kind, create):
             db.close()
 
 
-def _recent_checkins():
-    """Yesterday's mood and the phrases of the last MOOD_PHRASE_RECENT_DAYS days, newest first."""
+def _checkin_plan(day):
+    """Freeze the public text before UI preparation. Explicit opt-out takes effect immediately."""
+    if not CHECKIN_MOOD_RANDOM:
+        return {'mood': CHECKIN_MOOD_DEFAULT, 'phrase': None}
     db = None
     try:
         db = Library(STATE / DATABASE_NAME)
-        return db.recent_checkins(ACCOUNT_UID, MOOD_PHRASE_RECENT_DAYS)
+        def create():
+            recent = db.recent_checkins(ACCOUNT_UID, MOOD_PHRASE_RECENT_DAYS, on=day)
+            today = next((row for row in recent if row['site_day'] == day), None)
+            if today:
+                return {'mood': today['mood'], 'phrase': today['phrase']}
+            yesterday = (date.fromisoformat(day) - timedelta(days=1)).isoformat()
+            previous = next((row['mood'] for row in recent if row['site_day'] == yesterday), None)
+            mood = choose_mood(previous)
+            phrase = choose_phrase(mood, load_mood_phrases(MOOD_PHRASES_FILE),
+                                   [row['phrase'] for row in recent if row.get('phrase')])
+            # The site's explicit no-diary mood supports an empty check-in without a textarea.
+            return {'mood': mood if phrase is not None else CHECKIN_MOOD_DEFAULT, 'phrase': phrase}
+        return db.daily_plan(ACCOUNT_UID, day, 'checkin', create)
     except Exception:
         raise RuntimeError('daily_history_unavailable') from None
     finally:
@@ -215,14 +229,8 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
                 browser.goto(SITE + '/next/' + route)
                 entry = {'action': action, 'status': ActionStatus.SUBMISSION_UNCONFIRMED}
                 if action == 'checkin':
-                    # On by default (issue #15): the mood and a line from the shipped pool are chosen like
-                    # a member would and recorded with the run. Switched off, the default mood publishes nothing.
-                    mood, phrase = CHECKIN_MOOD_DEFAULT, None
-                    if CHECKIN_MOOD_RANDOM:
-                        recent = _recent_checkins()
-                        mood = choose_mood(recent[0]['mood'] if recent else None)
-                        phrase = choose_phrase(mood, load_mood_phrases(MOOD_PHRASES_FILE),
-                                               [row['phrase'] for row in recent if row.get('phrase')])
+                    plan = _checkin_plan(result['site_day'])
+                    mood, phrase = plan['mood'], plan['phrase']
                     entry.update(mood=mood, phrase=phrase)
                     browser.wait_for("[...document.querySelectorAll('button')].some(e=>e.textContent.includes(" + json.dumps(mood) + "))", allow_solver=False)
                     browser.evaluate("[...document.querySelectorAll('button')].find(e=>e.textContent.includes(" + json.dumps(mood) + ")).click()")
