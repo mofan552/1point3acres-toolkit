@@ -160,7 +160,6 @@ REQUEST_TIMEOUT_MS = 20000
 READ_RETRY_LIMIT = 1
 READ_RETRY_DELAY = 1
 SUBMISSION_TIMEOUT = 45
-SUBMISSION_ATTEMPT_LIMIT = 3
 # One CDP round trip. It must exceed the longest in-page abort (UPLOAD_TIMEOUT_MS): a healthy long call is ended
 # by the page's own timer, so this bound only catches a link that died (sleep, Chrome gone) mid-command.
 CDP_CALL_TIMEOUT = 150

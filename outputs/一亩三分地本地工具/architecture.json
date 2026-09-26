@@ -235,7 +235,8 @@
         "tests/test_ocr.py",
         "tests/test_video.py",
         "tests/test_browser_timeouts.py",
-        "tests/test_window_parking.py"
+        "tests/test_window_parking.py",
+        "tests/test_daily_journal.py"
       ],
       "integration": [
         "tests/test_mcp_integration.py",
