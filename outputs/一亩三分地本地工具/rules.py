@@ -8,7 +8,7 @@ from zoneinfo import ZoneInfo
 from settings import (SITE_TIMEZONE, SCHEDULE_TIMEZONE, SCHEDULE_TIME, SCHEDULE_RECOVERY_HOURS,
                       SCHEDULE_MODE, SCHEDULE_WINDOW_START, SCHEDULE_WINDOW_END, SCHEDULE_CURVE,
                       CHECKIN_MOOD_WEIGHTS, CHECKIN_MOOD_PERSISTENCE, CHECKIN_MOOD_DEFAULT, MOOD_PHRASE_MAX_LENGTH,
-                      HEALTH_ALERT_DAYS, HEALTH_STALE_RUNS)
+                      HEALTH_ALERT_DAYS, HEALTH_STALE_RUNS, QUIZ_GAP_SECONDS)
 from contracts import (ACTIONS, HealthVerdict, HealthReason, day_complete, Attribution, Certainty, ContentStatus,
                        ROUND_PATTERNS, QUESTION_CUES, SPECULATION_CUES, NOISE_CUES, RESTRICTED_MARKER)
 
@@ -50,6 +50,12 @@ def draw_daily_due_at(now, rng=None):
     # Minute resolution matches the lightweight local scheduler, with the upper endpoint excluded.
     offset = min(minutes - 1, int(rng.betavariate(*SCHEDULE_CURVE) * minutes))
     return (start + timedelta(minutes=offset)).astimezone(timezone.utc)
+
+
+def make_quiz_gap(now, rng=None):
+    delay = (rng or SystemRandom()).uniform(*QUIZ_GAP_SECONDS)
+    return {'observed_at': now.isoformat(), 'delay_seconds': delay,
+            'ready_at': (now + timedelta(seconds=delay)).isoformat()}
 
 
 def verify_reward(uid, action, logs, now=None):

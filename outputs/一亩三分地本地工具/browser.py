@@ -202,7 +202,7 @@ class Browser:
         finally:
             self.lock.close()
 
-    def _guard(self):
+    def check_active(self):
         if self.expired:
             raise BrowserConnectionError('daily_run_timeout')
 
@@ -210,7 +210,7 @@ class Browser:
         """Every CDP round trip. The driver never fails a pending command when its socket drops, so the bound
         lives here, and past the deadline nothing is sent. A None result is the driver's own error report
         (it reconnects on the next call) and is left to the caller: a page error, not a lost link."""
-        self._guard()
+        self.check_active()
         target = self.sb.page if connection is None else connection
         try:
             return self.sb.loop.run_until_complete(
@@ -293,7 +293,7 @@ class Browser:
         parsed = urlsplit(url)
         if parsed.scheme != 'https' or parsed.hostname not in {SITE_HOST, AUTH_HOST}:
             raise ValueError('unsupported_navigation_target')
-        self._guard()
+        self.check_active()
         try:
             self.sb.get(url)
         except Exception:

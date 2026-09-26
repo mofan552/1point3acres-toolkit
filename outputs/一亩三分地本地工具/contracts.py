@@ -186,7 +186,8 @@ def daily_history_record(result):
     error = result.get('error')
     if error and error not in {'question_changed_or_not_confirmed', 'checkin_submission_unconfirmed',
                               'quiz_submission_unconfirmed', 'site_day_changed', 'api_http_error',
-                              'daily_history_conflict', 'daily_history_unavailable', 'button_not_ready'}:
+                              'daily_history_conflict', 'daily_history_unavailable', 'button_not_ready',
+                              'daily_clock_changed'}:
         error = session_result(RuntimeError(error))['error']
         if error == 'session_status_unavailable':
             error = 'daily_run_failed'

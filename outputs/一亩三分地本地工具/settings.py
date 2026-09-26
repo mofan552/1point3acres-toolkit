@@ -142,6 +142,7 @@ MOOD_PHRASES_FILE = ROOT / 'mood-phrases.json'
 MOOD_PHRASE_MAX_LENGTH = 60
 MOOD_PHRASE_RECENT_DAYS = 30
 DAILY_RETRY_LIMIT = 1
+QUIZ_GAP_SECONDS = (30, 70)
 # One whole daily run in one Chrome. Healthy runs take minutes; past this the run is cut off with
 # daily_run_timeout, its history is still saved, and resume_daily starts a fresh Chrome once.
 DAILY_RUN_TIMEOUT = 900

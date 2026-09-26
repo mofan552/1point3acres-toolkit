@@ -8,10 +8,19 @@ from browser import Browser
 from library import Library, load_learned_answers, record_answer_outcome
 from settings import (ROOT, SITE, STATE, SUBMISSION_TIMEOUT, ACCOUNT_UID,
                       DATABASE_NAME, DAILY_RETRY_LIMIT, DAILY_RUN_TIMEOUT, LEARNED_ANSWERS_NAME, CHECKIN_MOOD_RANDOM,
-                      CHECKIN_MOOD_DEFAULT, MOOD_PHRASES_FILE, MOOD_PHRASE_RECENT_DAYS)
+                      CHECKIN_MOOD_DEFAULT, MOOD_PHRASES_FILE, MOOD_PHRASE_RECENT_DAYS, QUIZ_GAP_SECONDS)
 from contracts import (ACTIONS, REWARD_TITLES, ActionStatus, RunStatus, format_error, recovery_summary,
                        ResumeDecision, DAILY_RETRY_ERRORS, day_complete)
-from rules import choose_answer, choose_mood, choose_phrase, load_mood_phrases, site_day, verify_reward, draw_daily_due_at
+from rules import (choose_answer, choose_mood, choose_phrase, load_mood_phrases, site_day, verify_reward,
+                   draw_daily_due_at, make_quiz_gap)
+
+
+def _wait_quiz_gap(browser, plan):
+    remaining = (datetime.fromisoformat(plan['ready_at']) - datetime.now(timezone.utc)).total_seconds()
+    if remaining > QUIZ_GAP_SECONDS[1]:
+        raise RuntimeError('daily_clock_changed')
+    if remaining > 0:
+        browser.sb.sleep(remaining)
 
 
 def _daily_plan(day, kind, create):
@@ -109,6 +118,14 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
     browser = None
     submission_checks = 0
     missing_responses = set()
+    quiz_gap = None
+
+    def note_checkin(account):
+        nonlocal quiz_gap
+        if not status_only and not account['app_status'].get('question'):
+            quiz_gap = _daily_plan(result['site_day'], 'quiz_gap',
+                                   lambda: make_quiz_gap(datetime.now(timezone.utc)))
+            result['quiz_gap'] = quiz_gap
 
     def checkpoint():
         db = None
@@ -134,10 +151,12 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
 
     def submit(entry, label):
         check_day()
+        browser.check_active()
         result['actions'].append(entry)
         try:
             checkpoint()  # Durable before the browser may send anything, including if this process is killed.
             check_day()  # A database lock may have kept us waiting across midnight.
+            browser.check_active()
         except Exception:
             result['actions'].remove(entry)  # The browser has not been called yet.
             checkpoint()
@@ -183,6 +202,8 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
                     known_complete = bool(account['app_status'].get(flag) or prior.get('completed'))
                     result['actions'].append({'action': action, 'completed': known_complete,
                         'status': ActionStatus.ALREADY_DONE if known_complete else ActionStatus.REWARD_UNCONFIRMED})
+                    if action == 'checkin' and known_complete:
+                        note_checkin(account)
                     continue
                 if prior.get('unconfirmed_submission_run_id'):
                     # Missing receipts cannot prove the server did not execute a request.
@@ -235,6 +256,11 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
                     browser.wait_for("[...document.querySelectorAll('button')].some(e=>e.textContent.trim()===" + json.dumps(options[choice]) + ")", allow_solver=False)
                     browser.click_text(options[choice])
                     browser.wait_for("[...document.querySelectorAll('button')].some(e=>e.textContent.trim()==='提交答案'&&!e.disabled)", allow_solver=False)
+                    if quiz_gap is None:
+                        # A pending check-in must not suppress the independent quiz. In that case
+                        # use this observation as a conservative anchor, without claiming it completed.
+                        note_checkin(account)
+                    _wait_quiz_gap(browser, quiz_gap)
                     submit(entry, '提交答案')
                 # Do not navigate until the real mutation response has arrived.
                 path = '/trpc/' + action_spec.method
@@ -259,6 +285,8 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
                 after = read_account()
                 confirmed = observe_submission(entry, after, logs)
                 checkpoint()
+                if action == 'checkin' and confirmed:
+                    note_checkin(after)
                 if action == 'quiz' and asked:
                     # After observe_submission, never before: it is what establishes the receipt.
                     record_answer_outcome(asked, answered, STATE / LEARNED_ANSWERS_NAME,
