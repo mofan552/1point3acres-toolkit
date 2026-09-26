@@ -86,7 +86,8 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="515" y="238" class="w" text-anchor="middle" style="font-size:13px">7</text>
 <g transform="translate(657.0,222.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></g>
 <text x="502" y="274" class="h">配每日计划</text>
-<text x="502" y="298" class="s">每 10 分钟一次，从此不用管</text>
+<text x="502" y="298" class="s">每分钟检查一次；异常由健康</text>
+<text x="502" y="317" class="s">观察报告</text>
 <rect x="717.0" y="204.0" width="213.0" height="140.0" rx="12" class="c-blue"/>
 <g transform="translate(733.0,218.0) scale(0.917)" class="ic ic-blue"><path d="M12 8V4H8"/><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></g>
 <text x="765" y="234" class="h">或者：交给 AI 助手</text>

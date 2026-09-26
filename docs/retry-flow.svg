@@ -65,12 +65,12 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="146" y="280" class="h">同一次触发内重来</text>
 <text x="146" y="303" class="s">网络、验证、浏览器断开这类错误，换一个新 Chrome 再跑一次；做过的不重做</text>
 <rect x="24.0" y="348.0" width="56.0" height="26.0" rx="13" class="c-blue"/>
-<text x="52" y="365" class="xs t-blue" text-anchor="middle">小时</text>
+<text x="52" y="365" class="xs t-blue" text-anchor="middle">分钟至小时</text>
 <rect x="96.0" y="328.0" width="840.0" height="66.0" rx="12" class="c-gray"/>
 <circle cx="122.0" cy="361.0" r="13" class="f-blue"/>
 <text x="122" y="366" class="w" text-anchor="middle" style="font-size:13px">5</text>
-<text x="146" y="356" class="h">每 10 分钟再来</text>
-<text x="146" y="379" class="s">没到点、已完成就安静退出；一天还有 6 个恢复时点，重复触发是安全的</text>
+<text x="146" y="356" class="h">失败后逐步退避</text>
+<text x="146" y="379" class="s">每分钟只检查本机；失败后等待 5、10、20、40、60 分钟，等待期不联网</text>
 <rect x="24.0" y="424.0" width="56.0" height="26.0" rx="13" class="c-blue"/>
 <text x="52" y="441" class="xs t-blue" text-anchor="middle">天</text>
 <rect x="96.0" y="404.0" width="840.0" height="66.0" rx="12" class="c-gray"/>

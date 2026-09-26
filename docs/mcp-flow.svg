@@ -43,8 +43,9 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <rect x="350.0" y="24.0" width="260.0" height="120.0" rx="12" class="c-blue"/>
 <g transform="translate(366.0,38.0) scale(0.917)" class="ic ic-blue"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a6 6 0 0 1-12 0V8Z"/></g>
 <text x="398" y="54" class="h">工具的 MCP 服务</text>
-<text x="398" y="76" class="s">32 个工具，每个都标明只读还是</text>
-<text x="398" y="95" class="s">可写；多传的参数直接拒绝</text>
+<text x="398" y="76" class="s">工具清单统一登记，每个标明只</text>
+<text x="398" y="95" class="s">读还是可写；多传的参数直接拒</text>
+<text x="398" y="114" class="s">绝</text>
 <rect x="676.0" y="24.0" width="260.0" height="120.0" rx="12" class="c-gray"/>
 <g transform="translate(692.0,38.0) scale(0.917)" class="ic ic-blue"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></g>
 <text x="724" y="54" class="h">同一套函数</text>

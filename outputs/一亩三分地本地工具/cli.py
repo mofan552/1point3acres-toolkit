@@ -14,12 +14,14 @@ from settings import (COLLECT_COMPANY, COLLECT_LIMIT, LIST_PAGES, SEARCH_LIMIT, 
                       LOGIN_METHOD, WECHAT_LOGIN_TIMEOUT, HISTORY_LIMIT, BOARD_LIMIT, LIKE_REACTION_ID, TASK_LIST_LIMIT, MEDIA_MAX_PER_THREAD,
                       OCR_MAX_IMAGES, NOTIFICATION_KINDS, NOTIFICATION_LIMIT)
 from contracts import RunStatus, is_failure, health_alerting, format_error
+from governance import runtime_info
 
 
 def main():
     parser = argparse.ArgumentParser(description='一亩三分地本地任务与面经资料库')
     commands = parser.add_subparsers(dest='command', required=True)
     commands.add_parser('status')
+    commands.add_parser('info', help='离线检查源码、已加载版本和调度配置，不读取凭据或打开浏览器')
     history = commands.add_parser('daily-history')
     history.add_argument('--date')
     history.add_argument('--limit', type=int, default=HISTORY_LIMIT)
@@ -150,6 +152,8 @@ def main():
         backend = save_credentials(value['username'], value['password'])
         value = None
         result = {'status': RunStatus.COMPLETE, 'credential_storage': backend}
+    elif args.command == 'info':
+        result = runtime_info()
     elif args.command == 'daily-history':
         result = get_daily_history(args.date, args.limit)
     elif args.command == 'session-status':

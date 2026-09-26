@@ -7,6 +7,30 @@ from unittest.mock import patch
 
 
 class GovernanceTests(unittest.TestCase):
+    def test_runtime_fingerprint_tracks_code_but_ignores_private_files(self):
+        g = self.scanner()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'architecture.json').write_text(json.dumps({'modules': {'settings': []}}), encoding='utf-8')
+            for name in ('settings.py', 'answers.json', 'mood-phrases.json'):
+                (root / name).write_text('{}', encoding='utf-8')
+            before = g.source_fingerprint(root)
+            (root / 'account.json').write_text('private sentinel', encoding='utf-8')
+            self.assertEqual(g.source_fingerprint(root), before)
+            (root / 'settings.py').write_text('VALUE = 2', encoding='utf-8')
+            self.assertNotEqual(g.source_fingerprint(root), before)
+
+    def test_runtime_info_reports_reload_without_exposing_identity(self):
+        g = self.scanner()
+        with patch.object(g.settings, 'config_matches_disk', return_value=False), \
+                patch.object(g.settings, 'USERNAME', 'private_identity_sentinel'), \
+                patch.object(g.settings, 'ACCOUNT_UID', 987654321):
+            result = g.runtime_info()
+        self.assertTrue(result['restart_required'])
+        self.assertTrue(result['configuration_changed'])
+        self.assertNotIn('private_identity_sentinel', json.dumps(result))
+        self.assertNotIn('987654321', json.dumps(result))
+
     def scanner(self):
         self.assertIsNotNone(importlib.util.find_spec('governance'), 'Consistency checks are missing')
         import governance
