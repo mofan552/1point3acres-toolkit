@@ -146,7 +146,7 @@ class DailyResumeTests(unittest.TestCase):
             self.assertNotIn('synthetic private path', json.dumps(failed))
             browser.assert_not_called()
 
-    def test_request_lost_in_flight_is_retried_up_to_the_attempt_limit(self):
+    def test_missing_receipt_stays_read_only_until_later_verification(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
             session = SubmissionBrowser(completed=False, rewarded=False)
@@ -168,21 +168,17 @@ class DailyResumeTests(unittest.TestCase):
                 self.assertEqual(first['error'], 'network_timeout')
                 self.assertEqual(len(first['attempts']), 1)
                 self.assertEqual(session.submissions, 1)
-                # The site never answered the request and still reports the quiz undone, so the lost
-                # attempt is retried on later runs instead of forfeiting the site day.
-                for expected in range(2, settings.SUBMISSION_ATTEMPT_LIMIT + 1):
+                # A missing receipt is ambiguous, even if the online flag still says undone.
+                for _ in range(3):
                     later = daily.resume_daily(supplied_answer='Answer', expected_question='Synthetic question')
                     self.assertEqual(later['error'], 'quiz_submission_unconfirmed')
-                    self.assertEqual(session.submissions, expected)
+                    self.assertEqual(session.submissions, 1)
                     self.assertIsNotNone(later['history']['actions'][1]['unconfirmed_submission_run_id'])
-                spent = daily.resume_daily(supplied_answer='Answer', expected_question='Synthetic question')
-                self.assertEqual(spent['error'], 'quiz_submission_unconfirmed')
-                self.assertEqual(session.submissions, settings.SUBMISSION_ATTEMPT_LIMIT)
                 session.completed = True
                 session.rewarded = True
                 confirmed = daily.resume_daily()
                 self.assertEqual(confirmed['status'], 'complete')
-                self.assertEqual(session.submissions, settings.SUBMISSION_ATTEMPT_LIMIT)
+                self.assertEqual(session.submissions, 1)
             db = Library(root / daily.DATABASE_NAME)
             action = db.daily_history(123456, '2026-09-10', 1)['days'][0]['actions'][1]
             self.assertIsNone(action['unconfirmed_submission_run_id'])

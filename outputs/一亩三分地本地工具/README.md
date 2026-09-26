@@ -312,3 +312,7 @@ codex mcp add 1point3acres-local --env PYTHONUTF8=1 -- <venv 的 python.exe> <�
 **更新源码**：先暂停每日计划，在仓库根目录确认 `git status --short` 干净（有自己的改动先处理，别用硬重置覆盖），再 `git pull --ff-only`，然后重装依赖并跑 `检查.sh --sync`，通过后恢复计划。
 
 改代码后统一跑 `检查.sh`（完整离线检查与回归）和 `检查.sh --sync`（重建生成文件后再检查）。题库映射源自 eagleoflqj/p1a3_script（原作者 Liumeo）。
+
+### 提交中断恢复
+
+签到和答题点击前先提交本机数据库记录，存储失败则不点击。进程在提交后中断时，下一次只查询完成状态和奖励；未收到回执不能证明未执行，不自动重交。明确的 `button_not_ready` 表示没有点击，可以在下次重试。记录更新按同一 run_id 保存，不重复计数。

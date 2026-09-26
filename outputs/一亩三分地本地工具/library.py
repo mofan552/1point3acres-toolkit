@@ -88,15 +88,17 @@ class Library:
     def close(self):
         self.db.close()
 
-    def save_daily(self, result, account_uid):
+    def save_daily(self, result, account_uid, *, checkpoint=False):
         started = datetime.fromisoformat(result['started_at'])
         if started.tzinfo is None or result['site_day'] != site_day(started) or not result['run_id']:
             raise ValueError('invalid_daily_history_record')
         record = daily_history_record(result)
         with self.db:
-            self.db.execute('INSERT INTO daily_runs VALUES(?,?,?,?,?) ON CONFLICT(account_uid,run_id) DO NOTHING',
+            self.db.execute('INSERT INTO daily_runs VALUES(?,?,?,?,?) ON CONFLICT(account_uid,run_id) '
+                'DO UPDATE SET data=excluded.data WHERE ? AND daily_runs.site_day=excluded.site_day '
+                'AND daily_runs.started_at=excluded.started_at',
                 (account_uid, record['run_id'], record['site_day'], started.astimezone(timezone.utc).isoformat(),
-                 json.dumps(record, ensure_ascii=False)))
+                 json.dumps(record, ensure_ascii=False), checkpoint))
 
     def save_outline(self, outline):
         """Outlines live beside the record, never inside it; one row per content version (issue #23)."""

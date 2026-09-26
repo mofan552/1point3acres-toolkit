@@ -6,7 +6,7 @@ from uuid import uuid4
 
 from browser import Browser
 from library import Library, load_learned_answers, record_answer_outcome
-from settings import (ROOT, SITE, STATE, SUBMISSION_TIMEOUT, SUBMISSION_ATTEMPT_LIMIT, ACCOUNT_UID,
+from settings import (ROOT, SITE, STATE, SUBMISSION_TIMEOUT, ACCOUNT_UID,
                       DATABASE_NAME, DAILY_RETRY_LIMIT, DAILY_RUN_TIMEOUT, LEARNED_ANSWERS_NAME, CHECKIN_MOOD_RANDOM,
                       CHECKIN_MOOD_DEFAULT, MOOD_PHRASES_FILE, MOOD_PHRASE_RECENT_DAYS)
 from contracts import (ACTIONS, REWARD_TITLES, ActionStatus, RunStatus, format_error, recovery_summary,
@@ -95,6 +95,18 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
     submission_checks = 0
     missing_responses = set()
 
+    def checkpoint():
+        db = None
+        try:
+            db = Library(STATE / DATABASE_NAME)
+            db.save_daily({**result, 'status': result.get('status', RunStatus.NEEDS_ATTENTION),
+                           'finished_at': datetime.now(timezone.utc).isoformat()}, ACCOUNT_UID, checkpoint=True)
+        except Exception:
+            raise RuntimeError('daily_history_write_failed') from None
+        finally:
+            if db is not None:
+                db.close()
+
     def check_day():
         if site_day() != result['site_day']:
             raise RuntimeError('site_day_changed')
@@ -109,10 +121,18 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
         check_day()
         result['actions'].append(entry)
         try:
+            checkpoint()  # Durable before the browser may send anything, including if this process is killed.
+            check_day()  # A database lock may have kept us waiting across midnight.
+        except Exception:
+            result['actions'].remove(entry)  # The browser has not been called yet.
+            checkpoint()
+            raise
+        try:
             browser.click_text(label)
         except RuntimeError as error:
             if str(error) == 'button_not_ready':
                 result['actions'].remove(entry)  # The browser explicitly did not click.
+                checkpoint()
             raise
 
     def observe_submission(entry, account, logs):
@@ -149,9 +169,8 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
                     result['actions'].append({'action': action, 'completed': known_complete,
                         'status': ActionStatus.ALREADY_DONE if known_complete else ActionStatus.REWARD_UNCONFIRMED})
                     continue
-                if prior.get('unconfirmed_submission_run_id') and (prior.get('response_ever_seen')
-                        or prior.get('submission_attempts', 0) >= SUBMISSION_ATTEMPT_LIMIT):
-                    # The site answered once, or the day's attempts are spent: verify receipts, never resubmit.
+                if prior.get('unconfirmed_submission_run_id'):
+                    # Missing receipts cannot prove the server did not execute a request.
                     result['actions'].append({'action': action, 'status': ActionStatus.SUBMISSION_UNCONFIRMED})
                     continue
                 if status_only:
@@ -216,6 +235,7 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
                             pass
                         solver_attempted = True
                 entry['response_seen'] = path in browser.ids
+                checkpoint()
                 if path not in browser.ids:
                     submission_checks += 1
                     missing_responses.add(action)
@@ -223,6 +243,7 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
                 logs = browser.credit_logs()
                 after = read_account()
                 confirmed = observe_submission(entry, after, logs)
+                checkpoint()
                 if action == 'quiz' and asked:
                     # After observe_submission, never before: it is what establishes the receipt.
                     record_answer_outcome(asked, answered, STATE / LEARNED_ANSWERS_NAME,
@@ -262,7 +283,7 @@ def run_daily(status_only=False, supplied_answer=None, expected_question=None, *
     db = None
     try:
         db = Library(STATE / DATABASE_NAME)
-        db.save_daily(result, ACCOUNT_UID)
+        db.save_daily(result, ACCOUNT_UID, checkpoint=True)
         result['history_saved'] = True
     except Exception:
         result['status'] = RunStatus.FAILED
