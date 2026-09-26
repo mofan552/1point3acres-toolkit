@@ -88,6 +88,18 @@ def _record_heartbeat(now):
             db.close()
 
 
+def _retry_due(day):
+    db = None
+    try:
+        db = Library(STATE / DATABASE_NAME)
+        return db.daily_retry_due(ACCOUNT_UID, day)
+    except Exception:
+        raise RuntimeError('daily_history_unavailable') from None
+    finally:
+        if db is not None:
+            db.close()
+
+
 def resume_daily(supplied_answer=None, expected_question=None):
     now = datetime.now(timezone.utc)
     day = site_day(now)
@@ -108,6 +120,10 @@ def resume_daily(supplied_answer=None, expected_question=None):
             if site_day() != day:
                 raise RuntimeError('site_day_changed')
             result['decision'] = ResumeDecision.ALREADY_COMPLETE
+            return result
+        retry_due = _retry_due(day)
+        if supplied_answer is None and retry_due and now < retry_due:
+            result.update(decision=ResumeDecision.RECOVERY_WAIT, retry_at=retry_due.isoformat())
             return result
         for _ in range(DAILY_RETRY_LIMIT + 1):
             if site_day() != day:

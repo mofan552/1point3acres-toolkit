@@ -25,7 +25,7 @@ from contracts import (RunStatus, ContentStatus, CollectionStatus, collection_st
                        format_error, validate_record, daily_history_record, summarize_daily_history,
                        record_search_text, record_matches, validate_date_bound,
                        TaskState, TaskControl, PauseRequested, TASK_ACTIVE_STATES, task_view, MediaOutcome)
-from rules import site_day, daily_health, build_outline
+from rules import site_day, daily_health, build_outline, daily_retry_due
 from extract import (parse_listing, parse_thread, parse_thread_reference, parse_search,
                      parse_search_reference, parse_board, parse_board_reference,
                      parse_profile, parse_profile_reference, parse_profile_threads, parse_favorites)
@@ -140,6 +140,11 @@ class Library:
         with self.db:
             self.db.execute('INSERT INTO scheduler_heartbeat VALUES(?,?) ON CONFLICT(account_uid) '
                             'DO UPDATE SET fired_at=excluded.fired_at', (account_uid, fired_at))
+
+    def daily_retry_due(self, account_uid, day):
+        rows = self.db.execute('SELECT data FROM daily_runs WHERE account_uid=? AND site_day=? '
+                               'ORDER BY started_at DESC,run_id DESC', (account_uid, day))
+        return daily_retry_due(json.loads(row[0]) for row in rows)
 
     def last_heartbeat(self, account_uid):
         row = self.db.execute('SELECT fired_at FROM scheduler_heartbeat WHERE account_uid=?',

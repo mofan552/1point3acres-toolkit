@@ -8,8 +8,8 @@ from zoneinfo import ZoneInfo
 from settings import (SITE_TIMEZONE, SCHEDULE_TIMEZONE, SCHEDULE_TIME, SCHEDULE_RECOVERY_HOURS,
                       SCHEDULE_MODE, SCHEDULE_WINDOW_START, SCHEDULE_WINDOW_END, SCHEDULE_CURVE,
                       CHECKIN_MOOD_WEIGHTS, CHECKIN_MOOD_PERSISTENCE, CHECKIN_MOOD_DEFAULT, MOOD_PHRASE_MAX_LENGTH,
-                      HEALTH_ALERT_DAYS, HEALTH_STALE_RUNS, QUIZ_GAP_SECONDS)
-from contracts import (ACTIONS, HealthVerdict, HealthReason, day_complete, Attribution, Certainty, ContentStatus,
+                      HEALTH_ALERT_DAYS, HEALTH_STALE_RUNS, QUIZ_GAP_SECONDS, DAILY_RECOVERY_MINUTES)
+from contracts import (ACTIONS, HealthVerdict, HealthReason, day_complete, Attribution, Certainty, ContentStatus, RunStatus,
                        ROUND_PATTERNS, QUESTION_CUES, SPECULATION_CUES, NOISE_CUES, RESTRICTED_MARKER)
 
 LA = ZoneInfo(SITE_TIMEZONE)
@@ -56,6 +56,22 @@ def make_quiz_gap(now, rng=None):
     delay = (rng or SystemRandom()).uniform(*QUIZ_GAP_SECONDS)
     return {'observed_at': now.isoformat(), 'delay_seconds': delay,
             'ready_at': (now + timedelta(seconds=delay)).isoformat()}
+
+
+def daily_retry_due(records):
+    """Newest first, current site day only. Persisted finish times survive scheduler restarts."""
+    failed = []
+    for record in records:
+        if record.get('status_only') is True:
+            continue
+        if record['status'] == RunStatus.COMPLETE:
+            break
+        failed.append(datetime.fromisoformat(record['finished_at']))
+    if not failed:
+        return None
+    base, maximum = DAILY_RECOVERY_MINUTES
+    minutes = min(maximum, base * 2 ** min(len(failed) - 1, 8))
+    return max(failed) + timedelta(minutes=minutes)
 
 
 def verify_reward(uid, action, logs, now=None):

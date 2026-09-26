@@ -3,7 +3,7 @@ import itertools
 import json
 import tempfile
 import unittest
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch
 
@@ -91,6 +91,44 @@ class RandomScheduleTests(unittest.TestCase):
                                     due_at=NOW + timedelta(hours=1))
         self.assertEqual(health['evaluated_through'], '2026-09-09')
         self.assertEqual(health['verdict'], 'ok')
+
+
+class RecoveryBackoffTests(unittest.TestCase):
+    def test_wait_is_offline_survives_reopen_and_allows_bound_answer(self):
+        from datetime import timedelta
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            db = Library(root / daily.DATABASE_NAME)
+            db.save_daily(saved_run('failure', [], started=NOW), 123456)
+            db.close()
+            with patch('daily.STATE', root), patch('daily.ACCOUNT_UID', 123456), \
+                    patch('daily.datetime', wraps=datetime) as clock, patch('daily.site_day', return_value='2026-09-10'), \
+                    patch('daily.draw_daily_due_at', return_value=NOW), patch('daily.Browser') as browser, \
+                    patch('daily.run_daily', return_value={'status': 'complete', 'error': None, 'actions': []}) as run:
+                clock.now.return_value = NOW + timedelta(seconds=10)
+                self.assertEqual(daily.resume_daily()['decision'], 'recovery_wait')
+                self.assertEqual(daily.resume_daily()['decision'], 'recovery_wait')
+                browser.assert_not_called()
+                run.assert_not_called()
+                self.assertEqual(daily.resume_daily('Answer', 'Synthetic question')['decision'], 'executed')
+                clock.now.return_value = NOW + timedelta(minutes=5)
+                self.assertEqual(daily.resume_daily()['decision'], 'executed')
+                self.assertEqual(run.call_count, 2)
+            db = Library(root / daily.DATABASE_NAME)
+            try:
+                self.assertIsNone(db.daily_retry_due(123456, '2026-09-11'))
+            finally:
+                db.close()
+
+    def test_backoff_caps_and_status_queries_do_not_extend_it(self):
+        from datetime import timedelta
+        records = [{**saved_run(str(i), []), 'status_only': False} for i in range(8)]
+        for count, minutes in [(1, 5), (2, 10), (3, 20), (4, 40), (5, 60), (8, 60)]:
+            due = rules.daily_retry_due(records[:count])
+            self.assertEqual(due, NOW + timedelta(minutes=minutes))
+        readonly = {**saved_run('read', [], started=NOW + timedelta(hours=1)), 'status_only': True}
+        self.assertEqual(rules.daily_retry_due([readonly, records[0]]), NOW + timedelta(minutes=5))
+        self.assertIsNone(rules.daily_retry_due([readonly]))
 
 
 def saved_run(run_id, flags, *, started=NOW):
@@ -259,7 +297,9 @@ class DailyResumeTests(unittest.TestCase):
                     self.assertIsNotNone(later['history']['actions'][1]['unconfirmed_submission_run_id'])
                 session.completed = True
                 session.rewarded = True
+                clock.now.return_value = NOW + timedelta(hours=1)
                 confirmed = daily.resume_daily()
+                self.assertEqual(confirmed['decision'], 'executed')
                 self.assertEqual(confirmed['status'], 'complete')
                 self.assertEqual(session.submissions, 1)
             db = Library(root / daily.DATABASE_NAME)
@@ -284,6 +324,7 @@ class DailyResumeTests(unittest.TestCase):
                 self.assertEqual(second['error'], 'quiz_submission_unconfirmed')
                 self.assertEqual(session.submissions, 1)
                 session.rewarded = True
+                clock.now.return_value = NOW + timedelta(hours=1)
                 rewarded = daily.resume_daily()
                 self.assertTrue(rewarded['attempts'][0]['reward_verified']['quiz'])
                 self.assertNotEqual(rewarded['status'], 'complete')
