@@ -84,7 +84,8 @@
     "运行.cmd",
     "检查.cmd",
     "运行.sh",
-    "检查.sh"
+    "检查.sh",
+    "计划.ps1"
   ],
   "external_owners": {
     "requests": [
@@ -122,10 +123,12 @@
       "browser",
       "check",
       "repository_checks",
-      "secure"
+      "secure",
+      "governance"
     ]
   },
   "public_tools": [
+    "runtime_info",
     "session_status",
     "session_login",
     "session_logout",

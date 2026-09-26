@@ -76,5 +76,5 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="784" y="137" class="s">+1」才算成功</text>
 <rect x="24.0" y="186.0" width="912.0" height="43.0" rx="10" class="c-amber"/>
 <g transform="translate(38.0,194.5) scale(0.833)" class="ic ic-amber"><circle cx="12" cy="12" r="10"/><path d="M8 15h8"/><path d="M9 9h.01"/><path d="M15 9h.01"/></g>
-<text x="68" y="210" class="s">随机心情默认开启：每天会以你的名义在主页发一句话。不想要，在账号配置里关掉，之后固定选「没心情」、什么都不写。</text>
+<text x="68" y="210" class="s">随机心情默认开启，短句可能发布到主页；候选用尽或选择「没心情」时留空。账号配置可关闭短句，使用「没心情」。</text>
 </svg>

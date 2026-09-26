@@ -21,7 +21,7 @@ CREDENTIAL_SERVICE = '1point3acres-toolkit'
 ACCOUNT_FILE = STATE / 'account.json'
 LEARNED_ANSWERS_NAME = 'learned-answers.json'
 SCHEDULE_KEYS = {'schedule_time', 'schedule_timezone', 'schedule_mode'}
-# The one opt-in that makes the daily check-in speak in the member's name; absent means off.
+# Controls public check-in phrases; absent uses mood_random_enabled's default.
 MOOD_RANDOM_KEY = 'checkin_mood_random'
 OPTIONAL_KEYS = SCHEDULE_KEYS | {MOOD_RANDOM_KEY}
 
@@ -57,6 +57,15 @@ def load_schedule(overrides, default_time, default_zone):
 
 
 USERNAME, ACCOUNT_UID, _SCHEDULE = load_identity(ACCOUNT_FILE)
+
+
+def config_matches_disk():
+    try:
+        return load_identity(ACCOUNT_FILE) == (USERNAME, ACCOUNT_UID, _SCHEDULE)
+    except RuntimeError:
+        return False
+
+
 SITE = 'https://www.1point3acres.com'
 SITE_HOST = 'www.1point3acres.com'
 AUTH_HOST = 'auth.1point3acres.com'
@@ -120,6 +129,7 @@ SCHEDULE_WINDOW_START = 10
 SCHEDULE_WINDOW_END = 12
 SCHEDULE_CURVE = (3, 3)
 SCHEDULE_RECOVERY_HOURS = 4
+SCHEDULE_POLL_SECONDS = 60
 HEALTH_ALERT_DAYS = 2
 HEALTH_STALE_RUNS = 2
 # The ten the site actually offers, read off the check-in page rather than copied from a description.
@@ -203,7 +213,7 @@ def mcp_config():
 
 def daily_schedule_rrule():
     if SCHEDULE_MODE == 'random':
-        return 'FREQ=MINUTELY;INTERVAL=1'
+        return f'FREQ=MINUTELY;INTERVAL={SCHEDULE_POLL_SECONDS // 60}'
     hour, minute = map(int, SCHEDULE_TIME.split(':'))
     hours = sorted({(hour + offset) % 24 for offset in range(0, 24, SCHEDULE_RECOVERY_HOURS)})
     return 'FREQ=DAILY;BYHOUR=' + ','.join(map(str, hours)) + f';BYMINUTE={minute};BYSECOND=0'
@@ -219,6 +229,7 @@ def daily_schedule_summary(reference=None):
     """
     if SCHEDULE_MODE == 'random':
         return {'mode': 'random', 'timezone': SITE_TIMEZONE,
+                'poll_seconds': SCHEDULE_POLL_SECONDS,
                 'window': [f'{SCHEDULE_WINDOW_START:02d}:00', f'{SCHEDULE_WINDOW_END:02d}:00'],
                 'distribution': 'beta', 'curve': list(SCHEDULE_CURVE), 'random_source': 'SystemRandom',
                 'recovery_hours': SCHEDULE_RECOVERY_HOURS, 'rrule': daily_schedule_rrule(),
@@ -230,6 +241,7 @@ def daily_schedule_summary(reference=None):
     offsets = range(0, 24, SCHEDULE_RECOVERY_HOURS)
     fires = [local + timedelta(hours=offset) for offset in offsets]
     return {'mode': 'fixed', 'time': SCHEDULE_TIME, 'timezone': SCHEDULE_TIMEZONE,
+            'poll_seconds': SCHEDULE_POLL_SECONDS,
             'recovery_hours': SCHEDULE_RECOVERY_HOURS,
             'fires_local': sorted(moment.strftime('%H:%M') for moment in fires),
             'fires_utc': sorted(moment.astimezone(timezone.utc).strftime('%H:%M') for moment in fires),

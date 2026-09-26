@@ -40,8 +40,8 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="53" y="58" class="w" text-anchor="middle" style="font-size:13px">1</text>
 <g transform="translate(195.0,42.0) scale(1.000)" class="ic ic-blue"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></g>
 <text x="40" y="94" class="h">到点了，系统叫醒它</text>
-<text x="40" y="118" class="s">电脑自带的定时任务，每 10</text>
-<text x="40" y="137" class="s">分钟一次</text>
+<text x="40" y="118" class="s">电脑自带的定时任务，每分钟</text>
+<text x="40" y="137" class="s">检查一次</text>
 <path d="M239.0,94.0 L253.0,94.0" class="ar"/>
 <rect x="255.0" y="24.0" width="213.0" height="140.0" rx="12" class="c-gray"/>
 <circle cx="284.0" cy="53.0" r="13" class="f-blue"/>
@@ -98,5 +98,5 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="733" y="359" class="s">败</text>
 <rect x="24.0" y="408.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
 <g transform="translate(38.0,416.5) scale(0.833)" class="ic ic-blue"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></g>
-<text x="68" y="432" class="s">出错了会换一个新的 Chrome 再试一次；之后每 10 分钟还会再来，直到当天两项都确认到账。已经确认到账的，不会重复做。</text>
+<text x="68" y="432" class="s">暂时错误可重开一次 Chrome；仍失败则按 5–60 分钟退避。已确认到账或提交结果待确认的动作，不会盲目重交。</text>
 </svg>

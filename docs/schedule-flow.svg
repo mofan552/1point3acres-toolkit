@@ -207,5 +207,5 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="306" y="216" class="xs t-amber" text-anchor="middle" style="font-size:12px">◆ 操作系统每分钟调用；未到点离线退出</text>
 <rect x="24.0" y="238.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
 <g transform="translate(38.0,246.5) scale(0.833)" class="ic ic-blue"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></g>
-<text x="68" y="262" class="s">电脑睡着错过的，醒来后下一次补上，只补今天不补过去。每次醒来都记一次心跳。不要给同一个账号配两个定时任务。</text>
+<text x="68" y="262" class="s">电脑睡着错过的，醒来后下一次补上，只补今天不补过去。每次醒来都记一次心跳。同一账号只配一个每日执行计划。</text>
 </svg>

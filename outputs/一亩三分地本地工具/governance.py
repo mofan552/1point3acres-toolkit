@@ -1,14 +1,75 @@
 """Fast offline consistency checks used both at startup and before delivery."""
 import ast
+import hashlib
 import json
 import re
 import sys
+import subprocess
 from collections import Counter
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 import settings
 from presentation import render_reader
+from contracts import RunStatus
+
+
+def source_fingerprint(root=None):
+    """Hash the runtime inventory only. Account files, credentials and browser state are excluded."""
+    root = Path(root) if root else settings.ROOT
+    try:
+        policy = json.loads((root / 'architecture.json').read_text(encoding='utf-8'))
+        names = [name + '.py' for name in policy['modules']] + ['architecture.json', 'answers.json', 'mood-phrases.json']
+        digest = hashlib.sha256()
+        for name in sorted(names):
+            digest.update(name.encode('utf-8') + b'\0' + (root / name).read_bytes())
+        return digest.hexdigest()
+    except (OSError, ValueError, KeyError):
+        return None
+
+
+def source_revision():
+    try:
+        result = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=settings.WORKSPACE,
+                                capture_output=True, text=True, timeout=3,
+                                creationflags=subprocess.CREATE_NO_WINDOW if settings.WINDOWS else 0)
+        revision = result.stdout.strip()
+        return revision if result.returncode == 0 and re.fullmatch('[a-f0-9]{40,64}', revision) else None
+    except (OSError, subprocess.TimeoutExpired):
+        return None  # ZIP distributions need no Git installation.
+
+
+def source_is_dirty():
+    try:
+        result = subprocess.run(['git', 'status', '--porcelain', '--untracked-files=no'], cwd=settings.WORKSPACE,
+                                capture_output=True, text=True, timeout=3,
+                                creationflags=subprocess.CREATE_NO_WINDOW if settings.WINDOWS else 0)
+        return bool(result.stdout.strip()) if result.returncode == 0 else None
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+
+
+_LOADED_SOURCE = source_fingerprint()
+_LOADED_REVISION = source_revision()
+_LOADED_AT = datetime.now(timezone.utc).isoformat()
+
+
+def runtime_info():
+    current = source_fingerprint()
+    changed = not settings.config_matches_disk()
+    restart = current != _LOADED_SOURCE or changed
+    unavailable = current is None or _LOADED_SOURCE is None
+    return {'status': RunStatus.FAILED if unavailable else RunStatus.NEEDS_ATTENTION if restart else RunStatus.COMPLETE,
+            'error': 'runtime_source_unavailable' if unavailable else 'runtime_restart_required' if restart else None,
+            'loaded': {'revision': _LOADED_REVISION, 'fingerprint': _LOADED_SOURCE, 'at': _LOADED_AT},
+            'disk': {'revision': source_revision(), 'fingerprint': current, 'dirty': source_is_dirty()},
+            'restart_required': restart, 'configuration_changed': changed,
+            'account_configured': bool(settings.ACCOUNT_UID), 'python': sys.version.split()[0], 'platform': sys.platform,
+            'schedule': settings.daily_schedule_summary(), 'quiz_gap_seconds': list(settings.QUIZ_GAP_SECONDS),
+            'recovery_minutes': list(settings.DAILY_RECOVERY_MINUTES),
+            'daily_run_timeout': settings.DAILY_RUN_TIMEOUT, 'daily_retry_limit': settings.DAILY_RETRY_LIMIT,
+            'mood_random_enabled': settings.CHECKIN_MOOD_RANDOM}
 
 
 def _literal_strings(node):

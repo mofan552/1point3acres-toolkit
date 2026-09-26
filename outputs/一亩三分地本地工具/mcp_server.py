@@ -18,11 +18,13 @@ from settings import (MCP_NAME, COLLECT_LIMIT, LIST_PAGES, COLLECT_COMPANY, SEAR
                       SITE_SEARCH_LIMIT, LOGIN_METHOD, WECHAT_LOGIN_TIMEOUT, NOTIFICATION_LIMIT, HISTORY_LIMIT, BOARD_LIMIT, LIKE_REACTION_ID, TASK_LIST_LIMIT,
                       MEDIA_MAX_PER_THREAD, OCR_MAX_IMAGES)
 from contracts import RunStatus, is_failure
+from governance import runtime_info as inspect_runtime
 
 class ToolkitServer(MCPServer):
     async def call_tool(self, name, arguments, context=None):
         # The SDK ignores extras; unsupported filters or login options must not silently disappear.
-        guarded = {'search_threads': (search_threads, 'unsupported_search_arguments'),
+        guarded = {'runtime_info': (runtime_info, 'unsupported_runtime_arguments'),
+                   'search_threads': (search_threads, 'unsupported_search_arguments'),
                    'session_status': (session_status, 'unsupported_session_arguments'),
                    'daily_history': (daily_history, 'unsupported_history_arguments'),
                    'daily_run': (daily_run, 'unsupported_daily_arguments'),
@@ -41,6 +43,12 @@ server = ToolkitServer(MCP_NAME, description='用户本机的一亩三分地每�
 def tool_result(payload):
     return CallToolResult(content=[TextContent(type='text', text=json.dumps(payload, ensure_ascii=False))],
                           is_error=is_failure(payload))
+
+
+@server.tool(annotations=ToolAnnotations(readOnlyHint=True))
+def runtime_info() -> CallToolResult:
+    """离线读取当前进程加载的源码版本、磁盘版本和调度配置；restart_required 表示应重连 MCP。无参数，不打开浏览器，不返回用户名、UID、路径或凭据。"""
+    return tool_result(inspect_runtime())
 
 
 @server.tool(annotations=ToolAnnotations(readOnlyHint=True))

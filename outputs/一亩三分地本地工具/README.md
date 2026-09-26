@@ -30,7 +30,7 @@
 - 提供自己的论坛用户名和数字 uid（写进 `account.json`）。
 - 在助手弹出的安全输入框里输一次论坛密码。密码直接进系统钥匙串 / DPAPI，不进仓库、不进对话、助手也不经手明文。
 
-之后每天自动运行，你不用再操作。想自己动手，按下面的手动步骤来，结果完全一样。
+之后由计划自动运行；电脑需要可用，异常由健康观察报告。想自己动手，按下面的手动步骤来，结果完全一样。
 
 <a id="install"></a>
 
@@ -41,7 +41,7 @@
 **克隆并建环境**，在放项目的目录里执行。macOS / Linux：
 
 ```sh
-git clone https://github.com/mofan552/1point3acres-toolkit.git
+git clone https://github.com/vivian-labs/1point3acres-toolkit.git
 cd 1point3acres-toolkit
 python3.12 -m venv work/cf-probe-venv
 work/cf-probe-venv/bin/python -m pip install -r "outputs/一亩三分地本地工具/requirements.txt"
@@ -53,7 +53,7 @@ work/cf-probe-venv/bin/python -m pip install -r "outputs/一亩三分地本地�
 Windows（PowerShell）：
 
 ```powershell
-git clone https://github.com/mofan552/1point3acres-toolkit.git
+git clone https://github.com/vivian-labs/1point3acres-toolkit.git
 Set-Location 1point3acres-toolkit
 py -3.12 -m venv work\cf-probe-venv
 work\cf-probe-venv\Scripts\python.exe -m pip install -r outputs\一亩三分地本地工具\requirements.txt
@@ -134,10 +134,37 @@ cd outputs/一亩三分地本地工具
 
 失败后按 5、10、20、40、60 分钟逐步延长恢复间隔，上限 60 分钟。间隔依据已保存的运行记录计算，重启不重置；等待期返回 `decision=recovery_wait` 和 `retry_at`，不开浏览器。它表示本次调度检查完成，不表示签到答题已成功。只读查询不计入失败次数；明确提供完整原题和答案的补答可直接核对并尝试，仍受提交保护约束。
 
-思路：让操作系统每分钟跑一次 `运行.sh daily --resume`（Windows 用 `运行.cmd`）。这个命令自己判断是否到点、当天是否已完成，`not_due` / `already_complete` 时直接安静退出、不开浏览器，只有真正该签到时才动作。所以重复触发是安全的。
+思路：让操作系统每分钟跑一次 `运行.sh daily --resume`（Windows 用 `运行.cmd`）。这个命令自己判断是否到点、当天是否已完成，`not_due` / `already_complete` 时直接安静退出、不开浏览器，只有真正该签到时才动作。等待与已完成状态都不产生站点请求。手动 `daily` 不受随机窗口约束；定时计划必须使用 `daily --resume`。
 
 - **交给 AI 助手最省事**：让它按你的系统装好计划（macOS 用 launchd LaunchAgent，Windows 用任务计划程序），指向工具目录的 `运行.sh daily --resume`。
-- **自己配**：macOS 写一个 LaunchAgent（`RunAtLoad` + `StartInterval` 60 秒）调用上面的命令，样例见下；Windows 在任务计划程序里建一个按相同间隔触发的任务。计划时间在 `account.json` 里配（见[配置账号](#account)）；跑一次 `检查.cmd --sync`（macOS 用 `./检查.sh --sync`），输出的 `schedule` 段直接给出本地和 UTC 两套触发时刻和 rrule。
+- **自己配**：macOS 写一个 LaunchAgent（`RunAtLoad` + `StartInterval` 60 秒）调用上面的命令，样例见下；Windows 使用下面的安装脚本。计划时间在 `account.json` 里配（见[配置账号](#account)）；跑一次 `检查.cmd --sync`（macOS 用 `./检查.sh --sync`），输出的 `schedule` 段给出当前模式、时区、轮询间隔与 rrule。随机模式的具体时间按账号与站点日保存在本机数据库，不在每次检查时重抽。
+
+### Windows：安装无控制台窗口的每日计划
+
+在工具目录的 PowerShell 中执行：
+
+```powershell
+.\运行.cmd info
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\计划.ps1 -Action Install -WhatIf
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\计划.ps1 -Action Install
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\计划.ps1 -Action Status
+```
+
+`info` 离线输出当前源码版本、指纹和有效配置，不输出账号身份或密码。先确认 `schedule.mode=random`、`schedule.timezone=America/Los_Angeles`、窗口为 10:00–12:00。旧配置含 `schedule_time` 时保留固定模式；要切换需在账号配置设置 `"schedule_mode": "random"`。
+
+安装脚本从统一配置读取轮询间隔，注册 `1point3acres-toolkit-daily`，使用当前虚拟环境的 `pythonw.exe`，直接执行 `daily --resume`。默认每分钟触发；同一任务尚未退出时忽略新实例，运行时限覆盖一次自动重试。重复安装更新同一任务，拒绝覆盖其他 checkout 的同名任务。安装不要求管理员权限，也不保存 Windows 密码。
+
+电脑必须开机、当前 Windows 用户已登录；锁屏可以保持登录，注销、关机或休眠期间不能保证运行。计划不会唤醒电脑；恢复可用后补检查当天。任务计划程序的成功退出只表示调用完成；当天是否成功请看 `daily-history`，不能只看 `last_result=0`。
+
+安装前停用旧的每日执行计划，避免两个调度器轮流触发。需要暂停或卸载时：
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\计划.ps1 -Action Remove
+```
+
+卸载先禁用后续触发；若还有运行中的实例，会报错并要求等待当前运行结束，再执行 `Remove`。不要在它仍运行时更新依赖或移动源码。移除成功后保留账号、会话与历史；恢复时重新 `Install`。移动仓库前应先移除旧计划，移动后重新安装。
+
+### macOS：LaunchAgent
 
 macOS LaunchAgent 样例，存为 `~/Library/LaunchAgents/local.1point3acres-toolkit.daily.plist`，把 `/REPO` 换成仓库的绝对路径（日志落在不入库的 `work/`）：
 
@@ -165,7 +192,13 @@ macOS LaunchAgent 样例，存为 `~/Library/LaunchAgents/local.1point3acres-too
 - **macOS 可选加固（写在本机包装脚本里，不进仓库）**：合盖后的短暂后台唤醒（DarkWake）里也可能触发计划，脚本开头加 `pmset -g systemstate | grep -q Graphics || exit 0` 可以避开；用 `caffeinate -i` 包住运行命令能防止空闲睡眠（合盖仍会睡，只是减少中途被打断的概率）。另外，工具的 Chrome 在后台运行时，从 Dock / Spotlight 打开 Chrome 会进入工具的专用配置目录（同一个应用只保留一个实例）：想开自己的 Chrome，等任务结束，或用 `open -na "Google Chrome"` 另起一个实例；如果发现自己的登录落进了 `work/account-browser/chrome-profile`，在那个实例里退出登录即可。
 - **macOS 窗口行为**：系统不允许把窗口放到屏幕外，所以专用 Chrome 启动瞬间会短暂出现并切到前台（约 1 秒），随后自动最小化到 Dock、把焦点还给你之前正在用的应用；这个瞬间无法消除。微信扫码登录时窗口会被调到屏幕上，结束后同样最小化。Windows 上窗口始终隐藏。
 
-计划由 `daily --resume` 决定是否执行，它不会补过去站点日的签到。电脑休眠错过的触发，会在唤醒后的下一次检查补上；跑到一半睡着的那次会在运行截止（settings 的 `DAILY_RUN_TIMEOUT`，默认 15 分钟）内以 `daily_run_timeout` / `browser_connection_lost` 结束、自己收掉浏览器并重开一次，仍失败就等下一次检查。不要给同一账号配多个调度器。
+计划由 `daily --resume` 决定是否执行，它不会补过去站点日的签到。电脑休眠错过的触发，会在唤醒后的下一次检查补上；跑到一半睡着的那次会在运行截止（settings 的 `DAILY_RUN_TIMEOUT`，默认 15 分钟）内以 `daily_run_timeout` / `browser_connection_lost` 结束、自己收掉浏览器并重开一次，仍失败就等下一次检查。同一账号只保留一个每日执行计划。
+
+### AI 助手补答与指纹
+
+MCP 是调用协议，不会隐藏浏览器自动化特征。工具复用专用 Chrome 配置和会话，不轮换指纹；随机时间、短句和间隔只是运行策略，不能保证通过 Cloudflare 或避免机器人识别。
+
+原有 AI 定时计划若继续保留，应改为离线健康观察，并仅在当前站点日的 `answer_needed` 有完整题目和选项时查证答案，再调用一次 `daily --resume --question '完整原题' --answer '正确选项完整文字'`。不得猜答案、重交待确认请求，也不要无条件调用第二个每日执行器。助手是否可用取决于客户端自己的运行条件；无人值守不等于任何故障都能自动解决。
 
 ### 再配一个独立的健康观察者
 
@@ -230,12 +263,13 @@ Register-ScheduledTask -TaskName '1p3a-health-watch' -Action $action -Trigger $t
 
 | 命令 | 作用 |
 |---|---|
+| `info` | 离线版本与配置诊断；源码或配置与当前进程不一致时报 `runtime_restart_required` |
 | `status` | 只查签到/答题状态与奖励，必要时恢复登录 |
 | `session-status` | 只诊断当前会话，不登录、不签到 |
 | `session-logout` | 退出本工具专用浏览器里的本站登录：只删专用配置里 `1point3acres.com` / `1p3a.com` 的 Cookie，不碰钥匙串凭据、账号配置、资料库或别的浏览器配置；删完用身份接口核实站点确实不认得账号了才算 `complete`。**不会自动重新登录**，要恢复就再跑 `session-login`；重复退出无害；别的任务正占着浏览器时直接失败、不清理 |
 | `session-login` | 用钥匙串里的密码建立/恢复会话。`--method wechat` 改为微信扫码：打开站点自己的微信登录页，把本工具的 Chrome 窗口移到屏幕上显示官方二维码（整页截图同时写到 `--qr-path`，默认本机状态目录，调用结束即删除），最多等 `--wait` 秒（默认 180，允许 10–600）由本人在微信里确认；有效会话直接复用、不显示二维码。站点没有公布二维码有效期，`expires_at` 恒为 null；扫到别的账号会立刻清掉那份会话并报 `wrong_account`；超时 `wechat_login_timeout`、Ctrl+C `wechat_login_cancelled`、二维码没出现 `wechat_qr_not_shown`。日常自动恢复仍只用密码 |
 | `daily` | 执行当天签到与答题，核对奖励 |
-| `daily --resume` | 供计划使用：自己判断是否该跑，`not_due`/`already_complete` 不开浏览器 |
+| `daily --resume` | 供计划使用：自己判断是否该跑，`not_due` / `already_complete` / `recovery_wait` 不开浏览器 |
 | `daily-history --limit 5` | 离线查看运行历史（站点用洛杉矶日期） |
 | `browse-board 472` | 不用搜索词，直接翻某个版面的最新帖子；结果可交给 `thread-detail` |
 | `unread` | 读未读计数（提醒 / 私信 / 聊天），不打开通知列表、不标记已读 |
@@ -284,7 +318,9 @@ codex mcp add 1point3acres-local --env PYTHONUTF8=1 -- <venv 的 python.exe> <�
 
 `claude mcp list` 会做一次握手并显示 `✔ Connected`；`codex mcp list` 显示 `enabled`。注册信息写在各客户端自己的用户配置里（`~/.claude.json`、`~/.codex/config.toml`），含本机绝对路径，不进仓库。
 
-连接后可让客户端调用 `interviews_search`（query 传空字符串）验证：应返回 `records` 和 `stats`，新库为空是正常的，这一步不访问网站。`daily_run`、`stripe_collect` 会执行真实业务，确认要做时再调。可用工具名以 `architecture.json` 的 `public_tools` 为准。
+连接后先调用 `runtime_info`，确认 `restart_required=false`、`loaded.fingerprint` 与 `disk.fingerprint` 一致，且版本符合预期。更新源码或账号配置后重连 MCP 服务，再调用它确认；旧服务若还没有这个工具，同样需要重连。版本指纹只覆盖运行源码与公共资源，不覆盖凭据、Cookie 或数据库；无 Git 的 ZIP 安装 `revision` 为 null，指纹仍可用。`disk.dirty` 表示 Git 已跟踪文件是否存在本地修改。
+
+也可调用 `interviews_search`（query 传空字符串）验证：应返回 `records` 和 `stats`，新库为空是正常的，这一步不访问网站。`daily_run`、`stripe_collect` 会执行真实业务，确认要做时再调。可用工具名以 `architecture.json` 的 `public_tools` 为准。
 
 <a id="troubleshooting"></a>
 
@@ -313,7 +349,7 @@ codex mcp add 1point3acres-local --env PYTHONUTF8=1 -- <venv 的 python.exe> <�
 
 `work/` 目录保存运行环境、加密凭据、数据库、专用 Chrome 会话和每日历史，都不入库；加密凭据与本机绑定，换电脑要重新配置，不能只拷贝密文。
 
-**更新源码**：先暂停每日计划，在仓库根目录确认 `git status --short` 干净（有自己的改动先处理，别用硬重置覆盖），再 `git pull --ff-only`，然后重装依赖并跑 `检查.sh --sync`，通过后恢复计划。
+**更新源码**：先暂停每日计划，在仓库根目录确认 `git status --short` 干净（有自己的改动先处理，别用硬重置覆盖），再 `git pull --ff-only`，然后重装依赖并跑 `检查.sh --sync`，通过后运行 `info` 核对版本和配置，再恢复计划。Windows 可用 `计划.ps1 -Action Remove` 暂停、更新后 `Install` 恢复；常驻 MCP 需要在客户端重连，随后用 `runtime_info` 确认新进程。不要删除 `work/` 或专用 Chrome 配置来完成升级。
 
 改代码后统一跑 `检查.sh`（完整离线检查与回归）和 `检查.sh --sync`（重建生成文件后再检查）。题库映射源自 eagleoflqj/p1a3_script（原作者 Liumeo）。
 

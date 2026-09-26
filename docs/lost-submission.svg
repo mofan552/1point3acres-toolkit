@@ -51,7 +51,7 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <text x="660" y="79" class="s">记为「回执没回来」，这次先算失败</text>
 <path d="M790.0,110.0 L790.0,136.0" class="ar"/>
 <rect x="24.0" y="138.0" width="912.0" height="34.0" rx="17" class="c-blue"/>
-<text x="480" y="160" class="xs t-blue" text-anchor="middle">下一次运行（10 分钟后）：先看网站怎么说，再决定要不要再提交</text>
+<text x="480" y="160" class="xs t-blue" text-anchor="middle">恢复等待结束后：先核验网站状态，待确认提交不盲目重交</text>
 <path d="M170.0,174.0 L170.0,194.0" class="ar"/>
 <rect x="24.0" y="196.0" width="292.0" height="116.0" rx="12" class="c-green"/>
 <g transform="translate(40.0,210.0) scale(0.917)" class="ic ic-green"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></g>
@@ -67,8 +67,8 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <rect x="644.0" y="196.0" width="292.0" height="116.0" rx="12" class="c-red"/>
 <g transform="translate(660.0,210.0) scale(0.917)" class="ic ic-red"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></g>
 <text x="692" y="226" class="h">网站说没完成，但回应过一次</text>
-<text x="692" y="248" class="s">网站处理过了 → 绝不重交，只查回执，</text>
-<text x="692" y="267" class="s">等人看</text>
+<text x="692" y="248" class="s">网站处理过了 → 保留待确认状态，只</text>
+<text x="692" y="267" class="s">核验</text>
 <rect x="24.0" y="334.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
 <g transform="translate(38.0,342.5) scale(0.833)" class="ic ic-blue"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></g>
 <text x="68" y="358" class="s">点击前先保存意图。即使进程中断，恢复时也先核验；只有明确未点击才允许再次提交。</text>
