@@ -120,12 +120,10 @@ def daily_health(days, runs, heartbeat_at=None, now=None, *, due_at=None):
 
 
 def choose_mood(previous=None, rng=None):
-    """Pick a mood the way a member would, not the way a fair die would.
+    """Use configured weights and an optional yesterday-only continuation probability.
 
-    Uniform independent draws are themselves a signature: over a calendar year every mood turns up
-    equally often and no mood ever runs two days, which no real member looks like. So the marginal
-    distribution is skewed toward mundane days, and a run continues with CHECKIN_MOOD_PERSISTENCE.
-    Streaks need yesterday's mood; pass None when it is unknown and only the weights apply.
+    These are preference weights, not measured human behavior or an anti-detection guarantee.
+    The weighted draw itself can also repeat yesterday's mood.
     """
     rng = rng or SystemRandom()
     if previous in CHECKIN_MOOD_WEIGHTS and rng.random() < CHECKIN_MOOD_PERSISTENCE:
@@ -160,18 +158,13 @@ def load_mood_phrases(path):
 
 
 def choose_phrase(mood, pool, recent=(), rng=None):
-    """One line from the chosen mood's group, avoiding what the account said recently.
-
-    The default mood publishes nothing, so it gets no phrase. When every line of a group was used
-    within the recent window the whole group is eligible again rather than falling back to silence or
-    to another mood's tone.
-    """
+    """Avoid recent phrases; the default mood and an exhausted group stay silent."""
     if mood == CHECKIN_MOOD_DEFAULT:
         return None
     rng = rng or SystemRandom()
     group = pool[mood]
     fresh = [phrase for phrase in group if phrase not in set(recent)]
-    return rng.choice(fresh or group)
+    return rng.choice(fresh) if fresh else None
 
 
 def _lines(text):
