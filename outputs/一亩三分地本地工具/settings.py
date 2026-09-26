@@ -20,7 +20,7 @@ CHROME_BUNDLE_ID = 'com.google.Chrome'
 CREDENTIAL_SERVICE = '1point3acres-toolkit'
 ACCOUNT_FILE = STATE / 'account.json'
 LEARNED_ANSWERS_NAME = 'learned-answers.json'
-SCHEDULE_KEYS = {'schedule_time', 'schedule_timezone'}
+SCHEDULE_KEYS = {'schedule_time', 'schedule_timezone', 'schedule_mode'}
 # The one opt-in that makes the daily check-in speak in the member's name; absent means off.
 MOOD_RANDOM_KEY = 'checkin_mood_random'
 OPTIONAL_KEYS = SCHEDULE_KEYS | {MOOD_RANDOM_KEY}
@@ -107,6 +107,18 @@ WINDOW_ON_SCREEN = (120, 80)
 SITE_TIMEZONE = 'America/Los_Angeles'
 # Defaults only: a machine overrides these in account.json instead of editing tracked source (#65).
 SCHEDULE_TIME, SCHEDULE_TIMEZONE = load_schedule(_SCHEDULE, '16:10', 'Asia/Shanghai')
+def load_schedule_mode(overrides):
+    mode = overrides.get('schedule_mode', 'fixed' if 'schedule_time' in overrides else 'random')
+    if mode not in ('fixed', 'random'):
+        raise RuntimeError('invalid_local_schedule_config')
+    return mode
+
+
+SCHEDULE_MODE = load_schedule_mode(_SCHEDULE)
+# Random plans always follow the site clock, including DST; fixed legacy overrides retain their clock.
+SCHEDULE_WINDOW_START = 10
+SCHEDULE_WINDOW_END = 12
+SCHEDULE_CURVE = (3, 3)
 SCHEDULE_RECOVERY_HOURS = 4
 HEALTH_ALERT_DAYS = 2
 HEALTH_STALE_RUNS = 2
@@ -188,6 +200,8 @@ def mcp_config():
 
 
 def daily_schedule_rrule():
+    if SCHEDULE_MODE == 'random':
+        return 'FREQ=MINUTELY;INTERVAL=1'
     hour, minute = map(int, SCHEDULE_TIME.split(':'))
     hours = sorted({(hour + offset) % 24 for offset in range(0, 24, SCHEDULE_RECOVERY_HOURS)})
     return 'FREQ=DAILY;BYHOUR=' + ','.join(map(str, hours)) + f';BYMINUTE={minute};BYSECOND=0'
@@ -201,13 +215,19 @@ def daily_schedule_summary(reference=None):
     interval, which is why the shipped Asia/Shanghai configuration cannot reveal the difference.
     Half-hour zones and other offsets can, so both clocks are reported rather than assumed.
     """
+    if SCHEDULE_MODE == 'random':
+        return {'mode': 'random', 'timezone': SITE_TIMEZONE,
+                'window': [f'{SCHEDULE_WINDOW_START:02d}:00', f'{SCHEDULE_WINDOW_END:02d}:00'],
+                'distribution': 'beta', 'curve': list(SCHEDULE_CURVE), 'random_source': 'SystemRandom',
+                'recovery_hours': SCHEDULE_RECOVERY_HOURS, 'rrule': daily_schedule_rrule(),
+                'rrule_clock_is_ambiguous': False}
     reference = reference or datetime.now(timezone.utc)
     hour, minute = map(int, SCHEDULE_TIME.split(':'))
     local = reference.astimezone(ZoneInfo(SCHEDULE_TIMEZONE)).replace(
         hour=hour, minute=minute, second=0, microsecond=0)
     offsets = range(0, 24, SCHEDULE_RECOVERY_HOURS)
     fires = [local + timedelta(hours=offset) for offset in offsets]
-    return {'time': SCHEDULE_TIME, 'timezone': SCHEDULE_TIMEZONE,
+    return {'mode': 'fixed', 'time': SCHEDULE_TIME, 'timezone': SCHEDULE_TIMEZONE,
             'recovery_hours': SCHEDULE_RECOVERY_HOURS,
             'fires_local': sorted(moment.strftime('%H:%M') for moment in fires),
             'fires_utc': sorted(moment.astimezone(timezone.utc).strftime('%H:%M') for moment in fires),

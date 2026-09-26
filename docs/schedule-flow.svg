@@ -35,7 +35,7 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 </style>
 <defs><marker id="ah" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#8c959f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-blue" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#2f5fdb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-green" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#1a7f37" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-red" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#cf222e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker><marker id="ah-amber" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1,1 L9,5 L1,9" fill="none" stroke="#9a6700" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <rect width="960" height="300" class="bg"/>
-<text x="24" y="40" class="h">一天的时间线（默认计划时间 16:10，按北京时间；时间和时区都可以改）</text>
+<text x="24" y="40" class="h">一天的时间线（洛杉矶时间，每日 10:00–12:00 随机抽取一次）</text>
 <path d="M64,124 L896,124" class="line"/>
 <path d="M64.0,118 L64.0,130" class="line"/>
 <text x="64" y="150" class="xs" text-anchor="middle">00:00</text>
@@ -194,20 +194,17 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <path d="M878.7,124 L878.7,127" class="line soft"/>
 <path d="M884.4,124 L884.4,127" class="line soft"/>
 <path d="M890.2,124 L890.2,127" class="line soft"/>
-<path d="M69.8,117 L75.8,124 L69.8,131 L63.8,124 Z" class="f-amber"/>
-<path d="M208.4,117 L214.4,124 L208.4,131 L202.4,124 Z" class="f-amber"/>
-<path d="M347.1,117 L353.1,124 L347.1,131 L341.1,124 Z" class="f-amber"/>
-<path d="M485.8,117 L491.8,124 L485.8,131 L479.8,124 Z" class="f-amber"/>
-<path d="M624.4,117 L630.4,124 L624.4,131 L618.4,124 Z" class="f-amber"/>
-<path d="M763.1,117 L769.1,124 L763.1,131 L757.1,124 Z" class="f-amber"/>
-<path d="M624.4,80 L624.4,132" class="ar blue"/>
-<text x="624" y="72" class="h t-blue" text-anchor="middle">计划时间 16:10</text>
-<text x="344" y="178" class="xs" text-anchor="middle">没到点：直接退出，不开浏览器</text>
-<text x="760" y="178" class="xs" text-anchor="middle">到点后执行；做完就是「今天已完成」</text>
-<rect x="24.0" y="200.0" width="187.6" height="24.0" rx="12.0" class="c-gray"/>
-<text x="118" y="216" class="xs t-gray" text-anchor="middle" style="font-size:12px">小刻度 = 每 10 分钟醒来看一眼</text>
-<rect x="221.6" y="200.0" width="350.2" height="24.0" rx="12.0" class="c-amber"/>
-<text x="397" y="216" class="xs t-amber" text-anchor="middle" style="font-size:12px">◆ 恢复时点：每 4 小时一个，给按固定时间触发的定时任务用</text>
+<path d="M410.7,117 L416.7,124 L410.7,131 L404.7,124 Z" class="f-amber"/>
+<path d="M445.3,117 L451.3,124 L445.3,131 L439.3,124 Z" class="f-amber"/>
+<path d="M480.0,117 L486.0,124 L480.0,131 L474.0,124 Z" class="f-amber"/>
+<path d="M445.3,80 L445.3,132" class="ar blue"/>
+<text x="445" y="72" class="h t-blue" text-anchor="middle">10–12 点内抽取</text>
+<text x="255" y="178" class="xs" text-anchor="middle">没到点：直接退出，不开浏览器</text>
+<text x="671" y="178" class="xs" text-anchor="middle">到点后执行；做完就是「今天已完成」</text>
+<rect x="24.0" y="200.0" width="152.0" height="24.0" rx="12.0" class="c-gray"/>
+<text x="100" y="216" class="xs t-gray" text-anchor="middle" style="font-size:12px">目标时间保存后不再重抽</text>
+<rect x="186.0" y="200.0" width="239.6" height="24.0" rx="12.0" class="c-amber"/>
+<text x="306" y="216" class="xs t-amber" text-anchor="middle" style="font-size:12px">◆ 操作系统每分钟调用；未到点离线退出</text>
 <rect x="24.0" y="238.0" width="912.0" height="43.0" rx="10" class="c-gray"/>
 <g transform="translate(38.0,246.5) scale(0.833)" class="ic ic-blue"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></g>
 <text x="68" y="262" class="s">电脑睡着错过的，醒来后下一次补上，只补今天不补过去。每次醒来都记一次心跳。不要给同一个账号配两个定时任务。</text>

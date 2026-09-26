@@ -38,26 +38,26 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <rect x="24.0" y="24.0" width="170.0" height="64.0" rx="12" class="c-gray"/>
 <text x="40" y="52" class="h">同一次触发内</text>
 <text x="40" y="74" class="xs">几分钟内</text>
-<rect x="214.0" y="42.0" width="103.5" height="28.0" rx="14.0" class="c-gray"/>
+<rect x="214.0" y="42.0" width="90.0" height="28.0" rx="14.0" class="c-gray"/>
 <g transform="translate(224.0,48.5) scale(0.625)" class="ic ic-blue"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></g>
-<text x="275" y="60" class="xs t-gray" text-anchor="middle" style="font-size:12.5px">16:10 触发</text>
-<path d="M320.5,56.0 L336.5,56.0" class="ar"/>
-<rect x="339.5" y="42.0" width="63.2" height="28.0" rx="14.0" class="c-green"/>
-<text x="371" y="60" class="xs t-green" text-anchor="middle" style="font-size:12.5px">签到 ✓</text>
-<path d="M405.8,56.0 L421.8,56.0" class="ar"/>
-<rect x="424.8" y="42.0" width="117.0" height="28.0" rx="14.0" class="c-red"/>
-<text x="483" y="60" class="xs t-red" text-anchor="middle" style="font-size:12.5px">答题 ✗ 网络超时</text>
-<path d="M544.8,56.0 L560.8,56.0" class="ar"/>
-<rect x="563.8" y="42.0" width="142.4" height="28.0" rx="14.0" class="c-blue"/>
-<g transform="translate(573.8,48.5) scale(0.625)" class="ic ic-blue"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></g>
-<text x="644" y="60" class="xs t-blue" text-anchor="middle" style="font-size:12.5px">换新 Chrome 重跑</text>
-<path d="M709.1,56.0 L725.1,56.0" class="ar"/>
-<rect x="728.1" y="42.0" width="108.2" height="28.0" rx="14.0" class="c-green"/>
-<text x="782" y="60" class="xs t-green" text-anchor="middle" style="font-size:12.5px">答题 ✓ 到账 ✓</text>
-<path d="M839.4,56.0 L855.4,56.0" class="ar"/>
-<rect x="858.4" y="42.0" width="65.0" height="28.0" rx="14.0" class="c-green"/>
-<g transform="translate(868.4,48.5) scale(0.625)" class="ic ic-green"><path d="M20 6 9 17l-5-5"/></g>
-<text x="900" y="60" class="xs t-green" text-anchor="middle" style="font-size:12.5px">圆满</text>
+<text x="268" y="60" class="xs t-gray" text-anchor="middle" style="font-size:12.5px">到期触发</text>
+<path d="M307.0,56.0 L323.0,56.0" class="ar"/>
+<rect x="326.0" y="42.0" width="63.2" height="28.0" rx="14.0" class="c-green"/>
+<text x="358" y="60" class="xs t-green" text-anchor="middle" style="font-size:12.5px">签到 ✓</text>
+<path d="M392.2,56.0 L408.2,56.0" class="ar"/>
+<rect x="411.2" y="42.0" width="117.0" height="28.0" rx="14.0" class="c-red"/>
+<text x="470" y="60" class="xs t-red" text-anchor="middle" style="font-size:12.5px">答题 ✗ 网络超时</text>
+<path d="M531.2,56.0 L547.2,56.0" class="ar"/>
+<rect x="550.2" y="42.0" width="142.4" height="28.0" rx="14.0" class="c-blue"/>
+<g transform="translate(560.2,48.5) scale(0.625)" class="ic ic-blue"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></g>
+<text x="630" y="60" class="xs t-blue" text-anchor="middle" style="font-size:12.5px">换新 Chrome 重跑</text>
+<path d="M695.6,56.0 L711.6,56.0" class="ar"/>
+<rect x="714.6" y="42.0" width="108.2" height="28.0" rx="14.0" class="c-green"/>
+<text x="769" y="60" class="xs t-green" text-anchor="middle" style="font-size:12.5px">答题 ✓ 到账 ✓</text>
+<path d="M825.9,56.0 L841.9,56.0" class="ar"/>
+<rect x="844.9" y="42.0" width="65.0" height="28.0" rx="14.0" class="c-green"/>
+<g transform="translate(854.9,48.5) scale(0.625)" class="ic ic-green"><path d="M20 6 9 17l-5-5"/></g>
+<text x="886" y="60" class="xs t-green" text-anchor="middle" style="font-size:12.5px">圆满</text>
 <rect x="24.0" y="112.0" width="170.0" height="64.0" rx="12" class="c-gray"/>
 <text x="40" y="140" class="h">下一次计划</text>
 <text x="40" y="162" class="xs">10 分钟后</text>

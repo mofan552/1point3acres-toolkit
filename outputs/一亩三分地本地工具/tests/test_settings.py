@@ -92,6 +92,11 @@ class LocalScheduleTests(unittest.TestCase):
 
     def test_absent_overrides_keep_the_shipped_default(self):
         self.assertEqual(settings.load_schedule({}, '16:10', 'Asia/Shanghai'), ('16:10', 'Asia/Shanghai'))
+        self.assertEqual(settings.load_schedule_mode({}), 'random')
+        self.assertEqual(settings.load_schedule_mode({'schedule_time': '07:05'}), 'fixed')
+        self.assertEqual(settings.load_schedule_mode({'schedule_time': '07:05', 'schedule_mode': 'random'}), 'random')
+        with self.assertRaisesRegex(RuntimeError, '^invalid_local_schedule_config$'):
+            settings.load_schedule_mode({'schedule_mode': []})
 
     def test_unknown_keys_are_still_rejected(self):
         with self.assertRaisesRegex(RuntimeError, '^invalid_local_account_config$'):
@@ -106,6 +111,9 @@ class LocalScheduleTests(unittest.TestCase):
                     settings.load_schedule(bad, '16:10', 'Asia/Shanghai')
 
     def test_summary_reports_both_clocks_and_flags_an_ambiguous_rrule(self):
+        change = patch.object(settings, 'SCHEDULE_MODE', 'fixed')
+        change.start()
+        self.addCleanup(change.stop)
         # A bare RRULE does not say which clock it means; a whole-multiple offset hides the question.
         with patch.object(settings, 'SCHEDULE_TIME', '16:10'), \
                 patch.object(settings, 'SCHEDULE_TIMEZONE', 'Asia/Shanghai'):

@@ -142,7 +142,7 @@ class DailyHistoryTests(unittest.TestCase):
                 db.close()
 
 
-NOON = datetime(2026, 9, 20, 12, tzinfo=timezone.utc)
+NOON = datetime(2026, 9, 20, 20, tzinfo=timezone.utc)  # After the LA random window.
 
 
 def summarized_day(day, *, checkin=True, quiz=True):

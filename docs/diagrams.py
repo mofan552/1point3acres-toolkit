@@ -671,7 +671,7 @@ def retry_flow(c: Canvas):
 
 @diagram('retry-timeline', 960, 340, '一个坏日子的接力')
 def retry_timeline(c: Canvas):
-    lanes = [('同一次触发内', '几分钟内', [('16:10 触发', 'gray', 'alarm'), ('签到 ✓', 'green'), ('答题 ✗ 网络超时', 'red'),
+    lanes = [('同一次触发内', '几分钟内', [('到期触发', 'gray', 'alarm'), ('签到 ✓', 'green'), ('答题 ✗ 网络超时', 'red'),
                                        ('换新 Chrome 重跑', 'blue', 'refresh'), ('答题 ✓ 到账 ✓', 'green'), ('圆满', 'green', 'check')]),
              ('下一次计划', '10 分钟后', [('重跑也失败', 'red'), ('16:20 再触发', 'gray', 'alarm'), ('签到已确认，只补答题', 'blue'),
                                      ('答题 ✓', 'green'), ('圆满', 'green', 'check')]),
@@ -707,7 +707,7 @@ def lost_submission(c: Canvas):
 
 @diagram('health-watch', 960, 300, '健康观察者：第二双眼睛')
 def health_watch(c: Canvas):
-    c.card(24, 24, 330, 150, '主计划：每 10 分钟一次', ['该跑就跑，不该跑就退出；每次都在本机记一次心跳',
+    c.card(24, 24, 330, 150, '主计划：每分钟一次', ['该跑就跑，不该跑就退出；每次都在本机记一次心跳',
                                               '盲点：定时任务坏了、电脑没开时，它根本不会被叫醒，也就不会报错'], 'gray', icon='alarm')
     c.rect(400, 64, 160, 70, 'c-gray')
     c.icon('database', 468, 76, 24, 'blue')
@@ -741,20 +741,20 @@ def _axis(c: Canvas, x0, x1, y, labels, label_y, minor=True):
 @diagram('schedule-flow', 960, 300, '调度：一天的时间线')
 def schedule_flow(c: Canvas):
     x0, x1, y = 64, 896, 124
-    c.text(24, 40, '一天的时间线（默认计划时间 16:10，按北京时间；时间和时区都可以改）', 'h')
+    c.text(24, 40, '一天的时间线（洛杉矶时间，每日 10:00–12:00 随机抽取一次）', 'h')
     _axis(c, x0, x1, y, ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'], 150)
     span = x1 - x0
-    for hour in range(0, 24, 4):
-        x = x0 + span * (hour + 10 / 60) / 24
+    for hour in (10, 11, 12):
+        x = x0 + span * hour / 24
         c.path(f'M{x:.1f},{y - 7} L{x + 6:.1f},{y} L{x:.1f},{y + 7} L{x - 6:.1f},{y} Z', 'f-amber')
-    px = x0 + span * (16 + 10 / 60) / 24
+    px = x0 + span * 11 / 24
     c.path(f'M{px:.1f},{y - 44} L{px:.1f},{y + 8}', 'ar blue')
-    c.text(px, y - 52, '计划时间 16:10', 'h t-blue', 'middle')
+    c.text(px, y - 52, '10–12 点内抽取', 'h t-blue', 'middle')
     c.text(x0 + (px - x0) / 2, 178, '没到点：直接退出，不开浏览器', 'xs', 'middle')
     c.text(px + (x1 - px) / 2, 178, '到点后执行；做完就是「今天已完成」', 'xs', 'middle')
     cx = 24
-    cx += c.chip(cx, 200, '小刻度 = 每 10 分钟醒来看一眼', 'gray') + 10
-    cx += c.chip(cx, 200, '◆ 恢复时点：每 4 小时一个，给按固定时间触发的定时任务用', 'amber') + 10
+    cx += c.chip(cx, 200, '目标时间保存后不再重抽', 'gray') + 10
+    cx += c.chip(cx, 200, '◆ 操作系统每分钟调用；未到点离线退出', 'amber') + 10
     c.note(24, 238, 912, '电脑睡着错过的，醒来后下一次补上，只补今天不补过去。每次醒来都记一次心跳。不要给同一个账号配两个定时任务。', 'gray', 'moon')
 
 
@@ -773,9 +773,7 @@ def site_day(c: Canvas):
     c.text(bx - 8, 60, '网站的新一天从这里开始', 'xs t-amber', 'end')
     c.text(24, 252, '洛杉矶时间（网站算「一天」的依据）', 'h')
     _axis(c, x0, x1, 206, ['09:00', '13:00', '17:00', '21:00', '01:00', '05:00', '09:00'], 226, minor=False)
-    px = x0 + span * (16 + 10 / 60) / 24
-    c.path(f'M{px:.1f},160 L{px:.1f},138', 'ar blue')
-    c.text(px + 8, 172, '计划 16:10：刚翻到「今天」就签，留足一整天补救', 'xs t-blue')
+    c.text(24, 172, '随机计划：洛杉矶 10:00–12:00，与站点日期使用同一时区', 'xs t-blue')
     c.text(24, 274, '洛杉矶 00:00 = 北京 15:00（夏令时）或 16:00（冬令时）', 'xs')
     c.note(24, 290, 912, '奖励记录的时间也折算成洛杉矶日期再比较。你在美国、在国内、出差、夏令时切换，判断都一致，因为从不看电脑的本地日期。',
            'gray', 'globe')

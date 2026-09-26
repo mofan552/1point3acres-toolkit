@@ -37,7 +37,7 @@ text{fill:#e6edf3}.s{fill:#a3adb8}.xs{fill:#8b949e}.mono{fill:#a3adb8}.w{fill:#f
 <rect width="960" height="300" class="bg"/>
 <rect x="24.0" y="24.0" width="330.0" height="150.0" rx="12" class="c-gray"/>
 <g transform="translate(40.0,38.0) scale(0.917)" class="ic ic-blue"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M5 3 2 6"/><path d="m22 6-3-3"/></g>
-<text x="72" y="54" class="h">主计划：每 10 分钟一次</text>
+<text x="72" y="54" class="h">主计划：每分钟一次</text>
 <text x="72" y="76" class="s">该跑就跑，不该跑就退出；每次都在本机记一</text>
 <text x="72" y="95" class="s">次心跳</text>
 <text x="72" y="114" class="s">盲点：定时任务坏了、电脑没开时，它根本不</text>
